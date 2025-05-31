@@ -65,9 +65,10 @@ if [[ $- == *i* ]] && [[ -t 1 ]]; then
 fi
 
 # zoxide (autojump moderne)
-if command -v zoxide &> /dev/null; then
-  eval "$(zoxide init zsh)"
-  cd() {
+cd() {
+  if [[ $# -eq 0 || "$1" == "-" || "$1" == "." || "$1" == ".." || "$1" == /* || -d "$1" ]]; then
+    builtin cd "$@"
+  else
     zoxide cd "$@"
-  }
-fi
+  fi
+}
