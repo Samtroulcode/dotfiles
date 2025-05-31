@@ -206,7 +206,7 @@ chsh -s /bin/zsh
 
 🔄 Restauration paquets :
 
-# Vérifier intégrité des fichiers système (si nécessaire)
+### Vérifier intégrité des fichiers système (si nécessaire)
 sudo pacman -Qk
 
 sudo pacman -Syu --needed - < ~/backup/pkglist.txt
@@ -219,8 +219,6 @@ sudo pacman -Syu --needed - < ~/backup/pkglist.txt
 
     🔗 Restauration des fichiers système via rsync (si sinistre majeur)
 
-
----
 
 ### 📁 `rsync` – fichier d’exclusion recommandé
 `exclude.txt`
@@ -240,6 +238,8 @@ sudo pacman -Syu --needed - < ~/backup/pkglist.txt
 /swapfil
 ```
 
+---
+
 ## ✅ Bonnes pratiques appliquées
 
 - ✔️ Pas de paquets inutiles installés
@@ -249,12 +249,22 @@ sudo pacman -Syu --needed - < ~/backup/pkglist.txt
 - ✔️ ZDOTDIR défini pour cohérence de chargement zsh
 - ✔️ Aucun fichier sensible ou chiffré dans `.dotfiles`
 
+---
+
 ## 🧠 À ne pas oublier
 
 - 🔁 Toujours tester un dotfile avant commit (shell de test possible avec `zsh -f`)
 - 🛡️ Ne jamais faire confiance à un script externe sans audit préalable
 - 🔄 Penser à re-sauvegarder `pkglist.txt` après ajout/suppression majeure
 - ☁️ Garder une copie hors-ligne des `dotfiles` et du `rsync` complet (clé USB ou NAS)
+
+---
+
+## 📘 Références complémentaires
+
+- [ARCH_MEMO.md](./ARCH_MEMO.md) – notes pratiques, commandes et bonnes pratiques d’administration quotidienne
+
+---
 
 ## 📚 Ressources
 
@@ -263,6 +273,8 @@ sudo pacman -Syu --needed - < ~/backup/pkglist.txt
 > https://archlinux.org/news
 
 > https://archlinux.org/packages
+
+---
 
 ## 🧾 Notes
 
