@@ -5,4 +5,6 @@ export PATH="$HOME/scripts:$HOME/.local/bin:$PATH"
 # [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec zsh -l
 
 # Forcage de plasma wayland
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startplasma-wayland
+#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startplasma-wayland
+
+export GDK_BACKEND=wayland
