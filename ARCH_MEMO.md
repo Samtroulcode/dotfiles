@@ -40,7 +40,7 @@ Gestion des paquets:
     	-n : Supprime les fichiers de configuration associés au paquet.
     	-s : Supprime les dépendances qui ont été installées avec le paquet et qui ne sont plus nécessaires par d'autres paquets.
 
-	- pacman -Qi : Vérifier l’espace utilisé par chaque paquet
+	- pacman -Qi : Vérifier l’espace utilisé par les paquet (option <paquet> pour 1 paquet, ou vide pour tout listé)
 		-Q : pckg installé
 		-i : info
 

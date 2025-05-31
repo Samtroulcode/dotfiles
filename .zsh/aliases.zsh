@@ -23,6 +23,10 @@ alias pacfind='pacman -Q | grep -i'
 alias pacdiff='sudo pacdiff'
 alias pacrecent='grep "\[ALPM\] installed" /var/log/pacman.log | tail -n 20'
 
+# Aliases de sauvegarde
+alias savepkg='pacman -Qqe > ~/backup/pkglist.txt'
+alias saveaur='pacman -Qqm > ~/backup/aurlist.txt'
+
 # Aliases réseau
 alias ports='ss -tulwn'
 alias ipinfo='ip -c a'
