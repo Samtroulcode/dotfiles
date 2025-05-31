@@ -30,7 +30,7 @@
 ## 💥 Matériel et environnement actuel
 
 * Processeur : AMD Ryzen 5 3600 (12 threads) @ 4.21 GHz
-* GPU : NVIDIA GeForce RTX 3070 (drivers propriétaires)
+* GPU : NVIDIA GeForce RTX 3070
 * Disques :
 
   * `/` : 29.36 GiB (ext4)
@@ -55,6 +55,17 @@
 * 🧹 `fstrim.timer` actif pour TRIM des SSD
 * 🔐 `pam` surveillé et conforme
 * 🔍 Commande d’audit : `journalctl -p 3 -xb`
+* 🔍 Vérification régulière des permissions sudo :
+  ```bash
+  grep -RE 'NOPASSWD|ALL' /etc/sudoers /etc/sudoers.d/* 2>/dev/null
+  ```
+
+### 📌 Prévu
+
+* 🔄 earlyoom à étudier (évite les freezes en cas de saturation mémoire)
+  - Service léger basé sur swap/memory monitoring
+  - Remplaçant simple de `oomd` pour desktop
+  - Non encore installé
 
 ---
 
@@ -108,6 +119,17 @@
 
 ---
 
+## 💽 Partitionnement (2025-05)
+
+| Point de montage | Partition   | Taille  | FS   | Label  |
+|------------------|-------------|---------|------|--------|
+| /boot            | /dev/sdb5   | ~830M   | vfat |        |
+| /                | /dev/sdb6   | ~29G    | ext4 | root   |
+| /home            | /dev/sdb7   | ~171G   | ext4 | home   |
+| /backup          | /dev/sdb8   | ~30G    | ext4 | backup |
+
+---
+
 ## 🧠 Fichiers critiques à surveiller
 
 ```text
@@ -122,15 +144,20 @@
 
 ---
 
-## 🔄 Sauvegarde système
+## 📂 Sauvegarde utilisateur
 
-* Sauvegarde via `rsync` :
+* Sauvegarde manuelle du dossier personnel via `rsync` :
 
   ```bash
-  rsync -aAXHv --delete --exclude-from=/etc/rsync/exclude.txt / /mnt/backup
-  ```
-* Exclusions : `/dev`, `/proc`, `/sys`, `/run`, `/tmp`, `/mnt`, `/media`, `/lost+found`
-* But : restauration complète post-sinistre
+  rsync -avh --delete /home/sam/ /backup/home-sam/
+	```
+
+* But : restauration fichiers utilisateur
+* Scripté via : ~/scripts/backup-home.sh
+* Loggé dans : ~/.cache/backup.log
+* Lancement : manuel pour l’instant (alias backup)
+* ⚠️ Pas encore de cron ou systemd.timer en place (prévu)
+* Restaurable facilement via cp ou rsync inverse
 
 ---
 
@@ -162,8 +189,31 @@
 * Timers actifs : `systemd-tmpfiles-clean.timer`, `shadow.timer`, `fstrim.timer`, `archlinux-keyring-wkd-sync.timer`
 * Services actifs : auditd, NetworkManager, nvidia suspend/resume, ufw, systemd-timesyncd
 * Services utilisateur : wireplumber, pipewire, pipewire-pulse, xdg user dirs, p11-kit
+* Script de nettoyage (`~/scripts/arch-clean.sh`) :
+  - Fait partie des dotfiles (versionné)
+  - Nettoie paquets orphelins, cache pacman/yay, `.pacnew`, logs > 7j
+  - Vérifie erreurs critiques via `journalctl -p 3 -xb`
+  - Vérifie les services en échec avec `systemctl --failed`
+  - Affiche espace disque
+  - Log : `~/.cache/arch-clean-<date>.log`
+```markdown
+* Fréquence recommandée :
+  - Mise à jour système (`update`) tous les 2–3 jours
+  - Audit visuel des erreurs (`clean`) une fois par semaine
+  - Backup utilisateur (`backup`) manuellement après changements importants
+```
 
 ---
+
+## 🧾 Aliases système
+
+* `update` → `sudo pacman -Syu`
+* `orphanclean` → `pacman -Rns $(pacman -Qtdq)`
+* `installed` → `pacman -Qe`
+* `installedAur` → `pacman -Qm`
+* `archnews` → `lynx https://archlinux.org/news/`
+* `clean` → `~/scripts/arch-clean.sh | tee ~/.cache/arch-clean-$(date +%F_%H-%M).log`
+* `backup` → `~/scripts/backup-home.sh`
 
 ## ❌ Interdits
 
@@ -235,7 +285,7 @@ sudo pacman -Syu --needed - < ~/backup/pkglist.txt
 /lost+found
 /home/*/.cache/
 /home/*/.local/share/Trash/
-/swapfil
+/swapfile
 ```
 
 ---
@@ -246,7 +296,7 @@ sudo pacman -Syu --needed - < ~/backup/pkglist.txt
 - ✔️ Aucun service non utilisé laissé actif
 - ✔️ Dépôts AUR audités avant installation
 - ✔️ Fichiers `.bak`, `.old`, `.desktop` nettoyés régulièrement
-- ✔️ ZDOTDIR défini pour cohérence de chargement zsh
+- ✔️ ZDOTDIR défini dans ~/.zprofile pour isoler et maîtriser la config zsh
 - ✔️ Aucun fichier sensible ou chiffré dans `.dotfiles`
 
 ---

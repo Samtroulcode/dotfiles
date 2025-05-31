@@ -3,37 +3,72 @@
 set -e
 
 # Mise a jour de l'index + upgrade
-echo "🧹 Nettoyage Arch Linux"
-echo "🔄 Mise à jour système..."
+echo
+echo "=== 🧹 Nettoyage Arch Linux"
+echo
+echo "=== ACTION : Mise à jour système..."
+echo
 sudo pacman -Syu
 
 # Nettoyage paquets orphelins (pacman)
-echo "🧼 Suppression des paquets orphelins (pacman)..."
+echo
+echo "=== ACTION : Suppression des paquets orphelins (pacman)..."
+echo
 orphans=$(pacman -Qtdq 2>/dev/null || true)
 if [[ -n "$orphans" ]]; then
-  echo "$orphans" | xargs -r sudo pacman -Rns
+  echo "$orphans" | xargs -r sudo pacman -Rns --noconfirm
 else
-  echo "✅ Aucun paquet orphelin trouvé."
+  echo
+  echo "=== RES : Aucun paquet orphelin trouvé"
+  echo
 fi
 
 # Nettoyage cache pacman
-echo "🧽 Nettoyage du cache pacman..."
-sudo paccache -r
+echo
+echo "=== ACTION : Nettoyage du cache pacman..."
+echo
+sudo paccache -rk2 && sudo paccache -ruk0
 
 # Nettoyage cache yay (si installé)
 if command -v yay &>/dev/null; then
-  echo "🧽 Nettoyage du cache yay..."
-  yay -Sc --noconfirm
+  echo
+  echo "=== ACTION : Nettoyage du cache yay..."
+  echo
+  yay -Sc --noconfirm <<< y 
 fi
 
 # Vérif des .pacnew
-echo "🔍 Vérification des fichiers .pacnew..."
-sudo pacdiff
+echo
+echo "=== ACTION : Vérification des fichiers .pacnew..."
+echo
+if [[ -z $DISPLAY ]]; then
+  sudo pacdiff --output  # liste uniquement les fichiers
+else
+  sudo pacdiff           # mode interactif si en session
+fi
+
+# Supprimer les logs de plus de 7 jours
+echo
+echo "=== ACTION = Suppression des logs..."
+echo
+sudo journalctl --vacuum-time=7d
 
 # Audit rapide et renvoie des erreurs critiques
-echo "🩺 Audit rapide : services en échec"
+echo
+echo "=== ACTION : Audit rapide : services en échec..."
+echo
 systemctl --failed || true
-echo "🧾 Erreurs critiques récentes :"
+echo
+echo "=== RES : Erreurs critiques récentes :"
+echo
 journalctl -p 3 -xb -n 10
 
-echo "✅ Nettoyage terminé."
+# Affichage de l’espace disque utilisé
+echo
+echo "=== RES : Espace disque:"
+echo
+df -h /
+
+echo
+echo "===== ✅ Nettoyage terminé."
+echo
