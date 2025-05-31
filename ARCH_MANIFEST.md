@@ -33,15 +33,15 @@
 * GPU : NVIDIA GeForce RTX 3070 (drivers propriétaires)
 * Disques :
 
-  * `/` : 29.36 GiB (ext4), utilisé : 14.02 GiB (48%)
-  * `/home` : 171.69 GiB (ext4), utilisé : 2.32 GiB (1%)
-* Mémoire : 5.93 GiB / 15.53 GiB (38%)
-* Swap : 4.00 GiB (0% utilisé)
+  * `/` : 29.36 GiB (ext4)
+  * `/home` : 171.69 GiB (ext4)
+* Mémoire : 15.53 GiB
+* Swap : 4.00 GiB
 * Affichage :
 
   * VSC36AF (24") 1920x1080 @ 144Hz \[HDMI-0]
-  * LC27G5xT (32") 2560x1440 @ 144Hz \[DP-0] ⭐ actif
-* Adresse IP locale : 192.168.1.177/24 (interface enp3s0)
+  * LC27G5xT (32") 2560x1440 @ 144Hz \[DP-0]
+* Adresse IP locale : <machine-ip-redacted>
 * Locale : `fr_FR.UTF-8`
 
 ---
@@ -111,13 +111,13 @@
 ## 🧠 Fichiers critiques à surveiller
 
 ```text
-/home/sam/.zshrc
-/home/sam/.zprofile
-/home/sam/.config/systemd/user/*
-/home/sam/scripts/*
-/home/sam/.local/bin/*
-/home/sam/.config/kwinrc
-/home/sam/.config/gtk-3.0/settings.ini
+/home/<user>/.zshrc
+/home/<user>/.zprofile
+/home/<user>/.config/systemd/user/*
+/home/<user>/scripts/*
+/home/<user>/.local/bin/*
+/home/<user>/.config/kwinrc
+/home/<user>/.config/gtk-3.0/settings.ini
 ```
 
 ---
