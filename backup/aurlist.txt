@@ -1,0 +1,4 @@
+librewolf-bin
+librewolf-bin-debug
+webcord
+yay
