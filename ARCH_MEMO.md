@@ -114,6 +114,12 @@ Conformité configuration système
 
     - journalctl -p 3 -xb : erreur critique
 
+	- journalctl -b0 --priority=3 --no-pager : Cela affichera uniquement les messages de niveau ERR, CRIT, ALERT, ou EMERG du boot actuel (-b0).
+
+	- systemd-analyze : Temps du boot
+
+	- systemctl --user --failed : Les services utilisateur en échec (rare mais utile)
+
 Les ctl utiles au quotidien
 
 	Commande		Usage
