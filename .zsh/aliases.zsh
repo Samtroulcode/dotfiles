@@ -4,6 +4,7 @@
 # Aliases généraux
 alias ..='cd ..'
 alias ...='cd ../..'
+alias vi="nvim"
 alias please='sudo'
 alias fucking='sudo'
 alias indent='shfmt -w -i 2'

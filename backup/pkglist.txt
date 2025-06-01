@@ -22,9 +22,11 @@ linux
 linux-firmware
 man-db
 man-pages
+neovim
 networkmanager
 nvidia
 nvidia-utils
+openssh
 os-prober
 pacman-contrib
 pipewire
@@ -38,9 +40,7 @@ sddm
 sudo
 systemsettings
 texinfo
-tilix
 ttf-jetbrains-mono-nerd
-vim
 webcord
 wget
 wireplumber
