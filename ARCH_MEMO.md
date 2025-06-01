@@ -31,6 +31,8 @@ Nettoyage régulier
 
 	- journalctl -p 3 -xb -n 10 : pour voir les erreurs critiques
 
+	- sudo DIFFPROG="nvim -d" pacdiff : Ouvre les fichiers .pacnew en mode comparaison (nvim -d pour “diff”), Cela permet de fusionner les configs proprement (important après maj).
+
 	- script de clean : ALIAS "clean"
 		- sudo pacman -Syu
 		- pacman -Rns $(pacman -Qtdq)
@@ -171,6 +173,7 @@ Système de sauvegarde du système:
 
 			- workflow d'utilisation: comme git mais avec config : 
 				config status
+				config diff <dotfile>
 				config add <dotfile> 
 				config add -u  # Pour ajouté les fichiers modifié
 				config commit -m "nom de commit" 
@@ -239,6 +242,24 @@ Système de sauvegarde du système:
 				- bon réflexe post-pacman -Syu	pour éviter une perte due à une MAJ bancale
 				- snapshot avant une modif système si installation de paquets expérimentaux ou pacman -Rns risqués
 
+Mise en place d'un SWAP FILE:
+
+	sudo fallocate -l 2G /swapfile
+	sudo chmod 600 /swapfile
+	sudo mkswap /swapfile
+	sudo swapon /swapfile
+
+	modification de fstab pour rajouter: /swapfile none swap defaults 0 0
+
+	swapon --show
+	NAME      TYPE SIZE USED PRIO
+	/swapfile file   2G   0B   -2
+		/swapfile	Le fichier swap créé
+		file	Type de swap (ici un fichier, pas une partition)
+		2G	Taille totale
+		0B	Utilisation actuelle (normal si rien n’est encore swappé)
+		-2	Priorité (basse, ce qui est bien pour un fichier swap)
+
 Structure d'un audit :
 
     1. Mises à jour et état général du système
@@ -265,6 +286,7 @@ Amélioration potentiels:
 	- Trouver système de sauvegarde pkg versionné (FAIT)
 	- git bare (FAIT)
 	- rsync (FAIT)
+	- swap (WIP)
 	- Firejail
 	- earlyoom
-	- cron des sauvegardes
+	- Automatisation via cron
