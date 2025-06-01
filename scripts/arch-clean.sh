@@ -41,6 +41,7 @@ fi
 echo
 echo "=== ACTION : Vérification des fichiers .pacnew..."
 echo
+sudo DIFFPROG="nvim -d" pacdiff || true
 if [[ -z $DISPLAY ]]; then
   sudo pacdiff --output  # liste uniquement les fichiers
 else
