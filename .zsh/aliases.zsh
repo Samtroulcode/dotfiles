@@ -18,7 +18,6 @@ alias installed='pacman -Qe'
 alias installedAur='pacman -Qm'
 alias orphaned='pacman -Qtdq'
 alias orphanedAur='yay -Qtdq'
-alias clean='bash ~/scripts/arch-clean.sh | tee "$HOME/.cache/arch-clean-$(date +%F_%H-%M).log"'
 alias clean-cache='sudo paccache -rk2 && sudo paccache -ruk0'
 alias path='echo -e ${PATH//:/\\n}'
 alias pacfind='pacman -Q | grep -i'
@@ -29,14 +28,17 @@ alias pacrecent='grep "\[ALPM\] installed" /var/log/pacman.log | tail -n 20'
 alias savepkg='pacman -Qqe > ~/backup/pkglist.txt'
 alias saveaur='pacman -Qqm > ~/backup/aurlist.txt'
 
-alias backup='bash ~/scripts/backup-home.sh'
-
 # Aliases réseau
 alias ports='ss -tulwn'
 alias ipinfo='ip -c a'
 alias pingg='ping -c 3 1.1.1.1'
 alias pingdns='ping -c 3 archlinux.org'
-alias archnews='lynx https://archlinux.org/news/'
+alias archnews='lynx https://archlinux.org/news/' 
+
+# Aliases de scripts
+alias backup='bash ~/scripts/backup-home.sh'
+alias clean='bash ~/scripts/arch-clean.sh | tee "$HOME/.cache/arch-clean-$(date +%F_%H-%M).log"'
+alias pacstats='bash ~/scripts/pacstats.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

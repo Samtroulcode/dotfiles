@@ -63,6 +63,8 @@ Gestion des paquets:
 
 	- pacman -Qqe : Rechercher les paquets KDE installés
 
+	- pacstats : script qui vérifie et compte les paquets installé (aur + off) <== TRES UTILE
+
 	- VOIR SCRIPT CLEAN (dans nettoyage régulier, emplacement: /script/arch-clean.sh versionné avec git bare)
 
 Gestion propre des paquets AUR
