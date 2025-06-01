@@ -70,6 +70,13 @@ echo "[*] Montages principaux (/ et /home) :"
 mount | grep -E ' / |/home'
 echo
 
+# Etat du swap
+if swapon --show | grep -q '/swapfile'; then
+  echo "✅ Swap actif via /swapfile"
+else
+  echo "❌ Swap inactif !"
+fi
+
 # Fichiers pacnew en attente
 echo "[*] Fichiers .pacnew détectés :"
 sudo pacdiff --output || echo "Aucun fichier .pacnew"
