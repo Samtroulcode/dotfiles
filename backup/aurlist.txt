@@ -1,4 +1,4 @@
 librewolf-bin
-librewolf-bin-debug
 webcord
 yay
+yay-debug
