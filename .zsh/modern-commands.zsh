@@ -8,8 +8,8 @@ if [[ $- == *i* ]]; then
   if command -v eza &>/dev/null; then
     alias lls='eza --color=automatic --group-directories-first -h'
     alias lla='eza -la --color=automatic --group-directories-first -h'
-    alias tree2='eza --tree --level=2 --color=auto'
-    alias tree3='eza --tree --level=3 --color=auto'
+    alias tree='eza --tree --level=2 --color=auto'
+    alias treee='eza --tree --level=3 --color=auto'
   fi
 
   # bat (cat moderne)

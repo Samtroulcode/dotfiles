@@ -33,10 +33,11 @@
 * GPU : NVIDIA GeForce RTX 3070
 * Disques :
 
-  * `/` : 29.36 GiB (ext4)
-  * `/home` : 171.69 GiB (ext4)
+  * `/` : 30 GiB (ext4)
+  * `/home` : 100 GiB (ext4)
+  * `/backup` : 20 GiB (ext4)
 * Mémoire : 15.53 GiB
-* Swap : 4.00 GiB
+* Swap : 2.00 GiB
 * Affichage :
 
   * VSC36AF (24") 1920x1080 @ 144Hz \[HDMI-0]

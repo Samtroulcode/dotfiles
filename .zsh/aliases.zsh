@@ -39,6 +39,7 @@ alias archnews='lynx https://archlinux.org/news/'
 alias backup='bash ~/scripts/backup-home.sh'
 alias clean='bash ~/scripts/arch-clean.sh | tee "$HOME/.cache/arch-clean-$(date +%F_%H-%M).log"'
 alias pacstats='bash ~/scripts/pacstats.sh'
+alias audit='bash ~/scripts/sys-audit.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

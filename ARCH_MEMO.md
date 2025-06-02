@@ -69,6 +69,12 @@ Gestion des paquets:
 
 	- VOIR SCRIPT CLEAN (dans nettoyage régulier, emplacement: /script/arch-clean.sh versionné avec git bare)
 
+	- PACNEW : Quand tu mets à jour un paquet qui modifie un fichier de configuration dans /etc, pacman ne remplace jamais ton fichier modifié, il crée un fichier .pacnew. Ces .pacnew contiennent la nouvelle version du fichier — tu dois ensuite comparer manuellement avec ton fichier actuel.
+		Outil à utiliser : pacdiff (sudo pacman -S pacman-contrib)
+		sudo pacdiff : vérifier les pacnew et voir les différences
+		
+		SOLUTION HOOK : /etc/pacman.d/hooks/pacnew-check.hook 
+
 Gestion propre des paquets AUR
 
     - Utiliser makepkg ou un helper comme paru ou yay
@@ -260,6 +266,27 @@ Mise en place d'un SWAP FILE:
 		0B	Utilisation actuelle (normal si rien n’est encore swappé)
 		-2	Priorité (basse, ce qui est bien pour un fichier swap)
 
+TRIM ssd :
+
+	TRIM est une commande utilisée par le système pour informer le SSD des blocs de données qui ne sont plus utilisés (après une suppression, par exemple). Cela permet :
+		- De maintenir de bonnes performances en écriture à long terme.
+		- D’allonger la durée de vie du SSD.
+		- Sans TRIM, le SSD doit "deviner" ce qui peut être nettoyé, ce qui le ralentit avec le temps.
+
+	- sudo systemctl enable --now fstrim.timer : active le timer de trim 
+
+	- systemctl status fstrim.timer : vérifie qu'il est actif
+
+	- systemctl list-timers | grep fstrim : savoir quand il s'executera
+
+	- sudo fstrim -av : lance un trim imédiatement
+		-a : applique à toutes les partitions montées compatibles.
+		-v : affiche ce qui a été fait.
+
+Mise en place d'un système simple de task avec taskwarrior :
+
+	BUT: Migré les taches "a faire" de ce fichier dans un taskmanager versionné dans les dotfiles (taskwarrior = meilleur solution, totalement kiss compatible, en cli)
+
 Structure d'un audit :
 
     1. Mises à jour et état général du système
@@ -287,6 +314,40 @@ Amélioration potentiels:
 	- git bare (FAIT)
 	- rsync (FAIT)
 	- swap (WIP)
+	- Taskwarrior (FAIT)
 	- Firejail
 	- earlyoom
 	- Automatisation via cron
+
+AJOUT FLATPAK POUR WEBCORD !!!! a test, car le screenshare ne fonctionne pas a cause du backend xdg-desktop-portal cassé ! (a vérifié avec maj si il refonctionne plus tard)
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo ===> AJOUT DEPOT FLATPAK !!! ATTENTION
+
+
+🧭 PLAN D'ACTION "ModernKISS"
+🏁 Objectif final
+
+Un système Arch Linux propre, sans couche DE inutile, basé sur :
+
+    Hyprland (Wayland WM)
+
+    WezTerm (terminal GPU, avec split)
+
+    LibreWolf (navigateur sécurisé)
+
+    Webcord (compatibilité screenshare)
+
+    Steam (Gaming Wayland/NVIDIA OK)
+
+    PipeWire + WirePlumber (Audio + screenshare)
+
+    Firewall (UFW)
+
+    VPN (WireGuard vers ton serveur)
+
+    dotfiles
+
+    Backup automatisé avec rsync sur /backup
+
+    Partage propre entre /, /home, /swap, /backup
+
+    fstab / hosts / locales / users / bootloader / etc. maîtrisés à 100 %
