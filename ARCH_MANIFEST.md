@@ -17,13 +17,11 @@
 ## 🧭 Vision système
 
 - Système Arch Linux pur, rolling-release, minimal et maîtrisé
-- Interface moderne et fonctionnelle : KDE Plasma sous Wayland
+- Interface moderne et fonctionnelle : Hyprland sous Wayland
 - Priorité à la stabilité, la maintenabilité et la sécurité
-- Système KISS **pragmatique** : on évite la complexité gratuite, mais on accepte la modernité quand elle est justifiée
+- Système KISS **pragmatique** : on évite la complexité gratuite, mais on accepte la modernité quand elle est justifiée (KISSAM: Kep It Simple, Stupid And Modern)
 - Paquets et services audités, aucune surcouche non comprise ou non justifiée
 - Flatpak/Snap **interdits par défaut**, mais tolérés **si audités et nécessaires**
-- Composants KDE réduits au minimum utile, aucun groupe `kde-*` installé tel quel
-
 
 ---
 
@@ -31,13 +29,9 @@
 
 * Processeur : AMD Ryzen 5 3600 (12 threads) @ 4.21 GHz
 * GPU : NVIDIA GeForce RTX 3070
-* Disques :
-
-  * `/` : 30 GiB (ext4)
-  * `/home` : 100 GiB (ext4)
-  * `/backup` : 20 GiB (ext4)
+* Disques : 200 GiB (btrfs)
 * Mémoire : 15.53 GiB
-* Swap : 2.00 GiB
+* Swap : 4.00 GiB
 * Affichage :
 
   * VSC36AF (24") 1920x1080 @ 144Hz \[HDMI-0]
@@ -74,7 +68,7 @@
 
 * `pacman` uniquement pour les paquets officiels
 * `yay` utilisé avec modération (aucun paquet inutile, AUR audité)
-* Paquets AUR installés : `yay`, `librewolf-bin`, `librewolf-bin-debug`, `webcord`
+* Paquets AUR installés : `yay`, 'hyprshot'
 * Paquets installés sauvegardés via :
 
   ```bash
@@ -105,7 +99,10 @@
 - `~/.local/bin/` (scripts CLI)
 - `~/scripts/` (maintenance, audit)
 - `~/.config/systemd/user/` (timers et services)
-- `ARCH_MANIFEST.md` ✅
+- '~/.config/hypr/hyprland.conf' (layout hyprland)
+- '~/.config/foot/foot.ini' (config foot)
+- `KISSAM_MANIFEST.md` ✅
+- `ARCH_MEMO` ✅
 
 * Commit propres, lisibles, versionnés par fonctionnalité
 
@@ -117,17 +114,6 @@
 > - `~/backup/` pour les listes de paquets
 > - `~/scripts/` pour les scripts d’audit et de maintenance
 > - `~/.dotfiles` (git bare) pour les dotfiles versionnés
-
----
-
-## 💽 Partitionnement (2025-05)
-
-| Point de montage | Partition   | Taille  | FS   | Label  |
-|------------------|-------------|---------|------|--------|
-| /boot            | /dev/sdb5   | ~830M   | vfat |        |
-| /                | /dev/sdb6   | ~29G    | ext4 | root   |
-| /home            | /dev/sdb7   | ~171G   | ext4 | home   |
-| /backup          | /dev/sdb8   | ~30G    | ext4 | backup |
 
 ---
 
