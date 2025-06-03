@@ -1,4 +1,3 @@
-librewolf-bin
-webcord
-yay
-yay-debug
+hyprshot
+paru
+xwayland-run
