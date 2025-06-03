@@ -1,3 +1,4 @@
 hyprshot
+librewolf-bin
 paru
 xwayland-run
