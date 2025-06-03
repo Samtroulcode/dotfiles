@@ -1,10 +1,12 @@
 # Priorité aux scripts et binaires locaux
 export PATH="$HOME/scripts:$HOME/.local/bin:$PATH"
 
-# Forcer zsh login interactif sur TTY 1 (ex: sans display manager)
-# [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec zsh -l
+# Lancer Hyprland si tty1
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  exec Hyprland
+fi
 
-# Forcage de plasma wayland
-#[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startplasma-wayland
+# Forcer zsh login interactif sur TTY 1 (ex: sans display manager)
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec zsh -l
 
 export GDK_BACKEND=wayland
