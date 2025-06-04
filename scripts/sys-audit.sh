@@ -71,10 +71,11 @@ mount | grep -E ' / |/home'
 echo
 
 # Etat du swap
-if swapon --show | grep -q '/swapfile'; then
-  echo "✅ Swap actif via /swapfile"
-else
+if [[ -z $(swapon --show | grep -v '^NAME') ]]; then
   echo "❌ Swap inactif !"
+else
+  echo "✅ Swap actif :"
+  swapon --show
 fi
 
 # Fichiers pacnew en attente
