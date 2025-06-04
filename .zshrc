@@ -1,24 +1,17 @@
 # ZSH minimal, rapide, moderne
 
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 
 # vim en editeur par défaut
 export EDITOR=nvim
 export VISUAL=nvim
-
-# Powerlevel10k prompt instantané (chargement ultra rapide)
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Aliases modernes 
 [[ -f ~/.zsh/modern-commands.zsh ]] && source ~/.zsh/modern-commands.zsh
@@ -29,9 +22,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Aliases scripté
 
 plugins=(git sudo common-aliases colored-man-pages)
-source $ZSH/oh-my-zsh.sh
-
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # PATH utilisateur en priorité
 export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
@@ -82,6 +72,9 @@ cd() {
     zoxide cd "$@"
   fi
 }
+
+# Initialiser Starship prompt
+eval "$(starship init zsh)"
 
 ##################
 ### DRAC THEME ###
