@@ -2,6 +2,10 @@
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
 
+# vim en editeur par défaut
+export EDITOR=nvim
+export VISUAL=nvim
+
 # Powerlevel10k prompt instantané (chargement ultra rapide)
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"

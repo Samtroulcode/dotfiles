@@ -9,4 +9,6 @@ fi
 # Forcer zsh login interactif sur TTY 1 (ex: sans display manager)
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec zsh -l
 
+export GTK_THEME=Adwaita-dark
+export GTK_APPLICATION_PREFER_DARK_THEME=1
 export GDK_BACKEND=wayland
