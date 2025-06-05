@@ -8,6 +8,7 @@ alias vi="nvim"
 alias please='sudo'
 alias fucking='sudo'
 alias indent='shfmt -w -i 2'
+alias reload='clear && source ~/.zshrc'
 
 # Aliases de maintenance
 alias update='sudo pacman -Syu'
@@ -35,11 +36,22 @@ alias pingg='ping -c 3 1.1.1.1'
 alias pingdns='ping -c 3 archlinux.org'
 alias archnews='lynx https://archlinux.org/news/' 
 
+alias dnscheck='resolvectl status | grep Current'
+alias unlockdns='sudo chattr -i /etc/resolv.conf'
+alias lockdns='sudo chattr +i /etc/resolv.conf'
+alias editdns='unlockdns && sudo nvim /etc/resolv.conf && lockdns'
+
+alias wgstatus='sudo wg show'
+
 # Aliases de scripts
-alias backup='bash ~/scripts/backup-home.sh'
-alias clean='bash ~/scripts/arch-clean.sh | tee "$HOME/.cache/arch-clean-$(date +%F_%H-%M).log"'
-alias pacstats='bash ~/scripts/pacstats.sh'
-alias audit='bash ~/scripts/sys-audit.sh'
+alias backup='~/scripts/backup-home.sh'
+alias clean='~/scripts/arch-clean.sh | tee "$HOME/.cache/arch-clean-$(date +%F_%H-%M).log"'
+alias pacstats='~/scripts/pacstats.sh'
+alias audit='~/scripts/sys-audit.sh'
+alias appdef='~/scripts/app-defaut.sh'
+alias ipv6-off='~/scripts/toggle-ipv6.sh off'
+alias ipv6-on='~/scripts/toggle-ipv6.sh on'
+alias audit-net='~/scripts/audit-network.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

@@ -47,7 +47,7 @@ echo
 
 # Dépendances AUR orphelines (yay)
 echo "[*] Dépendances AUR orphelines :"
-yay -Qtdq || echo "Aucune dépendance orpheline AUR"
+paru -Qtdq || echo "Aucune dépendance orpheline AUR"
 echo
 
 # Vérifier les services systemd activés
