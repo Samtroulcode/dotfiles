@@ -1,318 +1,128 @@
-
 # 🏩 ARCH\_MANIFEST.md
 
-![Arch](https://img.shields.io/badge/arch-linux-blue?logo=arch-linux&logoColor=white)
-![Zsh](https://img.shields.io/badge/shell-zsh-4EAA25?logo=gnu-bash&logoColor=white)
+![Arch](https://img.shields.io/badge/arch-linux-blue?logo=arch-linux\&logoColor=white)
+![Zsh](https://img.shields.io/badge/shell-zsh-4EAA25?logo=gnu-bash\&logoColor=white)
 ![KISS](https://img.shields.io/badge/philosophie-KISS-9cf)
+![Wayland](https://img.shields.io/badge/Wayland-enabled-success?logo=wayland)
+![Hyprland](https://img.shields.io/badge/WM-Hyprland-green?logo=windowmaker)
+![LibreWolf](https://img.shields.io/badge/browser-LibreWolf-blue?logo=firefoxbrowser)
 ![NoFlatpak](https://img.shields.io/badge/NO-snap/flatpak-red)
 ![Dotfiles](https://img.shields.io/badge/dotfiles-git--bare-orange)
-![Wayland](https://img.shields.io/badge/Wayland-enabled-success?logo=wayland)
 ![ufw](https://img.shields.io/badge/firewall-ufw-critical?logo=ubuntu)
+![WireGuard](https://img.shields.io/badge/VPN-WireGuard-7B7B7B?logo=wireguard)
+![IPv6](https://img.shields.io/badge/IPv6-disabled-lightgrey)
 ![rsync](https://img.shields.io/badge/backup-rsync-blue?logo=rsync)
 
-> Manifest système Arch Linux — Vision : stabilité, simplicité pragmatique, maintenabilité, sécurité, modernité raisonnée, documentation Version : 2025-05-30
+> Manifest public de mon système Arch Linux. Objectif : stabilité, maîtrise, efficacité, philosophie KISS. Mise à jour : 2025-06-05
 
 ---
 
-## 🧭 Vision système
+## 🧐 Vision
 
-- Système Arch Linux pur, rolling-release, minimal et maîtrisé
-- Interface moderne et fonctionnelle : Hyprland sous Wayland
-- Priorité à la stabilité, la maintenabilité et la sécurité
-- Système KISS **pragmatique** : on évite la complexité gratuite, mais on accepte la modernité quand elle est justifiée (KISSAM: Kep It Simple, Stupid And Modern)
-- Paquets et services audités, aucune surcouche non comprise ou non justifiée
-- Flatpak/Snap **interdits par défaut**, mais tolérés **si audités et nécessaires**
-
----
-
-## 💥 Matériel et environnement actuel
-
-* Processeur : AMD Ryzen 5 3600 (12 threads) @ 4.21 GHz
-* GPU : NVIDIA GeForce RTX 3070
-* Disques : 200 GiB (btrfs)
-* Mémoire : 15.53 GiB
-* Swap : 4.00 GiB
-* Affichage :
-
-  * VSC36AF (24") 1920x1080 @ 144Hz \[HDMI-0]
-  * LC27G5xT (32") 2560x1440 @ 144Hz \[DP-0]
-* Adresse IP locale : <machine-ip-redacted>
-* Locale : `fr_FR.UTF-8`
+* Distribution : **Arch Linux** (rolling, minimal, KISS)
+* Environnement : **Hyprland** (Wayland, moderne, customisable)
+* Shell : `zsh` avec `oh-my-zsh` et `starship`
+* Navigateur : **LibreWolf** (DoH vers LibreDNS, vie privée max)
+* Pas de **Flatpak/Snap** (bloat interdit)
+* Objectif : système **léger, contrôlé, documenté, réversible**
 
 ---
 
-## 🔐 Sécurité
+## 🛡️ Sécurité
 
-* 🔥 `ufw` actif, avec règles strictes
-* 🕵️ `auditd` actif
-* 🔒 `sudo` ne doit **jamais** contenir de `NOPASSWD`
-* ⏱️ `systemd-timesyncd` actif pour synchro NTP
-* 🧹 `fstrim.timer` actif pour TRIM des SSD
-* 🔐 `pam` surveillé et conforme
-* 🔍 Commande d’audit : `journalctl -p 3 -xb`
-* 🔍 Vérification régulière des permissions sudo :
-  ```bash
-  grep -RE 'NOPASSWD|ALL' /etc/sudoers /etc/sudoers.d/* 2>/dev/null
-  ```
-
-### 📌 Prévu
-
-* 🔄 earlyoom à étudier (évite les freezes en cas de saturation mémoire)
-  - Service léger basé sur swap/memory monitoring
-  - Remplaçant simple de `oomd` pour desktop
-  - Non encore installé
+* **IPv6 désactivé**
+* **WireGuard** actif (tunnel vers serveur, split routing)
+* **DNS** : LibreDNS (`116.202.176.26`) en DoH et système
+* **UFW** actif : `deny incoming`, `allow outgoing`, port 22 ouvert (SSH)
+* **auditd** actif
+* **sudo** protégé (pas de `NOPASSWD`)
+* **firejail** et **sandboxing** à l'étude
+* Scripts d'audit : `audit_network.sh`, `toggle_ipv6.sh`, etc.
 
 ---
 
-## 📦 Gestion des paquets
+## 📆 Maintenance & Nettoyage
 
-* `pacman` uniquement pour les paquets officiels
-* `yay` utilisé avec modération (aucun paquet inutile, AUR audité)
-* Paquets AUR installés : `yay`, 'hyprshot'
-* Paquets installés sauvegardés via :
+* Script `arch-clean.sh` :
 
-  ```bash
-  pacman -Qqe > ~/backup/pkglist.txt
-  ```
-* Restauration propre :
-
-  ```bash
-  sudo pacman -Syu --needed - < pkglist.txt
-  ```
-* Aucun nettoyage automatique des paquets non listés dans `pkglist.txt`
-* Refus des snap / flatpak / appimage
-
----
-
-## 🗂️ Dotfiles & configuration
-
-* Gestion des fichiers de config via :
-
-  ```bash
-  alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-  ```
-### Dotfiles versionnés (liste à maintenir et à amélioré)
-
-- `~/.zshrc`, `~/.zprofile`, `~/.p10k.zsh`
-- `~/.xinitrc`
-- `~/.zsh/` (modules)
-- `~/.local/bin/` (scripts CLI)
-- `~/scripts/` (maintenance, audit)
-- `~/.config/systemd/user/` (timers et services)
-- '~/.config/hypr/hyprland.conf' (layout hyprland)
-- '~/.config/foot/foot.ini' (config foot)
-- `KISSAM_MANIFEST.md` ✅
-- `ARCH_MEMO` ✅
-
-* Commit propres, lisibles, versionnés par fonctionnalité
-
----
-
-## 📁 Arborescence
-
-> Gérée automatiquement par dotfiles, scripts et sauvegardes rsync. Voir :
-> - `~/backup/` pour les listes de paquets
-> - `~/scripts/` pour les scripts d’audit et de maintenance
-> - `~/.dotfiles` (git bare) pour les dotfiles versionnés
-
----
-
-## 🧠 Fichiers critiques à surveiller
-
-```text
-/home/<user>/.zshrc
-/home/<user>/.zprofile
-/home/<user>/.config/systemd/user/*
-/home/<user>/scripts/*
-/home/<user>/.local/bin/*
-/home/<user>/.config/kwinrc
-/home/<user>/.config/gtk-3.0/settings.ini
-```
-
----
-
-## 📂 Sauvegarde utilisateur
-
-* Sauvegarde manuelle du dossier personnel via `rsync` :
-
-  ```bash
-  rsync -avh --delete /home/sam/ /backup/home-sam/
-	```
-
-* But : restauration fichiers utilisateur
-* Scripté via : ~/scripts/backup-home.sh
-* Loggé dans : ~/.cache/backup.log
-* Lancement : manuel pour l’instant (alias backup)
-* ⚠️ Pas encore de cron ou systemd.timer en place (prévu)
-* Restaurable facilement via cp ou rsync inverse
+  * Supprime les paquets orphelins
+  * Nettoie le cache pacman/yay
+  * Supprime `.pacnew`, logs > 7j
+  * Affiche erreurs critiques (journalctl)
+* Services actifs : `auditd`, `ufw`, `systemd-timesyncd`, `fstrim.timer`
+* Maintenance régulière manuelle via alias : `update`, `clean`, `backup`
 
 ---
 
 ## 🌐 Réseau & VPN
 
-* VPN principal : WireGuard (client)
-* Tunnel VPN via configuration manuelle propre dans `/etc/wireguard/*.conf`
-* Aucun impact sur les autres services
+* Interface principale : `enp3s0` (IPv4 uniquement)
+* Tunnel VPN : `wg0`, split routing uniquement vers le serveur
+* DNS système : LibreDNS en dur dans `/etc/resolv.conf` + `chattr +i`
+* DNS LibreWolf : DoH vers `https://libredns.gr/dns-query`
+* `systemd-resolved` configuré proprement pour éviter tout fallback
 
 ---
 
-## 🧼 Maintenance régulière
+## 📁 Dotfiles & Config
 
-* Vérification des paquets orphelins :
+* Gestion via **Git bare repo** : `~/.dotfiles`
+* Dotfiles versionnés : `~/.zshrc`, `~/.config/hypr/`, `~/.config/xplr/`, `~/scripts/`,`~/.config/fastfetch`,`~/.config/kitty`
+* Scripts utiles : `toggle_ipv6.sh`, `audit_network.sh`, `backup-home.sh`, etc.
+* ZDOTDIR personnalisé dans `.zprofile`
+
+---
+
+## 📃 Sauvegarde & Restauration
+
+* Sauvegarde perso via `rsync` vers `/backup/`
+* Script `backup-home.sh` → loggé dans `~/.cache/backup.log`
+* Restauration paquets via `pkglist.txt`
+* Restauration dotfiles :
 
   ```bash
-  pacman -Qdt
+  git clone --bare <repo> ~/.dotfiles
+  git --git-dir=~/.dotfiles --work-tree=~ checkout
   ```
-* Vérification des erreurs système :
+
+---
+
+## 🔍 Audit & Vérification
+
+* Alias utiles :
 
   ```bash
-  journalctl -p 3 -xb
+  alias ipv6-off='~/scripts/toggle_ipv6.sh off'
+  alias ipv6-on='~/scripts/toggle_ipv6.sh on'
+  alias audit-net='~/scripts/audit_network.sh'
+  alias dnscheck='resolvectl status | grep Current'
+  alias myip='curl ifconfig.me'
+  alias wgstatus='sudo wg show'
   ```
-* Vérification du `trim` :
 
-  ```bash
-  systemctl status fstrim.timer
-  ```
-* Timers actifs : `systemd-tmpfiles-clean.timer`, `shadow.timer`, `fstrim.timer`, `archlinux-keyring-wkd-sync.timer`
-* Services actifs : auditd, NetworkManager, nvidia suspend/resume, ufw, systemd-timesyncd
-* Services utilisateur : wireplumber, pipewire, pipewire-pulse, xdg user dirs, p11-kit
-* Script de nettoyage (`~/scripts/arch-clean.sh`) :
-  - Fait partie des dotfiles (versionné)
-  - Nettoie paquets orphelins, cache pacman/yay, `.pacnew`, logs > 7j
-  - Vérifie erreurs critiques via `journalctl -p 3 -xb`
-  - Vérifie les services en échec avec `systemctl --failed`
-  - Affiche espace disque
-  - Log : `~/.cache/arch-clean-<date>.log`
-```markdown
-* Fréquence recommandée :
-  - Mise à jour système (`update`) tous les 2–3 jours
-  - Audit visuel des erreurs (`clean`) une fois par semaine
-  - Backup utilisateur (`backup`) manuellement après changements importants
-```
+* Audit hebdo manuel recommandé : `audit-net && clean`
 
 ---
 
-## 🧾 Aliases système
+## 📈 Philosophie
 
-* `update` → `sudo pacman -Syu`
-* `orphanclean` → `pacman -Rns $(pacman -Qtdq)`
-* `installed` → `pacman -Qe`
-* `installedAur` → `pacman -Qm`
-* `archnews` → `lynx https://archlinux.org/news/`
-* `clean` → `~/scripts/arch-clean.sh | tee ~/.cache/arch-clean-$(date +%F_%H-%M).log`
-* `backup` → `~/scripts/backup-home.sh`
-
-## ❌ Interdits
-
-* Aucun environnement secondaire installé (pas de GNOME, XFCE, etc.)
-* Aucun service résiduel non utilisé (désactivation via `systemctl`)
-* Aucun fichier temporaire ou `.bak` traînant
-* Pas de `.desktop` inutiles dans `~/.config/autostart`
-* Pas de logiciel non versionné ou non explicite ici
+* Tout changement est documenté et versionné
+* Aucune techno sans audit et raison valable
+* Minimalisme != privation → Juste ce qu'il faut, **bien configuré**
+* ⚡ Performance, 🔒 Sécurité, ✨ Lisibilité, ♻ Reproductibilité
 
 ---
 
-## 🧪 Audit à automatiser (à venir)
+## 📊 Ressources utiles
 
-🔎 AppArmor non installé (choix de simplicité), à considérer si besoin d'isolation renforcée.
-
-Lynis comme outil d’audit recommandé
-
-Créer un script `~/.local/bin/audit_arch.sh` pour vérifier :
-
-* erreurs critiques (`journalctl -p 3 -xb`)
-* services activés au boot (`systemctl list-unit-files | grep enabled`)
-* timers actifs (`systemctl list-timers`)
-* paquets orphelins
-* paquets non listés dans `pkglist.txt`
-* fichiers non versionnés
-* services systemd --user actifs
+* [https://wiki.archlinux.org](https://wiki.archlinux.org)
+* [https://wiki.hyprland.org](https://wiki.hyprland.org)
+* [https://libredns.gr](https://libredns.gr)
+* [https://wireguard.com](https://wireguard.com)
+* [https://aur.archlinux.org](https://aur.archlinux.org)
+* [https://archlinux.org/news](https://archlinux.org/news)
 
 ---
 
-## 🔄 Restauration système complète (checklist)
+> Document versionné. Mettre à jour à chaque évolution matérielle ou logicielle.
 
-1. ⬇️ Cloner dotfiles :
-   ```bash
-   git clone --bare git@github.com:DuarteAd/dotfiles.git $HOME/.dotfiles
-   git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout
-
-    🐚 Activer le shell :
-
-chsh -s /bin/zsh
-
-🔄 Restauration paquets :
-
-### Vérifier intégrité des fichiers système (si nécessaire)
-sudo pacman -Qk
-
-sudo pacman -Syu --needed - < ~/backup/pkglist.txt
-
-🔐 Activer services :
-
-    systemctl enable auditd ufw systemd-timesyncd fstrim.timer
-
-    📦 yay pour paquets AUR (si manquants)
-
-    🔗 Restauration des fichiers système via rsync (si sinistre majeur)
-
-
-### 📁 `rsync` – fichier d’exclusion recommandé
-`exclude.txt`
-
-```bash
-# /etc/rsync/exclude.txt
-/dev/*
-/proc/*
-/sys/*
-/tmp/*
-/run/*
-/mnt/*
-/media/*
-/lost+found
-/home/*/.cache/
-/home/*/.local/share/Trash/
-/swapfile
-```
-
----
-
-## ✅ Bonnes pratiques appliquées
-
-- ✔️ Pas de paquets inutiles installés
-- ✔️ Aucun service non utilisé laissé actif
-- ✔️ Dépôts AUR audités avant installation
-- ✔️ Fichiers `.bak`, `.old`, `.desktop` nettoyés régulièrement
-- ✔️ ZDOTDIR défini dans ~/.zprofile pour isoler et maîtriser la config zsh
-- ✔️ Aucun fichier sensible ou chiffré dans `.dotfiles`
-
----
-
-## 🧠 À ne pas oublier
-
-- 🔁 Toujours tester un dotfile avant commit (shell de test possible avec `zsh -f`)
-- 🛡️ Ne jamais faire confiance à un script externe sans audit préalable
-- 🔄 Penser à re-sauvegarder `pkglist.txt` après ajout/suppression majeure
-- ☁️ Garder une copie hors-ligne des `dotfiles` et du `rsync` complet (clé USB ou NAS)
-
----
-
-## 📘 Références complémentaires
-
-- [ARCH_MEMO.md](./ARCH_MEMO.md) – notes pratiques, commandes et bonnes pratiques d’administration quotidienne
-
----
-
-## 📚 Ressources
-
-> https://wiki.archlinux.org
-
-> https://archlinux.org/news
-
-> https://archlinux.org/packages
-
----
-
-## 🧾 Notes
-
-> Ce fichier est versionné dans `.dotfiles`, et doit être mis à jour à chaque changement de politique ou d'outil.
