@@ -42,23 +42,6 @@ if command -v git &> /dev/null; then
   alias gl='git log --oneline --graph --decorate --all'
 fi
 
-# Pour les "BEEP" du terminal
-# setopt BEEP
-
-# Fix Tilix
-if [ "$TILIX_ID" ] || [ "$VTE_VERSION" ]; then
-  source /etc/profile.d/vte.sh
-fi
-
-# Pour les beep du terminal
-#beep() {
-#  play -n synth 0.1 sin 1000 > /dev/null 2>&1
-#}
-beep() {
-  command -v play &>/dev/null && play -n synth 0.1 sin 1000 > /dev/null 2>&1
-}
-bindkey "^G" beep
-
 # Affichage fastfetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
   fastfetch
@@ -75,6 +58,15 @@ cd() {
 
 # Initialiser Starship prompt
 eval "$(starship init zsh)"
+
+# Pour que xplr agisse comme un cd interactif
+x() {
+  local dir
+  dir=$(xplr --print-pwd-as-result)
+  if [ -d "$dir" ]; then
+    cd "$dir"
+  fi
+}
 
 ##################
 ### DRAC THEME ###
