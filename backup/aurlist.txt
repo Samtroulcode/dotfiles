@@ -1,4 +1,7 @@
 hyprshot
 librewolf-bin
 paru
-xwayland-run
+protonup-qt
+python-inputs
+python-steam
+python-vdf
