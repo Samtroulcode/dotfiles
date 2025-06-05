@@ -330,7 +330,7 @@ Un système Arch Linux propre, sans couche DE inutile, basé sur :
 
     Hyprland (Wayland WM)
 
-    WezTerm (terminal GPU, avec split)
+    WezTerm (terminal GPU, avec split) ===> changer pour Kitty ou Foot
 
     LibreWolf (navigateur sécurisé)
 
@@ -348,6 +348,22 @@ Un système Arch Linux propre, sans couche DE inutile, basé sur :
 
     Backup automatisé avec rsync sur /backup
 
-    Partage propre entre /, /home, /swap, /backup
+    Partage propre entre /, /home, /swap
 
-    fstab / hosts / locales / users / bootloader / etc. maîtrisés à 100 %
+    fstab / hosts / locales / users / bootloader / etc. 
+
+🔹 Basique (optimisation simple) :
+
+gamemoderun %command%
+
+🔹 HUD uniquement (analyse perf) :
+
+gamemoderun mangohud %command%
+
+🔹 Perf + sandbox (résolution/focus/input) :
+
+gamescope -f -- gamemoderun %command%
+
+🔹 Perf + sandbox + HUD (analyse + fix) :
+
+gamescope -f -- gamemoderun mangohud %command%
