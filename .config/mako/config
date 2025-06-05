@@ -1,0 +1,30 @@
+# Apparence générale
+background-color=#282a36
+text-color=#f8f8f2
+border-color=#bd93f9
+
+# Style
+border-size=2
+border-radius=8
+padding=10
+margin=20
+font=JetBrainsMono Nerd Font 10, Noto Color Emoji 10
+
+# Comportement
+default-timeout=5000
+max-history=10
+max-visible=5
+anchor=top-right
+width=300
+height=200
+
+# Icônes et autres
+icons=true
+markup=true
+
+text-alignment=center
+max-icon-size=48
+padding=16
+margin=20
+border-size=2
+border-radius=10
