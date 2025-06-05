@@ -1,6 +1,7 @@
 # ZSH minimal, rapide, moderne
 
 export ZSH="$HOME/.oh-my-zsh"
+plugins=(git sudo common-aliases colored-man-pages)
 source $ZSH/oh-my-zsh.sh
 
 # vim en editeur par défaut
@@ -18,10 +19,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # Aliases généraux
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
-
-# Aliases scripté
-
-plugins=(git sudo common-aliases colored-man-pages)
 
 # PATH utilisateur en priorité
 export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
