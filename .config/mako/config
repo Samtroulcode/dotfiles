@@ -1,7 +1,7 @@
 # Apparence générale
-background-color=#282a36
+background-color=#00000000
 text-color=#f8f8f2
-border-color=#bd93f9
+border-color=#33ccffee
 
 # Style
 border-size=2
