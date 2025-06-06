@@ -56,15 +56,6 @@ cd() {
 # Initialiser Starship prompt
 eval "$(starship init zsh)"
 
-# Pour que xplr agisse comme un cd interactif
-x() {
-  local dir
-  dir=$(xplr --print-pwd-as-result)
-  if [ -d "$dir" ]; then
-    cd "$dir"
-  fi
-}
-
 ##################
 ### DRAC THEME ###
 ##################
