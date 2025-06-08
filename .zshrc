@@ -41,7 +41,7 @@ fi
 
 # Affichage fastfetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
-  fastfetch
+  neofetch
 fi
 
 # zoxide (autojump moderne)
