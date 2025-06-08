@@ -39,7 +39,7 @@ if command -v git &> /dev/null; then
   alias gl='git log --oneline --graph --decorate --all'
 fi
 
-# Affichage fastfetch uniquement si terminal interactif
+# Affichage neofetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
   neofetch
 fi
