@@ -1,10 +1,10 @@
 # More details are at https://superfile.netlify.app/configure/superfile-config/
 #
 # change your theme
-theme = 'dracula'
+theme = 'nebulix'
 # 
 # The editor files will be opened with. (Leave blank to use the EDITOR environment variable).
-editor = ""
+editor = "nvim"
 # 
 # The editor directories will be opened with. (Leave blank to use the default editors).
 dir_editor = ""
