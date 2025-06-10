@@ -13,10 +13,10 @@
 /* SETTINGS */
 :root {
   /* ACCENT COLORS */
-  --main-color: #2780e6; /* main accent color (hex, rgb or hsl) [default: #2780e6] */
-  --hover-color: #1e63b3; /* hover accent color (hex, rgb or hsl) [default: #1e63b3] */
-  --success-color: #43b581; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
-  --danger-color: #982929; /* danger accent color (hex, rgb or hsl) [default: #982929] */
+  --main-color: #304774; /* main accent color (hex, rgb or hsl) [default: #2780e6] */
+  --hover-color: #efe6d0; /* hover accent color (hex, rgb or hsl) [default: #1e63b3] */
+  --success-color: #137547; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
+  --danger-color: #9d5c5c; /* danger accent color (hex, rgb or hsl) [default: #982929] */
   /* STATUS COLORS */
   --online-color: #43b581; /* online status color (hex, rgb or hsl) [default: #43b581] */
   --idle-color: #faa61a; /* idle status color (hex, rgb or hsl) [default: #faa61a] */
@@ -24,8 +24,9 @@
   --streaming-color: #593695; /* streaming status color (hex, rgb or hsl) [default: #593695] */
   --offline-color: #808080; /* offline/invisible status color (hex, rgb or hsl) [default: #808080] */
   /* APP BACKGROUND */
-  --background-shading-percent: 100%; /* app background shading amount (0 for complete smoothness) [default: 100%] */
-  --background-image: url(https://clearvision.github.io/images/sapphire.jpg); /* app background image (link must be HTTPS) [default: url(https://clearvision.github.io/images/sapphire.jpg)]*/
+  --background-shading-percent: 60%; /* app background shading amount (0 for complete smoothness) [default: 100%] */
+  --background-color: #181825;
+  --background-image: url(https://i.imgur.com/bGZ8MvM.png); /* app background image (link must be HTTPS) [default: url(https://clearvision.github.io/images/sapphire.jpg)]*/
   --background-position: center; /* app background position [default: center] */
   --background-size: cover; /* app background size (px) [default: cover] */
   --background-attachment: fixed; /* app background attachment [default: fixed] */
