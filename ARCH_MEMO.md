@@ -155,6 +155,10 @@ Alias et scripts pour maintenance systeme (NON TENU A JOUR):
 
 	- alias archnews='lynx https://archlinux.org/news/' <=== Flux rss d'arch
 
+Montage automatique sftp + wg0 tunnel vpn :
+
+    - /etc/systemd/system/mount-media.service <== le montage sftp qui dépend de wg0 pour être actif
+
 Système de sauvegarde du système:
 
 	- Bonne pratique: 3 couches complémentaires (Paquets, dotfiles, fichiers)

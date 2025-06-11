@@ -55,3 +55,10 @@ alias audit-net='~/scripts/audit-network.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Aliases de montage: 
+alias media-mount='sshfs sam@10.100.0.1:/home/sam/storage/media ~/Videos/Sam-media -o IdentityFile=~/.ssh/id_ed25519,StrictHostKeyChecking=no'
+alias media-umount='fusermount3 -u ~/Videos/Sam-media'
+
+alias server-mount='sshfs sam@10.100.0.1:/home/sam ~/Documents/Sam -o IdentityFile=~/.ssh/id_ed25519,StrictHostKeyChecking=no'
+alias server-umount='fusermount3 -u ~/Documents/Sam'

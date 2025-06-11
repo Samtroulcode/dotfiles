@@ -56,6 +56,15 @@ cd() {
 # Initialiser Starship prompt
 eval "$(starship init zsh)"
 
+# pour faire un cd on exit avec spf
+expl() {
+    /usr/bin/spf "$@"
+    local spf_cd_file="/tmp/spf-cd-path"
+    if [ -f "$spf_cd_file" ]; then
+        cd "$(cat "$spf_cd_file")"
+    fi
+}
+
 ##################
 ### DRAC THEME ###
 ##################
