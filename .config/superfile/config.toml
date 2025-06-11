@@ -13,7 +13,7 @@ dir_editor = ""
 auto_check_update = true
 # 
 # Cd on quit (For more details, please check out https://superfile.netlify.app/configure/superfile-config/#cd_on_quit)
-cd_on_quit = false
+cd_on_quit = true
 #
 # Whether to open file preview automatically every time superfile is opened.
 default_open_file_preview = true
@@ -83,3 +83,14 @@ metadata = false
 #
 # Enable MD5 checksum generation for files
 enable_md5_checksum = false
+
+# ========File manager====== #
+[open]
+default = "nvim {path}"
+
+[open.extensions]
+mkv = "mpv --fs --hwdec=auto {path}"
+mp4 = "mpv --fs --hwdec=auto {path}"
+avi = "mpv --fs --hwdec=auto {path}"
+webm = "mpv --fs --hwdec=auto {path}"
+
