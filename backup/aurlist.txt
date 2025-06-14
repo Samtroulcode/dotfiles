@@ -1,7 +1,8 @@
-hyprshot
-librewolf-bin
+neofetch
 paru
 protonup-qt
 python-inputs
 python-steam
 python-vdf
+spotify-player-full
+vesktop

@@ -1,0 +1,145 @@
+{
+  "bar.customModules.storage.paths": [
+    "/"
+  ],
+  "theme.bar.menus.monochrome": false,
+  "wallpaper.pywal": false,
+  "theme.font.name": "JetBrainsMono Nerd Font Propo",
+  "theme.font.label": "JetBrainsMono Nerd Font Propo",
+  "theme.font.weight": 400,
+  "theme.bar.floating": false,
+  "theme.bar.location": "top",
+  "bar.autoHide": "fullscreen",
+  "theme.bar.buttons.enableBorders": false,
+  "theme.bar.border.location": "none",
+  "theme.bar.enableShadow": false,
+  "theme.bar.buttons.workspaces.enableBorder": false,
+  "menus.power.showLabel": false,
+  "theme.bar.buttons.modules.ram.enableBorder": false,
+  "menus.dashboard.powermenu.avatar.image": "/home/sam/wallpapers/Nebulix/Moine_du_shell.png",
+  "menus.dashboard.stats.enable_gpu": true,
+  "menus.dashboard.shortcuts.enabled": true,
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.show_numbered": false,
+  "bar.workspaces.workspaceMask": false,
+  "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.showApplicationIcons": false,
+  "bar.workspaces.applicationIconOncePerWorkspace": true,
+  "bar.workspaces.showAllActive": false,
+  "bar.workspaces.numbered_active_indicator": "highlight",
+  "theme.bar.buttons.workspaces.smartHighlight": true,
+  "bar.workspaces.monitorSpecific": true,
+  "theme.bar.buttons.windowtitle.enableBorder": false,
+  "bar.windowtitle.custom_title": true,
+  "bar.windowtitle.icon": true,
+  "bar.windowtitle.label": true,
+  "bar.windowtitle.class_name": false,
+  "scalingPriority": "hyprland",
+  "theme.bar.menus.enableShadow": false,
+  "theme.bar.menus.menu.power.scaling": 80,
+  "menus.power.confirmation": false,
+  "theme.osd.enable": true,
+  "theme.bar.scaling": 80,
+  "theme.notification.scaling": 70,
+  "theme.bar.menus.menu.dashboard.scaling": 80,
+  "theme.bar.menus.menu.dashboard.confirmation_scaling": 80,
+  "theme.bar.menus.menu.bluetooth.scaling": 80,
+  "theme.bar.menus.menu.network.scaling": 80,
+  "theme.bar.menus.menu.volume.scaling": 80,
+  "theme.bar.menus.menu.media.scaling": 80,
+  "theme.bar.menus.menu.battery.scaling": 80,
+  "theme.bar.menus.menu.clock.scaling": 80,
+  "theme.bar.menus.popover.scaling": 80,
+  "theme.tooltip.scaling": 80,
+  "theme.bar.menus.menu.notifications.scaling": 80,
+  "bar.layouts": {
+    "0": {
+      "left": [
+        "dashboard",
+        "windowtitle"
+      ],
+      "middle": [
+        "media",
+        "workspaces"
+      ],
+      "right": [
+        "volume",
+        "network",
+        "systray",
+        "clock",
+        "notifications"
+      ]
+    },
+    "1": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    },
+    "2": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    }
+  },
+  "menus.clock.time.military": true,
+  "menus.clock.time.hideSeconds": false,
+  "menus.clock.weather.location": "Toulouse",
+  "menus.clock.weather.unit": "metric",
+  "bar.launcher.autoDetectIcon": true,
+  "theme.bar.buttons.dashboard.enableBorder": false,
+  "wallpaper.image": "",
+  "theme.bar.transparent": false,
+  "theme.bar.buttons.systray.enableBorder": false,
+  "bar.clock.showIcon": true,
+  "bar.clock.format": "%I:%M",
+  "bar.notifications.show_total": true,
+  "tear": false,
+  "menus.transition": "crossfade",
+  "theme.bar.border.width": "0.10em",
+  "theme.bar.opacity": 75,
+  "theme.bar.buttons.monochrome": true,
+  "theme.bar.buttons.background_hover_opacity": 100,
+  "wallpaper.enable": false,
+  "theme.bar.menus.opacity": 100,
+  "menus.dashboard.shortcuts.left.shortcut4.command": "fuzzel",
+  "menus.clock.weather.key": "8b1610f9605b4c04bb904632251006",
+  "notifications.position": "top",
+  "notifications.clearDelay": 80,
+  "theme.osd.location": "right",
+  "bar.windowtitle.truncation": true,
+  "bar.windowtitle.truncation_size": 50,
+  "theme.osd.opacity": 80,
+  "terminal": "kitty",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "gtk-launch librewolf-wayland",
+  "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Librewolf",
+  "menus.dashboard.shortcuts.left.shortcut3.command": "gtk-launch discord-webapp",
+  "menus.dashboard.shortcuts.right.shortcut3.command": "hyprshot -m region --clipboard-only",
+  "menus.dashboard.shortcuts.left.shortcut1.icon": "󰈹",
+  "menus.dashboard.directories.left.directory1.command": "kitty --title spf-fm -e spf $HOME/Downloads/",
+  "menus.dashboard.directories.left.directory2.command": "kitty --title spf-fm -e spf $HOME/Videos/",
+  "menus.dashboard.directories.left.directory3.command": "kitty --title spf-fm -e spf $HOME/Projects/",
+  "menus.dashboard.directories.right.directory1.command": "kitty --title spf-fm -e spf $HOME/Documents/",
+  "menus.dashboard.directories.right.directory2.command": "kitty --title spf-fm -e spf $HOME/Pictures/",
+  "menus.dashboard.directories.right.directory3.command": "kitty --title spf-fm -e spf $HOME/",
+  "menus.dashboard.powermenu.avatar.name": "=== Nebulix ==="
+}
