@@ -1,6 +1,7 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.lang.markdown"
+    "lazyvim.plugins.extras.lang.markdown",
+    "lazyvim.plugins.extras.util.dot"
   ],
   "install_version": 8,
   "news": {
