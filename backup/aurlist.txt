@@ -4,5 +4,6 @@ protonup-qt
 python-inputs
 python-steam
 python-vdf
+rofi-lbonn-wayland-git
 spotify-player-full
 vesktop
