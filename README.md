@@ -4,7 +4,8 @@ My personal Linux dotfiles
 
 I use Arch btw.
 
-![Nebulix](wallpapers/capture1.png)
+![Nebulix1](wallpapers/2025-06-18-081303_hyprshot.png)
+![Nebulix2](wallapapers/2025-06-18-081551_hyprshot.png)
 
 ## Note on this repository
 
