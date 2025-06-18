@@ -57,10 +57,7 @@
     "pulseaudio",           // output device
 
     "custom/left7",
-    "backlight",            // brightness
-
-    "custom/left8",
-    "battery",              // battery
+    "custom/layout",            // brightness
 
     "custom/leftin2",
     "custom/power"          // power button
@@ -101,7 +98,7 @@
     "rewrite": {
       // ────────────────────────────────────────────────────────── desktop ───
       "": 
-        "<span foreground='#89b4fa'> </span> Hyprland",
+        "<span foreground='#8caaee'> </span> Hyprland",
 
       // ───────────────────────────────────────────────────────── terminal ───
 
@@ -110,54 +107,54 @@
       "kitty": "  Terminal",
 
       "tmux(.*)": 
-        "<span foreground='#a6e3a1'> </span> Tmux",
+        "<span foreground='#a6d189'> </span> Tmux",
 
       // ────────────────────────────────────────────────────────── browser ───
 
       "(.*)Mozilla Firefox": 
-        "<span foreground='#f38ba8'>󰈹 </span> Firefox",
+        "<span foreground='#e78284'>󰈹 </span> Firefox",
       "(.*) — Mozilla Firefox": 
-        "<span foreground='#f38ba8'>󰈹 </span> $1",
+        "<span foreground='#e78284'>󰈹 </span> $1",
 
       "(.*)Zen Browser": 
-        "<span foreground='#fab387'>󰺕 </span> Zen Browser",
+        "<span foreground='#ef9f76'>󰺕 </span> Zen Browser",
       "(.*) — Zen Browser": 
-        "<span foreground='#fab387'>󰺕 </span> $1",
+        "<span foreground='#ef9f76'>󰺕 </span> $1",
 
       // ────────────────────────────────────────────────────── development ───
 
       "(.*) - Visual Studio Code": 
-        "<span foreground='#89b4fa'>󰨞 </span> $1",
+        "<span foreground='#8caaee'>󰨞 </span> $1",
       "(.*)Visual Studio Code": 
-        "<span foreground='#89b4fa'>󰨞 </span> Visual Studio Code",
+        "<span foreground='#8caaee'>󰨞 </span> Visual Studio Code",
 
       "nvim": 
-        "<span foreground='#a6e3a1'> </span> Neovim",
+        "<span foreground='#a6d189'> </span> Neovim",
       "nvim (.*)": 
-        "<span foreground='#a6e3a1'> </span> $1",
+        "<span foreground='#a6d189'> </span> $1",
 
       "vim": 
-        "<span foreground='#a6e3a1'> </span> Vim",
+        "<span foreground='#a6d189'> </span> Vim",
       "vim (.*)": 
-        "<span foreground='#a6e3a1'> </span> $1",
+        "<span foreground='#a6d189'> </span> $1",
 
       // ──────────────────────────────────────────────────────────── media ───
 
       "(.*)Spotify": 
-        "<span foreground='#a6e3a1'> </span> Spotify",
+        "<span foreground='#a6d189'> </span> Spotify",
       "(.*)Spotify Premium": 
-        "<span foreground='#a6e3a1'> </span> Spotify Premium",
+        "<span foreground='#a6d189'> </span> Spotify Premium",
 
       "OBS(.*)": 
-        "<span foreground='#a6adc8'>󰻃 </span> OBS Studio",
+        "<span foreground='#a5adce'>󰻃 </span> OBS Studio",
 
       "VLC media player": 
-        "<span foreground='#fab387'>󰕼 </span> VLC Media Player",
+        "<span foreground='#ef9f76'>󰕼 </span> VLC Media Player",
       "(.*) - VLC media player": 
-        "<span foreground='#fab387'>󰕼 </span> $1",
+        "<span foreground='#ef9f76'>󰕼 </span> $1",
 
       "(.*) - mpv": 
-        "<span foreground='#cba6f7'> </span> $1",
+        "<span foreground='#ca9ee6'> </span> $1",
 
       "qView": "󰋩  qView",
 
@@ -169,24 +166,24 @@
 
       "• Discord(.*)": "Discord$1",
       "(.*)Discord(.*)": 
-        "<span foreground='#89b4fa'> </span> $1Discord$2",
+        "<span foreground='#8caaee'> </span> $1Discord$2",
 
       "vesktop": 
-        "<span foreground='#89b4fa'> </span> Discord",
+        "<span foreground='#8caaee'> </span> Discord",
 
       // ──────────────────────────────────────────────────────── documents ───
 
       "ONLYOFFICE Desktop Editors": 
-        "<span foreground='#f38ba8'> </span> OnlyOffice Desktop",
+        "<span foreground='#e78284'> </span> OnlyOffice Desktop",
 
       "(.*).docx": 
-        "<span foreground='#89b4fa'>󰈭 </span> $1.docx",
+        "<span foreground='#8caaee'>󰈭 </span> $1.docx",
       "(.*).xlsx": 
-        "<span foreground='#a6e3a1'>󰈜 </span> $1.xlsx",
+        "<span foreground='#a6d189'>󰈜 </span> $1.xlsx",
       "(.*).pptx": 
-        "<span foreground='#fab387'>󰈨 </span> $1.pptx",
+        "<span foreground='#ef9f76'>󰈨 </span> $1.pptx",
       "(.*).pdf": 
-        "<span foreground='#f38ba8'> </span> $1.pdf",
+        "<span foreground='#e78284'> </span> $1.pdf",
 
       // ─────────────────────────────────────────────────────────── system ───
       "Authenticate": "  Authenticate"
@@ -276,11 +273,11 @@
 
       "format": {
         "months": 
-          "<span color='#b4befe'><b>{}</b></span>",
+          "<span color='#babbf1'><b>{}</b></span>",
         "weekdays": 
-          "<span color='#a6adc8' font='7'>{}</span>",
+          "<span color='#a5adce' font='7'>{}</span>",
         "today": 
-          "<span color='#f38ba8'><b>{}</b></span>"
+          "<span color='#e78284'><b>{}</b></span>"
       }
     },
 
@@ -352,11 +349,11 @@
 
     "player-icons": {
       "default": "󰝚 ",
-      "spotify": "<span foreground='#a6e3a1'>󰓇 </span>",
-      "firefox": "<span foreground='#f38ba8'>󰗃 </span>"
+      "spotify": "<span foreground='#a6d189'>󰓇 </span>",
+      "firefox": "<span foreground='#e78284'>󰗃 </span>"
     },
     "status-icons": {
-      "paused": "<span color='#b4befe'>\u200A\u200A󰏤\u2009\u2009</span>"
+      "paused": "<span color='#babbf1'>\u200A\u200A󰏤\u2009\u2009</span>"
     },
 
     "tooltip-format": "Playing: {title} - {artist}",
@@ -397,23 +394,16 @@
     "max-length": 6
   },
 
-  // ────────────────────────────────────────────────────────────┤ battery ├───
+  // ────────────────────────────────────────────────────────────┤ layout ├───
 
-  "battery": {
-    "states": {
-      "warning": 20,
-      "critical": 10
-    },
-
-    "format": "{icon} {capacity}%",
-    "format-icons": ["󰂎", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "format-charging": " {capacity}%",
-
-    "tooltip-format": "Discharging: {time}",
-    "tooltip-format-charging": "Charging: {time}",
+  "custom/layout": {
+    "format": "󰌓  {}",
+    "exec": "bash -c 'hyprctl devices | awk \"/Keyboard at/ {capture=1; layout=\\\"\\\"} capture && /active keymap:/ {layout=\\$NF} capture && /main: yes/ && layout != \\\"\\\" {gsub(/[()]/, \\\"\\\", layout); print layout; exit} /^$/ {capture=0}\"'",
+    // "exec": "setxkbmap -query 2>&1 | awk '/layout:/ {print $2; exit}'",
     "interval": 1,
     "min-length": 6,
-    "max-length": 6
+    "max-length": 6,
+    "tooltip": false
   },
 
   // ───────────────────────────────────────────────────────┤ power button ├───
@@ -464,10 +454,6 @@
     "tooltip": false
   },
   "custom/left7": {
-    "format": "",
-    "tooltip": false
-  },
-  "custom/left8": {
     "format": "",
     "tooltip": false
   },

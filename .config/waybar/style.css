@@ -51,7 +51,7 @@ tooltip label {
 #mpris,
 #pulseaudio,
 #backlight,
-#battery,
+#custom-layout,
 #custom-power {
   opacity: 1;
   color: @module-fg;
@@ -64,8 +64,7 @@ tooltip label {
 #custom-left4,
 #custom-left5,
 #custom-left6,
-#custom-left7,
-#custom-left8 {
+#custom-left7 {
   margin-bottom: 0;
   text-shadow: -2px 0 2px rgba(0, 0, 0, 0.5);
 }
@@ -321,7 +320,7 @@ tooltip label {
   color: @hover-fg;
 }
 
-/* ───────────────────────────────────────────────────────────┤ brightness ├───
+/* ───────────────────────────────────────────────────────────┤ layout ├───
 */
 #custom-left7 {
   color: @backlight;
@@ -329,33 +328,8 @@ tooltip label {
   padding-left: 2px;
 }
 
-#backlight {
+#custom-layout {
   background: @backlight;
-}
-
-/* ──────────────────────────────────────────────────────────────┤ battery ├───
-*/
-#custom-left8 {
-  color: @battery;
-  background: @backlight;
-  padding-left: 2px;
-}
-
-#battery {
-  color: @module-fg;
-  background: @battery;
-}
-
-#battery.warning {
-  color: @warning;
-}
-
-#battery.critical {
-  color: @critical;
-}
-
-#battery.charging {
-  color: @charging;
 }
 
 /* ─────────────────────────────────────────────────────────┤ power button ├───
@@ -415,7 +389,6 @@ tooltip label,
 #custom-left5,
 #custom-left6,
 #custom-left7,
-#custom-left8,
 #custom-right1,
 #custom-right2,
 #custom-right3,

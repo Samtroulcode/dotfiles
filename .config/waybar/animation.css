@@ -114,6 +114,7 @@
 #custom-wifi,
 #bluetooth,
 #custom-update,
+#custom-layout,
 #pulseaudio {
   font-size: 0;
   animation: module_expand 0.25s ease-in 1.5s forwards,
