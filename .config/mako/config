@@ -1,0 +1,15 @@
+# Colors
+
+background-color=#181825
+text-color=#efe6d0
+border-color=#304774
+progress-color=over #313244
+border-radius=30
+
+default-timeout=15000
+
+[urgency=high]
+border-color=#9d5c5c
+
+#highlight=border
+#highlight_border_color=#ffbe76
