@@ -1,5 +1,6 @@
 neofetch
 paru
+protontricks
 protonup-qt
 python-inputs
 python-steam

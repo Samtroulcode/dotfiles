@@ -12,6 +12,7 @@ efibootmgr
 eza
 fd
 firefox
+fuse2
 gamemode
 gamescope
 git
@@ -60,6 +61,7 @@ pavucontrol
 pipewire
 pipewire-jack
 pipewire-pulse
+protontricks
 protonup-qt
 python-pip
 python-pygments
@@ -81,8 +83,10 @@ uwsm
 vesktop
 vim
 waybar
+wget
 wireguard-tools
 wireplumber
+xcb-imdkit
 xdg-desktop-portal-hyprland
 xdg-utils
 zoxide
