@@ -13,8 +13,9 @@ error_symbol = "[❯❯](bold red)"
 # Dossier actuel
 [directory]
 style = "bold blue"
-read_only = "󰷏 "
+read_only = " "
 format = "[$path]($style)[$read_only]($style)"
+home_symbol = " "
 
 # Branche Git
 [git_branch]
@@ -54,7 +55,7 @@ style = "bold yellow"
 
 # Réduire les symboles inutiles
 [hostname]
-disabled = true
+disabled = false
 
 [username]
 show_always = true
