@@ -55,7 +55,7 @@ alias audit-net='~/scripts/audit-network.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias config-clean-deleted='config ls-files --deleted -z | xargs -0 -I{} bash -c "config rm --cached \"\$@\"" _ "{}"'
+alias config-clean-deleted='config ls-files --deleted -z | xargs -0 -I{} git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME rm --cached "{}'
 
 # Aliases de sync
 alias mount_backup='sudo mount /dev/sdd1 /mnt/external_backup && echo "Disque externe monté !"'
