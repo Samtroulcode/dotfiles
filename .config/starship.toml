@@ -13,7 +13,7 @@ error_symbol = "[❯❯](bold red)"
 # Dossier actuel
 [directory]
 style = "bold blue"
-read_only = " "
+read_only = "󰷏 "
 format = "[$path]($style)[$read_only]($style)"
 
 # Branche Git
@@ -57,7 +57,7 @@ style = "bold yellow"
 disabled = true
 
 [username]
-show_always = false
+show_always = true
 
 [env_var.SSH_CONNECTION]
 disabled = true
