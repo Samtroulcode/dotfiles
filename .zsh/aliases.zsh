@@ -57,6 +57,11 @@ alias audit-net='~/scripts/audit-network.sh'
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias config-clean-deleted='config ls-files --deleted -z | xargs -0 -I{} bash -c "config rm --cached \"\$@\"" _ "{}"'
 
+# Aliases de sync
+alias mount_backup='sudo mount /dev/sdd1 /mnt/external_backup && echo "Disque externe monté !"'
+alias umount_backup='sudo umount /mnt/external_backup && echo "Disque externe démonté."'
+alias backup_home='~/scripts/backup_home_external.sh'
+
 # Aliases de montage: 
 alias media-mount='sshfs sam@10.100.0.1:/home/sam/storage/media ~/Videos/Sam-media -o IdentityFile=~/.ssh/id_ed25519,StrictHostKeyChecking=no'
 alias media-umount='fusermount3 -u ~/Videos/Sam-media'
