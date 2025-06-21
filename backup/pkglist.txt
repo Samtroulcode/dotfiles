@@ -72,6 +72,8 @@ ripgrep
 rofi-lbonn-wayland-git
 rsync
 slurp
+snap-pac
+snapper
 spotify-player-full
 sshfs
 starship
