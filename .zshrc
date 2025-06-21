@@ -20,6 +20,9 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Aliases généraux
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
 
+# Aliases de snapshot
+[[ -f ~/.zsh/snapper.zsh ]] && source ~/.zsh/snapper.zsh
+
 # PATH utilisateur en priorité
 export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 
