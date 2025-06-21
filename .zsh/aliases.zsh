@@ -55,6 +55,7 @@ alias audit-net='~/scripts/audit-network.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias config-clean-deleted='config ls-files --deleted -z | xargs -0 -I{} bash -c "config rm --cached \"\$@\"" _ "{}"'
 
 # Aliases de montage: 
 alias media-mount='sshfs sam@10.100.0.1:/home/sam/storage/media ~/Videos/Sam-media -o IdentityFile=~/.ssh/id_ed25519,StrictHostKeyChecking=no'
