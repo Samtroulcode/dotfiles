@@ -8,6 +8,7 @@ alias vi="nvim"
 alias please='sudo'
 alias fucking='sudo'
 alias indent='shfmt -w -i 2'
+alias dufs='/usr/bin/duf --hide special'
 alias reload='clear && source ~/.zshrc'
 
 # Aliases de maintenance
