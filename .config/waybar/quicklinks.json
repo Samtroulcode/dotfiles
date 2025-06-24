@@ -1,6 +1,6 @@
 {
   "custom/quicklink1": {
-    "format": "󰈹 ",
+    "format": "󰾔 ",
     "on-click": "qutebrowser",
     "tooltip-format": "Browser"
   },
@@ -11,15 +11,20 @@
   },
   "custom/quicklink3": {
     "format": "󰇮 ",
-    "on-click": "thunderbird",
+    "on-click": "qutebrowser 'https://mail.proton.me'",
     "tooltip-format": "Thunderbird"
   },
   "custom/quicklink4": {
+    "format": " ",
+    "on-click": "steam",
+    "tooltip-format": "Steam"
+  },
+  "custom/quicklink5": {
     "format": " ",
     "on-click": "kitty -e nvim",
     "tooltip-format": "Neovim"
   },
-  "custom/quicklink5": {
+  "custom/quicklink6": {
     "format": " ",
     "on-click": "kitty",
     "tooltip-format": "Terminal"
@@ -31,7 +36,8 @@
       "custom/quicklink2",
       "custom/quicklink3",
       "custom/quicklink4",
-      "custom/quicklink5"
+      "custom/quicklink5",
+      "custom/quicklink6"
     ]
   }
 }
