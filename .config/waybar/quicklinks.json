@@ -1,7 +1,7 @@
 {
   "custom/quicklink1": {
     "format": "󰈹 ",
-    "on-click": "firefox",
+    "on-click": "qutebrowser",
     "tooltip-format": "Browser"
   },
   "custom/quicklink2": {
