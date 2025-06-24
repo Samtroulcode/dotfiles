@@ -1,0 +1,137 @@
+{
+  // Workspaces
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    }
+  },
+
+  // Rofi Application Launcher
+  "custom/appmenu": {
+    "format": "󰣇",
+    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings",
+    "on-click": "rofi -show drun -replace & sleep 0.2; hyprctl dispatch focuswindow '^(Rofi)'",
+    "on-click-right": "~/.config/notscripter/scripts/keybindings.sh",
+    "tooltip": false
+  },
+
+  // Power Menu
+  "custom/exit": {
+    "format": " ",
+    "tooltip-format": "Powermenu",
+    "on-click": "systemtcl poweroff",
+    "tooltip": false
+  },
+
+//"custom/notification": {
+//  "format": "", // Icône simple de notification
+//  "tooltip": false,
+//  "on-click": "makoctl dismiss", // Clique = efface toutes les notifs
+//  "on-click-right": "notify-send '🔔 test' 'Test de notification Mako'",
+//  "interval": 0
+//},
+
+  // Keyboard State
+  //"keyboard-state": {
+  //  //"numlock": true,
+  //  //"capslock": true,
+  //  //"format": "{name} {icon}",
+  //  //"format-icons": {
+  //  //  //"locked": "",
+  //  //  //"unlocked": ""
+  //  //}
+  //},
+
+  // System tray
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+
+  // Clock
+  "clock": {
+    // "timezone": "America/New_York",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "󰥔 {0:%H:%M}",
+    "format-alt": "󰥔 {0:%H:%M}   {0:%d-%m-%Y}"
+  },
+
+  "hyprland/language": {
+    "format": "/ K {short}"
+  },
+
+  "custom/layout": {
+    "format": "{}",
+    "format-map": {
+      "US": "󰌌 EN",
+      "INTL": "󰌌 FR"
+    },
+    "exec": "bash -c 'hyprctl devices | awk \"/Keyboard at/ {capture=1; layout=\\\"\\\"} capture && /active keymap:/ {layout=\\$NF} capture && /main: yes/ && layout != \\\"\\\" {gsub(/[()]/, \\\"\\\", layout); print layout; exit} /^$/ {capture=0}\"'",
+    "interval": 1,
+    "tooltip": false
+  },
+
+  // Network
+  "network": {
+    "format": "{ifname}",
+    "format-wifi": "  {signalStrength}%  {bandwidthDownBytes}  {bandwidthUpBytes} ",
+    "format-ethernet": "   {bandwidthDownBytes}  {bandwidthUpBytes} ",
+    "format-disconnected": "Not connected",
+    "tooltip-format": "  {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "interval": 1,
+  },
+
+  // Battery
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}   {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "  {capacity}%",
+    "format-alt": "{icon}  {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [" ", " ", " ", " ", " "]
+  },
+
+  // Bluetooth
+  "bluetooth": {
+    "format-disabled": "",
+    "format-off": "",
+    "interval": 30,
+    "on-click": "blueman-manager",
+    "format-no-controller": ""
+  },
+
+  // Other
+  "user": {
+    "format": "{user}",
+    "interval": 60,
+    "icon": false
+  },
+
+  // Idle Inhibator
+//  "idle_inhibitor": {
+//    "format": "{icon}",
+//    "tooltip": true,
+//    "format-icons": {
+//      "activated": "",
+//      "deactivated": ""
+//    },
+//    "on-click-right": "hyprlock"
+//  }
+}
+
