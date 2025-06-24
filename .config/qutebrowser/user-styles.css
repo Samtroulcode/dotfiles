@@ -1,0 +1,11 @@
+body {
+  background-color: rgba(24, 24, 37, 0.8);
+  color: #efe6d0;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 14px;
+}
+
+a {
+  color: #9d7dc1 !important;
+}
+
