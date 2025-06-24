@@ -35,7 +35,9 @@ alias ports='ss -tulwn'
 alias ipinfo='ip -c a'
 alias pingg='ping -c 3 1.1.1.1'
 alias pingdns='ping -c 3 archlinux.org'
-alias archnews='lynx https://archlinux.org/news/' 
+
+alias archnews="qutebrowser 'https://archlinux.org/news/'"
+alias protonmail="qutebrowser 'https://mail.proton.me'"
 
 alias dnscheck='resolvectl status | grep Current'
 alias unlockdns='sudo chattr -i /etc/resolv.conf'
