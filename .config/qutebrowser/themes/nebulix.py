@@ -13,10 +13,10 @@ hintbg  = "#39415C"
 
 # Tabs
 # c.colors.tabs.bar.bg = bg
-c.colors.tabs.even.bg = "#00000000"
-c.colors.tabs.odd.bg = "#00000000"
-c.colors.tabs.selected.even.bg = accent1
-c.colors.tabs.selected.odd.bg = accent1
+c.colors.tabs.even.bg = "#000000"
+c.colors.tabs.odd.bg = "#000000"
+c.colors.tabs.selected.even.bg = "#304774"
+c.colors.tabs.selected.odd.bg = "#304774"
 c.colors.tabs.selected.even.fg = bg
 c.colors.tabs.selected.odd.fg = bg
 c.colors.tabs.odd.fg = fg
