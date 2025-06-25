@@ -19,7 +19,9 @@ c.url.searchengines = {
     "DEFAULT": "https://duckduckgo.com/?q={}", 
     "wa": "https://wiki.archlinux.org/?search={}",
     "yt": "https://www.youtube.com/results?search_query={}",
-    "wp": "https://fr.wikipedia.org/w/index.php?search={}"
+    "wp": "https://fr.wikipedia.org/w/index.php?search={}",
+    "gh": "https://github.com/search?o=desc&q={}&s=stars",
+    "pkg": "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged="
 }
 
 # ouvrir des videos dans mpv
