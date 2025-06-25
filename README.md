@@ -1,4 +1,4 @@
-# Sam's Dotfiles ***NEBULIX***
+# Sam's Dotfiles ***NEBULIX*** WIP
 
 My personal Linux dotfiles
 
