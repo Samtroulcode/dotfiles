@@ -1,26 +1,22 @@
-# Thème Nebulix pour qutebrowser (inspiré du terminal)
+# Thème Nebulix pour qutebrowser
 
 bg      = "#181825"
 fg      = "#efe6d0"
 fg_dim  = "#bfbba0"
-accent1 = "#ffbe76"  # orange
-accent2 = "#9d7dc1"  # violet
-accent3 = "#6ba3b3"  # cyan
+accent1 = "#ffbe76"
+accent2 = "#9d7dc1"
+accent3 = "#6ba3b3"
 error   = "#9d5c5c"
 ok      = "#137547"
 warn    = "#ffe7a0"
 hintbg  = "#39415C"
 
 # Tabs
-# c.colors.tabs.bar.bg = bg
-c.colors.tabs.even.bg = "#000000"
-c.colors.tabs.odd.bg = "#000000"
-c.colors.tabs.selected.even.bg = "#304774"
-c.colors.tabs.selected.odd.bg = "#304774"
-c.colors.tabs.selected.even.fg = bg
-c.colors.tabs.selected.odd.fg = bg
-c.colors.tabs.odd.fg = fg
-c.colors.tabs.even.fg = fg
+c.colors.tabs.bar.bg = "#00000000"
+c.colors.tabs.even.bg = "#00000000"
+c.colors.tabs.odd.bg = "#00000000"
+c.colors.tabs.selected.even.bg = "#304774CC"
+c.colors.tabs.selected.odd.bg = "#304774CC"
 
 # Status bar
 c.colors.statusbar.normal.bg = bg
