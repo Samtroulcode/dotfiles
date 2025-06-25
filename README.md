@@ -20,7 +20,7 @@ The root of this repo is an equivalent to my $HOME directory
 
 Qutebrowser is a fancy light browser, extremely customizable and keyboard centered with use of VIM motions.
 
-![Qutebrowser](https://github.com/qutebrowser/qutebrowser)
+[Qutebrowser](https://github.com/qutebrowser/qutebrowser)
 
 ## Management
 
