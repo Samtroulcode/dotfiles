@@ -46,6 +46,15 @@ alias editdns='unlockdns && sudo nvim /etc/resolv.conf && lockdns'
 
 alias wgstatus='sudo wg show'
 
+# Télécharger une playlist YouTube entière en MP3 avec covers
+alias ytmp3pl='yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"'
+# Télécharger une vidéo YouTube unique en MP3
+alias ytmp3='yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Tracks/%(title)s.%(ext)s"'
+# Mettre à jour yt-dlp
+alias ytdlp-update='yt-dlp -U'
+
+alias ncmpcpp='ncmpcpp -b ~/.config/ncmpcpp/bindings'
+
 # Aliases de scripts
 alias backup='~/scripts/backup-home.sh'
 alias clean='~/scripts/arch-clean.sh | tee "$HOME/.cache/arch-clean-$(date +%F_%H-%M).log"'
