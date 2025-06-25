@@ -16,18 +16,18 @@ The root of this repo is an equivalent to my $HOME directory
 
 ## List of tools used
 
-| Tool | Name/site | repository | config |
+| Tool | Name/site | repository | config | doc |
 | ---- | ---- | ---- | ---- |
-| wayland compositer | [Hyprland](https://hypr.land/) | [github](https://github.com/hyprwm/Hyprland) | [hypr](.config/hypr) |
-| web browser | [Qutebrowser](https://www.qutebrowser.org/) | [github](https://github.com/qutebrowser/qutebrowser) | [qutebrowser](.config/qutebrowser) |
-| terminal | [Kitty](https://sw.kovidgoyal.net/kitty/) | [github](https://github.com/kovidgoyal/kitty) | [kitty](.config/kitty) |
-| shell | [Oh my zsh](https://ohmyz.sh/) | [github](https://github.com/ohmyzsh/ohmyzsh) | [zsh](.config/zsh)/[zshrc](.zshrc) |
-| shell theming | [Starship](https://starship.rs/) | [github](https://github.com/starship/starship) | [starship](.config/starship.toml) |
-| file explorer | [Superfile](https://superfile.netlify.app/) | [github](https://github.com/yorukot/superfile) | [spf](.config/superfile) |
-| status bar | [Waybar](https://github.com/Alexays/Waybar) | [github](https://github.com/Alexays/Waybar) | [waybar](.config/waybar) |
-| menu | [Rofi](https://davatorium.github.io/rofi/) | [github](https://github.com/davatorium/rofi/) | [rofi](.config/rofi) |
-| notification daemon | [Mako](https://github.com/emersion/mako) | [github](https://github.com/emersion/mako) | [mako](.config/mako) |
-| music player | [Ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) | [github](https://github.com/ncmpcpp/ncmpcpp) | [ncmpcpp](.config/ncmpcpp)
+| wayland compositer | [Hyprland](https://hypr.land/) | [github](https://github.com/hyprwm/Hyprland) | [hypr](.config/hypr) | WIP |
+| web browser | [Qutebrowser](https://www.qutebrowser.org/) | [github](https://github.com/qutebrowser/qutebrowser) | [qutebrowser](.config/qutebrowser) | [section](#web-browser-qutebrowser) |
+| terminal | [Kitty](https://sw.kovidgoyal.net/kitty/) | [github](https://github.com/kovidgoyal/kitty) | [kitty](.config/kitty) | WIP |
+| shell | [Oh my zsh](https://ohmyz.sh/) | [github](https://github.com/ohmyzsh/ohmyzsh) | [zsh](.config/zsh)/[zshrc](.zshrc) | WIP |
+| shell theming | [Starship](https://starship.rs/) | [github](https://github.com/starship/starship) | [starship](.config/starship.toml) | WIP |
+| file explorer | [Superfile](https://superfile.netlify.app/) | [github](https://github.com/yorukot/superfile) | [spf](.config/superfile) | WIP |
+| status bar | [Waybar](https://github.com/Alexays/Waybar) | [github](https://github.com/Alexays/Waybar) | [waybar](.config/waybar) | WIP |
+| menu | [Rofi](https://davatorium.github.io/rofi/) | [github](https://github.com/davatorium/rofi/) | [rofi](.config/rofi) | WIP |
+| notification daemon | [Mako](https://github.com/emersion/mako) | [github](https://github.com/emersion/mako) | [mako](.config/mako) | WIP |
+| music player | [Ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) | [github](https://github.com/ncmpcpp/ncmpcpp) | [ncmpcpp](.config/ncmpcpp) | WIP |
 
 ### Web Browser ***QUTEBROWSER***
 
