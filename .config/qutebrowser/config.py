@@ -25,7 +25,7 @@ c.url.searchengines = {
 }
 
 # ouvrir des videos dans mpv
-config.bind('<Ctrl+/>', 'hint links spawn mpv {hint-url}')
+config.bind('<Ctrl+/>', 'hint links spawn /home/sam/scripts/youtube-view-then-mpv.sh {hint-url}')
 
 # dark mode
 c.colors.webpage.darkmode.enabled = True

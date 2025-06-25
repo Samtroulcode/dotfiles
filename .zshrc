@@ -24,7 +24,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 [[ -f ~/.zsh/snapper.zsh ]] && source ~/.zsh/snapper.zsh
 
 # PATH utilisateur en priorité
-export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/bin/mpv-tools/TOOLS:$PATH"
 
 export LANG=fr_FR.UTF-8
 
