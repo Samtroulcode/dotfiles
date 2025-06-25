@@ -4,14 +4,23 @@ My personal Linux dotfiles
 
 I use Arch btw.
 
-![Nebulix1](wallpapers/2025-06-18-081303_hyprshot.png)
-![Nebulix2](wallpapers/2025-06-18-081551_hyprshot.png)
+![Nebulix1](wallpapers/nebulix1.png)
+![Nebulix2](wallpapers/nebulix2.png)
+![Nebulix3](wallpapers/nebulix3.png)
 
 ## Note on this repository
 
 I use this repo to sync and backup my dotfiles.
 
 The root of this repo is an equivalent to my $HOME directory
+
+### Web Browser ***QUTEBROWSER***
+
+![Qutebrowser1](wallpapers/qutebrowser1.png)
+
+Qutebrowser is a fancy light browser, extremely customizable and keyboard centered with use of VIM motions.
+
+![Qutebrowser](https://github.com/qutebrowser/qutebrowser)
 
 ## Management
 
