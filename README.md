@@ -42,6 +42,8 @@ sudo pacman -S yt-dlp mpv
 ```
 It will open an MPV player with the YouTube video without the ads, first i hit my shortcut, then i select the video, here is the workflow :
 
+| Step 1 | Step 2 |
+|----|----|
 | ![mpv2](wallpapers/mpv1.png) | ![mpv2](wallpapers/mpv2.png) |
 
 The second method use a greasmonkey scripts, but i not cover this solution here, you at least know that it exists.
