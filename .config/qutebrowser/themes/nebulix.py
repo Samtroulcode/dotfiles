@@ -17,6 +17,7 @@ c.colors.tabs.even.bg = "#00000000"
 c.colors.tabs.odd.bg = "#00000000"
 c.colors.tabs.selected.even.bg = "#304774CC"
 c.colors.tabs.selected.odd.bg = "#304774CC"
+c.tabs.indicator.width = 0
 
 # Status bar
 c.colors.statusbar.normal.bg = bg

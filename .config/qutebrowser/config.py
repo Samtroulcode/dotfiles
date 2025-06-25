@@ -25,11 +25,19 @@ c.url.searchengines = {
 }
 
 # ouvrir des videos dans mpv
-config.bind('<Ctrl+/>', 'hint links spawn --detach mpv {hint-url}')
+config.bind('<Ctrl+/>', 'hint links spawn mpv {hint-url}')
 
 # dark mode
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.images = 'never'
+
+# Privacy Settings
+config.set("content.webgl", False, "*")
+config.set("content.canvas_reading", False)
+config.set("content.geolocation", False)
+config.set("content.webrtc_ip_handling_policy", "default-public-interface-only")
+config.set("content.cookies.accept", "all")
+config.set("content.cookies.store", True)
 
 c.content.blocking.enabled = True
