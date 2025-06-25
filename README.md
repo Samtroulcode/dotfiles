@@ -4,9 +4,9 @@ My personal Linux dotfiles
 
 I use Arch btw.
 
-![Nebulix1](wallpapers/nebulix1.png)
-![Nebulix2](wallpapers/nebulix2.png)
-![Nebulix3](wallpapers/nebulix3.png)
+| ![Nebulix1](wallpapers/nebulix1.png) | ![Nebulix2](wallpapers/nebulix2.png) |
+|--------------------------------------|--------------------------------------|
+| ![Nebulix3](wallpapers/nebulix3.png) | ![Nebulix4](wallpapers/nebulix4.png) |
 
 ## Note on this repository
 
