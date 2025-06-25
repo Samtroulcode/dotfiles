@@ -46,7 +46,7 @@ config.source('themes/nebulix.py')
 
 #### Config tips 
 
-to watch youtubes videos without ads, there is 2 methods actually. You can watch the youtube video in mpv by binding a shortcut like that :
+to watch youtubes videos without ads, i know 3 methods actually. You can simply watch the youtube video in mpv by binding a shortcut like that :
 ```python
 config.bind('<Ctrl+/>', 'hint links spawn mpv {hint-url}')
 ```
@@ -61,7 +61,17 @@ It will open an MPV player with the YouTube video without the ads, first i hit m
 |----|----|
 | ![mpv2](wallpapers/mpv1.png) | ![mpv2](wallpapers/mpv2.png) |
 
-The second method use a greasmonkey scripts, but i not cover this solution here, you at least know that it exists.
+The second method is similar to the first but it uses a custom script which allows you to have a single instances of MPV and to add videos in queues, a bit like a playlist.
+
+Script link : [umpv](https://github.com/mpv-player/mpv/blob/master/TOOLS/umpv)
+
+you need to add this script to your $PATH then you simply do this :
+
+```bash
+config.bind('<Ctrl+/>', 'hint links spawn umpv --enqueue {hint-url}')
+```
+
+The third method use a greasmonkey scripts, but i not cover this solution here, you at least know that it exists.
 
 ## Management
 
