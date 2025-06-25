@@ -41,7 +41,11 @@ linux-headers
 mako
 man-db
 man-pages-fr
+mpc
+mpd
+mpd-notification
 mpv
+ncmpcpp
 neofetch
 neovim
 noto-fonts
@@ -73,7 +77,6 @@ rsync
 slurp
 snap-pac
 snapper
-spotify-player-full
 sshfs
 starship
 steam
@@ -90,6 +93,7 @@ wireplumber
 xcb-imdkit
 xdg-desktop-portal-hyprland
 xdg-utils
+yt-dlp
 zoxide
 zram-generator
 zsh
