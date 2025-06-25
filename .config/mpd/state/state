@@ -1,0 +1,116 @@
+sw_volume: 56
+audio_device_state:1:PulseAudio
+state: play
+current: 32
+time: 130.738
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0
+mixrampdelay: -1
+lastloadedplaylist: Frequency
+playlist_begin
+0:Albums/FREQUENCY ALL RELEASE/23 - Ambyion X Shockline X Vidoux - Changing (Frequency Remix).mp3
+1:Albums/FREQUENCY ALL RELEASE/65 - 2030.mp3
+2:Albums/FREQUENCY ALL RELEASE/56 - A R R I V A L.mp3
+3:Albums/FREQUENCY ALL RELEASE/57 - Starting.mp3
+4:Albums/FREQUENCY ALL RELEASE/64 - After Dark (Synthwave).mp3
+5:Albums/FREQUENCY ALL RELEASE/60 - Alita.mp3
+6:Albums/FREQUENCY ALL RELEASE/69 - Animated.mp3
+7:Albums/FREQUENCY ALL RELEASE/70 - appearance.mp3
+8:Albums/FREQUENCY ALL RELEASE/55 - Bearing.mp3
+9:Albums/FREQUENCY ALL RELEASE/31 - Childhood.mp3
+10:Albums/FREQUENCY ALL RELEASE/16 - Chillsynth.mp3
+11:Albums/FREQUENCY ALL RELEASE/39 - Resonance 2.0.mp3
+12:Albums/FREQUENCY ALL RELEASE/40 - Alone.mp3
+13:Albums/FREQUENCY ALL RELEASE/66 - Futur 2049.mp3
+14:Albums/FREQUENCY ALL RELEASE/78 - Interection.mp3
+15:Albums/FREQUENCY ALL RELEASE/10 - Consciousness.mp3
+16:Albums/FREQUENCY ALL RELEASE/47 - Do you remember？.mp3
+17:Albums/FREQUENCY ALL RELEASE/32 - Dreamer.mp3
+18:Albums/FREQUENCY ALL RELEASE/59 - E C L I P S E.mp3
+19:Albums/FREQUENCY ALL RELEASE/50 - Earth.mp3
+20:Albums/FREQUENCY ALL RELEASE/15 - Enamored.mp3
+21:Albums/FREQUENCY ALL RELEASE/13 - Faith.mp3
+22:Albums/FREQUENCY ALL RELEASE/82 - Faith (Slowed).mp3
+23:Albums/FREQUENCY ALL RELEASE/01 - Fly Away.mp3
+24:Albums/FREQUENCY ALL RELEASE/72 - Follow the Stars.mp3
+25:Albums/FREQUENCY ALL RELEASE/35 - Forgotten Memories.mp3
+26:Albums/FREQUENCY ALL RELEASE/28 - Genesis (feat. GOTHBOY).mp3
+27:Albums/FREQUENCY ALL RELEASE/30 - Cyberoptics.mp3
+28:Albums/FREQUENCY ALL RELEASE/61 - Glance.mp3
+29:Albums/FREQUENCY ALL RELEASE/62 - Insomniaс.mp3
+30:Albums/FREQUENCY ALL RELEASE/63 - Don't Run From Yourself.mp3
+31:Albums/FREQUENCY ALL RELEASE/23 - Ambyion X Shockline X Vidoux - Changing (Frequency Remix).mp3
+32:Albums/FREQUENCY ALL RELEASE/65 - 2030.mp3
+33:Albums/FREQUENCY ALL RELEASE/56 - A R R I V A L.mp3
+34:Albums/FREQUENCY ALL RELEASE/57 - Starting.mp3
+35:Albums/FREQUENCY ALL RELEASE/64 - After Dark (Synthwave).mp3
+36:Albums/FREQUENCY ALL RELEASE/60 - Alita.mp3
+37:Albums/FREQUENCY ALL RELEASE/69 - Animated.mp3
+38:Albums/FREQUENCY ALL RELEASE/70 - appearance.mp3
+39:Albums/FREQUENCY ALL RELEASE/55 - Bearing.mp3
+40:Albums/FREQUENCY ALL RELEASE/31 - Childhood.mp3
+41:Albums/FREQUENCY ALL RELEASE/16 - Chillsynth.mp3
+42:Albums/FREQUENCY ALL RELEASE/39 - Resonance 2.0.mp3
+43:Albums/FREQUENCY ALL RELEASE/40 - Alone.mp3
+44:Albums/FREQUENCY ALL RELEASE/66 - Futur 2049.mp3
+45:Albums/FREQUENCY ALL RELEASE/78 - Interection.mp3
+46:Albums/FREQUENCY ALL RELEASE/10 - Consciousness.mp3
+47:Albums/FREQUENCY ALL RELEASE/47 - Do you remember？.mp3
+48:Albums/FREQUENCY ALL RELEASE/32 - Dreamer.mp3
+49:Albums/FREQUENCY ALL RELEASE/59 - E C L I P S E.mp3
+50:Albums/FREQUENCY ALL RELEASE/50 - Earth.mp3
+51:Albums/FREQUENCY ALL RELEASE/15 - Enamored.mp3
+52:Albums/FREQUENCY ALL RELEASE/13 - Faith.mp3
+53:Albums/FREQUENCY ALL RELEASE/82 - Faith (Slowed).mp3
+54:Albums/FREQUENCY ALL RELEASE/01 - Fly Away.mp3
+55:Albums/FREQUENCY ALL RELEASE/72 - Follow the Stars.mp3
+56:Albums/FREQUENCY ALL RELEASE/35 - Forgotten Memories.mp3
+57:Albums/FREQUENCY ALL RELEASE/28 - Genesis (feat. GOTHBOY).mp3
+58:Albums/FREQUENCY ALL RELEASE/30 - Cyberoptics.mp3
+59:Albums/FREQUENCY ALL RELEASE/61 - Glance.mp3
+60:Albums/FREQUENCY ALL RELEASE/62 - Insomniaс.mp3
+61:Albums/FREQUENCY ALL RELEASE/63 - Don't Run From Yourself.mp3
+62:Albums/FREQUENCY ALL RELEASE/77 - Humanized.mp3
+63:Albums/FREQUENCY ALL RELEASE/53 - Immersion.mp3
+64:Albums/FREQUENCY ALL RELEASE/03 - Incompatible.mp3
+65:Albums/FREQUENCY ALL RELEASE/09 - Infinity.mp3
+66:Albums/FREQUENCY ALL RELEASE/07 - Infinity 2.0.mp3
+67:Albums/FREQUENCY ALL RELEASE/33 - INFINITY 3.0.mp3
+68:Albums/FREQUENCY ALL RELEASE/26 - Innerbloom (feat. Gothboy).mp3
+69:Albums/FREQUENCY ALL RELEASE/12 - Instant.mp3
+70:Albums/FREQUENCY ALL RELEASE/11 - Just Go Ahead.mp3
+71:Albums/FREQUENCY ALL RELEASE/75 - Liquid.mp3
+72:Albums/FREQUENCY ALL RELEASE/05 - Lonely.mp3
+73:Albums/FREQUENCY ALL RELEASE/17 - Make Me Famous.mp3
+74:Albums/FREQUENCY ALL RELEASE/48 - Memory of the future.mp3
+75:Albums/FREQUENCY ALL RELEASE/79 - Mental Reset.mp3
+76:Albums/FREQUENCY ALL RELEASE/42 - Alone 2.0.mp3
+77:Albums/FREQUENCY ALL RELEASE/43 - Miami Night.mp3
+78:Albums/FREQUENCY ALL RELEASE/44 - Kisses at sunset.mp3
+79:Albums/FREQUENCY ALL RELEASE/04 - Mystery.mp3
+80:Albums/FREQUENCY ALL RELEASE/51 - neoncity.mp3
+81:Albums/FREQUENCY ALL RELEASE/18 - New Era.mp3
+82:Albums/FREQUENCY ALL RELEASE/14 - No Past.mp3
+83:Albums/FREQUENCY ALL RELEASE/02 - Quantum Leap.mp3
+84:Albums/FREQUENCY ALL RELEASE/54 - Radiance.mp3
+85:Albums/FREQUENCY ALL RELEASE/81 - Readiness.mp3
+86:Albums/FREQUENCY ALL RELEASE/46 - Real love.mp3
+87:Albums/FREQUENCY ALL RELEASE/76 - Renaissance.mp3
+88:Albums/FREQUENCY ALL RELEASE/38 - S K Y N E T.mp3
+89:Albums/FREQUENCY ALL RELEASE/36 - SENSITIVE (SLOWED TO PERFECTION).mp3
+90:Albums/FREQUENCY ALL RELEASE/68 - Sleepwalker.mp3
+91:Albums/FREQUENCY ALL RELEASE/49 - Starfall.mp3
+92:Albums/FREQUENCY ALL RELEASE/71 - Symbiosis (feat. Kantwell).mp3
+93:Albums/FREQUENCY ALL RELEASE/52 - Technomorphosis.mp3
+94:Albums/FREQUENCY ALL RELEASE/80 - The Lost World.mp3
+95:Albums/FREQUENCY ALL RELEASE/08 - The Lost World 2.0.mp3
+96:Albums/FREQUENCY ALL RELEASE/19 - This Is Reality.mp3
+97:Albums/FREQUENCY ALL RELEASE/73 - Thunder.mp3
+98:Albums/FREQUENCY ALL RELEASE/45 - Totality (feat. Kantwell).mp3
+99:Albums/FREQUENCY ALL RELEASE/06 - Touch of Light.mp3
+100:Albums/FREQUENCY ALL RELEASE/41 - You've been on my mind.mp3
+playlist_end

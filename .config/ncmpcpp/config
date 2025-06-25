@@ -1,0 +1,7 @@
+
+ncmpcpp_directory = ~/.config/ncmpcpp
+
+mpd_host = "localhost"
+mpd_music_dir = ~/Storage/Music
+lyrics_directory = ~/.cache/ncmpcpp/lyrics
+visualizer_in_stereo = yes
