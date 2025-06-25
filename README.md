@@ -16,18 +16,18 @@ The root of this repo is an equivalent to my $HOME directory
 
 ## List of tools used
 
-| Tool | Name/site | repository |
-| ---- | ---- | ---- |
-| wayland compositer | [Hyprland](https://hypr.land/) | [github](https://github.com/hyprwm/Hyprland) |
-| web browser | [Qutebrowser](https://www.qutebrowser.org/) | [github](https://github.com/qutebrowser/qutebrowser) |
-| terminal | [Kitty](https://sw.kovidgoyal.net/kitty/) | [github](https://github.com/kovidgoyal/kitty) |
-| shell | [Oh my zsh](https://ohmyz.sh/) | [github](https://github.com/ohmyzsh/ohmyzsh) |
-| shell theming | [Starship](https://starship.rs/) | [github](https://github.com/starship/starship) |
-| file explorer | [Superfile](https://superfile.netlify.app/) | [github](https://github.com/yorukot/superfile) |
-| status bar | [Waybar](https://github.com/Alexays/Waybar) | [github](https://github.com/Alexays/Waybar) |
-| menu | [Rofi](https://davatorium.github.io/rofi/) | [github](https://github.com/davatorium/rofi/) |
-| notification daemon | [Mako](https://github.com/emersion/mako) | [github](https://github.com/emersion/mako) |
-| music player | [Ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) | [github](https://github.com/ncmpcpp/ncmpcpp) |
+| Tool | Name/site | repository | config |
+| ---- | ---- | ---- | ---- |
+| wayland compositer | [Hyprland](https://hypr.land/) | [github](https://github.com/hyprwm/Hyprland) | [hypr](.config/hypr) |
+| web browser | [Qutebrowser](https://www.qutebrowser.org/) | [github](https://github.com/qutebrowser/qutebrowser) | [qutebrowser](.config/qutebrowser) |
+| terminal | [Kitty](https://sw.kovidgoyal.net/kitty/) | [github](https://github.com/kovidgoyal/kitty) | [kitty](.config/kitty) |
+| shell | [Oh my zsh](https://ohmyz.sh/) | [github](https://github.com/ohmyzsh/ohmyzsh) | [zsh](.config/zsh)/[zshrc](.zshrc) |
+| shell theming | [Starship](https://starship.rs/) | [github](https://github.com/starship/starship) | [starship](.config/starship.toml) |
+| file explorer | [Superfile](https://superfile.netlify.app/) | [github](https://github.com/yorukot/superfile) | [spf](.config/superfile) |
+| status bar | [Waybar](https://github.com/Alexays/Waybar) | [github](https://github.com/Alexays/Waybar) | [waybar](.config/waybar) |
+| menu | [Rofi](https://davatorium.github.io/rofi/) | [github](https://github.com/davatorium/rofi/) | [rofi](.config/rofi) |
+| notification daemon | [Mako](https://github.com/emersion/mako) | [github](https://github.com/emersion/mako) | [mako](.config/mako) |
+| music player | [Ncmpcpp](https://github.com/ncmpcpp/ncmpcpp) | [github](https://github.com/ncmpcpp/ncmpcpp) | [ncmpcpp](.config/ncmpcpp)
 
 ### Web Browser ***QUTEBROWSER***
 
