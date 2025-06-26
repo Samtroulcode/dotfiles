@@ -16,12 +16,15 @@ c.auto_save.session = True
 
 # url de recherches
 c.url.searchengines = {
-    "DEFAULT": "https://duckduckgo.com/?q={}", 
+    "DEFAULT": "https://searx.ox2.fr/?q={}", 
     "wa": "https://wiki.archlinux.org/?search={}",
+    "pkg": "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged=",
     "yt": "https://www.youtube.com/results?search_query={}",
     "wp": "https://fr.wikipedia.org/w/index.php?search={}",
     "gh": "https://github.com/search?o=desc&q={}&s=stars",
-    "pkg": "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged="
+    "tmdb": "https://www.themoviedb.org/search?query={}",
+    "libgen": "https://libgen.rs/search.php?req={}",
+    "hn": "https://hn.algolia.com/?q={}"
 }
 
 # ouvrir des videos dans mpv
@@ -37,7 +40,18 @@ config.set("content.webgl", False, "*")
 config.set("content.canvas_reading", False)
 config.set("content.geolocation", False)
 config.set("content.webrtc_ip_handling_policy", "default-public-interface-only")
-config.set("content.cookies.accept", "all")
 config.set("content.cookies.store", True)
+config.set("content.cookies.accept", "no-3rdparty")
 
 c.content.blocking.enabled = True
+
+c.content.blocking.adblock.lists = [
+    "https://easylist.to/easylist/easylist.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    "https://easylist.to/easylist/fanboy-social.txt",
+    "https://secure.fanboy.co.nz/fanboy-annoyance.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt"
+]
