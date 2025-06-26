@@ -1,3 +1,4 @@
 .config/mpd/mpd.log
 .config/mpd/state/
 .config/qutebrowser/autoconfig.yml
+.config/mpd/tag_cache
