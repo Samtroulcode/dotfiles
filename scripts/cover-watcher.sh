@@ -77,7 +77,6 @@ while true; do
     mp3="$HOME/Storage/Music/$current"
     last_file="$current"
     clear
-    echo "Now playing: $current"
     extract_cover
     render_cover
   fi
