@@ -12,7 +12,10 @@ c.window.transparent = True
 
 c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
 
-c.auto_save.session = True
+c.auto_save.session = False
+
+# url de start page
+c.url.start_pages = ['http://sam-portal/board']
 
 # url de recherches
 c.url.searchengines = {
