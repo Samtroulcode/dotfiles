@@ -33,7 +33,6 @@
     "group/hardware",
     "clock",
     "custom/notification",
-    "custom/layout",
     "custom/exit"
   ]
 }
