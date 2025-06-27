@@ -24,11 +24,13 @@ c.url.searchengines = {
     "gh": "https://github.com/search?o=desc&q={}&s=stars",
     "tmdb": "https://www.themoviedb.org/search?query={}",
     "libgen": "https://libgen.rs/search.php?req={}",
-    "hn": "https://hn.algolia.com/?q={}"
+    "hn": "https://hn.algolia.com/?q={}",
+    "dc": "https://digitalcore.club/search?search={}"
 }
 
-# ouvrir des videos dans mpv
-config.bind('<Ctrl+/>', 'hint links spawn /home/sam/bin/mpv-tools/TOOLS/umpv --enqueue {hint-url}')
+# ouvrir des videos et streams dans mpv
+config.bind(',yt', 'hint links spawn /home/sam/bin/mpv-tools/TOOLS/umpv --enqueue {hint-url}')
+config.bind(',tw', 'hint links spawn streamlink --player mpv {hint-url} best')
 
 # dark mode
 c.colors.webpage.darkmode.enabled = True
