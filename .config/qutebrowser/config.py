@@ -15,7 +15,7 @@ c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'his
 c.auto_save.session = False
 
 # url de start page
-c.url.start_pages = ['http://sam-portal/board']
+c.url.start_pages = ['https://searx.ox2.fr/']
 
 # url de recherches
 c.url.searchengines = {
@@ -28,7 +28,8 @@ c.url.searchengines = {
     "tmdb": "https://www.themoviedb.org/search?query={}",
     "libgen": "https://libgen.rs/search.php?req={}",
     "hn": "https://hn.algolia.com/?q={}",
-    "dc": "https://digitalcore.club/search?search={}"
+    "dc": "https://digitalcore.club/search?search={}",
+    "pdb": "https://www.protondb.com/search?q={}"
 }
 
 # ouvrir des videos et streams dans mpv
