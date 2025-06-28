@@ -41,3 +41,5 @@ alias snapquick='sudo snapper -c root create --description "Quick snapshot" && s
 # Lister fichiers modifiés dans le dernier snapshot
 alias snaplastfiles='snapper -c root status $(( $(snapper -c root list | tail -n 1 | awk "{print \$1}") - 1))..$(snapper -c root list | tail -n 1 | awk "{print \$1}") | cut -c 6-'
 
+# Ajoute les snaps au grub
+alias snapgrub='sudo /etc/grub.d/41_snapshots-btrfs'

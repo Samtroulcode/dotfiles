@@ -80,3 +80,6 @@ alias media-umount='fusermount3 -u ~/Videos/Sam-media'
 
 alias server-mount='sshfs sam@10.100.0.1:/home/sam ~/Documents/Sam -o IdentityFile=~/.ssh/id_ed25519,StrictHostKeyChecking=no'
 alias server-umount='fusermount3 -u ~/Documents/Sam'
+
+# Regen du grub
+alias grubgen : 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
