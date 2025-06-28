@@ -7,3 +7,4 @@ python-inputs
 python-steam
 python-vdf
 vesktop
+xkb-qwerty-fr

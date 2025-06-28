@@ -7,6 +7,7 @@ bluez-utils
 brightnessctl
 btop
 btrfs-progs
+cava
 dkms
 duf
 dust
@@ -38,6 +39,8 @@ libxcrypt-compat
 linux
 linux-firmware
 linux-headers
+linux-zen
+linux-zen-headers
 mako
 man-db
 man-pages-fr
@@ -80,6 +83,7 @@ snapper
 sshfs
 starship
 steam
+streamlink
 superfile
 tectonic
 ttf-jetbrains-mono-nerd
@@ -93,6 +97,7 @@ wireplumber
 xcb-imdkit
 xdg-desktop-portal-hyprland
 xdg-utils
+xkb-qwerty-fr
 yt-dlp
 zoxide
 zram-generator
