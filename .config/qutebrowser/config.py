@@ -15,7 +15,7 @@ c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'his
 c.auto_save.session = False
 
 # url de start page
-c.url.start_pages = ['https://searx.ox2.fr/']
+c.url.start_pages = ['http://sam-portal/board']
 
 # url de recherches
 c.url.searchengines = {
