@@ -14,6 +14,8 @@ c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'his
 
 c.auto_save.session = False
 
+c.content.headers.user_agent = 'Mozilla/5.0 (Windows NT 10.0; rv:124.0) Gecko/20100101 Firefox/124.0'
+
 # url de start page
 c.url.start_pages = ['http://sam-portal/board']
 
