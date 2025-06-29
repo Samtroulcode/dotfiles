@@ -34,7 +34,7 @@ if command -v yay &>/dev/null; then
   echo
   echo "=== ACTION : Nettoyage du cache yay..."
   echo
-  yay -Sc --noconfirm <<< y 
+  yay -Sc --noconfirm <<<y
 fi
 
 # Vérif des .pacnew
@@ -43,9 +43,9 @@ echo "=== ACTION : Vérification des fichiers .pacnew..."
 echo
 sudo DIFFPROG="nvim -d" pacdiff || true
 if [[ -z $DISPLAY ]]; then
-  sudo pacdiff --output  # liste uniquement les fichiers
+  sudo pacdiff --output # liste uniquement les fichiers
 else
-  sudo pacdiff           # mode interactif si en session
+  sudo pacdiff # mode interactif si en session
 fi
 
 # Supprimer les logs de plus de 7 jours
@@ -53,6 +53,12 @@ echo
 echo "=== ACTION = Suppression des logs..."
 echo
 sudo journalctl --vacuum-time=7d
+
+# Nettoyage des snapshots
+echo
+echo "== ACTION : Suppression des snapshots en trop"
+echo
+sudo snapper -c root cleanup number
 
 # Audit rapide et renvoie des erreurs critiques
 echo
