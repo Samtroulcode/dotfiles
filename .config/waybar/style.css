@@ -40,7 +40,7 @@
 button {
   min-width: 32px;
   min-height: 32px;
-  border-radius: 500px;
+  border-radius: 5px;
   color: @text;
   box-shadow: 0px 0px 8px 4px @shadow inset;
   transition:
