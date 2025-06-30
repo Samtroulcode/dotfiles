@@ -1,0 +1,3 @@
+startpage.com##.w-gl__result--sponsored
+startpage.com##.sponsored
+startpage.com##a[href*="partner"]
