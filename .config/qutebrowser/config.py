@@ -47,11 +47,11 @@ c.colors.webpage.darkmode.policy.images = 'never'
 config.set("content.webgl", False, "*")
 config.set("content.canvas_reading", False)
 config.set("content.geolocation", False)
-config.set("content.webrtc_ip_handling_policy", "disable_non_proxied_udp")
+config.set("content.webrtc_ip_handling_policy", "default-public-interface-only")
 config.set("content.cookies.store", True)
 config.set("content.cookies.accept", "no-3rdparty")
 config.set("content.headers.accept_language", "en-US,en;q=0.5")
-config.set("content.headers.referer", "no-referrer-when-downgrade")
+config.set("content.headers.referer", "same-domain")
 
 c.content.blocking.enabled = True
 
