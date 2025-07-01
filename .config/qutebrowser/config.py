@@ -14,14 +14,18 @@ c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'his
 
 c.auto_save.session = False
 
-c.content.headers.user_agent = 'Mozilla/5.0 (Windows NT 10.0; rv:124.0) Gecko/20100101 Firefox/124.0'
+c.content.headers.user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0'
+c.content.headers.accept_language = "en-US,en;q=0.5"
+c.content.canvas_reading = False
+c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 
 # url de start page
 c.url.start_pages = ['http://sam-portal/board']
 
 # url de recherches
 c.url.searchengines = {
-    "DEFAULT": "https://leta.mullvad.net/search?q={}&engine=brave", 
+    "DEFAULT": "https://leta.mullvad.net/search?q={}&engine=brave",
+    "go": "https://leta.mullvad.net/search?q={}&engine=google",
     "wa": "https://wiki.archlinux.org/?search={}",
     "pkg": "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged=",
     "yt": "https://www.youtube.com/results?search_query={}",
@@ -63,5 +67,7 @@ c.content.blocking.adblock.lists = [
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
-    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt"
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+    "https://raw.githubusercontent.com/nextdns/click-tracking-blocklists/main/hosts",
+    "https://blocklistproject.github.io/Lists/tracking.txt"
 ]
