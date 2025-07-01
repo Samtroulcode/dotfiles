@@ -44,6 +44,8 @@ alias unlockdns='sudo chattr -i /etc/resolv.conf'
 alias lockdns='sudo chattr +i /etc/resolv.conf'
 alias editdns='unlockdns && sudo nvim /etc/resolv.conf && lockdns'
 
+alias up0x0='f() { curl -s -F "file=@$1" -F "expires=43200" https://0x0.st; }; f'
+
 alias wgstatus='sudo wg show'
 
 # Télécharger une playlist YouTube entière en MP3 avec covers
