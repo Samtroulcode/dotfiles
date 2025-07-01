@@ -24,8 +24,7 @@ c.url.start_pages = ['http://sam-portal/board']
 
 # url de recherches
 c.url.searchengines = {
-    "DEFAULT": "https://leta.mullvad.net/search?q={}&engine=brave",
-    "go": "https://leta.mullvad.net/search?q={}&engine=google",
+    "DEFAULT": "https://searx.stream/search?q={}",
     "wa": "https://wiki.archlinux.org/?search={}",
     "pkg": "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged=",
     "yt": "https://www.youtube.com/results?search_query={}",
