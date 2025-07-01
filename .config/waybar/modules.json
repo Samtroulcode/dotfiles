@@ -66,17 +66,6 @@
     "format": "/ K {short}"
   },
 
-  "custom/layout": {
-    "format": "{}",
-    "format-map": {
-      "US": "󰌌 EN",
-      "INTL": "󰌌 FR"
-    },
-    "exec": "bash -c 'hyprctl devices | awk \"/Keyboard at/ {capture=1; layout=\\\"\\\"} capture && /active keymap:/ {layout=\\$NF} capture && /main: yes/ && layout != \\\"\\\" {gsub(/[()]/, \\\"\\\", layout); print layout; exit} /^$/ {capture=0}\"'",
-    "interval": 1,
-    "tooltip": false
-  },
-
   // Network
   "network": {
     "format": "{ifname}",
@@ -114,6 +103,16 @@
     "interval": 30,
     "on-click": "blueman-manager",
     "format-no-controller": ""
+  },
+
+  // VPN 
+  "custom/vpn": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/vpn-status.sh",
+    "on-click": "~/.config/waybar/scripts/vpn-toggle.sh",
+    "interval": 3,
+    "return-type": "json",
+    "tooltip": false
   },
 
   // Other

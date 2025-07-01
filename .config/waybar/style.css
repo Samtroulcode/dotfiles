@@ -71,10 +71,20 @@ window#waybar.empty #window {
   margin-right: 8px;
 }
 
+#custom-vpn {
+  background-color: @surface;
+  padding: 0 8px;
+  border-radius: 5px;
+  min-width: 32px;
+  min-height: 32px;
+  font-size: 18px;
+}
+
 #custom-appmenu,
 #quicklinks,
 #sound,
 #hardware,
+#custom-vpn,
 #clock,
 #custom-notification {
   background-color: @surface;

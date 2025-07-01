@@ -31,6 +31,7 @@
     // "mpd",
     "group/sound",
     "group/hardware",
+    "custom/vpn",
     "clock",
     "custom/notification",
     "custom/exit"
