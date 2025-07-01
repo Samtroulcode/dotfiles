@@ -2,13 +2,12 @@ amd-ucode
 base
 base-devel
 bat
-bluetui
-bluez-utils
 brightnessctl
 btop
 btrfs-progs
 cava
 dkms
+dnscrypt-proxy
 duf
 dust
 efibootmgr
@@ -19,6 +18,7 @@ gamescope
 git
 grim
 grub
+grub-btrfs
 gst-plugin-pipewire
 hyprland
 hyprpaper
@@ -39,8 +39,6 @@ libxcrypt-compat
 linux
 linux-firmware
 linux-headers
-linux-zen
-linux-zen-headers
 mako
 man-db
 man-pages-fr
@@ -57,7 +55,6 @@ noto-fonts-emoji
 nvidia-dkms
 nvidia-settings
 nvtop
-openresolv
 openssh
 os-prober
 pacman-contrib
@@ -85,6 +82,7 @@ starship
 steam
 streamlink
 superfile
+syncthing
 tectonic
 ttf-jetbrains-mono-nerd
 uwsm
