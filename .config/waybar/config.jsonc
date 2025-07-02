@@ -19,15 +19,13 @@
   "modules-left": [
     "custom/appmenu",
     "group/quicklinks",
-    "tray",
-    "hyprland/window"
+    "tray"
   ],
   "modules-center": [
     "hyprland/workspaces"
   ],
   "modules-right": [
     "group/media",
-    "network",
     // "mpd",
     "group/sound",
     "group/hardware",
