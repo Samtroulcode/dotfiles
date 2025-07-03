@@ -51,13 +51,22 @@ render_cover() {
 
 # Extrait la jaquette d’un fichier MP3 (s’il y en a une)
 extract_cover() {
-  cover_dir="$(dirname "$mp3")"
-  base="$(basename "$mp3" .mp3)"
-  cover="$cover_dir/${base}.jpg"
+  # Si on lit un fichier local MP3
+  if [[ "$mp3" == *.mp3 && -f "$mp3" ]]; then
+    cover_dir="$(dirname "$mp3")"
+    base="$(basename "$mp3" .mp3)"
+    cover="$cover_dir/${base}.jpg"
 
-  # Si pas de cover existante, tenter extraction
-  if [[ ! -f "$cover" ]]; then
-    ffmpeg -loglevel quiet -y -i "$mp3" -an -vcodec copy "$cover"
+    if [[ ! -f "$cover" ]]; then
+      ffmpeg -loglevel quiet -y -i "$mp3" -an -vcodec copy "$cover"
+    fi
+
+  # Sinon, si c’est un flux radio
+  elif [[ "$mp3" == *.m4a ]]; then
+    station=$(mpc current | cut -d' ' -f1 | tr '[:upper:]' '[:lower:]')
+    cover="$HOME/.local/share/radio-covers/${station}.jpg"
+  else
+    cover=""
   fi
 }
 
