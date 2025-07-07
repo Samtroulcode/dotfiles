@@ -2,3 +2,4 @@
 .config/mpd/state/
 .config/qutebrowser/autoconfig.yml
 .config/mpd/tag_cache
+.config/nvim/lazy-lock.json
