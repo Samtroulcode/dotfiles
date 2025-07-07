@@ -25,7 +25,7 @@
   "custom/exit": {
     "format": " ",
     "tooltip-format": "Powermenu",
-    "on-click": "systemtcl poweroff",
+    "on-click": "wlogout",
     "tooltip": false
   },
 
