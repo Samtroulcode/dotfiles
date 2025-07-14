@@ -28,6 +28,8 @@ export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/bin/m
 
 export LANG=fr_FR.UTF-8
 
+autoload -U compinit && compinit
+
 # Historique optimisé
 setopt inc_append_history share_history hist_verify
 setopt hist_ignore_all_dups hist_reduce_blanks
