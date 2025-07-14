@@ -2,6 +2,8 @@
 config.source('themes/nebulix.py')
 config.load_autoconfig(False)
 
+config.set('content.proxy', 'socks://10.10.10.2:1080')
+
 # Appliquer css
 c.content.user_stylesheets = ['~/.config/qutebrowser/user-styles.css']
 
@@ -24,7 +26,7 @@ c.url.start_pages = ['http://sam-portal/board']
 
 # url de recherches
 c.url.searchengines = {
-    "DEFAULT": "http://172.19.0.80:8080/search?q={}",
+    "DEFAULT": "http://sam-searxng:8080/search?q={}",
     "go": "https://leta.mullvad.net/search?q={}&engine=google",
     "wa": "https://wiki.archlinux.org/?search={}",
     "pkg": "https://archlinux.org/packages/?sort=&q={}&maintainer=&flagged=",
