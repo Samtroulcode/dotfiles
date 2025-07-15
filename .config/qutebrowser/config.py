@@ -2,7 +2,10 @@
 config.source('themes/nebulix.py')
 config.load_autoconfig(False)
 
+# passe par le proxy microsock qui est connecter via veth au namespace vpn
 config.set('content.proxy', 'socks://10.10.10.2:1080')
+# Empeche WebRTC d'utiliser n'importe quelle ip non lié au proxy
+config.set('content.webrtc_ip_handling_policy', 'disable-non-proxied-udp')
 
 # Appliquer css
 c.content.user_stylesheets = ['~/.config/qutebrowser/user-styles.css']
