@@ -1,0 +1,10 @@
+* {
+  background:       #{{background | strip}}FF;
+  background-alt:   #{{color0 | strip}}FF;
+  foreground:       #{{foreground | strip}}FF;
+  selected:         #{{color1 | strip}}FF;
+  active:           #{{color6 | strip}}FF;
+  urgent:           #{{color3 | strip}}FF;
+  accent:           #{{color4 | strip}}FF;
+}
+
