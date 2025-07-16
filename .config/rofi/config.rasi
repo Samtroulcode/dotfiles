@@ -180,4 +180,10 @@ configuration {
 */
 }
 
-@theme "/usr/share/rofi/themes/material.rasi"
+//@theme "/usr/share/rofi/themes/material.rasi"
+
+//@theme "/usr/share/rofi/themes/docu.rasi"
+
+//@theme "/usr/share/rofi/themes/sidebar-v2.rasi"
+
+@theme "/usr/share/rofi/themes/Adapta-Nokto.rasi"
