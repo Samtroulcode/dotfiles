@@ -48,3 +48,4 @@ hypr = { src = "hyprland-colors.conf", dst = "~/.config/hypr/config/colors.conf"
 kitty = { src='kitty.conf', dst='~/.config/kitty/colors.conf'}
 waybar = { src = "waybar-colors.css", dst = "~/.config/waybar/colors.css" }
 rofi = { src = "rofi.rasi", dst = "~/.config/rofi/colors.rasi" }
+btop = { src = "btop.theme", dst = "~/.config/btop/themes/wallust.theme"}

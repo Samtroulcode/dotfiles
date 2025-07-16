@@ -1,0 +1,84 @@
+# Main background
+theme[main_bg] = "{{background}}"
+
+# Main text color
+theme[main_fg] = "{{foreground}}"
+
+# Title color for boxes
+theme[title] = "{{color3}}"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg] = "{{color6}}"
+
+# Background color of selected item in processes box
+theme[selected_bg] = "{{color4}}"
+
+# Foreground color of selected item in processes box
+theme[selected_fg] = "{{foreground}}"
+
+# Color of inactive/disabled text
+theme[inactive_fg] = "{{color14}}"
+
+# Color of text appearing on top of graphs
+theme[graph_text] = "{{color7}}"
+
+# Background color of the percentage meters
+theme[meter_bg] = "{{color0}}"
+
+# Misc colors for processes box
+theme[proc_misc] = "{{color5}}"
+
+# Box frame colors (cohérence froide)
+theme[cpu_box] = "{{color4}}"
+theme[mem_box] = "{{color4}}"
+theme[net_box] = "{{color4}}"
+theme[proc_box] = "{{color4}}"
+
+# Divider and box line
+theme[div_line] = "{{color1}}"
+
+# Temperature graph color gradient
+theme[temp_start] = "{{color2}}"
+theme[temp_mid] = "{{color3}}"
+theme[temp_end] = "{{color1}}"
+
+# CPU graph color gradient
+theme[cpu_start] = "{{color6}}"
+theme[cpu_mid] = "{{color3}}"
+theme[cpu_end] = "{{color1}}"
+
+# Mem/Disk free meter
+theme[free_start] = "{{color5}}"
+theme[free_mid] = "{{color4}}"
+theme[free_end] = "{{foreground}}"
+
+# Mem/Disk cached meter
+theme[cached_start] = "{{color14}}"
+theme[cached_mid] = "{{color4}}"
+theme[cached_end] = "{{color5}}"
+
+# Mem/Disk available meter
+theme[available_start] = "{{color3}}"
+theme[available_mid] = "{{color3}}"
+theme[available_end] = "{{color1}}"
+
+# Mem/Disk used meter
+theme[used_start] = "{{color6}}"
+theme[used_mid] = "{{color3}}"
+theme[used_end] = "{{color1}}"
+
+# Download graph
+theme[download_start] = "{{color3}}"
+theme[download_mid] = "{{color3}}"
+theme[download_end] = "{{color1}}"
+
+# Upload graph
+theme[upload_start] = "{{color6}}"
+theme[upload_mid] = "{{color14}}"
+theme[upload_end] = "{{color1}}"
+
+# Process box gradient
+theme[process_start] = "{{color14}}"
+theme[process_mid] = "{{color5}}"
+theme[process_end] = "{{color1}}"
+
