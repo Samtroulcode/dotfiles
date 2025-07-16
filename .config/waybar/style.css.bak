@@ -42,7 +42,8 @@ button {
   min-width: 32px;
   min-height: 32px;
   border-radius: 0px;
-  color: @cursor;
+  color: @text;
+  box-shadow: 0px 0px 8px 4px @shadow inset;
   transition:
     all 50ms cubic-bezier(0.55, 0, 0.28, 1.682),
     box-shadow 50ms ease-in-out,
@@ -50,13 +51,13 @@ button {
 }
 
 button:hover {
-  color: @cursor;
-  background: @color3;
+  color: @hoverFg;
+  background: @hoverBg;
 }
 
 button.active {
-  color: @cursor;
-  background: @color2;
+  color: @activeFg;
+  background: @activeBg;
 }
 
 tooltip {
@@ -64,8 +65,7 @@ tooltip {
 }
 
 window#waybar.empty #window {
-  background-color: @surface;
-  box-shadow: 0px 0px 8px 4px @color1 inset;
+  background-color: transparent;
 }
 
 #window {
@@ -87,12 +87,10 @@ window#waybar.empty #window {
 #hardware,
 #custom-vpn,
 #clock,
-#window,
-#workspaces,
 #custom-notification {
   background-color: @surface;
   border-radius: 0px;
-  color: @cursor;
+  box-shadow: 0px 0px 8px 4px @shadow inset;
 }
 
 #sound,
@@ -170,11 +168,11 @@ window#waybar.empty #window {
 }
 
 label:focus {
-  background-color: @color0;
+  background-color: @activeBg;
 }
 
 #backlight {
-  background-color: @surface;
+  background-color: @activeBg;
 }
 
 #quicklinks {
