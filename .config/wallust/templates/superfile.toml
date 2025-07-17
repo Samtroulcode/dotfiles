@@ -1,0 +1,57 @@
+code_syntax_highlight = "base16-dark-nebulix"
+
+# ========= Borders =========
+file_panel_border      = "{{color4}}"
+sidebar_border         = "{{color4}}"
+footer_border          = "{{color4}}"
+
+# ========= Borders Active =========
+file_panel_border_active  = "{{color3}}"
+sidebar_border_active     = "{{color5}}"
+footer_border_active      = "{{color1}}"
+
+# ========= Background (bg) =========
+full_screen_bg        = "{{background}}"
+file_panel_bg         = "{{color0}}"
+sidebar_bg            = "{{color0}}"
+footer_bg             = "{{color0}}"
+modal_bg              = "{{color4}}"
+
+# ========= Foreground (fg) =========
+full_screen_fg        = "{{foreground}}"
+file_panel_fg         = "{{foreground}}"
+sidebar_fg            = "{{foreground}}"
+footer_fg             = "{{foreground}}"
+modal_fg              = "{{foreground}}"
+
+# ========= Special Color =========
+cursor      = "{{color3}}"
+correct     = "{{color6}}"
+error       = "{{color13}}"
+hint        = "{{color5}}"
+cancel      = "{{color4}}"
+
+gradient_color = ["{{color4}}", "{{color3}}"]
+
+# ========= File Panel Special Items =========
+file_panel_top_directory_icon = "{{foreground}}"
+file_panel_top_path           = "{{color5}}"
+file_panel_item_selected_fg   = "{{background}}"
+file_panel_item_selected_bg   = "{{color3}}"
+
+# ========= Sidebar Special Items =========
+sidebar_title            = "{{color3}}"
+sidebar_item_selected_fg = "{{background}}"
+sidebar_item_selected_bg = "{{color3}}"
+sidebar_divider          = "{{color1}}"
+
+# ========= Modal Special Items =========
+modal_cancel_fg   = "{{foreground}}"
+modal_cancel_bg   = "{{color13}}"
+
+modal_confirm_fg  = "{{background}}"
+modal_confirm_bg  = "{{color3}}"
+
+# ========= Help Menu =========
+help_menu_hotkey  = "{{color3}}"
+help_menu_title   = "{{color5}}"

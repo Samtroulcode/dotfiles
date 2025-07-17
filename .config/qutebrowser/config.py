@@ -1,5 +1,5 @@
 # Appliquer le thème
-config.source('themes/nebulix.py')
+config.source('themes/wallust-colors.py')
 config.load_autoconfig(False)
 
 # passe par le proxy microsock qui est connecter via veth au namespace vpn
@@ -8,7 +8,7 @@ config.set('content.proxy', 'socks://10.10.10.2:1080')
 config.set('content.webrtc_ip_handling_policy', 'disable-non-proxied-udp')
 
 # Appliquer css
-c.content.user_stylesheets = ['~/.config/qutebrowser/user-styles.css']
+# c.content.user_stylesheets = ['~/.config/qutebrowser/user-styles.css']
 
 # Tabs stylisées et plus visibles
 c.tabs.padding = {'top': 8, 'bottom': 8, 'left': 12, 'right': 12}
