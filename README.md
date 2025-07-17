@@ -12,7 +12,7 @@ I use Arch btw.
 | ![Nebulix3](wallpapers/nebulix-city1.png) | ![Nebulix4](wallpapers/nebulix-city2.png) |
 
 
-https://files.catbox.moe/v6n30o.mp4
+[Showcase video](https://files.catbox.moe/v6n30o.mp4)
 
 ## Note on this repository
 
