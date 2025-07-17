@@ -4,3 +4,4 @@
 .config/mpd/tag_cache
 .config/nvim/lazy-lock.json
 .config/qutebrowser/qsettings/QtProject.conf
+.config/hypr/config/colors.conf
