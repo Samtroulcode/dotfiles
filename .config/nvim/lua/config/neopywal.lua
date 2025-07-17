@@ -1,0 +1,18 @@
+vim.opt.termguicolors = true
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local ok, neopywal = pcall(require, "neopywal")
+    if not ok then
+      vim.notify("neopywal.nvim not found", vim.log.levels.ERROR)
+      return
+    end
+
+    neopywal.setup({
+      use_wallust = true,
+      transparent_background = true,
+    })
+
+    vim.cmd.colorscheme("neopywal")
+  end,
+})

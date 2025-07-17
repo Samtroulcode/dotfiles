@@ -49,4 +49,4 @@ kitty = { src='kitty.conf', dst='~/.config/kitty/colors.conf'}
 waybar = { src = "waybar-colors.css", dst = "~/.config/waybar/colors.css" }
 rofi = { src = "rofi.rasi", dst = "~/.config/rofi/colors.rasi" }
 btop = { src = "btop.theme", dst = "~/.config/btop/themes/wallust.theme"}
-nvim = { src = "neopywal.vim", dst = "~/.cache/wallust/colors_neopywal.vim"}
+nvim = { src = "neopywal.vim", dst = "~/.cache/wal/colors-wal.vim"}
