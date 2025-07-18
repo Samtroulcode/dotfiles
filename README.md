@@ -44,10 +44,13 @@ The root of this repo is an equivalent to my $HOME directory
 | Text editor/IDE | [Nvim](https://neovim.io/) | [github](https://github.com/neovim/neovim) | [nvim](.config/nvim) | WIP |
 | Nvim framework | [LazyVim](http://www.lazyvim.org/) | [github](https://github.com/LazyVim/LazyVim) | [lazyvim](.config/nvim) | WIP |
 
+<div align = center>
+
 ### Window manager *****HYPRLAND*****
 
 ![Hyprland1](https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/header.svg)
 
+</div>
 Hyprland is a modern, dynamic Wayland compositor featuring both tiling and floating window management, with smooth animations and deep customization. It replaces both the window manager and the compositor, making it ideal for advanced users seeking a minimal and responsive Wayland setup.
 
 I separated my configuration into several files :
@@ -61,7 +64,11 @@ I separated my configuration into several files :
  - [theme](.config/hypr/config/theme.conf) : general theming such as blur or inactive timeout for the cursor.
  - [anim](.config/hypr/config/anim) : it's a folder containing some amimations files, i choose one of those in my import list in [hyprland.conf](.config/hypr/hyprland.conf)
 
+<div align = center>
+
 ### Web Browser *****QUTEBROWSER*****
+
+</div>
 
 ![Qutebrowser1](wallpapers/qutebrowser1.png)
 
