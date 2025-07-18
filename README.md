@@ -1,4 +1,8 @@
+<div align = center>
+
 # Sam's Dotfiles ***NEBULIX*** WIP
+
+
 
 My personal Linux dotfiles
 
@@ -12,6 +16,8 @@ I use Arch btw.
 
 
 [Showcase video](https://files.catbox.moe/v6n30o.mp4)
+
+</div>
 
 ## Note on this repository
 
