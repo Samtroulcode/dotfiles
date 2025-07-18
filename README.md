@@ -4,9 +4,8 @@ My personal Linux dotfiles
 
 I use Arch btw.
 
-| exemple 1 | exemple 2 |
-| ---- | ---- |
 | ![Nebulix1](wallpapers/nebulix-watch1.png) | ![Nebulix2](wallpapers/nebulix-watch2.png) |
+| ---- | ---- |
 | ![Nebulix3](wallpapers/nebulix-bar1.png) | ![Nebulix4](wallpapers/nebulix-bar2.png) |
 | ![Nebulix3](wallpapers/nebulix-wave1.png) | ![Nebulix4](wallpapers/nebulix-wave2.png) |
 | ![Nebulix3](wallpapers/nebulix-city1.png) | ![Nebulix4](wallpapers/nebulix-city2.png) |
@@ -24,7 +23,7 @@ The root of this repo is an equivalent to my $HOME directory
 
 | Tool | Name/site | repository | config | doc |
 | ---- | ---- | ---- | ---- | ---- |
-| wayland compositer | [Hyprland](https://hypr.land/) | [github](https://github.com/hyprwm/Hyprland) | [hypr](.config/hypr) | WIP |
+| wayland compositer | [Hyprland](https://hypr.land/) | [github](https://github.com/hyprwm/Hyprland) | [hypr](.config/hypr) | [section](#hyprland) |
 | web browser | [Qutebrowser](https://www.qutebrowser.org/) | [github](https://github.com/qutebrowser/qutebrowser) | [qutebrowser](.config/qutebrowser) | [section](#web-browser-qutebrowser) |
 | terminal | [Kitty](https://sw.kovidgoyal.net/kitty/) | [github](https://github.com/kovidgoyal/kitty) | [kitty](.config/kitty) | WIP |
 | shell | [Oh my zsh](https://ohmyz.sh/) | [github](https://github.com/ohmyzsh/ohmyzsh) | [zsh](.config/zsh)/[zshrc](.zshrc) | WIP |
@@ -39,7 +38,13 @@ The root of this repo is an equivalent to my $HOME directory
 | Text editor/IDE | [Nvim](https://neovim.io/) | [github](https://github.com/neovim/neovim) | [nvim](.config/nvim) | WIP |
 | Nvim framework | [LazyVim](http://www.lazyvim.org/) | [github](https://github.com/LazyVim/LazyVim) | [lazyvim](.config/nvim) | WIP |
 
-### Web Browser ***QUTEBROWSER***
+### Window manager *****HYPRLAND*****
+
+![Hyprland1](https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/header.svg)
+
+Hyprland is a modern, dynamic Wayland compositor featuring both tiling and floating window management, with smooth animations and deep customization. It replaces both the window manager and the compositor, making it ideal for advanced users seeking a minimal and responsive Wayland setup.
+
+### Web Browser *****QUTEBROWSER*****
 
 ![Qutebrowser1](wallpapers/qutebrowser1.png)
 
