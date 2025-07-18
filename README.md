@@ -16,6 +16,7 @@ I use Arch btw.
 
 ## Note on this repository
 
+</div>
 I use this repo to sync and backup my dotfiles.
 
 The root of this repo is an equivalent to my $HOME directory
@@ -23,6 +24,7 @@ The root of this repo is an equivalent to my $HOME directory
   > [!WARNING]
   > THIS IS NOT A PLUG AND PLAY DOTFILES ! There's no install scripts or step by step guide to install my files, you should know what you do if you want to use it. I only explain how my files are organized, and some tips with some tools. The comments in my files are mainly **IN FRENCH**
 
+<div align = center>
 ## List of tools used
 
 | Tool | Name/site | repository | config | doc |
