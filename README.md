@@ -50,6 +50,17 @@ The root of this repo is an equivalent to my $HOME directory
 
 Hyprland is a modern, dynamic Wayland compositor featuring both tiling and floating window management, with smooth animations and deep customization. It replaces both the window manager and the compositor, making it ideal for advanced users seeking a minimal and responsive Wayland setup.
 
+I separated my configuration into several files :
+ - [hyprland](.config/hypr/hyprland.conf) : contains monitor informations, some general settings, and other configuration files imports
+ - [env](.config/hypr/config/env.conf) : contains environment variables such as nvidia required variables, hyprcursor theme or keyboard layout
+ - [start](.config/hypr/config/start.conf) : contains exec-once entries such as notification daemon or launch scripts
+ - [var](.config/hypr/config/var.conf) : contains hyprland variables such as my terminal or file manager.
+ - [key](.config/hypr/config/key.conf) : my keybindings
+ - [colors](.config/hypr/config/colors.conf) : my color configuration linked with wallust, since is dynamicly generated when i change my wallpapers, i didn't push it to my git. (see [wallust] section)
+ - [window](.config/hypr/config/window.conf) : some window rules for apps (like spf floating instead of tilling)
+ - [theme](.config/hypr/config/theme.conf) : general theming such as blur or inactive timeout for the cursor.
+ - [anim](.config/hypr/config/anim) : it's a folder containing some amimations files, i choose one of those in my import list in [hyprland.conf](.config/hypr/hyprland.conf)
+
 ### Web Browser *****QUTEBROWSER*****
 
 ![Qutebrowser1](wallpapers/qutebrowser1.png)
