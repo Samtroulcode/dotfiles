@@ -5,3 +5,5 @@
 .config/nvim/lazy-lock.json
 .config/qutebrowser/qsettings/QtProject.conf
 .config/hypr/config/colors.conf
+.config/superfile/theme/wallust.toml
+.config/wofi/wallust-style.css
