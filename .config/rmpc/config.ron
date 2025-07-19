@@ -146,24 +146,31 @@
         (
             name: "Queue",
             pane: Split(
-                direction: Vertical,
+                direction: Horizontal,
                 panes: [
                     (
-                        size: "85%",
-                        pane: Split(
-                            direction: Horizontal,
-                            panes: [
-                                (size: "40%", pane: Pane(AlbumArt)),
-                                (size: "60%", pane: Pane(Queue)),
-                            ],
-                        ),
-                    ),
+                        size: "40%", 
+                        borders: "RIGHT",
+                        pane: Pane(AlbumArt)),
                     (
-                        size: "15%",
-                        pane: Pane(Cava),
-                    ),
+                        size: "60%",
+                        pane: Split(
+                            direction: Vertical,
+                            panes: [
+                                (
+                                    size: "80%",
+                                    pane: Pane(Queue)
+                                ),
+                                (
+                                    size: "20%",
+                                    borders: "TOP",
+                                    pane: Pane(Cava)
+                                ),
+                            ]
+                        )
+                    )
                 ],
-              ),
+            ),
         ),
         (
             name: "Directories",
