@@ -47,7 +47,7 @@ alpha = 80
 hypr = { src = "hyprland-colors.conf", dst = "~/.config/hypr/config/colors.conf" }
 kitty = { src='kitty.conf', dst='~/.config/kitty/colors.conf'}
 waybar = { src = "waybar-colors.css", dst = "~/.config/waybar/colors.css" }
-rofi = { src = "rofi.rasi", dst = "~/.config/rofi/colors.rasi" }
+wofi = { src = "wofi.css", dst = "~/.config/wofi/wallust-style.css" }
 btop = { src = "btop.theme", dst = "~/.config/btop/themes/wallust.theme"}
 nvim = { src = "neopywal.vim", dst = "~/.cache/wal/colors-wal.vim"}
 discord = { src = "colors-discord.css", dst = "~/.cache/wallust/discord-colors.css" }

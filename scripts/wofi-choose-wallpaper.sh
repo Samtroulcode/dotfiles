@@ -54,6 +54,7 @@ selected=$(
     --sort-order=default \
     --prompt "Select Wallpaper" \
     --location "top" \
+    --style ~/.config/wofi/wallust-style.css \
     --conf ~/.config/wofi/wallpaper.conf
 )
 
