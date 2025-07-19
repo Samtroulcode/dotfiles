@@ -15,9 +15,9 @@
   // Rofi Application Launcher
   "custom/appmenu": {
     "format": "󰣇",
-    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings",
-    "on-click": "~/.config/rofi/launchers/type-2/launcher.sh; hyprctl dispatch focuswindow '^(Rofi)'",
-    //"on-click": "rofi -show drun -replace & sleep 0.2; hyprctl dispatch focuswindow '^(Rofi)'",
+    "tooltip-format": "Open the application launcher
+    // \nRight: Show all keybindings",
+    "on-click": "wofi --show drun --allow-images --width 450 --height 400 --style ~/.config/wofi/wallust-style.css; hyprctl dispatch focuswindow '^(Wofi)'",
     "on-click-right": "~/.config/notscripter/scripts/keybindings.sh",
     "tooltip": false
   },
@@ -31,13 +31,26 @@
     "tooltip": false
   },
 
-//"custom/notification": {
-//  "format": "", // Icône simple de notification
-//  "tooltip": false,
-//  "on-click": "makoctl dismiss", // Clique = efface toutes les notifs
-//  "on-click-right": "notify-send '🔔 test' 'Test de notification Mako'",
-//  "interval": 0
-//},
+  "custom/notification": {
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<sup></sup>",
+      "none": "",
+      "dnd-notification": "<sup></sup>",
+      "dnd-none": "",
+      "inhibited-notification": "<sup></sup>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<sup></sup>",
+      "dnd-inhibited-none": ""
+    },
+    "tooltip": false,
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
 
   // Keyboard State
   //"keyboard-state": {
