@@ -29,9 +29,9 @@ echo
 echo "[*] Paquets orphelins (pacman) :"
 orphans=$(pacman -Qdtq 2>/dev/null || true)
 if [[ -n "$orphans" ]]; then
-    echo "$orphans"
+  echo "$orphans"
 else
-    echo "Aucun paquet orphelin"
+  echo "Aucun paquet orphelin"
 fi
 echo
 
@@ -67,7 +67,7 @@ echo
 
 # Montages principaux
 echo "[*] Montages principaux (/ et /home) :"
-mount | grep -E ' / |/home'
+duf
 echo
 
 # Etat du swap
@@ -85,9 +85,9 @@ echo
 
 # Statut du pare-feu (ufw)
 if command -v ufw &>/dev/null; then
-    echo "[*] Statut UFW :"
-    sudo ufw status
-    echo
+  echo "[*] Statut UFW :"
+  sudo ufw status
+  echo
 fi
 
 # Locales activées
@@ -107,4 +107,3 @@ grep '^HOOKS=' /etc/mkinitcpio.conf
 echo
 
 echo "=== Fin de l'audit ==="
-
