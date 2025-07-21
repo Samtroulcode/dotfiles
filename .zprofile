@@ -1,14 +1,7 @@
 # Priorité aux scripts et binaires locaux
 export PATH="$HOME/scripts:$HOME/.local/bin:$PATH"
 
-# if [[ $XDG_VTNR -eq 1 ]]; then
-#     export XDG_SESSION_TYPE=wayland
-#     export XDG_CURRENT_DESKTOP=Hyprland
-#     export XDG_SESSION_DESKTOP=Hyprland
-#     exec uwsm --force start hyprland.desktop
-# else
-#     exec zsh
-# fi
+[[ "$(tty)" == "/dev/tty1" ]] && exec uwsm start Hyprland
 
 export GTK_THEME=Adwaita-dark
 export GTK_APPLICATION_PREFER_DARK_THEME=1
