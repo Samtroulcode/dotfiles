@@ -10,9 +10,9 @@ window {
 button {
   border-radius: 25px;
   border-color: black;
-	text-decoration-color: #B4A193;
-  color: #F5F7EB;
-	background-color: #000104;
+	text-decoration-color: {{cursor}};
+  color: {{foreground}};
+	background-color: {{background}};
 	border-style: solid;
 	border-width: 1px;
 	background-repeat: no-repeat;
@@ -22,7 +22,7 @@ button {
 }
 
 button:focus, button:active, button:hover {
-	background-color: #744C3A;
+	background-color: {{color2}};
   border-radius: 25px;
   background-size: 20%;
 }
