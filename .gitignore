@@ -7,3 +7,5 @@
 .config/hypr/config/colors.conf
 .config/superfile/theme/wallust.toml
 .config/wofi/wallust-style.css
+.config/wlogout/style.css
+.config/wofi/style.css
