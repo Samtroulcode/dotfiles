@@ -16,7 +16,7 @@ swww img "$WALL" --transition-type wipe --transition-fps 60 --transition-duratio
 wallust run "$WALL"
 
 # 3. Récupérer la couleur accent
-COLOR=$(jq -r '.accent' ~/.cache/wallust/colors.json)
+COLOR=$(jq -r '.accent' ~/.cache/wal/colors.json)
 
 # 4. Créer le dossier si absent
 mkdir -p "$OUTPUT_DIR"

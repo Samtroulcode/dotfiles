@@ -1,4 +1,4 @@
-@import url("colors.css");
+@import url("/home/sam/.cache/wal/waybar-colors.css");
 @define-color rosewater #f5e0dc;
 @define-color flamingo #f2cdcd;
 @define-color pink #f5c2e7;
@@ -41,7 +41,7 @@
 button {
   min-width: 32px;
   min-height: 32px;
-  border-radius: 0px;
+  border-radius: 5px;
   color: @cursor;
   transition:
     all 50ms cubic-bezier(0.55, 0, 0.28, 1.682),
@@ -75,7 +75,7 @@ window#waybar.empty #window {
 #custom-vpn {
   background-color: @surface;
   padding: 0 8px;
-  border-radius: 0px;
+  border-radius: 5px;
   min-width: 32px;
   min-height: 32px;
   font-size: 18px;
@@ -91,7 +91,7 @@ window#waybar.empty #window {
 #workspaces,
 #custom-notification {
   background-color: @surface;
-  border-radius: 0px;
+  border-radius: 5px;
   color: @cursor;
 }
 
