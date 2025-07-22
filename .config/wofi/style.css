@@ -1,27 +1,47 @@
-* {
-  font-family: JetBrainsMono Nerd Font;
-  font-size: 14px;
-  color: #cccccc;
-  background-color: transparent;
-}
-
-#window {
-  background-color: rgba(20, 20, 20, 0.95);
-  padding: 10px;
+window {
+    background-color: #1e1e2e;
+    border-radius: 8px;
+    border: 2px solid #313244;
 }
 
 #input {
-  background-color: rgba(40, 40, 40, 0.7);
-  border: none;
-  padding: 5px;
-  margin-bottom: 10px;
+    margin: 2px;
+    padding: 4px;
+    border-radius: 4px;
+    border: none;
+    background-color: #313244;
+    color: #cdd6f4;
+}
+
+#inner-box {
+  margin: 0px;
+}
+
+#outer-box {
+  margin: 0px;
+}
+
+#scroll {
+  margin: 0px;
+}
+
+#text {
+  margin: 2px;
+  color: #cdd6f4;
 }
 
 #entry {
-  padding: 5px 10px;
+  padding: 2px;
+  margin: 0px;
+  border-radius: 4px;
 }
 
 #entry:selected {
-  background-color: rgba(100, 100, 255, 0.5);
+  background-color: #313244;
 }
 
+#img {
+  margin: 2px;
+  padding-left: 4px;
+  border-radius: 4px;
+}
