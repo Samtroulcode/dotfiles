@@ -52,5 +52,5 @@ btop = { src = 'btop.theme', dst = '~/.config/btop/themes/wallust.theme'}
 nvim = { src = 'neopywal.vim', dst = '~/.cache/wal/colors-wal.vim'}
 discord = { src = 'colors-discord.css', dst = '~/.cache/wallust/discord-colors.css' }
 superfile = { src = 'superfile.toml', dst = '~/.config/superfile/theme/wallust.toml' }
-qutebrowser = { src = 'qutebrowser.py', dst = '~/.config/qutebrowser/themes/wallust-colors.py'}
+qutebrowser = { src = 'qutebrowser.py', dst = '~/.cache/wal/wallust-colors.py'}
 json = { src = 'colors.json', dst = '~/.cache/wal/colors.json' } # pour les scripts comme le logo du neofetch

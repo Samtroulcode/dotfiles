@@ -1,5 +1,5 @@
 # Appliquer le thème
-config.source('themes/wallust-colors.py')
+config.source('/home/sam/.cache/wal/wallust-colors.py')
 config.load_autoconfig(False)
 
 # passe par le proxy microsock qui est connecter via veth au namespace vpn
