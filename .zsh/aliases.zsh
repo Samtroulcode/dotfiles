@@ -67,6 +67,7 @@ alias ipv6-off='~/scripts/toggle-ipv6.sh off'
 alias ipv6-on='~/scripts/toggle-ipv6.sh on'
 alias audit-net='~/scripts/audit-network.sh'
 alias change-wall='~/.config/wallust/set_wall.sh'
+alias proxy-up='~/scripts/setup-vpn-proxy.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
