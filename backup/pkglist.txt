@@ -1,4 +1,5 @@
 amd-ucode
+arch-audit
 base
 base-devel
 bat
@@ -10,6 +11,7 @@ cava
 dkms
 dnscrypt-proxy
 duf
+durdraw
 dust
 efibootmgr
 eza
@@ -27,7 +29,7 @@ hyprland-git
 hyprlock
 hyprpicker
 hyprshot
-inetutils
+imagemagick
 iotop
 iptables-nft
 kitty
@@ -42,7 +44,7 @@ libxcrypt-compat
 linux
 linux-firmware
 linux-headers
-mako
+lynis
 man-db
 man-pages-fr
 microsocks
@@ -50,7 +52,6 @@ mpc
 mpd
 mpd-notification
 mpv
-ncmpcpp
 neofetch
 neovim
 nmap
@@ -60,8 +61,6 @@ noto-fonts-emoji
 nsxiv
 nvidia-dkms
 nvidia-settings
-nvtop
-openbsd-netcat
 openssh
 os-prober
 pacman-contrib
@@ -84,26 +83,27 @@ qt6-virtualkeyboard
 qt6-wayland
 qutebrowser
 ripgrep
+rkhunter
+rmpc
 rng-tools
-rofi
 rose-pine-hyprcursor
 rsync
 sc-im
-sddm
 slurp
 snap-pac
 snapper
 sshfs
 starship
 steam
+stow
 streamlink
 superfile
 swaync
 swww
 syncthing
+sysstat
 tectonic
 termshark
-themecord
 tor
 ttf-jetbrains-mono-nerd
 uwsm
@@ -116,6 +116,7 @@ wget
 wireguard-tools
 wireplumber
 wireshark-cli
+wofi
 xcb-imdkit
 xdg-desktop-portal-hyprland
 xdg-utils
