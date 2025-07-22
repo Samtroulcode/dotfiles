@@ -27,7 +27,7 @@
     "format": " ",
     "tooltip-format": "Powermenu",
     "on-click": "~/.config/rofi/powermenu/type-2/powermenu.sh; hyprctl dispatch focuswindow '^(Rofi)'",
-    //"on-click": "wlogout",
+    "on-click": "wlogout -b 2 -r 50 -c 50",
     "tooltip": false
   },
 
