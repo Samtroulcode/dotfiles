@@ -81,7 +81,8 @@ if [ -n "$selected" ]; then
   if [ -n "$original_path" ]; then
     /home/sam/.config/wallust/set_wall.sh "$original_path"
     echo "$original_path" >"$HOME/.cache/current_wallpaper"
-    systemctl --user restart --now swaync.service # restart du service pour prendre en compte les nouvelles couleurs
+    systemctl --user restart --now swaync.service                        # restart du service pour prendre en compte les nouvelles couleurs
+    mpd-notification --notification-file-workaround -m ~/Storage/Music & # pour que les notifs mdp soit reprise en compte
     notify-send "Wallpaper" "Wallpaper has been updated" -i "$original_path"
   else
     notify-send "Wallpaper Error" "Could not find the original wallpaper file."
