@@ -10,6 +10,7 @@ alias fucking='sudo'
 alias indent='shfmt -w -i 2'
 alias dufs='/usr/bin/duf --hide special'
 alias reload='clear && source ~/.zshrc'
+alias record='wf-recorder --audio=alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -f'
 
 # Aliases de maintenance
 alias update='sudo pacman -Syu'
