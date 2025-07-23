@@ -54,5 +54,6 @@ discord = { src = 'colors-discord.css', dst = '~/.cache/wallust/discord-colors.c
 superfile = { src = 'superfile.toml', dst = '~/.config/superfile/theme/wallust.toml' }
 qutebrowser = { src = 'qutebrowser.py', dst = '~/.cache/wal/wallust-colors.py' }
 wlogout = { src = 'wlogout.css', dst = '~/.config/wlogout/style.css'}
+hyprlock = { src = 'hyprlock-colors.conf', dst='~/.cache/wal/hyprlock-colors.conf'}
 # swaync = { src = 'swaync.css', dst = '~/.config/swaync/style.css' }
 json = { src = 'colors.json', dst = '~/.cache/wal/colors.json' } # pour les scripts comme le logo du neofetch
