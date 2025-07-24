@@ -23,6 +23,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Aliases de snapshot
 [[ -f ~/.zsh/snapper.zsh ]] && source ~/.zsh/snapper.zsh
 
+# Ai intergations
+[[ -f ~/.zsh/ai/integration.zsh ]] && source ~/.zsh/ai/integration.zsh
+[[ -f ~/.zsh/ai/completion.zsh ]] && source ~/.zsh/ai/completion.zsh
+
 # PATH utilisateur en priorité
 export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/bin/mpv-tools/TOOLS:$PATH"
 
@@ -34,40 +38,45 @@ autoload -U compinit && compinit
 setopt inc_append_history share_history hist_verify
 setopt hist_ignore_all_dups hist_reduce_blanks
 
-# Git
-if command -v git &> /dev/null; then
-  alias g='git'
-  alias gs='git status'
-  alias ga='git add'
-  alias gc='git commit -m'
-  alias gp='git push'
-  alias gl='git log --oneline --graph --decorate --all'
-fi
-
 # Affichage neofetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
   neofetch
 fi
 
-# zoxide (autojump moderne)
-cd() {
-  if [[ $# -eq 0 || "$1" == "-" || "$1" == "." || "$1" == ".." || "$1" == /* || -d "$1" ]]; then
-    builtin cd "$@"
-  else
-    zoxide cd "$@"
-  fi
-}
-
 # Initialiser Starship prompt
 eval "$(starship init zsh)"
 
+# Initialiser zoxide
+eval "$(zoxide init zsh)"
+
+# Initialiser mcfly
+eval "$(mcfly init zsh)"
+
+# IA sam-arch
+# Dossier de session : ~/.config/aichat/sessions/sam_sys.json
+sai() {
+  ~/scripts/sysinfo-refresh.sh               # met à jour /tmp/sysinfo.txt
+
+  # Fichiers communs (infos système)
+  local files=( -f /tmp/sysinfo.txt )
+
+  # Si l’entrée provient d’un pipe, AIChat lira STDIN tout seul.
+  # Rien à ajouter : pas de -f /dev/stdin, pas de tmpfile.
+
+  aichat -s sam_sys --save-session \
+         -r sam "${files[@]}" "$@"
+}
+
 # pour faire un cd on exit avec spf
-expl() {
-    /usr/bin/spf "$@"
-    local spf_cd_file="/tmp/spf-cd-path"
-    if [ -f "$spf_cd_file" ]; then
-        cd "$(cat "$spf_cd_file")"
-    fi
+spf() {
+    export SPF_LAST_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/superfile/lastdir"
+
+    command spf "$@"
+
+    [ ! -f "$SPF_LAST_DIR" ] || {
+        . "$SPF_LAST_DIR"
+        rm -f -- "$SPF_LAST_DIR" > /dev/null
+    }
 }
 
 ##################
