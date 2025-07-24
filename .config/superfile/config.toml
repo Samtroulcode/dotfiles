@@ -2,25 +2,25 @@
 #
 # change your theme
 theme = 'wallust'
-# 
+#
 # The editor files will be opened with. (Leave blank to use the EDITOR environment variable).
-editor = "nvim"
-# 
+editor = ""
+#
 # The editor directories will be opened with. (Leave blank to use the default editors).
 dir_editor = ""
 #
 # Auto check for update
 auto_check_update = true
-# 
+#
 # Cd on quit (For more details, please check out https://superfile.netlify.app/configure/superfile-config/#cd_on_quit)
-cd_on_quit = true
+cd_on_quit =true 
 #
 # Whether to open file preview automatically every time superfile is opened.
 default_open_file_preview = true
 #
 # Whether to show image preview
 show_image_preview = true
-# 
+#
 #
 # Whether to hide additional footer info for file panel.
 show_panel_footer_info = true
@@ -46,17 +46,20 @@ shell_close_on_success = false
 # Whether to enable debug mode.
 debug = false
 #
+# Whether to ignore warnings about missing fields in the config file.
+ignore_missing_fields = false
+#
 # ================   Style =================
 #
 # Whether to use the builtin syntax highlighting with chroma or use bat. Values: "" for builtin chroma, "bat" for bat
 code_previewer = ''
-# 
+#
 # If you don't have or don't want Nerdfont installed you can turn this off
 nerdfont = true
 #
 # Set transparent background or not (this only work when your terminal background is transparent)
 transparent_background = true
-# 
+#
 # File preview width allow '0' (this mean same as file panel),'x' x must be from 2 to 10 (This means that the width of the file preview will be one xth of the total width.)
 file_preview_width = 0
 #
@@ -64,7 +67,7 @@ file_preview_width = 0
 sidebar_width = 20
 #
 # Border style
-# Make sure to add strings exactly one character wide. Use ' ' for borderless 
+# Make sure to add strings exactly one character wide. Use ' ' for borderless
 border_top = '─'
 border_bottom = '─'
 border_left = '│'
@@ -75,22 +78,15 @@ border_bottom_left = '╰'
 border_bottom_right = '╯'
 border_middle_left = '├'
 border_middle_right = '┤'
-# 
-# ==========PLUGINS========== #
-# 
+#
+# ========== PLUGINS ========== #
+# Plugins means that you need to install some external dependencies to use them.
+#
 # Show more detailed metadata, please install exiftool before enabling this plugin!
 metadata = false
 #
 # Enable MD5 checksum generation for files
 enable_md5_checksum = false
-
-# ========File manager====== #
-[open]
-default = "nvim {path}"
-
-[open.extensions]
-mkv = "mpv --fs --hwdec=auto {path}"
-mp4 = "mpv --fs --hwdec=auto {path}"
-avi = "mpv --fs --hwdec=auto {path}"
-webm = "mpv --fs --hwdec=auto {path}"
-
+#
+# Zoxide support for the fast navigation
+zoxide_support = true
