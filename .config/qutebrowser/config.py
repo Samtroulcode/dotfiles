@@ -51,6 +51,12 @@ c.url.searchengines = {
 config.bind(',yt', 'hint links spawn /home/sam/bin/mpv-tools/TOOLS/umpv --enqueue {hint-url}')
 config.bind(',tw', 'hint links spawn streamlink --player mpv {hint-url} best')
 
+# télécharger des vidéos/playlist/mp3
+config.bind(',vd', 'hint links spawn yt-dlp --embed-thumbnail --add-metadata -o "~/Videos/%(uploader)s/%(title)s.%(ext)s" {hint-url}')
+config.bind(',vpl', 'hint links spawn yt-dlp --embed-thumbnail --add-metadata -o "~/Videos/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" {hint-url}')
+config.bind(',mp', 'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Tracks/%(title)s.%(ext)s" {hint-url}')
+config.bind(',mpl', 'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s" {hint-url}')
+
 # dark mode
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
