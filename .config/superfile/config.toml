@@ -13,7 +13,7 @@ dir_editor = ""
 auto_check_update = true
 #
 # Cd on quit (For more details, please check out https://superfile.netlify.app/configure/superfile-config/#cd_on_quit)
-cd_on_quit =true 
+cd_on_quit = true
 #
 # Whether to open file preview automatically every time superfile is opened.
 default_open_file_preview = true
@@ -26,7 +26,7 @@ show_image_preview = true
 show_panel_footer_info = true
 #
 # The path of the first file panel when superfile is opened.
-default_directory = "."
+default_directory = "~"
 #
 # Display file sizes using powers of 1000 (kB, MB, GB) instead of powers of 1024 (KiB, MiB, GiB).
 file_size_use_si = false
@@ -83,7 +83,7 @@ border_middle_right = '┤'
 # Plugins means that you need to install some external dependencies to use them.
 #
 # Show more detailed metadata, please install exiftool before enabling this plugin!
-metadata = false
+metadata = true
 #
 # Enable MD5 checksum generation for files
 enable_md5_checksum = false
