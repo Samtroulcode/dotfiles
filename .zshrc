@@ -63,8 +63,15 @@ sai() {
   # Si l’entrée provient d’un pipe, AIChat lira STDIN tout seul.
   # Rien à ajouter : pas de -f /dev/stdin, pas de tmpfile.
 
-  aichat -s sam_sys --save-session \
-         -r sam "${files[@]}" "$@"
+  aichat -m ollama:nebulix:latest -s nebulix --save-session "${files[@]}" "$@"
+}
+
+nebulix() {
+  aichat -m ollama:nebulix:latest -s nebulix --save-session "$@"
+}
+
+trad() {
+  aichat -m ollama:traductor:latest "$@"
 }
 
 # pour faire un cd on exit avec spf
