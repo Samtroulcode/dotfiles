@@ -1,13 +1,13 @@
 :root {
-  --cc-bg: rgba({{color0 | rgb}}, 0.7);
+  --cc-bg: rgba({{color1 | rgb}}, 0.7);
   --noti-border-color: rgba({{foreground | rgb}}, 0.15);
-  --noti-bg: {{color0 | rgb}}; /* utilisé uniquement si RGB attendu */
+  --noti-bg: {{color1 | rgb}}; /* utilisé uniquement si RGB attendu */
   --noti-bg-alpha: 0.8;
   --noti-bg-darker: rgb({{color1 | rgb}});
   --noti-bg-hover: rgb({{color2 | rgb}});
   --noti-bg-focus: rgba({{color2 | rgb}}, 0.6);
-  --noti-close-bg: rgb({{color3 | rgb}});
-  --noti-close-bg-hover: rgb({{color4 | rgb}});
+  --noti-close-bg: rgb({{color1 | rgb}});
+  --noti-close-bg-hover: rgb({{color2 | rgb}});
   --text-color: rgb({{foreground | rgb}});
   --text-color-disabled: rgb({{color7 | rgb}});
   --bg-selected: rgb({{background | rgb}});
