@@ -57,6 +57,10 @@ config.bind(',vpl', 'hint links spawn yt-dlp --embed-thumbnail --add-metadata -o
 config.bind(',mp', 'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Tracks/%(title)s.%(ext)s" {hint-url}')
 config.bind(',mpl', 'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s" {hint-url}')
 
+# Cache/affiche les onglets
+config.bind(',tn', 'set tabs.show never')
+config.bind(',ta', 'set tabs.show always')
+
 # dark mode
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
