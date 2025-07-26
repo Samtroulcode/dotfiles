@@ -529,3 +529,38 @@
   margin: 8px;
   border-radius: 12px;
 }
+
+/* Taille/arrondi des boutons MPRIS */
+.widget-mpris .widget-mpris-player button {
+  border-radius: 8px;
+  padding: 6px;
+}
+.widget-mpris .widget-mpris-player button image {
+  -gtk-icon-size: 18px;
+}
+
+/* Remplace les pictos (adapte l’ordre des :nth-child() après inspection) */
+.widget-mpris .widget-mpris-player button:nth-child(1) image {
+  -gtk-icon-source: -gtk-icontheme("media-skip-backward-symbolic");
+}
+.widget-mpris .widget-mpris-player button:nth-child(2) image {
+  -gtk-icon-source: -gtk-icontheme("media-playback-start-symbolic");
+}
+.widget-mpris .widget-mpris-player button:nth-child(3) image {
+  -gtk-icon-source: -gtk-icontheme("media-skip-forward-symbolic");
+}
+
+/* Réduit et masque l'image (icône) à l'intérieur du contenu de bouton */
+.widget-mpris .widget-mpris-player button buttoncontent image {
+  -gtk-icon-size: 0;  /* icône à 0px */
+  opacity: 0;         /* au cas où */
+}
+
+/* Évite de garder des espaces vides autour des boutons */
+.widget-mpris .widget-mpris-player button {
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  border-width: 0;
+}
