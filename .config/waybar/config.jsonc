@@ -26,7 +26,6 @@
   ],
   "modules-right": [
     "group/media",
-    // "mpd",
     "group/sound",
     "group/hardware",
     "custom/vpn",
