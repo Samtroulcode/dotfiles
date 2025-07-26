@@ -7,6 +7,9 @@ export GTK_THEME=Adwaita-dark
 export GTK_APPLICATION_PREFER_DARK_THEME=1
 export GDK_BACKEND=wayland
 
+# Pour zk
+export ZK_NOTEBOOK_DIR="$HOME/Documents/Notes"
+
 # Pour que Steam tourne en Wayland avec la couche XWayland
 export SDL_VIDEODRIVER=wayland
 export GDK_BACKEND=wayland,x11
