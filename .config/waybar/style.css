@@ -1,23 +1,8 @@
 @import url("/home/sam/.cache/wal/waybar-colors.css");
-@define-color rosewater #f5e0dc;
-@define-color flamingo #f2cdcd;
-@define-color pink #f5c2e7;
-@define-color mauve #cba6f7;
-@define-color red #f38ba8;
-@define-color maroon #eba0ac;
-@define-color peach #fab387;
-@define-color yellow #ffbe76;
-@define-color green #a6e3a1;
-@define-color teal #94e2d5;
-@define-color sky #89dceb;
-@define-color sapphire #74c7ec;
-@define-color blue #304774;
-@define-color lavender #b4befe;
 
 @define-color base alpha(#000000, 0.1);
 /* @define-color surface alpha(@lavender, 0.15); */
 @define-color surface alpha(#000000, 0.5);
-@define-color text #efe6d0;
 @define-color hoverBg alpha(@blue, 1);
 @define-color hoverFg #000000;
 @define-color activeBg alpha(@blue, 1);
@@ -51,7 +36,7 @@ button {
 
 button:hover {
   color: @cursor;
-  background: @color3;
+  background: @color2;
 }
 
 button.active {
@@ -90,7 +75,7 @@ window#waybar.empty #window {
 #window,
 #workspaces,
 #custom-notification {
-  background-color: @surface;
+  background-color: @background;
   border-radius: 5px;
   color: @cursor;
 }
@@ -178,4 +163,23 @@ label:focus {
 }
 
 #quicklinks {
+}
+
+#custom-vpn:hover,
+#custom-notification:hover,
+#sound:hover,
+#hardware:hover,
+#clock:hover,
+#custom-appmenu:hover,
+#custom-quicklink1:hover,
+#custom-quicklink2:hover,
+#custom-quicklink3:hover,
+#custom-quicklink4:hover,
+#custom-quicklink5:hover,
+#custom-quicklink6:hover {
+  background-color: @color2;
+  color: @cursor;
+  transition:
+    all 50ms cubic-bezier(0.55, 0, 0.28, 1.682),
+    background-color 150ms ease-in-out;
 }
