@@ -1,7 +1,23 @@
 {
   "group/media": {
     "orientation": "horizontal",
-    "modules": []
+    "modules": [
+      "mpd"
+    ]
+  },
+  "mpd": {
+    "format": "{stateIcon}",
+    "format-disconnected": "{stateIcon} Disconnected",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped",
+    "interval": 2,
+    "state-icons": {
+        "paused": "󰝛 Paused",
+        "playing": " Playing"
+    },
+    "tooltip-format": "{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+    "tooltip-format-disconnected": "MPD (disconnected)",
+    "on-click-right": "playerctl play-pause",
+    "on-click": "kitty --title music -e rmpc"
   }
 }
 

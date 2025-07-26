@@ -22,10 +22,10 @@
     "tray"
   ],
   "modules-center": [
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "group/media"
   ],
   "modules-right": [
-    "group/media",
     "group/sound",
     "group/hardware",
     "custom/vpn",

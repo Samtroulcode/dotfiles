@@ -57,6 +57,7 @@ window#waybar.empty #window {
   margin-right: 8px;
 }
 
+#media,
 #custom-vpn {
   background-color: @surface;
   padding: 0 8px;
@@ -74,6 +75,7 @@ window#waybar.empty #window {
 #clock,
 #window,
 #workspaces,
+#media,
 #custom-notification {
   background-color: @background;
   border-radius: 5px;
@@ -171,6 +173,7 @@ label:focus {
 #hardware:hover,
 #clock:hover,
 #custom-appmenu:hover,
+#media:hover,
 #custom-quicklink1:hover,
 #custom-quicklink2:hover,
 #custom-quicklink3:hover,
@@ -182,4 +185,21 @@ label:focus {
   transition:
     all 50ms cubic-bezier(0.55, 0, 0.28, 1.682),
     background-color 150ms ease-in-out;
+}
+
+tooltip {
+  background-color: @color1;
+  color: @cursor;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 6px 10px;
+  box-shadow: 0 0 10px 2px @shadow;
+  border: 2px solid @color2;
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+tooltip label {
+  color: @cursor;
 }
