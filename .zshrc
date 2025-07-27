@@ -49,13 +49,6 @@ export VISUAL=nvim
 [[ -f ~/.zsh/custom/cleantmp.zsh ]] && source ~/.zsh/custom/cleantmp.zsh # petit clean de logs, tmp et bak
 [[ -f ~/.zsh/custom/detach.zsh ]] && source ~/.zsh/custom/detach.zsh # pour détacher complétement un process du shell
 
-# Ai intergations
-[[ -f ~/.zsh/ai/integration.zsh ]] && source ~/.zsh/ai/integration.zsh
-[[ -f ~/.zsh/ai/completion.zsh ]] && source ~/.zsh/ai/completion.zsh
-[[ -f ~/.zsh/ai/sai.zsh ]] && source ~/.zsh/ai/sai.zsh
-[[ -f ~/.zsh/ai/nebulix.zsh ]] && source ~/.zsh/ai/nebulix.zsh
-[[ -f ~/.zsh/ai/trad.zsh ]] && source ~/.zsh/ai/trad.zsh
-
 # Theme d'autocomplétion zsh
 [[ -f ~/.zsh/themes/drac.zsh ]] && source ~/.zsh/themes/drac.zsh
 
