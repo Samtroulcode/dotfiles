@@ -29,7 +29,7 @@ c.content.headers.accept_language = "en-US,en;q=0.5"
 c.content.canvas_reading = False
 
 # url de start page
-c.url.start_pages = ['http://sam-portal/board']
+c.url.start_pages = ['http://sam-searxng:8080']
 
 # url de recherches
 c.url.searchengines = {
@@ -41,6 +41,7 @@ c.url.searchengines = {
     "wp": "https://fr.wikipedia.org/w/index.php?search={}",
     "gh": "https://github.com/search?o=desc&q={}&s=stars",
     "tmdb": "https://www.themoviedb.org/search?query={}",
+    "rd": "https://www.reddit.com/search/?q={}",
     "libgen": "https://libgen.rs/search.php?req={}",
     "hn": "https://hn.algolia.com/?q={}",
     "dc": "https://digitalcore.club/search?search={}",
@@ -60,6 +61,11 @@ config.bind(',mpl', 'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumb
 # Cache/affiche les onglets
 config.bind(',tn', 'set tabs.show never')
 config.bind(',ta', 'set tabs.show always')
+
+# binds go-pass
+config.bind(',gp', 'spawn --userscript qute-pass --mode gopass')
+config.bind(',gP', 'spawn --userscript qute-pass --mode gopass --password-only')
+config.bind(',gU', 'spawn --userscript qute-pass --mode gopass --username-target secret --username-pattern "user: (.+)" --username-only')
 
 # dark mode
 c.colors.webpage.darkmode.enabled = True
