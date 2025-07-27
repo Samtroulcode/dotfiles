@@ -1,18 +1,39 @@
 # ZSH minimal, rapide, moderne
 
+
+# PATH propre et dédupliqué
+typeset -U path PATH
+path=("$HOME/scripts" "$HOME/.local/bin" "$HOME/bin" "/usr/local/bin" "$HOME/bin/mpv-tools/TOOLS" $path)
+
+export LANG=fr_FR.UTF-8
+
+# omz
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(git sudo common-aliases colored-man-pages)
 source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # Autosuggestions
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Syntax highlighting
+
+# Completion cache
+: "${XDG_CACHE_HOME:=$HOME/.cache}"
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+
+# Historique costaud et propre
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=200000
+SAVEHIST=200000
+setopt inc_append_history hist_verify hist_ignore_all_dups hist_reduce_blanks
+setopt hist_ignore_space hist_expire_dups_first
+
+# UX & ergonomie
+stty -ixon # libère Ctrl+S/Ctrl+Q (flow control off)
+KEYTIMEOUT=1 # réduit la latence après Échap (vi/esc-bindings + rapides)
+setopt interactivecomments extendedglob # autorise les # en interactif
 
 # vim en editeur par défaut
 export EDITOR=nvim
 export VISUAL=nvim
-
-# Autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Aliases modernes 
 [[ -f ~/.zsh/modern-commands.zsh ]] && source ~/.zsh/modern-commands.zsh
@@ -23,20 +44,20 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Aliases de snapshot
 [[ -f ~/.zsh/snapper.zsh ]] && source ~/.zsh/snapper.zsh
 
+# Commandes custom
+[[ -f ~/.zsh/custom/spf.zsh ]] && source ~/.zsh/custom/spf.zsh # spf cd on quit
+[[ -f ~/.zsh/custom/cleantmp.zsh ]] && source ~/.zsh/custom/cleantmp.zsh # petit clean de logs, tmp et bak
+[[ -f ~/.zsh/custom/detach.zsh ]] && source ~/.zsh/custom/detach.zsh # pour détacher complétement un process du shell
+
 # Ai intergations
 [[ -f ~/.zsh/ai/integration.zsh ]] && source ~/.zsh/ai/integration.zsh
 [[ -f ~/.zsh/ai/completion.zsh ]] && source ~/.zsh/ai/completion.zsh
+[[ -f ~/.zsh/ai/sai.zsh ]] && source ~/.zsh/ai/sai.zsh
+[[ -f ~/.zsh/ai/nebulix.zsh ]] && source ~/.zsh/ai/nebulix.zsh
+[[ -f ~/.zsh/ai/trad.zsh ]] && source ~/.zsh/ai/trad.zsh
 
-# PATH utilisateur en priorité
-export PATH="$HOME/scripts:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$HOME/bin/mpv-tools/TOOLS:$PATH"
-
-export LANG=fr_FR.UTF-8
-
-autoload -U compinit && compinit
-
-# Historique optimisé
-setopt inc_append_history share_history hist_verify
-setopt hist_ignore_all_dups hist_reduce_blanks
+# Theme d'autocomplétion zsh
+[[ -f ~/.zsh/themes/drac.zsh ]] && source ~/.zsh/themes/drac.zsh
 
 # Affichage neofetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
@@ -52,131 +73,3 @@ eval "$(zoxide init zsh)"
 # Initialiser mcfly
 eval "$(mcfly init zsh)"
 
-# IA sam-arch
-# Dossier de session : ~/.config/aichat/sessions/sam_sys.json
-sai() {
-  ~/scripts/sysinfo-refresh.sh               # met à jour /tmp/sysinfo.txt
-
-  # Fichiers communs (infos système)
-  local files=( -f /tmp/sysinfo.txt )
-
-  # Si l’entrée provient d’un pipe, AIChat lira STDIN tout seul.
-  # Rien à ajouter : pas de -f /dev/stdin, pas de tmpfile.
-
-  aichat -m ollama:nebulix:latest -s nebulix --save-session "${files[@]}" "$@"
-}
-
-nebulix() {
-  aichat -m ollama:nebulix:latest -s nebulix --save-session "$@"
-}
-
-trad() {
-  aichat -m ollama:traductor:latest "$@"
-}
-
-# pour faire un cd on exit avec spf
-spf() {
-    export SPF_LAST_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/superfile/lastdir"
-
-    command spf "$@"
-
-    [ ! -f "$SPF_LAST_DIR" ] || {
-        . "$SPF_LAST_DIR"
-        rm -f -- "$SPF_LAST_DIR" > /dev/null
-    }
-}
-
-##################
-### DRAC THEME ###
-##################
-#
-# Dracula Theme (for zsh-syntax-highlighting)
-#
-# https://github.com/zenorocha/dracula-theme
-#
-# Copyright 2021, All rights reserved
-#
-# Code licensed under the MIT license
-# http://zenorocha.mit-license.org
-#
-# @author George Pickering <@bigpick>
-# @author Zeno Rocha <hi@zenorocha.com>
-# Paste this files contents inside your ~/.zshrc before you activate zsh-syntax-highlighting
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main cursor)
-typeset -gA ZSH_HIGHLIGHT_STYLES
-# Default groupings per, https://spec.draculatheme.com, try to logically separate
-# possible ZSH_HIGHLIGHT_STYLES settings accordingly...?
-#
-# Italics not yet supported by zsh; potentially soon:
-#    https://github.com/zsh-users/zsh-syntax-highlighting/issues/432
-#    https://www.zsh.org/mla/workers/2021/msg00678.html
-# ... in hopes that they will, labelling accordingly with ,italic where appropriate
-#
-# Main highlighter styling: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md
-#
-## General
-### Diffs
-### Markup
-## Classes
-## Comments
-ZSH_HIGHLIGHT_STYLES[comment]='fg=#6272A4'
-## Constants
-## Entitites
-## Functions/methods
-ZSH_HIGHLIGHT_STYLES[alias]='fg=#50FA7B'
-ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=#50FA7B'
-ZSH_HIGHLIGHT_STYLES[global-alias]='fg=#50FA7B'
-ZSH_HIGHLIGHT_STYLES[function]='fg=#50FA7B'
-ZSH_HIGHLIGHT_STYLES[command]='fg=#50FA7B'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=#50FA7B,italic'
-ZSH_HIGHLIGHT_STYLES[autodirectory]='fg=#FFB86C,italic'
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#FFB86C'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#FFB86C'
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=#BD93F9'
-## Keywords
-## Built ins
-ZSH_HIGHLIGHT_STYLES[builtin]='fg=#8BE9FD'
-ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#8BE9FD'
-ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=#8BE9FD'
-## Punctuation
-ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#FF79C6'
-ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-unquoted]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[process-substitution-delimiter]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='fg=#FF79C6'
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=#FF79C6'
-ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=#FF79C6'
-## Serializable / Configuration Languages
-## Storage
-## Strings
-ZSH_HIGHLIGHT_STYLES[command-substitution-quoted]='fg=#F1FA8C'
-ZSH_HIGHLIGHT_STYLES[command-substitution-delimiter-quoted]='fg=#F1FA8C'
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#F1FA8C'
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=#FF5555'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#F1FA8C'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=#FF5555'
-ZSH_HIGHLIGHT_STYLES[rc-quote]='fg=#F1FA8C'
-## Variables
-ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=#FF5555'
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[assign]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[named-fd]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=#F8F8F2'
-## No category relevant in spec
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#FF5555'
-ZSH_HIGHLIGHT_STYLES[path]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[path_pathseparator]='fg=#FF79C6'
-ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=#FF79C6'
-ZSH_HIGHLIGHT_STYLES[globbing]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=#BD93F9'
-#ZSH_HIGHLIGHT_STYLES[command-substitution]='fg=?'
-#ZSH_HIGHLIGHT_STYLES[command-substitution-unquoted]='fg=?'
-#ZSH_HIGHLIGHT_STYLES[process-substitution]='fg=?'
-#ZSH_HIGHLIGHT_STYLES[arithmetic-expansion]='fg=?'
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=#FF5555'
-ZSH_HIGHLIGHT_STYLES[redirection]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[arg0]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[default]='fg=#F8F8F2'
-ZSH_HIGHLIGHT_STYLES[cursor]='standout'

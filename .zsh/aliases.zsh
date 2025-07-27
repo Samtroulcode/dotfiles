@@ -5,8 +5,7 @@
 alias ..='cd ..'
 alias ...='cd ../..'
 alias v="nvim"
-alias please='sudo'
-alias fucking='sudo'
+alias please='sudo $(fc -ln -1)'
 alias indent='shfmt -w -i 2'
 alias dufs='/usr/bin/duf --hide special'
 alias reload='clear && source ~/.zshrc'
