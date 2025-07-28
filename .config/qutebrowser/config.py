@@ -10,21 +10,20 @@ c.tabs.padding = {'top': 8, 'bottom': 8, 'left': 12, 'right': 12}
 c.tabs.indicator.width = 0
 c.window.transparent = True
 
+# Completion quand recherche avec o ou O
 c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
 
+# Pas de config persistante
 c.auto_save.session = False
 
-c.content.headers.user_agent = (
-    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36"
-)
-c.content.headers.custom = {
-    "Sec-CH-UA": '"Chromium";v="132", "Not A;Brand";v="99"',
-    "Sec-CH-UA-Platform": '"Linux"',
-    "Sec-CH-UA-Mobile": '?0',
-}
+# Autoplay OFF globalement
+c.content.autoplay = False
+
+# Désactiver le DNS prefetch
+c.content.dns_prefetch = False
+
+# on assume l'ua, par contre, pas le fr
 c.content.headers.accept_language = "en-US,en;q=0.5"
-c.content.canvas_reading = False
 
 # url de start page
 c.url.start_pages = ['http://sam-searxng:8080']
@@ -66,6 +65,20 @@ config.bind(',gs', 'spawn --detach kitty --title gopass bash -lc "gopass show {u
 config.bind(',gn', 'spawn --detach kitty --title gopass bash -lc "gopass new"')
 config.bind(',gP', 'spawn --detach kitty --title gopass bash -lc "gopass"')
 
+# Historique / downloads / messages
+config.bind(',ch', 'history-clear --force')     # historique global
+config.bind(',cd', 'download-clear')            # liste des téléchargements terminés
+config.bind(',cm', 'clear-messages')            # messages dans la barre de statut
+
+# binds utils
+config.bind(',PP', 'spawn --detach $HOME/bin/in-ns qutebrowser --temp-basedir')
+
+# Toggle par domaine
+config.bind(',js',  'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
+#config.bind(',co',  'config-cycle -p -t -u *://{url:host}/* content.cookies.accept all no-3rdparty never ;; reload')
+config.bind(',cv',  'config-cycle -p -u *://{url:host}/* content.canvas_reading ;; reload')
+config.bind(',gl',  'config-cycle -p -u *://{url:host}/* content.webgl ;; reload')
+
 # dark mode
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
@@ -75,6 +88,7 @@ c.colors.webpage.darkmode.policy.images = 'never'
 config.set("content.webgl", False, "*")
 config.set("content.canvas_reading", False)
 config.set("content.geolocation", False)
+config.set('content.javascript.enabled', False)
 config.set("content.cookies.store", True)
 config.set("content.cookies.accept", "no-3rdparty")
 config.set("content.headers.accept_language", "en-US,en;q=0.5")
@@ -82,6 +96,8 @@ config.set("content.headers.referer", "same-domain")
 
 c.content.blocking.enabled = True
 
+# Adblock (ABP)
+c.content.blocking.method = 'both'  # nécessite python-adblock
 c.content.blocking.adblock.lists = [
     "https://easylist.to/easylist/easylist.txt",
     "https://easylist.to/easylist/easyprivacy.txt",
@@ -91,6 +107,23 @@ c.content.blocking.adblock.lists = [
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
     "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
-    "https://raw.githubusercontent.com/nextdns/click-tracking-blocklists/main/hosts",
-    "https://blocklistproject.github.io/Lists/tracking.txt"
 ]
+
+# Hosts (format /etc/hosts)
+c.content.blocking.hosts.lists = [
+    "https://raw.githubusercontent.com/nextdns/click-tracking-blocklists/main/hosts",
+    "https://blocklistproject.github.io/Lists/tracking.txt",
+]
+
+# Allow-list js
+for pat in [
+    'https://*.cloudflare.com/*',
+    'https://steamdb.info/*',
+    'https://steamcommunity.com/*',
+    'https://www.youtube.com/*',
+    'https://github.com/*'
+    'https://accounts.google.com/*',
+]:
+    config.set('content.javascript.enabled', True, pat)
+    config.set('content.canvas_reading', True, pat)
+    config.set('content.webgl', True, pat)
