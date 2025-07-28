@@ -62,9 +62,9 @@ config.bind(',ta', 'set tabs.show always')
 
 # binds gopass
 config.bind(',gp', 'spawn --detach kitty --title gopass -e gopass show -c {url:host}')
-config.bind(',gu', 'spawn --detach kitty --title gopass -e gopass show -c {url:host} username"')
-config.bind(',gP', 'spawn --detach kitty --title gopass bash -lc "gopass show {url:host}; printf \'\\n[Entrée pour fermer] \'; read -r _"')
-config.bind(',gs', 'spawn --detach kitty --title gopass bash -lc "gopass"')
+config.bind(',gs', 'spawn --detach kitty --title gopass bash -lc "gopass show {url:host}; printf \'\\n[Entrée pour fermer] \'; read -r _"')
+config.bind(',gn', 'spawn --detach kitty --title gopass bash -lc "gopass new"')
+config.bind(',gP', 'spawn --detach kitty --title gopass bash -lc "gopass"')
 
 # dark mode
 c.colors.webpage.darkmode.enabled = True
