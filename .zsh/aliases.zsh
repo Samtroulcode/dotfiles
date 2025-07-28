@@ -48,8 +48,6 @@ alias editdns='unlockdns && sudo nvim /etc/resolv.conf && lockdns'
 
 alias up0x0='f() { curl -s -F "file=@$1" -F "expires=43200" https://0x0.st; }; f'
 
-alias wgstatus='sudo wg show'
-
 # Télécharger une playlist YouTube entière en MP3 avec covers
 alias ytmp3pl='yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"'
 # Télécharger une vidéo YouTube unique en MP3
@@ -69,7 +67,6 @@ alias ipv6-off='~/scripts/toggle-ipv6.sh off'
 alias ipv6-on='~/scripts/toggle-ipv6.sh on'
 alias audit-net='~/scripts/audit-network.sh'
 alias change-wall='~/.config/wallust/set_wall.sh'
-alias proxy-up='~/scripts/setup-vpn-proxy.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

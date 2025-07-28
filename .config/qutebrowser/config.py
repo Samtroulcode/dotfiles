@@ -2,8 +2,6 @@
 config.source('/home/sam/.cache/wal/wallust-colors.py')
 config.load_autoconfig(False)
 
-# passe par le proxy microsock qui est connecter via veth au namespace vpn
-config.set('content.proxy', 'socks://10.10.10.2:1080')
 # Empeche WebRTC d'utiliser n'importe quelle ip non lié au proxy
 config.set('qt.args',['force-webrtc-ip-handling-policy=disable_non_proxied_udp'])
 
@@ -49,7 +47,7 @@ c.url.searchengines = {
 }
 
 # ouvrir des videos et streams dans mpv
-config.bind(',yt', 'hint links spawn /home/sam/bin/mpv-tools/TOOLS/umpv --enqueue {hint-url}')
+config.bind(',yt', 'hint links spawn mpv {hint-url}')
 config.bind(',tw', 'hint links spawn streamlink --player mpv {hint-url} best')
 
 # télécharger des vidéos/playlist/mp3
