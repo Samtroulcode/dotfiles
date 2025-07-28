@@ -55,9 +55,13 @@ echo "[*] Services activés :"
 systemctl list-unit-files --state=enabled
 echo
 
+echo "[*] Services user activés"
+systemctl --user list-unit-files --state=enabled
+
 # Services échoués
 echo "[*] Services échoués (systemd) :"
 systemctl --failed || echo "Aucun service échoué"
+systemctl --user --failed || echo "Aucun services user échoué"
 echo
 
 # Logs critiques (niveau 3)
