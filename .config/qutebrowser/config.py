@@ -53,17 +53,18 @@ config.bind(',tw', 'hint links spawn streamlink --player mpv {hint-url} best')
 # télécharger des vidéos/playlist/mp3
 config.bind(',vd', 'hint links spawn yt-dlp --embed-thumbnail --add-metadata -o "~/Videos/%(uploader)s/%(title)s.%(ext)s" {hint-url}')
 config.bind(',vpl', 'hint links spawn yt-dlp --embed-thumbnail --add-metadata -o "~/Videos/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" {hint-url}')
-config.bind(',mp', 'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Tracks/%(title)s.%(ext)s" {hint-url}')
+config.bind(',md', 'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Tracks/%(title)s.%(ext)s" {hint-url}')
 config.bind(',mpl', 'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s" {hint-url}')
 
 # Cache/affiche les onglets
 config.bind(',tn', 'set tabs.show never')
 config.bind(',ta', 'set tabs.show always')
 
-# binds go-pass
-config.bind(',gp', 'spawn --userscript qute-pass --mode gopass')
-config.bind(',gP', 'spawn --userscript qute-pass --mode gopass --password-only')
-config.bind(',gU', 'spawn --userscript qute-pass --mode gopass --username-target secret --username-pattern "user: (.+)" --username-only')
+# binds gopass
+config.bind(',gp', 'spawn --detach kitty --title gopass -e gopass show -c {url:host}')
+config.bind(',gu', 'spawn --detach kitty --title gopass -e gopass show -c {url:host} username"')
+config.bind(',gP', 'spawn --detach kitty --title gopass bash -lc "gopass show {url:host}; printf \'\\n[Entrée pour fermer] \'; read -r _"')
+config.bind(',gs', 'spawn --detach kitty --title gopass bash -lc "gopass"')
 
 # dark mode
 c.colors.webpage.darkmode.enabled = True
