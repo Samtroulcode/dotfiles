@@ -94,6 +94,9 @@ config.set("content.cookies.accept", "no-3rdparty")
 config.set("content.headers.accept_language", "en-US,en;q=0.5")
 config.set("content.headers.referer", "same-domain")
 
+# JS activé pour les fichiers locaux
+config.set("content.javascript.enabled", True, "file://*")
+
 c.content.blocking.enabled = True
 
 # Adblock (ABP)
@@ -118,11 +121,7 @@ c.content.blocking.hosts.lists = [
 # Allow-list js
 for pat in [
     'https://*.cloudflare.com/*',
-    'https://steamdb.info/*',
-    'https://steamcommunity.com/*',
-    'https://www.youtube.com/*',
-    'https://github.com/*'
-    'https://accounts.google.com/*',
+    'https://github.com/*',
     'https://crates.io/*',
 ]:
     config.set('content.javascript.enabled', True, pat)
