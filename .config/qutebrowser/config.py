@@ -123,6 +123,7 @@ for pat in [
     'https://www.youtube.com/*',
     'https://github.com/*'
     'https://accounts.google.com/*',
+    'https://crates.io/*',
 ]:
     config.set('content.javascript.enabled', True, pat)
     config.set('content.canvas_reading', True, pat)
