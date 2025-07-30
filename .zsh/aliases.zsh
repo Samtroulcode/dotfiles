@@ -70,6 +70,7 @@ alias change-wall='~/.config/wallust/set_wall.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias lazyconfig='/usr/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias config-clean-deleted='config ls-files --deleted -z | xargs -0 -I{} git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME rm --cached "{}'
 
 # Aliases de sync
