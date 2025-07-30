@@ -112,3 +112,8 @@ rust https://doc.rust-lang.org/stable/
 rust cheat sheet https://cheats.rs/
 rust book https://doc.rust-lang.org/nightly/book/title-page.html
 rustlings https://rustlings.rust-lang.org/
+rust bevy https://bevy.org/
+rust bevy assets https://github.com/bevyengine/bevy-assets
+rust bevy cheat book https://bevy-cheatbook.github.io/#unofficial-bevy-cheat-book
+rust exercism https://exercism.org/tracks/rust
+rust by example https://doc.rust-lang.org/rust-by-example/
