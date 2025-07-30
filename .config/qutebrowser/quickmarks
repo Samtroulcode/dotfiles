@@ -107,6 +107,8 @@ zk https://zk-org.github.io/zk/
 twitch https://www.twitch.tv/
 imotep https://www.imotep.com/web/accueil
 rust book experiment https://rust-book.cs.brown.edu/experiment-intro.html
-rust book https://doc.rust-lang.org/book/
 rust book fr https://jimskapt.github.io/rust-book-fr/title-page.html
 rust https://doc.rust-lang.org/stable/
+rust cheat sheet https://cheats.rs/
+rust book https://doc.rust-lang.org/nightly/book/title-page.html
+rustlings https://rustlings.rust-lang.org/
