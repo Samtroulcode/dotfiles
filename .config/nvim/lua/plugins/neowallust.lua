@@ -1,3 +1,4 @@
+-- ~/.config/nvim/lua/plugins/neopywal.lua
 return {
   {
     "RedsXDD/neopywal.nvim",

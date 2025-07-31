@@ -11,6 +11,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
     neopywal.setup({
       use_wallust = true,
       transparent_background = true,
+      custom_colors = {},
+      custom_highlights = {},
     })
 
     vim.cmd.colorscheme("neopywal")
