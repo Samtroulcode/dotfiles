@@ -44,6 +44,9 @@ export VISUAL=nvim
 # Aliases de snapshot
 [[ -f ~/.zsh/snapper.zsh ]] && source ~/.zsh/snapper.zsh
 
+# Aliases/Commandes Nvim
+[[ -f ~/.zsh/nvim.zsh ]] && source ~/.zsh/nvim.zsh
+
 # Commandes custom
 [[ -f ~/.zsh/custom/spf.zsh ]] && source ~/.zsh/custom/spf.zsh # spf cd on quit
 [[ -f ~/.zsh/custom/cleantmp.zsh ]] && source ~/.zsh/custom/cleantmp.zsh # petit clean de logs, tmp et bak
