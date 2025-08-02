@@ -13,7 +13,7 @@ rm -f "$OUTPUT_DIR"/*.png "$OUTPUT_DIR"/*.svg
 swww img "$WALL" --transition-type wipe --transition-fps 60 --transition-duration 1
 
 # 2. Générer et appliquer la palette Wallust
-wallust run "$WALL"
+wallust run -s "$WALL"
 
 # 3. Récupérer la couleur accent
 COLOR=$(jq -r '.accent' ~/.cache/wal/colors.json)
