@@ -27,7 +27,7 @@ The root of this repo is an equivalent to my $HOME directory
 
 <div align = center>
 
-  ## List of tools used
+## List of tools used
 
 | Tool | Name/site | repository | config | doc |
 | ---- | ---- | ---- | ---- | ---- |
@@ -46,7 +46,6 @@ The root of this repo is an equivalent to my $HOME directory
 | music daemon | [Mpd](https://www.musicpd.org/) | [github](https://github.com/MusicPlayerDaemon/MPD) | [mpd](.config/mpd) | WIP |
 | music player | [Rmpc](https://mierak.github.io/rmpc/) | [github](https://github.com/mierak/rmpc) | [ncmpcpp](.config/rmpc) | WIP |
 | Text editor/IDE | [Nvim](https://neovim.io/) | [github](https://github.com/neovim/neovim) | [nvim](.config/nvim) | WIP |
-| Nvim framework | [LazyVim](http://www.lazyvim.org/) | [github](https://github.com/LazyVim/LazyVim) | [lazyvim](.config/nvim) | WIP |
 
 ### Window manager *****HYPRLAND*****
 
@@ -57,16 +56,17 @@ The root of this repo is an equivalent to my $HOME directory
 Hyprland is a modern, dynamic Wayland compositor featuring both tiling and floating window management, with smooth animations and deep customization. It replaces both the window manager and the compositor, making it ideal for advanced users seeking a minimal and responsive Wayland setup.
 
 I separated my configuration into several files :
- - [hyprland](.config/hypr/hyprland.conf) : contains monitor informations, some general settings, and other configuration files imports
- - [env](.config/hypr/config/env.conf) : contains environment variables such as nvidia required variables, hyprcursor theme or keyboard layout
- - [start](.config/hypr/config/start.conf) : contains exec-once entries such as notification daemon or launch scripts
- - [var](.config/hypr/config/var.conf) : contains hyprland variables such as my terminal or file manager.
- - [key](.config/hypr/config/key.conf) : my keybindings
- - [colors](.config/hypr/config/colors.conf) : my color configuration linked with wallust, since is dynamicly generated when i change my wallpapers, i didn't push it to my git. (see [wallust] section)
- - [window](.config/hypr/config/window.conf) : some window rules for apps (like spf floating instead of tilling)
- - [theme](.config/hypr/config/theme.conf) : general theming such as blur or inactive timeout for the cursor.
- - [anim](.config/hypr/config/anim) : it's a folder containing some amimations files, i choose one of those in my import list in [hyprland.conf](.config/hypr/hyprland.conf)
- - [plugin](.config/hypr/config/plug.conf) : contains list of hyprland plugin. Actually, i only use one plugin, [HyprExpo](https://github.com/hyprwm/hyprland-plugins/tree/main/hyprexpo).
+
+- [hyprland](.config/hypr/hyprland.conf) : contains monitor informations, some general settings, and other configuration files imports
+- [env](.config/hypr/config/env.conf) : contains environment variables such as nvidia required variables, hyprcursor theme or keyboard layout
+- [start](.config/hypr/config/start.conf) : contains exec-once entries such as notification daemon or launch scripts
+- [var](.config/hypr/config/var.conf) : contains hyprland variables such as my terminal or file manager.
+- [key](.config/hypr/config/key.conf) : my keybindings
+- [colors](.config/hypr/config/colors.conf) : my color configuration linked with wallust, since is dynamicly generated when i change my wallpapers, i didn't push it to my git. (see [wallust] section)
+- [window](.config/hypr/config/window.conf) : some window rules for apps (like spf floating instead of tilling)
+- [theme](.config/hypr/config/theme.conf) : general theming such as blur or inactive timeout for the cursor.
+- [anim](.config/hypr/config/anim) : it's a folder containing some amimations files, i choose one of those in my import list in [hyprland.conf](.config/hypr/hyprland.conf)
+- [plugin](.config/hypr/config/plug.conf) : contains list of hyprland plugin. Actually, i only use one plugin, [HyprExpo](https://github.com/hyprwm/hyprland-plugins/tree/main/hyprexpo).
 
 #### Config tips
 
@@ -87,22 +87,26 @@ original repo : [Qutebrowser](https://github.com/qutebrowser/qutebrowser)
 
 my configs files : [qutebrowser configs](.config/qutebrowser)
 
-i separated my configuration into several files. The pricipal configuration file with privacy settings, searchengines and global configuration is [here](.config/qutebrowser/config.py) and for my style customization i created a [separated python file](.config/qutebrowser/themes/nebulix.py) that i source in my global customization file : 
+i separated my configuration into several files. The pricipal configuration file with privacy settings, searchengines and global configuration is [here](.config/qutebrowser/config.py) and for my style customization i created a [separated python file](.config/qutebrowser/themes/nebulix.py) that i source in my global customization file :
+
 ```python
 config.source('themes/nebulix.py')
 ```
 
-#### Config tips 
+#### Config tips
 
 to watch youtubes videos without ads, i know 3 methods actually. You can simply watch the youtube video in mpv by binding a shortcut like that :
+
 ```python
 config.bind('<Ctrl+/>', 'hint links spawn mpv {hint-url}')
 ```
 
-you need yt-dlp and mpv to do this 
+you need yt-dlp and mpv to do this
+
 ```bash
 sudo pacman -S yt-dlp mpv
 ```
+
 It will open an MPV player with the YouTube video without the ads, first i hit my shortcut, then i select the video, here is the workflow :
 
 | Step 1 | Step 2 |
