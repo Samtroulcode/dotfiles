@@ -3,4 +3,4 @@
 -- Add any additional options here
 -- vim.opt.termguicolors = true
 -- vim.g.lazyvim_picker = "telescope"
--- vim.cmd.colorscheme("default")
+-- vim.cmd.colorscheme("catppuccin")

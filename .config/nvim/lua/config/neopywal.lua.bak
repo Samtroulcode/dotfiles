@@ -15,6 +15,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
       custom_highlights = {},
     })
 
-    vim.cmd.colorscheme("neopywal")
+    -- vim.cmd.colorscheme("neopywal")
   end,
 })
