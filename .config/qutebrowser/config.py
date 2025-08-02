@@ -151,7 +151,7 @@ for pat in [
     "https://*.cloudflare.com/*",
     "https://github.com/*",
     "https://crates.io/*",
-    "https://sam-searxng:8080",
+    "http://sam-searxng:8080/*",
 ]:
     config.set("content.javascript.enabled", True, pat)
     config.set("content.canvas_reading", True, pat)
