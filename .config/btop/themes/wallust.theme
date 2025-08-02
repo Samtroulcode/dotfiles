@@ -1,0 +1,84 @@
+# Main background
+theme[main_bg] = "#23252D"
+
+# Main text color
+theme[main_fg] = "#ECF2E1"
+
+# Title color for boxes
+theme[title] = "#678A81"
+
+# Highlight color for keyboard shortcuts
+theme[hi_fg] = "#CAD9A8"
+
+# Background color of selected item in processes box
+theme[selected_bg] = "#1BB2B7"
+
+# Foreground color of selected item in processes box
+theme[selected_fg] = "#ECF2E1"
+
+# Color of inactive/disabled text
+theme[inactive_fg] = "#CAD9A8"
+
+# Color of text appearing on top of graphs
+theme[graph_text] = "#DCE4CB"
+
+# Background color of the percentage meters
+theme[meter_bg] = "#484B53"
+
+# Misc colors for processes box
+theme[proc_misc] = "#6EBD93"
+
+# Box frame colors (cohérence froide)
+theme[cpu_box] = "#1BB2B7"
+theme[mem_box] = "#1BB2B7"
+theme[net_box] = "#1BB2B7"
+theme[proc_box] = "#1BB2B7"
+
+# Divider and box line
+theme[div_line] = "#6B758B"
+
+# Temperature graph color gradient
+theme[temp_start] = "#1C809B"
+theme[temp_mid] = "#678A81"
+theme[temp_end] = "#6B758B"
+
+# CPU graph color gradient
+theme[cpu_start] = "#CAD9A8"
+theme[cpu_mid] = "#678A81"
+theme[cpu_end] = "#6B758B"
+
+# Mem/Disk free meter
+theme[free_start] = "#6EBD93"
+theme[free_mid] = "#1BB2B7"
+theme[free_end] = "#ECF2E1"
+
+# Mem/Disk cached meter
+theme[cached_start] = "#CAD9A8"
+theme[cached_mid] = "#1BB2B7"
+theme[cached_end] = "#6EBD93"
+
+# Mem/Disk available meter
+theme[available_start] = "#678A81"
+theme[available_mid] = "#678A81"
+theme[available_end] = "#6B758B"
+
+# Mem/Disk used meter
+theme[used_start] = "#CAD9A8"
+theme[used_mid] = "#678A81"
+theme[used_end] = "#6B758B"
+
+# Download graph
+theme[download_start] = "#678A81"
+theme[download_mid] = "#678A81"
+theme[download_end] = "#6B758B"
+
+# Upload graph
+theme[upload_start] = "#CAD9A8"
+theme[upload_mid] = "#CAD9A8"
+theme[upload_end] = "#6B758B"
+
+# Process box gradient
+theme[process_start] = "#CAD9A8"
+theme[process_mid] = "#6EBD93"
+theme[process_end] = "#6B758B"
+

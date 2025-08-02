@@ -45,15 +45,15 @@ alpha = 80
 # ¡ If either one is a directory, then both SHOULD be one. !
 # zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
 hypr = { src = 'hyprland-colors.conf', dst = '~/.cache/wal/hypr-colors.conf' }
-kitty = { src='kitty.conf', dst='~/.cache/wal/kitty-colors.conf' }
+# kitty = { src='kitty.conf', dst='~/.cache/wal/kitty-colors.conf' }
 waybar = { src = 'waybar-colors.css', dst = '~/.cache/wal/waybar-colors.css' }
 wofi = { src = 'wofi.css', dst = '~/.config/wofi/wallust-style.css' }
-btop = { src = 'btop.theme', dst = '~/.config/btop/themes/wallust.theme'}
-nvim = { src = 'neopywal.vim', dst = '~/.cache/wal/colors-wal.vim' }
-discord = { src = 'colors-discord.css', dst = '~/.cache/wallust/discord-colors.css' }
-superfile = { src = 'superfile.toml', dst = '~/.config/superfile/theme/wallust.toml' }
-qutebrowser = { src = 'qutebrowser.py', dst = '~/.cache/wal/wallust-colors.py' }
-wlogout = { src = 'wlogout.css', dst = '~/.config/wlogout/style.css'}
-hyprlock = { src = 'hyprlock-colors.conf', dst='~/.cache/wal/hyprlock-colors.conf'}
+# btop = { src = 'btop.theme', dst = '~/.config/btop/themes/wallust.theme'}
+# nvim = { src = 'neopywal.vim', dst = '~/.cache/wal/colors-wal.vim' }
+# discord = { src = 'colors-discord.css', dst = '~/.cache/wallust/discord-colors.css' }
+# superfile = { src = 'superfile.toml', dst = '~/.config/superfile/theme/wallust.toml' }
+# qutebrowser = { src = 'qutebrowser.py', dst = '~/.cache/wal/wallust-colors.py' }
+wlogout = { src = 'wlogout.css', dst = '~/.config/wlogout/style.css' }
+hyprlock = { src = 'hyprlock-colors.conf', dst = '~/.cache/wal/hyprlock-colors.conf' }
 swaync = { src = 'swaync.css', dst = '~/.cache/wal/swaync-colors.css' }
-json = { src = 'colors.json', dst = '~/.cache/wal/colors.json' } # pour les scripts comme le logo du neofetch
+# json = { src = 'colors.json', dst = '~/.cache/wal/colors.json' } # pour les scripts comme le logo du neofetch

@@ -1,5 +1,6 @@
 # Appliquer le thème
-config.source("/home/sam/.cache/wal/wallust-colors.py")
+config.source("./themes/nebulix.py")
+# config.source("/home/sam/.cache/wal/wallust-colors.py")
 config.load_autoconfig(False)
 
 # Empeche WebRTC d'utiliser n'importe quelle ip non lié au proxy
