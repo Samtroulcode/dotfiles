@@ -3,19 +3,16 @@
     "format": " {usage}%",
     "on-click": "kitty --title system -e btop"
   },
-
   "memory": {
     "format": " {}%",
     "on-click": "kitty --title system -e btop"
   },
-
   "disk": {
     "interval": 30,
     "format": " {percentage_used}%",
     "path": "/",
     "on-click": "kitty --title system -e btop"
   },
-
   "temperature": {
     "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
     "input-filename": "temp1_input",
@@ -24,9 +21,12 @@
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     "format": "{icon} {temperatureC}°C",
-    "format-icons": ["", "", ""]
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
   },
-
   "group/hardware": {
     "orientation": "horizontal",
     //"drawer": {
@@ -34,7 +34,11 @@
     // "children-class": "not-memory",
     // "transition-left-to-right": false
     //},
-    "modules": ["cpu", "memory", "disk", "temperature"]
+    "modules": [
+      "cpu",
+      "memory",
+      "disk",
+      "temperature"
+    ]
   }
 }
-
