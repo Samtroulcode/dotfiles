@@ -11,10 +11,14 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [" ", " ", " "]
+      "default": [
+        " ",
+        " ",
+        " "
+      ]
     },
     "scroll-step": 5,
-    "on-click": "pavucontrol --title:pavu"
+    "on-click": "kitty --title mix -e pulsemixer"
   },
   "pulseaudio#mic": {
     "format": "{icon} {format_source}",
@@ -22,12 +26,13 @@
     "format-source-muted": " ",
     "on-scroll-up": "amixer set Capture 5%+",
     "on-scroll-down": "amixer set Capture 5%-",
-    "on-click": "pavucontrol",
+    "on-click": "kitty --title mix -e pulsemixer"
   },
-
   "group/sound": {
     "orientation": "horizontal",
-    "modules": ["pulseaudio", "pulseaudio#mic"]
+    "modules": [
+      "pulseaudio",
+      "pulseaudio#mic"
+    ]
   }
 }
-
