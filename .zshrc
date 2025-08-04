@@ -1,6 +1,3 @@
-# ZSH minimal, rapide, moderne
-
-
 # PATH propre et dédupliqué
 typeset -U path PATH
 path=("$HOME/scripts" "$HOME/.local/bin" "$HOME/bin" "/usr/local/bin" "$HOME/bin/mpv-tools/TOOLS" $path)
