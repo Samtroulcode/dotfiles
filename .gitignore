@@ -1,11 +1,90 @@
+# Application-specific ignores
 .config/mpd/mpd.log
 .config/mpd/state/
-.config/qutebrowser/autoconfig.yml
 .config/mpd/tag_cache
-.config/nvim/lazy-lock.json
+.config/qutebrowser/autoconfig.yml
 .config/qutebrowser/qsettings/QtProject.conf
+.config/nvim/lazy-lock.json
 .config/hypr/config/colors.conf
 .config/superfile/theme/wallust.toml
 .config/wofi/wallust-style.css
 .config/wlogout/style.css
 .config/wofi/style.css
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.swp
+*.swo
+*~
+
+# Cache directories
+.cache/
+*.cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.backup
+*.orig
+
+# Lock files
+*.lock
+!package-lock.json
+
+# Development and testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Local development
+/tmp/
+/temp/
+local_config/
+personal_notes.md
+
+# OS-specific
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride

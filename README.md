@@ -127,4 +127,93 @@ The third method use a greasmonkey scripts, but i not cover this solution here, 
 
 ## Management
 
-I'm using gite bare (git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME) to manage these dotfiles
+I'm using git bare (git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME) to manage these dotfiles.
+
+### Repository Quality & Development
+
+This repository includes several tools and workflows to maintain code quality:
+
+#### Quick Start
+```bash
+# Install development dependencies and setup
+make install
+
+# Run all quality checks
+make lint
+
+# Validate configurations
+make validate
+
+# Check dependencies
+make check-deps
+```
+
+#### Available Make Targets
+- `make help` - Show all available commands
+- `make install` - Setup development environment with pre-commit hooks
+- `make lint` - Run all linters (shellcheck, YAML validation, etc.)
+- `make test` - Run basic validation tests
+- `make security` - Run security scans
+- `make clean` - Clean temporary files
+- `make docs` - Update documentation
+
+#### Quality Tools Included
+- **Pre-commit hooks**: Automated quality checks before commits
+- **Shellcheck**: Shell script linting and best practices
+- **YAML validation**: Configuration file syntax checking
+- **Security scanning**: Detect secrets and vulnerabilities
+- **EditorConfig**: Consistent formatting across editors
+- **GitHub Actions**: Automated CI/CD pipeline
+
+#### Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
+
+### Installation
+
+> [!WARNING]
+> THIS IS NOT A PLUG AND PLAY DOTFILES! There's no install scripts or step by step guide to install my files, you should know what you do if you want to use it. I only explain how my files are organized, and some tips with some tools. The comments in my files are mainly **IN FRENCH**
+
+#### Prerequisites
+```bash
+# Required tools
+sudo pacman -S shellcheck python python-pip git
+
+# Development tools (optional)
+pip install pre-commit detect-secrets
+```
+
+#### Setup Development Environment
+```bash
+# Clone the repository
+git clone https://github.com/Samtroulcode/dotfiles.git
+cd dotfiles
+
+# Setup development environment
+make install
+```
+
+### Usage
+
+#### Regular Maintenance
+```bash
+# Clean system (Arch Linux specific)
+./scripts/arch-clean.sh
+
+# Backup configurations
+make backup
+
+# Update repository structure documentation
+make docs
+```
+
+#### Quality Checks
+```bash
+# Check all scripts for issues
+make check-scripts
+
+# Lint shell scripts
+make lint-shell
+
+# Run security scan
+make security
+```

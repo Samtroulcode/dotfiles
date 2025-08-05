@@ -1,0 +1,109 @@
+name: Quality Checks
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Code Quality & Security
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install shellcheck
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y shellcheck
+
+    - name: Install pre-commit
+      run: |
+        pip install pre-commit
+
+    - name: Run pre-commit hooks
+      run: |
+        pre-commit run --all-files
+
+    - name: Check shell scripts
+      run: |
+        find . -name "*.sh" -type f -exec shellcheck {} +
+
+    - name: Validate configuration files
+      run: |
+        # Check YAML files
+        find . -name "*.yml" -o -name "*.yaml" | while read -r file; do
+          echo "Validating $file"
+          python -c "import yaml; yaml.safe_load(open('$file'))"
+        done
+        
+        # Check JSON files (excluding auto-generated ones)
+        find . -name "*.json" -not -path "./.config/qutebrowser/*" | while read -r file; do
+          echo "Validating $file"
+          python -c "import json; json.load(open('$file'))"
+        done
+
+  security:
+    runs-on: ubuntu-latest
+    name: Security Scan
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+        scan-type: 'fs'
+        scan-ref: '.'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      if: always()
+      with:
+        sarif_file: 'trivy-results.sarif'
+
+  documentation:
+    runs-on: ubuntu-latest
+    name: Documentation Check
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Check for required files
+      run: |
+        echo "Checking for essential repository files..."
+        
+        required_files=("README.md" ".gitignore" "LICENSE")
+        missing_files=()
+        
+        for file in "${required_files[@]}"; do
+          if [[ ! -f "$file" ]]; then
+            missing_files+=("$file")
+          fi
+        done
+        
+        if [[ ${#missing_files[@]} -gt 0 ]]; then
+          echo "Missing required files: ${missing_files[*]}"
+          echo "Consider adding these files for better repository management"
+        else
+          echo "All essential files present"
+        fi
+
+    - name: Check README sections
+      run: |
+        echo "Checking README structure..."
+        if ! grep -q "## Installation" README.md; then
+          echo "Consider adding an Installation section to README.md"
+        fi
+        if ! grep -q "## Usage" README.md; then
+          echo "Consider adding a Usage section to README.md"
+        fi

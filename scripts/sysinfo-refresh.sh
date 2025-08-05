@@ -1,5 +1,5 @@
-# ~/.local/bin/sysinfo-refresh
 #!/usr/bin/env bash
+# ~/.local/bin/sysinfo-refresh
 {
   echo "###  Infos système (auto)  ###"
   echo "Hostname: $(hostname)"

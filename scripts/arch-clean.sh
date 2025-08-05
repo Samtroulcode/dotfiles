@@ -1,14 +1,35 @@
 #!/bin/bash
 # Nettoyage complet Arch Linux
-set -e
+set -euo pipefail
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+log_info() {
+    echo -e "${GREEN}=== $1${NC}"
+}
+
+log_warning() {
+    echo -e "${YELLOW}⚠️  $1${NC}"
+}
+
+log_error() {
+    echo -e "${RED}❌ $1${NC}"
+}
 
 # Mise a jour de l'index + upgrade
 echo
-echo "=== 🧹 Nettoyage Arch Linux"
+log_info "🧹 Nettoyage Arch Linux"
 echo
-echo "=== ACTION : Mise à jour système..."
+log_info "ACTION : Mise à jour système..."
 echo
-sudo pacman -Syu
+if ! sudo pacman -Syu --noconfirm; then
+    log_error "Échec de la mise à jour système"
+    exit 1
+fi
 
 # Nettoyage paquets orphelins (pacman)
 echo

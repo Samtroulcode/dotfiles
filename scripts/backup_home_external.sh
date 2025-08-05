@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # === CONFIG ===
-SRC="/home/sam/"
-DEST="/mnt/external_backup/home_backup/"
+# Use environment variables with fallbacks
+SRC="${HOME}/"
+DEST="${BACKUP_DEST:-/mnt/external_backup/home_backup/}"
 EXCLUDES=(
   --exclude ".cache/"
   --exclude ".npm/"

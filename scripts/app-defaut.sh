@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 echo "Explorateur de fichiers : $(xdg-mime query default inode/directory)"
 echo "Navigateur HTTP : $(xdg-mime query default x-scheme-handler/http)"
 echo "Navigateur HTTPS : $(xdg-mime query default x-scheme-handler/https)"
