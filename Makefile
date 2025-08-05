@@ -88,3 +88,6 @@ check-deps: ## Check for missing dependencies
 	@echo -n "  git: "; command -v git >/dev/null 2>&1 && echo "✅" || echo "❌ Not installed"
 
 all: install lint test ## Run full setup and validation
+
+health: ## Run repository health check
+	@./scripts/health-check.sh
