@@ -14,7 +14,7 @@ return {
 
         -- ② on déclare les sous-commandes Cargo
         { "<leader>rB", "<cmd>CargoBuild<cr>", desc = "Build" },
-        { "<leader>rR", "<cmd>CargoRun<cr>", desc = "Run" },
+        { "<leader>rR", "<cmd>CargoRunTerm<cr>", desc = "Run" },
         { "<leader>rt", "<cmd>CargoTest<cr>", desc = "Test" },
         { "<leader>rc", "<cmd>CargoCheck<cr>", desc = "Check" },
         { "<leader>rl", "<cmd>CargoClippy<cr>", desc = "Clippy" },
