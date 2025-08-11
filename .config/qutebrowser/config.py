@@ -20,6 +20,14 @@ c.completion.open_categories = [
     "filesystem",
 ]
 
+# Désactiver les raccourcies des tabs
+config.unbind("J")
+config.unbind("K")
+
+# Rebind les tabs avec inversion
+config.bind("J", "tab-prev")  # Maintenant J = onglet précédent
+config.bind("K", "tab-next")  # Maintenant K = onglet suivant
+
 # Pas de config persistante
 c.auto_save.session = False
 
