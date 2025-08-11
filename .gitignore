@@ -9,3 +9,6 @@
 .config/wofi/wallust-style.css
 .config/wlogout/style.css
 .config/wofi/style.css
+.config/weechat/sec.conf
+.config/weechat/irc.conf
+.config/weechat/relay.conf
