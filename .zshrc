@@ -55,9 +55,9 @@ export VISUAL=nvim
 # Theme d'autocomplétion zsh
 [[ -f ~/.zsh/themes/drac.zsh ]] && source ~/.zsh/themes/drac.zsh
 
-# Affichage neofetch uniquement si terminal interactif
+# Affichage fastfetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
-  neofetch
+  fastfetch
 fi
 
 # Initialiser Starship prompt
