@@ -11,6 +11,9 @@ source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # Autosuggestions
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Syntax highlighting
 
+# Setup des keybinds pour fzf
+source <(fzf --zsh)
+
 # Completion cache
 : "${XDG_CACHE_HOME:=$HOME/.cache}"
 zstyle ':completion:*' use-cache on
