@@ -6,7 +6,7 @@
   },
   "custom/quicklink2": {
     "format": "󰉋 ",
-    "on-click": "kitty -e spf",
+    "on-click": "ghostty -e spf",
     "tooltip-format": "Filemanager"
   },
   "custom/quicklink3": {
@@ -21,12 +21,12 @@
   },
   "custom/quicklink5": {
     "format": " ",
-    "on-click": "kitty -e nvim",
+    "on-click": "ghostty -e nvim",
     "tooltip-format": "Neovim"
   },
   "custom/quicklink6": {
     "format": " ",
-    "on-click": "kitty",
+    "on-click": "ghostty",
     "tooltip-format": "Terminal"
   },
   "group/quicklinks": {
@@ -41,4 +41,3 @@
     ]
   }
 }
-

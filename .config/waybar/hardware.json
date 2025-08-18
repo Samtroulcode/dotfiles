@@ -1,17 +1,17 @@
 {
   "cpu": {
     "format": " {usage}%",
-    "on-click": "kitty --title system -e btop"
+    "on-click": "ghostty --title=system -e btop"
   },
   "memory": {
     "format": " {}%",
-    "on-click": "kitty --title system -e btop"
+    "on-click": "ghostty --title=system -e btop"
   },
   "disk": {
     "interval": 30,
     "format": " {percentage_used}%",
     "path": "/",
-    "on-click": "kitty --title system -e btop"
+    "on-click": "ghostty --title=system -e btop"
   },
   "temperature": {
     "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",

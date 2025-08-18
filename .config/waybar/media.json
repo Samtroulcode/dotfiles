@@ -17,6 +17,6 @@
     "tooltip-format": "{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
     "tooltip-format-disconnected": "MPD (disconnected)",
     "on-click-right": "playerctl play-pause",
-    "on-click": "kitty --title music -e rmpc"
+    "on-click": "ghostty --title=music -e rmpc"
   }
 }
