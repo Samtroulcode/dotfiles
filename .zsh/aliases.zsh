@@ -10,8 +10,8 @@ alias dufs='/usr/bin/duf --hide special'
 alias reload='clear && source ~/.zshrc'
 alias record='wf-recorder --audio=alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -f'
 alias icat='kitten icat'
-alias s='kitten ssh'
-alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
+alias fv='nvim $(fzf -m --preview="bat --color=always {}")'
+alias fvc='nvim $(fd -H -t f . ~/.config | fzf -m --preview="bat --color=always {}")'
 
 # Aliases de maintenance
 alias update='sudo pacman -Syu'
