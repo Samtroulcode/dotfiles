@@ -1,8 +1,0 @@
-modmap:
-  - name: esc_space_binds
-    remap:
-      # Esc + Space -> F7
-      esc+space: f7
-      # Esc + b -> F8
-      esc+b: f8
-
