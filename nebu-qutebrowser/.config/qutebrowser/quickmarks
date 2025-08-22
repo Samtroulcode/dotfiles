@@ -136,3 +136,4 @@ crate.io https://crates.io/
 rust playground https://play.rust-lang.org/?version=stable&mode=debug&edition=2024
 nginx http://172.19.0.2:81/
 vault https://vault.dirty-flix-servarr.fr/#/vault
+forgejo https://forgejo.dirty-flix-servarr.fr/
