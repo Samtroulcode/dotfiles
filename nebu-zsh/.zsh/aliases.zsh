@@ -39,6 +39,8 @@ alias ipinfo='ip -c a'
 alias pingg='ping -c 3 1.1.1.1'
 alias pingdns='ping -c 3 archlinux.org'
 
+alias m='mosh servarr -- tmux attach'
+
 alias archnews="qutebrowser 'https://archlinux.org/news/'"
 alias protonmail="qutebrowser 'https://mail.proton.me'"
 
@@ -70,9 +72,8 @@ alias audit-net='~/scripts/audit-network.sh'
 alias change-wall='~/.config/wallust/set_wall.sh'
 
 # Aliases de sauvegarde de mes dot files
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias lazyconfig='/usr/bin/lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias config-clean-deleted='config ls-files --deleted -z | xargs -0 -I{} git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME rm --cached "{}'
+alias lg='/usr/bin/lazygit'
+alias lgd='/usr/bin/lazygit --path ~/dotfiles'
 
 # Aliases de sync
 alias mount_backup='sudo mount /dev/sdd1 /mnt/external_backup && echo "Disque externe monté !"'

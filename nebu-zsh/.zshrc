@@ -74,8 +74,3 @@ eval "$(zoxide init zsh)"
 
 # Initialiser mcfly
 eval "$(mcfly init zsh)"
-
-servarr() {
-    ssh -t servarr "tmux attach"
-}
-
