@@ -134,3 +134,5 @@ rust cookbook https://rust-lang-nursery.github.io/rust-cookbook/intro.html#cooki
 steam db https://steamdb.info/
 crate.io https://crates.io/
 rust playground https://play.rust-lang.org/?version=stable&mode=debug&edition=2024
+nginx http://172.19.0.2:81/
+vault https://vault.dirty-flix-servarr.fr/#/vault
