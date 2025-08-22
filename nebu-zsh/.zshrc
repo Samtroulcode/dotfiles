@@ -35,6 +35,9 @@ setopt interactivecomments extendedglob # autorise les # en interactif
 export EDITOR=nvim
 export VISUAL=nvim
 
+# Nvim en tant que man pager
+export MANPAGER='nvim +Man!'
+
 # Aliases modernes 
 [[ -f ~/.zsh/modern-commands.zsh ]] && source ~/.zsh/modern-commands.zsh
 
