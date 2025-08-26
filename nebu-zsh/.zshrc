@@ -78,3 +78,19 @@ eval "$(zoxide init zsh)"
 
 # Initialiser mcfly
 eval "$(mcfly init zsh)"
+
+_nrip_complete() {
+  local cur prev cmd
+  cur=${words[-1]}
+  prev=${words[-2]}
+
+  if [[ $prev == "-c" || $prev == "--cremate" ]]; then
+    compadd -- ${(f)"$(nrip --__complete cremate "$cur")"}
+    return 0
+  elif [[ $prev == "-r" || $prev == "--resurrect" ]]; then
+    compadd -- ${(f)"$(nrip --__complete resurrect "$cur")"}
+    return 0
+  fi
+  return 1
+}
+compdef _rip_complete nrip
