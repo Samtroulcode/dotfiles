@@ -13,6 +13,7 @@ alias icat='kitten icat'
 alias fv='nvim $(fzf -m --preview="bat --color=always {}")'
 alias fvc='nvim $(fd -H -t f . ~/.config | fzf -m --preview="bat --color=always {}")'
 alias fcd='nvim $(fd -H -t f . ~/dotfiles | fzf -m --preview="bat --color=always {}")'
+alias cwatch='cargo watch -q -c -x "run"'
 
 # Aliases de maintenance
 alias update='sudo pacman -Syu'
