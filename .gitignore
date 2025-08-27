@@ -12,3 +12,4 @@ nebu-wofi/.config/wofi/style.css
 nebu-chat/.config/weechat/sec.conf
 nebu-chat/.config/weechat/irc.conf
 nebu-chat/.config/weechat/relay.conf
+zsh/ 
