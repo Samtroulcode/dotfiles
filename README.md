@@ -43,6 +43,7 @@ The root of this repo is an equivalent to my $HOME directory
 | color generator | [Wallust](https://explosion-mental.codeberg.page/wallust/) | [codeberg](https://codeberg.org/explosion-mental/wallust) | [wallust](./nebu-wallust/.config/wallust) | WIP |
 | music daemon | [Mpd](https://www.musicpd.org/) | [github](https://github.com/MusicPlayerDaemon/MPD) | [mpd](./nebu-mdp/.config/mpd) | WIP |
 | music player | [Rmpc](https://mierak.github.io/rmpc/) | [github](https://github.com/mierak/rmpc) | [ncmpcpp](./nebu-music/.config/rmpc) | WIP |
+| video player | [Mpv](https://mpv.io/) | [github](https://github.com/mpv-player/mpv) | [mpv](./nebu-mpv/.config/mpv) | WIP |
 | Text editor/IDE | [Nvim](https://neovim.io/) | [github](https://github.com/neovim/neovim) | [nvim](./nebu-nvim/.config/nvim) | WIP |
 
 ### Window manager *****HYPRLAND*****
