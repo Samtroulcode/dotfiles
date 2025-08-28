@@ -118,7 +118,7 @@ I separated my configuration into several files :
 
 ### Web Browser *****QUTEBROWSER*****
 
-![Qutebrowser1](wallpapers/qutebrowser1.png)
+![Qutebrowser1](wallpaper/qutebrowser1.png)
 
 </div>
 
@@ -152,7 +152,7 @@ It will open an MPV player with the YouTube video without the ads, first i hit m
 
 | Step 1 | Step 2 |
 |----|----|
-| ![mpv2](wallpapers/mpv1.png) | ![mpv2](wallpapers/mpv2.png) |
+| ![mpv2](wallpaper/mpv1.png) | ![mpv2](wallpaper/mpv2.png) |
 
 The second method is similar to the first but it uses a custom script which allows you to have a single instances of MPV and to add videos in queues, a bit like a playlist.
 
