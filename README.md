@@ -12,20 +12,62 @@ I use Arch btw.
 
 [Showcase video](https://files.catbox.moe/v6n30o.mp4)
 
-## Note on this repository
-
 </div>
+
+## Note on this repository
 
 I use this repo to sync and backup my dotfiles.
 
-The root of this repo is an equivalent to my $HOME directory
+I use stow to manage my dotfiles, so each folder starting with "nebu-" is a package that you can stow in your home directory.
 
-  > [!WARNING]
-  > THIS IS NOT A PLUG AND PLAY DOTFILES ! There's no install scripts or step by step guide to install my files, you should know what you do if you want to use it. I only explain how my files are organized, and some tips with some tools. The comments in my files are mainly **IN FRENCH**
+## Installation
 
-<div align = center>
+> [!WARNING]
+> You need to have `stow` installed on your system to manage these dotfiles. `stow` will create symlinks from your dotfiles repository to your `$HOME`, so you don’t overwrite files directly.
+You can install it with your package manager. For example, on Arch Linux, you can use:
+
+```bash
+sudo pacman -S stow
+```
+
+### Install dependencies and deploy configurations
+
+1. Backup your current dotfiles
+
+2. Clone this repository
+
+```bash
+git clone https://github.com/Samtroulcode/dotfiles.git && cd dotfiles
+# or if you use ssh
+git clone git@github.com:Samtroulcode/dotfiles.git && cd dotfiles
+```
+
+3. Install the packages you want to use then stow them
+
+```bash
+sudo pacman -S <package-name>
+stow nebu-<package-name>
+```
+
+> [!NOTE]
+> If you want to install **all dependencies** and deploy all configurations at once:
+
+```bash
+sudo pacman -S ghostty hyprland swww mpv mpd ncmpcpp neovim qutebrowser starship swaync superfile waybar wlogout wofi zsh btop
+stow nebu-*
+```
+
+### Uninstall
+
+To uninstall a package, simply use `stow -D` followed by the package name:
+
+```bash
+stow -D nebu-<package-name>
+```
 
 ## List of tools used
+
+<div align = center>
 
 | Tool | Name/site | repository | config | doc |
 | ---- | ---- | ---- | ---- | ---- |
@@ -46,11 +88,11 @@ The root of this repo is an equivalent to my $HOME directory
 | video player | [Mpv](https://mpv.io/) | [github](https://github.com/mpv-player/mpv) | [mpv](./nebu-mpv/.config/mpv) | WIP |
 | Text editor/IDE | [Nvim](https://neovim.io/) | [github](https://github.com/neovim/neovim) | [nvim](./nebu-nvim/.config/nvim) | WIP |
 
+</div>
+
 ### Window manager *****HYPRLAND*****
 
 ![Hyprland1](https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/header.svg)
-
-</div>
 
 Hyprland is a modern, dynamic Wayland compositor featuring both tiling and floating window management, with smooth animations and deep customization. It replaces both the window manager and the compositor, making it ideal for advanced users seeking a minimal and responsive Wayland setup.
 
