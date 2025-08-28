@@ -10,7 +10,7 @@ I use Arch btw.
 | ---- | ---- |
 | ![Nebulix3](wallpaper/nebulix3.png) | ![Nebulix4](wallpaper/nebulix4.png) |
 
-[Showcase video](https://files.catbox.moe/v6n30o.mp4)
+[Showcase video](https://files.catbox.moe/kbrmnl.mp4)
 
 </div>
 
