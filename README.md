@@ -53,7 +53,7 @@ stow nebu-<package-name>
 > If you want to install **all dependencies** and deploy all configurations at once:
 
 ```bash
-sudo pacman -S ghostty hyprland swww mpv mpd ncmpcpp neovim qutebrowser starship swaync superfile waybar wlogout wofi zsh btop
+sudo pacman -S ghostty hyprland swww mpv mpd ncmpcpp neovim qutebrowser tmux starship swaync superfile waybar wlogout wofi zsh btop
 stow nebu-*
 ```
 
@@ -86,6 +86,7 @@ stow -D nebu-<package-name>
 | music daemon | [Mpd](https://www.musicpd.org/) | [github](https://github.com/MusicPlayerDaemon/MPD) | [mpd](./nebu-mdp/.config/mpd) | WIP |
 | music player | [Rmpc](https://mierak.github.io/rmpc/) | [github](https://github.com/mierak/rmpc) | [ncmpcpp](./nebu-music/.config/rmpc) | WIP |
 | video player | [Mpv](https://mpv.io/) | [github](https://github.com/mpv-player/mpv) | [mpv](./nebu-mpv/.config/mpv) | WIP |
+| multiplexer | [Tmux](https://github.com/tmux/tmux/wiki) | [github](https://github.com/tmux/tmux) | [tmux](./nebu-tmux/) | WIP |
 | Text editor/IDE | [Nvim](https://neovim.io/) | [github](https://github.com/neovim/neovim) | [nvim](./nebu-nvim/.config/nvim) | WIP |
 
 </div>
