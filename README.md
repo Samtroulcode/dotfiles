@@ -6,9 +6,9 @@ My personal Linux dotfiles
 
 I use Arch btw.
 
-| ![Nebulix1](wallpaper/nebulix1.png) | ![Nebulix2](wallpaper/nebulix2.png) |
+| ![Nebulix1](./assets/Readme/nebulix1.png) | ![Nebulix2](./assets/Readme/nebulix2.png) |
 | ---- | ---- |
-| ![Nebulix3](wallpaper/nebulix3.png) | ![Nebulix4](wallpaper/nebulix4.png) |
+| ![Nebulix3](./assets/Readme/nebulix3.png) | ![Nebulix4](./assets/Readme/nebulix4.png) |
 
 [Showcase video](https://files.catbox.moe/kbrmnl.mp4)
 
@@ -119,7 +119,7 @@ I separated my configuration into several files :
 
 ### Web Browser *****QUTEBROWSER*****
 
-![Qutebrowser1](wallpaper/qutebrowser1.png)
+![Qutebrowser1](./assets/Readme/qutebrowser1.png)
 
 </div>
 
@@ -153,7 +153,7 @@ It will open an MPV player with the YouTube video without the ads, first i hit m
 
 | Step 1 | Step 2 |
 |----|----|
-| ![mpv2](wallpaper/mpv1.png) | ![mpv2](wallpaper/mpv2.png) |
+| ![mpv2](./assets/Readme/mpv1.png) | ![mpv2](./assets/Readme/mpv2.png) |
 
 The second method is similar to the first but it uses a custom script which allows you to have a single instances of MPV and to add videos in queues, a bit like a playlist.
 
