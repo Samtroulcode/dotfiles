@@ -103,15 +103,6 @@ return {
 			}
 		end
 
-		dash.config.layout = {
-			{ type = "padding", val = 1 },
-			dash.section.header,
-			{ type = "padding", val = 1 },
-			dash.section.buttons,
-			{ type = "padding", val = 1 },
-			mru_section({ max = 8 }), -- MRU global
-			-- mru_section({ max = 8, cwd = vim.fn.getcwd(), title = "Recent in CWD" }), -- variante CWD
-		}
 		local function make_footer()
 			local v = vim.version()
 			local ver = string.format(" v%d.%d.%d", v.major, v.minor, v.patch)

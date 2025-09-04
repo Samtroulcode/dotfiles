@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Chargement de luarocks si un plugin luarocks est utilisé
+pcall(require, "luarocks.loader")
+
 -- On charge mes options perso
 require("config.options")
 
