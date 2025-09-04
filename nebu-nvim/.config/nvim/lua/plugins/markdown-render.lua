@@ -1,11 +1,12 @@
 return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown" }, -- charge uniquement sur .md
+		ft = { "markdown" },
 		opts = {
-			-- En normal/command/terminal = rendu ; en insert = brut
+			-- Rendu en normal/command/terminal ; brut en insert
 			render_modes = { "n", "c", "t" },
-			-- tout le reste est optionnel ; défauts déjà bien choisis
+			-- On coupe complètement LaTeX
+			latex = { enabled = false },
 		},
 	},
 }
