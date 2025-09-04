@@ -13,16 +13,3 @@ require("config.lazy")
 
 -- On charge les keymaps
 require("config.keymaps")
-
--- On charge le theme lualine
-require("config.lualine-bubble")
-
--- Chargement des workspaces
-require("workspaces").setup({
-	path = vim.fn.stdpath("data") .. "/workspaces", -- optionnel
-	cd_type = "tab", -- "global" | "tab" | "win"
-	sort = "recent", -- "none" | "asc" | "desc" | "recent"
-	hooks = {
-		open = { "Telescope find_files" }, -- commandes ou fonctions Lua
-	},
-})
