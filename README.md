@@ -18,19 +18,6 @@ I use Arch btw.
 
 [Showcase video](https://files.catbox.moe/kbrmnl.mp4)
 
-![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?logo=archlinux&logoColor=white&style=flat-square)
-![Wayland](https://img.shields.io/badge/Wayland-34BE5B?logo=wayland&logoColor=white&style=flat-square)
-![Hyprland](https://img.shields.io/badge/Hyprland-24273A?style=flat-square)
-![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=white&style=flat-square)
-![tmux](https://img.shields.io/badge/tmux-1BB91F?logo=tmux&logoColor=white&style=flat-square)
-![Zsh](https://img.shields.io/badge/Zsh-FFD500?logo=gnubash&logoColor=black&style=flat-square)
-![Ghostty](https://img.shields.io/badge/Ghostty-000000?style=flat-square)
-![Waybar](https://img.shields.io/badge/Waybar-303446?style=flat-square)
-![Qutebrowser](https://img.shields.io/badge/Qutebrowser-1E9F75?style=flat-square)
-![MPV](https://img.shields.io/badge/MPV-000000?style=flat-square)
-![Starship](https://img.shields.io/badge/Starship-DD0B78?style=flat-square)
-![Wallust](https://img.shields.io/badge/Wallust-6C77BB?style=flat-square)
-
 </div>
 
 ## Note on this repository
@@ -85,6 +72,19 @@ stow -D nebu-<package-name>
 ```
 
 ## List of tools used
+
+![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?logo=archlinux&logoColor=white&style=flat-square)
+![Wayland](https://img.shields.io/badge/Wayland-34BE5B?logo=wayland&logoColor=white&style=flat-square)
+![Hyprland](https://img.shields.io/badge/Hyprland-24273A?style=flat-square)
+![Neovim](https://img.shields.io/badge/Neovim-57A143?logo=neovim&logoColor=white&style=flat-square)
+![tmux](https://img.shields.io/badge/tmux-1BB91F?logo=tmux&logoColor=white&style=flat-square)
+![Zsh](https://img.shields.io/badge/Zsh-FFD500?logo=gnubash&logoColor=black&style=flat-square)
+![Ghostty](https://img.shields.io/badge/Ghostty-000000?style=flat-square)
+![Waybar](https://img.shields.io/badge/Waybar-303446?style=flat-square)
+![Qutebrowser](https://img.shields.io/badge/Qutebrowser-1E9F75?style=flat-square)
+![MPV](https://img.shields.io/badge/MPV-000000?style=flat-square)
+![Starship](https://img.shields.io/badge/Starship-DD0B78?style=flat-square)
+![Wallust](https://img.shields.io/badge/Wallust-6C77BB?style=flat-square)
 
 <div align = center>
 
