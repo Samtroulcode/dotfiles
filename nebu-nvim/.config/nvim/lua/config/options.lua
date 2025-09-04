@@ -14,11 +14,22 @@ vim.opt.mouse = "a"  -- Active la souris partour
 vim.opt.termguicolors = true  -- Couleurs
 vim.opt.cursorline = true -- highlight la ligne actuelle
 
--- Search --
+vim.opt.showmode = false       -- Evite le -- INSERT --
+vim.opt.scrolloff = 4          -- Garde du contexte autour du curseur
+vim.opt.sidescrolloff = 8
+vim.opt.updatetime = 200       -- Diagnostics/LSP plus réactifs (par défaut ~4000ms)
+vim.opt.inccommand = "split"   -- Aperçu live pour :%s/// (substitute)
+vim.opt.breakindent = true     -- Indent visuel pour les lignes wrap
+vim.opt.linebreak = true       -- Coupe sur les mots, pas en plein milieu
+vim.opt.wrap = false           -- (perso) évite les wraps; active linebreak/breakindent si tu le mets à true
+
+-- Recherche --
 vim.opt.ignorecase = true -- permet de faire des recherches insensible a la casse...
 vim.opt.smartcase = true  -- ... sauf si on met une majuscule
+vim.opt.hlsearch = true -- Garde les occurrences surlignées après la recherche
+vim.opt.incsearch = true  -- Retour visuel incrémental pendant la saisie
 
--- Split behavior --
+-- Split --
 vim.opt.splitbelow = true  -- :split en dessous
 vim.opt.splitright = true  -- :vsplit à droite
 
@@ -32,3 +43,9 @@ vim.opt.undofile = true -- Mais garder l’historique d’undo entre les session
 vim.opt.completeopt = { "menu", "menuone", "noselect" } -- Auto-completion plus ergonomique
 
 vim.opt.signcolumn = "yes"  -- Une signcolumn (utile pour LSP, Git, diagnostics…)
+
+-- Grep intégré, si ripgrep est présent
+if vim.fn.executable("rg") == 1 then
+  vim.opt.grepprg = "rg --vimgrep --hidden"
+  vim.opt.grepformat = "%f:%l:%c:%m"
+end
