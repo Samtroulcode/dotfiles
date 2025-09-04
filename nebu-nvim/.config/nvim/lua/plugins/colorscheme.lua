@@ -1,8 +1,18 @@
 return {
-  "catppuccin/nvim", 
-  name = "catppuccin", 
+  "catppuccin/nvim",
+  name = "catppuccin",
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme "catppuccin"
-  end
+    require("catppuccin").setup({
+      flavour = "mocha", -- latte, frappe, macchiato, mocha
+      integrations = {
+        treesitter = true,
+        telescope = true,
+        gitsigns = true,
+        native_lsp = { enabled = true },
+      },
+    })
+    vim.cmd.colorscheme("catppuccin")
+  end,
 }
+
