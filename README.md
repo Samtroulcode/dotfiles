@@ -8,6 +8,16 @@
 ![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)
 ![Managed with Stow](https://img.shields.io/badge/managed%20with-gnu%20stow-informational?style=flat-square)
 
+My personal Linux dotfiles
+
+I use Arch btw.
+
+| ![Nebulix1](./assets/Readme/nebulix1.png) | ![Nebulix2](./assets/Readme/nebulix2.png) |
+| ----------------------------------------- | ----------------------------------------- |
+| ![Nebulix3](./assets/Readme/nebulix3.png) | ![Nebulix4](./assets/Readme/nebulix4.png) |
+
+[Showcase video](https://files.catbox.moe/kbrmnl.mp4)
+
 ![Arch Linux](https://img.shields.io/badge/Arch_Linux-1793D1?logo=archlinux&logoColor=white&style=flat-square)
 ![Wayland](https://img.shields.io/badge/Wayland-34BE5B?logo=wayland&logoColor=white&style=flat-square)
 ![Hyprland](https://img.shields.io/badge/Hyprland-24273A?style=flat-square)
@@ -20,15 +30,6 @@
 ![MPV](https://img.shields.io/badge/MPV-000000?style=flat-square)
 ![Starship](https://img.shields.io/badge/Starship-DD0B78?style=flat-square)
 ![Wallust](https://img.shields.io/badge/Wallust-6C77BB?style=flat-square)
-My personal Linux dotfiles
-
-I use Arch btw.
-
-| ![Nebulix1](./assets/Readme/nebulix1.png) | ![Nebulix2](./assets/Readme/nebulix2.png) |
-| ----------------------------------------- | ----------------------------------------- |
-| ![Nebulix3](./assets/Readme/nebulix3.png) | ![Nebulix4](./assets/Readme/nebulix4.png) |
-
-[Showcase video](https://files.catbox.moe/kbrmnl.mp4)
 
 </div>
 
