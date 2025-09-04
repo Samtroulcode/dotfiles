@@ -168,6 +168,11 @@ M.keys = {
 			end,
 			desc = "Telescope: help",
 		},
+		{
+			"<leader>fp",
+			"<cmd>Telescope workspaces<CR>",
+			desc = "Find: workspaces",
+		},
 	},
 
 	-- Bufferline : TOUT sous <leader>b …
@@ -342,6 +347,12 @@ M.keys = {
 			{ "<leader>gdH", "<cmd>DiffviewFileHistory<CR>", desc = "Git: repo history" },
 		},
 	},
+	workspaces = {
+		{ "<leader>pa", "<cmd>WorkspacesAdd<CR>", desc = "Workspace: add cwd" },
+		{ "<leader>po", "<cmd>WorkspacesOpen<CR>", desc = "Workspace: open…" },
+		{ "<leader>pr", "<cmd>WorkspacesRemove<CR>", desc = "Workspace: remove" },
+		{ "<leader>pn", "<cmd>WorkspacesRename<CR>", desc = "Workspace: rename" },
+	},
 }
 
 -- Enregistrement auto des maps générales + hints which-key
@@ -358,6 +369,7 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>b", group = "Buffers" },
 				{ "<leader>l", group = "Lazy" },
 				{ "<leader>d", group = "Dashboard" },
+				{ "<leader>p", group = "Projects / Workspaces" },
 				{ "<leader>bh", desc = "Précédent" },
 				{ "<leader>bl", desc = "Suivant" },
 				{ "<leader>bp", desc = "Picker" },

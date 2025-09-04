@@ -3,41 +3,29 @@ return {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		keys = require("config.keymaps").keys.telescope, -- ← maps centralisées
+		keys = require("config.keymaps").keys.telescope,
 		config = function()
-			require("telescope").setup({})
+			local telescope = require("telescope")
+			telescope.setup({})
+			pcall(telescope.load_extension, "fzf")
+			pcall(telescope.load_extension, "workspaces")
 		end,
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
-		config = function()
-			require("telescope").load_extension("fzf")
-		end,
 	},
+	-- Remplacement de ahmedkhalf/project.nvim
 	{
-		"ahmedkhalf/project.nvim",
+		"natecraddock/workspaces.nvim",
 		event = "VeryLazy",
+		keys = require("config.keymaps").keys.workspaces, -- ← consomme tes maps
 		config = function()
-			require("project_nvim").setup({
-				manual_mode = false,
-				detection_methods = { "pattern", "lsp" },
-				patterns = {
-					".git",
-					"_darcs",
-					".hg",
-					".bzr",
-					"Cargo.toml",
-					"package.json",
-					"pyproject.toml",
-					"Makefile",
-					"CMakeLists.txt",
-				},
-				show_hidden = true,
-				silent_chdir = true,
-				scope_chdir = "tab",
+			require("workspaces").setup({
+				cd_type = "tab",
+				sort = "recent",
+				hooks = { open = { "Telescope find_files" } },
 			})
-			require("telescope").load_extension("projects")
 		end,
 	},
 }
