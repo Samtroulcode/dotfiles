@@ -10,3 +10,6 @@ require("config.lazy")
 
 -- On charge les keymaps
 require("config.keymaps")
+
+-- On charge le theme lualine
+require("config.lualine-bubble")

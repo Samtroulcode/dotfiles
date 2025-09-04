@@ -1,28 +1,26 @@
 return {
-  "neovim/nvim-lspconfig",
-  config = function()
-    local lsp = require("lspconfig")
+	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" },
+	config = function()
+		local lsp = require("lspconfig")
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    -- Exemple rust (si tu utilises rust-analyzer dans $PATH)
-    lsp.rust_analyzer.setup({})
+		local on_attach = function(_, bufnr)
+			require("config.keymaps").lsp(bufnr) -- maps LSP buffer-local centralisées
+		end
 
-    -- Exemple lua (pour éditer ta config sans warnings)
-    lsp.lua_ls.setup({
-      settings = {
-        Lua = {
-          diagnostics = { globals = { "vim" } },
-        },
-      },
-    })
+		lsp.rust_analyzer.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+				["rust-analyzer"] = { cargo = { allFeatures = true }, check = { command = "clippy" } },
+			},
+		})
 
-    -- Mappings LSP “standards”
-    local map = vim.keymap.set
-    local opts = { noremap = true, silent = true }
-    map("n", "gd", vim.lsp.buf.definition, { desc = "LSP: goto definition" })
-    map("n", "gr", vim.lsp.buf.references, { desc = "LSP: references" })
-    map("n", "K",  vim.lsp.buf.hover, { desc = "LSP: hover" })
-    map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP: rename" })
-    map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP: code action" })
-  end,
+		lsp.lua_ls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+		})
+	end,
 }
-
