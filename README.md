@@ -95,6 +95,7 @@ stow -D nebu-<package-name>
 | terminal            | [Ghostty](https://ghostty.org/)                                | [github](https://github.com/ghostty-org/ghostty)               | [ghostty](./nebu-ghostty/.config/ghostty/)            | WIP                                          |
 | shell               | [Oh my zsh](https://ohmyz.sh/)                                 | [github](https://github.com/ohmyzsh/ohmyzsh)                   | [zsh](./nebu-zsh/)                                    | WIP                                          |
 | shell theming       | [Starship](https://starship.rs/)                               | [github](https://github.com/starship/starship)                 | [starship](.config/starship.toml)                     | WIP                                          |
+| Text editor/IDE     | [Nvim](https://neovim.io/)                                     | [github](https://github.com/neovim/neovim)                     | [nvim](./nebu-nvim/.config/nvim)                      | [readme](./nebu-nvim/.config/nvim/README.md) |
 | file explorer       | [Superfile](https://superfile.netlify.app/)                    | [github](https://github.com/yorukot/superfile)                 | [spf](./nebu-spf/.config/superfile)                   | WIP                                          |
 | status bar          | [Waybar](https://github.com/Alexays/Waybar)                    | [github](https://github.com/Alexays/Waybar)                    | [waybar](./nebu-waybar/.config/waybar)                | WIP                                          |
 | menu                | [Wofi](https://hg.sr.ht/~scoopta/wofi)                         | [sourcehut](https://hg.sr.ht/~scoopta/wofi)                    | [wofi](./nebu-wofi/.config/wofi)                      | WIP                                          |
@@ -106,7 +107,6 @@ stow -D nebu-<package-name>
 | music player        | [Rmpc](https://mierak.github.io/rmpc/)                         | [github](https://github.com/mierak/rmpc)                       | [rmpc](./nebu-music/.config/rmpc)                     | WIP                                          |
 | video player        | [Mpv](https://mpv.io/)                                         | [github](https://github.com/mpv-player/mpv)                    | [mpv](./nebu-mpv/.config/mpv)                         | WIP                                          |
 | multiplexer         | [Tmux](https://github.com/tmux/tmux/wiki)                      | [github](https://github.com/tmux/tmux)                         | [tmux](./nebu-tmux/)                                  | WIP                                          |
-| Text editor/IDE     | [Nvim](https://neovim.io/)                                     | [github](https://github.com/neovim/neovim)                     | [nvim](./nebu-nvim/.config/nvim)                      | [readme](./nebu-nvim/.config/nvim/README.md) |
 
 </div>
 
