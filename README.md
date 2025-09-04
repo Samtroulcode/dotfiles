@@ -1,13 +1,13 @@
 <div align = center>
 
-# Sam's Dotfiles ***NEBULIX*** WIP
+# Sam's Dotfiles **_NEBULIX_** WIP
 
 My personal Linux dotfiles
 
 I use Arch btw.
 
 | ![Nebulix1](./assets/Readme/nebulix1.png) | ![Nebulix2](./assets/Readme/nebulix2.png) |
-| ---- | ---- |
+| ----------------------------------------- | ----------------------------------------- |
 | ![Nebulix3](./assets/Readme/nebulix3.png) | ![Nebulix4](./assets/Readme/nebulix4.png) |
 
 [Showcase video](https://files.catbox.moe/kbrmnl.mp4)
@@ -24,7 +24,7 @@ I use stow to manage my dotfiles, so each folder starting with "nebu-" is a pack
 
 > [!WARNING]
 > You need to have `stow` installed on your system to manage these dotfiles. `stow` will create symlinks from your dotfiles repository to your `$HOME`, so you don’t overwrite files directly.
-You can install it with your package manager. For example, on Arch Linux, you can use:
+> You can install it with your package manager. For example, on Arch Linux, you can use:
 
 ```bash
 sudo pacman -S stow
@@ -69,29 +69,29 @@ stow -D nebu-<package-name>
 
 <div align = center>
 
-| Tool | Name/site | repository | config | doc |
-| ---- | ---- | ---- | ---- | ---- |
-| wayland compositer | [Hyprland](https://hypr.land/) | [github](https://github.com/hyprwm/Hyprland) | [hypr](./nebu-hyprland/.config/hypr) | [section](#hyprland) |
-| web browser | [Qutebrowser](https://www.qutebrowser.org/) | [github](https://github.com/qutebrowser/qutebrowser) | [qutebrowser](./nebu-qutebrowser/.config/qutebrowser) | [section](#web-browser-qutebrowser) |
-| terminal | [Ghostty](https://ghostty.org/) | [github](https://github.com/ghostty-org/ghostty) | [ghostty](./nebu-ghostty/.config/ghostty/) | WIP |
-| shell | [Oh my zsh](https://ohmyz.sh/) | [github](https://github.com/ohmyzsh/ohmyzsh) | [zsh](./nebu-zsh/) | WIP |
-| shell theming | [Starship](https://starship.rs/) | [github](https://github.com/starship/starship) | [starship](.config/starship.toml) | WIP |
-| file explorer | [Superfile](https://superfile.netlify.app/) | [github](https://github.com/yorukot/superfile) | [spf](./nebu-spf/.config/superfile) | WIP |
-| status bar | [Waybar](https://github.com/Alexays/Waybar) | [github](https://github.com/Alexays/Waybar) | [waybar](./nebu-waybar/.config/waybar) | WIP |
-| menu | [Wofi](https://hg.sr.ht/~scoopta/wofi) | [sourcehut](https://hg.sr.ht/~scoopta/wofi) | [wofi](./nebu-wofi/.config/wofi) | WIP |
-| power menu | [Wlogout](https://github.com/ArtsyMacaw/wlogout) | [github](https://github.com/ArtsyMacaw/wlogout) | [wlogout](./nebu-wlogout/.config/wlogout) | WIP |
-| notification daemon | [Swaync](https://github.com/ErikReider/SwayNotificationCenter) | [github](https://github.com/ErikReider/SwayNotificationCenter) | [swaync](./nebu-swaync/.config/swaync) | WIP |
-| wallpaper backend | [Swww](https://github.com/LGFae/swww) | [github](https://github.com/LGFae/swww) | [swww](./nebu-swww/.config/swww) | WIP |
-| color generator | [Wallust](https://explosion-mental.codeberg.page/wallust/) | [codeberg](https://codeberg.org/explosion-mental/wallust) | [wallust](./nebu-wallust/.config/wallust) | WIP |
-| music daemon | [Mpd](https://www.musicpd.org/) | [github](https://github.com/MusicPlayerDaemon/MPD) | [mpd](./nebu-mdp/.config/mpd) | WIP |
-| music player | [Rmpc](https://mierak.github.io/rmpc/) | [github](https://github.com/mierak/rmpc) | [ncmpcpp](./nebu-music/.config/rmpc) | WIP |
-| video player | [Mpv](https://mpv.io/) | [github](https://github.com/mpv-player/mpv) | [mpv](./nebu-mpv/.config/mpv) | WIP |
-| multiplexer | [Tmux](https://github.com/tmux/tmux/wiki) | [github](https://github.com/tmux/tmux) | [tmux](./nebu-tmux/) | WIP |
-| Text editor/IDE | [Nvim](https://neovim.io/) | [github](https://github.com/neovim/neovim) | [nvim](./nebu-nvim/.config/nvim) | WIP |
+| Tool                | Name/site                                                      | repository                                                     | config                                                | doc                                          |
+| ------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------- | -------------------------------------------- |
+| wayland compositer  | [Hyprland](https://hypr.land/)                                 | [github](https://github.com/hyprwm/Hyprland)                   | [hypr](./nebu-hyprland/.config/hypr)                  | [section](#hyprland)                         |
+| web browser         | [Qutebrowser](https://www.qutebrowser.org/)                    | [github](https://github.com/qutebrowser/qutebrowser)           | [qutebrowser](./nebu-qutebrowser/.config/qutebrowser) | [section](#web-browser-qutebrowser)          |
+| terminal            | [Ghostty](https://ghostty.org/)                                | [github](https://github.com/ghostty-org/ghostty)               | [ghostty](./nebu-ghostty/.config/ghostty/)            | WIP                                          |
+| shell               | [Oh my zsh](https://ohmyz.sh/)                                 | [github](https://github.com/ohmyzsh/ohmyzsh)                   | [zsh](./nebu-zsh/)                                    | WIP                                          |
+| shell theming       | [Starship](https://starship.rs/)                               | [github](https://github.com/starship/starship)                 | [starship](.config/starship.toml)                     | WIP                                          |
+| file explorer       | [Superfile](https://superfile.netlify.app/)                    | [github](https://github.com/yorukot/superfile)                 | [spf](./nebu-spf/.config/superfile)                   | WIP                                          |
+| status bar          | [Waybar](https://github.com/Alexays/Waybar)                    | [github](https://github.com/Alexays/Waybar)                    | [waybar](./nebu-waybar/.config/waybar)                | WIP                                          |
+| menu                | [Wofi](https://hg.sr.ht/~scoopta/wofi)                         | [sourcehut](https://hg.sr.ht/~scoopta/wofi)                    | [wofi](./nebu-wofi/.config/wofi)                      | WIP                                          |
+| power menu          | [Wlogout](https://github.com/ArtsyMacaw/wlogout)               | [github](https://github.com/ArtsyMacaw/wlogout)                | [wlogout](./nebu-wlogout/.config/wlogout)             | WIP                                          |
+| notification daemon | [Swaync](https://github.com/ErikReider/SwayNotificationCenter) | [github](https://github.com/ErikReider/SwayNotificationCenter) | [swaync](./nebu-swaync/.config/swaync)                | WIP                                          |
+| wallpaper backend   | [Swww](https://github.com/LGFae/swww)                          | [github](https://github.com/LGFae/swww)                        | [swww](./nebu-swww/.config/swww)                      | WIP                                          |
+| color generator     | [Wallust](https://explosion-mental.codeberg.page/wallust/)     | [codeberg](https://codeberg.org/explosion-mental/wallust)      | [wallust](./nebu-wallust/.config/wallust)             | WIP                                          |
+| music daemon        | [Mpd](https://www.musicpd.org/)                                | [github](https://github.com/MusicPlayerDaemon/MPD)             | [mpd](./nebu-mdp/.config/mpd)                         | WIP                                          |
+| music player        | [Rmpc](https://mierak.github.io/rmpc/)                         | [github](https://github.com/mierak/rmpc)                       | [ncmpcpp](./nebu-music/.config/rmpc)                  | WIP                                          |
+| video player        | [Mpv](https://mpv.io/)                                         | [github](https://github.com/mpv-player/mpv)                    | [mpv](./nebu-mpv/.config/mpv)                         | WIP                                          |
+| multiplexer         | [Tmux](https://github.com/tmux/tmux/wiki)                      | [github](https://github.com/tmux/tmux)                         | [tmux](./nebu-tmux/)                                  | WIP                                          |
+| Text editor/IDE     | [Nvim](https://neovim.io/)                                     | [github](https://github.com/neovim/neovim)                     | [nvim](./nebu-nvim/.config/nvim)                      | [readme](./nebu-nvim/.config/nvim/README.md) |
 
 </div>
 
-### Window manager *****HYPRLAND*****
+### Window manager **\***HYPRLAND**\***
 
 ![Hyprland1](https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/header.svg)
 
@@ -117,7 +117,7 @@ I separated my configuration into several files :
 
 <div align = center>
 
-### Web Browser *****QUTEBROWSER*****
+### Web Browser **\***QUTEBROWSER**\***
 
 ![Qutebrowser1](./assets/Readme/qutebrowser1.png)
 
@@ -151,8 +151,8 @@ sudo pacman -S yt-dlp mpv
 
 It will open an MPV player with the YouTube video without the ads, first i hit my shortcut, then i select the video, here is the workflow :
 
-| Step 1 | Step 2 |
-|----|----|
+| Step 1                            | Step 2                            |
+| --------------------------------- | --------------------------------- |
 | ![mpv2](./assets/Readme/mpv1.png) | ![mpv2](./assets/Readme/mpv2.png) |
 
 The second method is similar to the first but it uses a custom script which allows you to have a single instances of MPV and to add videos in queues, a bit like a playlist.
