@@ -24,6 +24,31 @@ local function nav_win(dir)
 	end
 end
 
+-- Helpers Dashboard
+local function dashboard_open()
+	pcall(vim.cmd, "Alpha")
+end
+
+local function dashboard_only()
+	-- force : ferme tous les buffers/fenêtres, puis ouvre le dashboard
+	vim.cmd("silent! %bd!")
+	vim.schedule(function()
+		pcall(vim.cmd, "Alpha")
+		vim.cmd("only")
+	end)
+end
+
+local function dashboard_toggle()
+	local buf_ft = vim.bo.filetype
+	if buf_ft == "alpha" then
+		-- revenir au dernier buffer visité
+		vim.cmd("b#")
+	else
+		pcall(vim.cmd, "Alpha")
+		vim.cmd("only")
+	end
+end
+
 -- =========================
 -- GÉNÉRALES (pas de plugin)
 -- =========================
@@ -37,7 +62,13 @@ function M.apply_general()
 	map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "No HL search" })
 
 	-- Fenêtres (normal + terminal)
-	for lhs, dir in pairs({ ["<C-h>"] = "h", ["<C-j>"] = "j", ["<C-k>"] = "k", ["<C-l>"] = "l" }) do
+	for lhs, dir in pairs({
+		["<C-h>"] = "h",
+		["<C-j>"] = "j",
+		["<C-k>"] = "k",
+		["<C-l>"] = "l",
+	}) do
+		-- active en normal ET terminal
 		map({ "n", "t" }, lhs, function()
 			nav_win(dir)
 		end, { desc = "Window " .. dir })
@@ -48,6 +79,21 @@ function M.apply_general()
 	map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 	map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Diagnostics: line" })
 	map("n", "<leader>cD", vim.diagnostic.setloclist, { desc = "Diagnostics: to loclist" })
+
+	-- ===== Lazy (tout sous <leader>l)
+	map("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Lazy: home" })
+	map("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "Lazy: update" })
+	map("n", "<leader>ls", "<cmd>Lazy sync<CR>", { desc = "Lazy: sync" })
+	map("n", "<leader>lc", "<cmd>Lazy check<CR>", { desc = "Lazy: check" })
+	map("n", "<leader>lC", "<cmd>Lazy clean<CR>", { desc = "Lazy: clean" })
+	map("n", "<leader>lp", "<cmd>Lazy profile<CR>", { desc = "Lazy: profile" })
+
+	-- ===== Dashboard (tout sous <leader>d)
+	map("n", "<leader>dd", dashboard_open, { desc = "Dashboard: open" })
+	map("n", "<leader>dD", dashboard_only, { desc = "Dashboard: close all & open" })
+	map("n", "<leader>dt", dashboard_toggle, { desc = "󰕮 Dashboard: toggle" })
+	map("n", "<leader>dR", "<cmd>AlphaRedraw<CR>", { desc = "Dashboard: redraw" })
+	map("n", "<leader>dq", "<cmd>qa<CR>", { desc = "Quit all" }) -- (optionnel, pratique)
 end
 
 -- =========================
@@ -68,6 +114,25 @@ function M.lsp(bufnr)
 		end
 	end, vim.tbl_extend("keep", { desc = "Format buffer" }, b))
 end
+
+-- TOC Markdown: <leader>ct = générer / <leader>cT = mettre à jour
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function(ev)
+		vim.keymap.set(
+			"n",
+			"<leader>ct",
+			":GenTocGFM<CR>",
+			{ buffer = ev.buf, silent = true, desc = "Markdown: Gen TOC (GFM)" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>cT",
+			":UpdateToc<CR>",
+			{ buffer = ev.buf, silent = true, desc = "Markdown: Update TOC" }
+		)
+	end,
+})
 
 -- =========================
 -- Clés destinées aux specs lazy
@@ -155,6 +220,128 @@ M.keys = {
 		{ "<leader>e", "<cmd>Neotree toggle<CR>", desc = "Explorer: toggle" },
 		{ "<leader>E", "<cmd>Neotree reveal<CR>", desc = "Explorer: reveal file" },
 	},
+
+	-- =========================
+	-- GIT (tout sous <leader>g)
+	-- =========================
+
+	git = {
+
+		-- LazyGit
+		lazygit = {
+			{ "<leader>gl", "<cmd>LazyGit<CR>", desc = "Git: LazyGit" },
+		},
+
+		-- Gitsigns (hunks, blame, diff…)
+		gitsigns = {
+			-- hunk actions
+			{
+				"<leader>gs",
+				function()
+					require("gitsigns").stage_hunk()
+				end,
+				mode = { "n", "v" },
+				desc = "Git: stage hunk",
+			},
+			{
+				"<leader>gr",
+				function()
+					require("gitsigns").reset_hunk()
+				end,
+				mode = { "n", "v" },
+				desc = "Git: reset hunk",
+			},
+			{
+				"<leader>gu",
+				function()
+					require("gitsigns").undo_stage_hunk()
+				end,
+				desc = "Git: undo stage",
+			},
+			{
+				"<leader>gS",
+				function()
+					require("gitsigns").stage_buffer()
+				end,
+				desc = "Git: stage buffer",
+			},
+			{
+				"<leader>gR",
+				function()
+					require("gitsigns").reset_buffer()
+				end,
+				desc = "Git: reset buffer",
+			},
+			{
+				"<leader>gp",
+				function()
+					require("gitsigns").preview_hunk()
+				end,
+				desc = "Git: preview hunk",
+			},
+
+			-- navigation hunk (pratique; tu peux les retirer si tu veux zéro hors <leader>)
+			{
+				"]h",
+				function()
+					require("gitsigns").next_hunk()
+				end,
+				desc = "Git: next hunk",
+			},
+			{
+				"[h",
+				function()
+					require("gitsigns").prev_hunk()
+				end,
+				desc = "Git: prev hunk",
+			},
+
+			-- blame / diff
+			{
+				"<leader>gb",
+				function()
+					require("gitsigns").toggle_current_line_blame()
+				end,
+				desc = "Git: blame line (toggle)",
+			},
+			{
+				"<leader>gB",
+				function()
+					require("gitsigns").blame_line({ full = true })
+				end,
+				desc = "Git: blame line (full)",
+			},
+			{
+				"<leader>g=",
+				function()
+					require("gitsigns").diffthis()
+				end,
+				desc = "Git: diffthis",
+			},
+			{
+				"<leader>gD",
+				function()
+					require("gitsigns").diffthis("~")
+				end,
+				desc = "Git: diff vs HEAD~",
+			},
+			{
+				"<leader>gt",
+				function()
+					require("gitsigns").toggle_deleted()
+				end,
+				desc = "Git: toggle deleted",
+			},
+		},
+
+		-- Diffview (diffs & historiques propres)
+		diffview = {
+			{ "<leader>gdo", "<cmd>DiffviewOpen<CR>", desc = "Git: Diffview open" },
+			{ "<leader>gdc", "<cmd>DiffviewClose<CR>", desc = "Git: Diffview close" },
+			{ "<leader>gdh", "<cmd>DiffviewFileHistory %<CR>", desc = "Git: file history (buffer)" },
+			{ "<leader>gdH", "<cmd>DiffviewFileHistory<CR>", desc = "Git: repo history" },
+		},
+	},
 }
 
 -- Enregistrement auto des maps générales + hints which-key
@@ -167,22 +354,16 @@ vim.api.nvim_create_autocmd("User", {
 			wk.add({
 				{ "<leader>c", group = "Code / LSP" },
 				{ "<leader>f", group = "Find (Telescope)" },
+				{ "<leader>g", group = "Git" },
 				{ "<leader>b", group = "Buffers" },
+				{ "<leader>l", group = "Lazy" },
+				{ "<leader>d", group = "Dashboard" },
 				{ "<leader>bh", desc = "Précédent" },
 				{ "<leader>bl", desc = "Suivant" },
 				{ "<leader>bp", desc = "Picker" },
 				{ "<leader>bc", desc = "Fermer" },
 				{ "<leader>bC", desc = "Fermer (force)" },
 				{ "<leader>bd", desc = "Delete" },
-				{ "<leader>b1", desc = "Buffer 1" },
-				{ "<leader>b2", desc = "Buffer 2" },
-				{ "<leader>b3", desc = "Buffer 3" },
-				{ "<leader>b4", desc = "Buffer 4" },
-				{ "<leader>b5", desc = "Buffer 5" },
-				{ "<leader>b6", desc = "Buffer 6" },
-				{ "<leader>b7", desc = "Buffer 7" },
-				{ "<leader>b8", desc = "Buffer 8" },
-				{ "<leader>b9", desc = "Buffer 9" },
 			})
 		end
 	end,

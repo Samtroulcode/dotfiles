@@ -5,8 +5,8 @@ return {
 		formatters_by_ft = {
 			sh = { "shfmt" },
 			lua = { "stylua" },
-			javascript = { "prettierd", "prettier", "biome" },
-			typescript = { "prettierd", "prettier", "biome" },
+			javascript = { "prettierd", "prettier" },
+			typescript = { "prettierd", "prettier" },
 			css = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },
 			markdown = { "prettierd", "prettier" },

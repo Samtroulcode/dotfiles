@@ -18,12 +18,28 @@ return {
 			},
 			window = {
 				width = 32,
-				mappings = { ["<space>"] = "toggle_node", ["l"] = "open", ["h"] = "close_node", ["o"] = "system_open" },
+				mappings = {
+					["<space>"] = "toggle_node",
+					["l"] = "open",
+					["h"] = "close_node",
+					["o"] = "system_open",
+					["<C-h>"] = "none", -- ← laisse passer tes maps
+					["<C-l>"] = "none",
+				},
 			},
 			default_component_configs = {
 				indent = { with_markers = true, padding = 1 },
 				git_status = {
 					symbols = { unstaged = "", staged = "", untracked = "", renamed = "", deleted = "" },
+				},
+				diagnostics = { -- ← badges LSP dans l’arbre
+					symbols = { hint = " ", info = " ", warn = " ", error = " " },
+					highlights = {
+						hint = "DiagnosticHint",
+						info = "DiagnosticInfo",
+						warn = "DiagnosticWarn",
+						error = "DiagnosticError",
+					},
 				},
 			},
 		},
