@@ -108,9 +108,9 @@ stow -D nebu-<package-name>
 | video player        | [Mpv](https://mpv.io/)                                         | [github](https://github.com/mpv-player/mpv)                    | [mpv](./nebu-mpv/.config/mpv)                         | WIP                                          |
 | multiplexer         | [Tmux](https://github.com/tmux/tmux/wiki)                      | [github](https://github.com/tmux/tmux)                         | [tmux](./nebu-tmux/)                                  | WIP                                          |
 
-</div>
-
 ### Window manager **_HYPRLAND_**
+
+  </div>
 
 ![Hyprland1](https://raw.githubusercontent.com/hyprwm/Hyprland/main/assets/header.svg)
 
