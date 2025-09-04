@@ -108,6 +108,8 @@ stow -D nebu-<package-name>
 | video player        | [Mpv](https://mpv.io/)                                         | [github](https://github.com/mpv-player/mpv)                    | [mpv](./nebu-mpv/.config/mpv)                         | WIP                                          |
 | multiplexer         | [Tmux](https://github.com/tmux/tmux/wiki)                      | [github](https://github.com/tmux/tmux)                         | [tmux](./nebu-tmux/)                                  | WIP                                          |
 
+---
+
 ### Window manager **_HYPRLAND_**
 
   </div>
@@ -135,6 +137,8 @@ I separated my configuration into several files :
 > To add hyprland plugins, you must have hyprland-git installed cause you need the headers exposed by hyprpm to add some plugins.
 
 <div align = center>
+
+---
 
 ### Web Browser **_QUTEBROWSER_**
 
