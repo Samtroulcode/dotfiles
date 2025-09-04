@@ -22,7 +22,7 @@ return {
 					["<space>"] = "toggle_node",
 					["l"] = "open",
 					["h"] = "close_node",
-					["o"] = "system_open",
+					["o"] = "open",
 					["<C-h>"] = "none", -- ← laisse passer tes maps
 					["<C-l>"] = "none",
 				},
