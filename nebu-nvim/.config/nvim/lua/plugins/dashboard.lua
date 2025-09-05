@@ -39,10 +39,10 @@ return {
 		}
 		-- Boutons du haut
 		dash.section.buttons.val = {
-			dash.button("l", "󰒲  Lazy", ":Lazy<CR>"),
 			dash.button("f", "  Files", ":Telescope find_files<CR>"),
 			dash.button("g", "  Grep", ":Telescope live_grep<CR>"),
 			dash.button("p", "  Projects", ":Telescope workspaces<CR>"),
+			dash.button("l", "󰒲  Lazy", ":Lazy<CR>"),
 			dash.button("s", "  Store", ":Store<CR>"),
 			dash.button(
 				"d",
