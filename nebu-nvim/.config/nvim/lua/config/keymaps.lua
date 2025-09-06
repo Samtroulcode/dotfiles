@@ -102,6 +102,19 @@ for _, lhs in ipairs({ "<M-0>", "<A-0>" }) do
 	end, { desc = "Buffer #last" })
 end
 
+-- Scroll des fenêtres LSP de noice (hover/signature) avec fallback natif
+vim.keymap.set({ "n", "i", "s" }, "<C-f>", function()
+	if not require("noice.lsp").scroll(4) then
+		return "<C-f>" -- page down normal si pas de popup noice scrollable
+	end
+end, { silent = true, expr = true, desc = "Noice LSP scroll forward" })
+
+vim.keymap.set({ "n", "i", "s" }, "<C-b>", function()
+	if not require("noice.lsp").scroll(-4) then
+		return "<C-b>" -- page up normal si pas de popup noice scrollable
+	end
+end, { silent = true, expr = true, desc = "Noice LSP scroll backward" })
+
 -- =========================
 -- GÉNÉRALES
 -- =========================
@@ -128,8 +141,8 @@ function M.apply_general()
 
 	-- ===== Buffers (simple et compatible lualine tabline) =====
 	-- Rapides
-	map("n", "<C-p>", "<cmd>bprevious<CR>", { desc = "Buffer précédent" })
-	map("n", "<C-n>", "<cmd>bnext<CR>", { desc = "Buffer suivant" })
+	map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Buffer précédent" })
+	map("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Buffer suivant" })
 
 	-- Groupe <leader>b
 	map("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Buffer: suivant" })
@@ -227,20 +240,56 @@ end
 -- =========================
 function M.lsp(bufnr)
 	local b = { buffer = bufnr, silent = true }
-	map("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("keep", { desc = "LSP: definition" }, b))
-	map("n", "gr", vim.lsp.buf.references, vim.tbl_extend("keep", { desc = "LSP: references" }, b))
-	map("n", "K", vim.lsp.buf.hover, vim.tbl_extend("keep", { desc = "LSP: hover" }, b))
-	map("n", "<leader>cr", vim.lsp.buf.rename, vim.tbl_extend("keep", { desc = "LSP: rename" }, b))
-	map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("keep", { desc = "LSP: code action" }, b))
-	map("n", "<leader>cf", function()
+	local function mapb(mode, lhs, rhs, desc)
+		vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("keep", { desc = desc }, b))
+	end
+
+	-- LSP de base
+	mapb("n", "gd", vim.lsp.buf.definition, "LSP: definition")
+	mapb("n", "gr", vim.lsp.buf.references, "LSP: references")
+	mapb("n", "K", vim.lsp.buf.hover, "LSP: hover")
+	mapb("n", "<leader>cr", vim.lsp.buf.rename, "LSP: rename")
+	mapb({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "LSP: code action")
+	mapb("n", "<leader>cf", function()
 		if pcall(require, "conform") then
 			require("conform").format({ lsp_fallback = true })
 		else
 			vim.lsp.buf.format({ async = true })
 		end
-	end, vim.tbl_extend("keep", { desc = "Format buffer" }, b))
-end
+	end, "Format buffer")
 
+	-- === Diagnostics (flottant + liste) ===
+
+	-- Ouvrir un DIAGNOSTIC FLOTTANT pour la position courante
+	-- (Noice stylise le contenu si lsp.override est activé)
+	mapb("n", "<leader>cd", function()
+		vim.diagnostic.open_float(nil, {
+			focus = false, -- ne vole pas le focus
+			scope = "cursor", -- "cursor" = diag sous le curseur (ou "line")
+			border = "rounded",
+			source = "if_many",
+			severity_sort = true,
+		})
+	end, "Diag: flottant (courant)")
+
+	-- Suivant / précédent (inchangé)
+	mapb("n", "]d", function()
+		vim.diagnostic.goto_next({ float = false })
+	end, "Diag: suivant")
+	mapb("n", "[d", function()
+		vim.diagnostic.goto_prev({ float = false })
+	end, "Diag: précédent")
+
+	-- Liste diagnostics (Trouble si présent, sinon loclist)
+	mapb("n", "<leader>cD", function()
+		local ok, trouble = pcall(require, "trouble")
+		if ok then
+			trouble.open("diagnostics")
+		else
+			vim.diagnostic.setloclist({ open = true })
+		end
+	end, "Diag: liste (Trouble/QF)")
+end
 -- =========================
 -- Clés destinées aux specs lazy
 -- (lazy-load par touche)
