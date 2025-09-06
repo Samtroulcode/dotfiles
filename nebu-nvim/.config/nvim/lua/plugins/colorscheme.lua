@@ -8,9 +8,16 @@ return {
 			transparent_background = false,
 			integrations = {
 				treesitter = true,
-				telescope = true,
+				telescope = { enabled = true },
+				render_markdown = true,
 				gitsigns = true,
+				dashboard = true,
+				fzf = true,
+				neotree = true,
+				notify = true,
 				native_lsp = { enabled = true },
+				which_key = true,
+				noice = true,
 			},
 		})
 		vim.cmd.colorscheme("catppuccin")
