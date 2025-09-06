@@ -94,6 +94,32 @@ function M.apply_general()
 	map("n", "<leader>dt", dashboard_toggle, { desc = "󰕮 Dashboard: toggle" })
 	map("n", "<leader>dR", "<cmd>AlphaRedraw<CR>", { desc = "Dashboard: redraw" })
 	map("n", "<leader>dq", "<cmd>qa<CR>", { desc = "Quit all" }) -- (optionnel, pratique)
+
+	-- ====== AI (Which-Key: tout sous <leader>a)
+	local wk_ok, wk = pcall(require, "which-key")
+	if wk_ok then
+		wk.add({ { "<leader>a", group = "AI" } })
+	end
+
+	-- Toggle de la source Copilot dans cmp
+	vim.keymap.set("n", "<leader>aa", function()
+		require("config.ai_toggle").toggle()
+	end, { desc = "Copilot in cmp: toggle" })
+	vim.keymap.set("n", "<leader>ae", function()
+		require("config.ai_toggle").enable()
+	end, { desc = "Copilot in cmp: enable" })
+	vim.keymap.set("n", "<leader>ad", function()
+		require("config.ai_toggle").disable()
+	end, { desc = "Copilot in cmp: disable" })
+
+	-- Copilot Chat (fenêtre)
+	vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChatToggle<CR>", { desc = "Chat: toggle" })
+	vim.keymap.set("n", "<leader>ap", "<cmd>CopilotChatPrompts<CR>", { desc = "Chat: prompts" })
+	vim.keymap.set("n", "<leader>am", "<cmd>CopilotChatModels<CR>", { desc = "Chat: models" })
+	vim.keymap.set("n", "<leader>ar", "<cmd>CopilotChat Review<CR>", { desc = "Chat: review buffer" })
+	vim.keymap.set("v", "<leader>ax", ":CopilotChat Explain<CR>", { desc = "Chat: explain selection" })
+	vim.keymap.set("v", "<leader>af", ":CopilotChat Fix<CR>", { desc = "Chat: fix selection" })
+	vim.keymap.set("n", "<leader>aR", "<cmd>CopilotChatReset<CR>", { desc = "Chat: reset" })
 end
 
 -- =========================

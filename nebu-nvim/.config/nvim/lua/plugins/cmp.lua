@@ -45,11 +45,27 @@ return {
 				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
+				{ name = "copilot" },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "buffer" },
 			}),
+			sorting = {
+				priority_weight = 2,
+				comparators = {
+					require("copilot_cmp.comparators").prioritize,
+					require("cmp").config.compare.offset,
+					require("cmp").config.compare.exact,
+					require("cmp").config.compare.score,
+					require("cmp").config.compare.recently_used,
+					require("cmp").config.compare.locality,
+					require("cmp").config.compare.kind,
+					require("cmp").config.compare.sort_text,
+					require("cmp").config.compare.length,
+					require("cmp").config.compare.order,
+				},
+			},
 		})
 
 		-- autopairs <-> cmp
