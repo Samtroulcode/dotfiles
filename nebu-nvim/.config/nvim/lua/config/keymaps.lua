@@ -1,13 +1,8 @@
 -- lua/config/keymaps.lua
--- Fichier unique pour mes keymaps.
--- - M.apply_general(): maps générales (pas liées à un plugin)
--- - M.lsp(bufnr):      maps LSP buffer-local
--- - M.keys.*:          tables lues par lazy.nvim (lazy-load par touche)
-
 local M = {}
 local map = vim.keymap.set
 
--- ---- helper: navigation fenêtre qui gère terminal + tmux (vim-tmux-navigator) ----
+-- ---- helper: navigation fenêtre qui gère terminal + tmux ----
 local function nav_win(dir)
 	if vim.bo.buftype == "terminal" then
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
@@ -24,33 +19,91 @@ local function nav_win(dir)
 	end
 end
 
--- Helpers Dashboard
-local function dashboard_open()
-	pcall(vim.cmd, "Alpha")
-end
-
-local function dashboard_only()
-	-- force : ferme tous les buffers/fenêtres, puis ouvre le dashboard
-	vim.cmd("silent! %bd!")
-	vim.schedule(function()
-		pcall(vim.cmd, "Alpha")
-		vim.cmd("only")
-	end)
-end
-
-local function dashboard_toggle()
-	local buf_ft = vim.bo.filetype
-	if buf_ft == "alpha" then
-		-- revenir au dernier buffer visité
-		vim.cmd("b#")
+-- ---- helpers buffers ----
+local function buf_delete(buf, force)
+	buf = buf or 0
+	if pcall(require, "mini.bufremove") then
+		require("mini.bufremove").delete(buf == 0 and vim.api.nvim_get_current_buf() or buf, force or false)
 	else
-		pcall(vim.cmd, "Alpha")
-		vim.cmd("only")
+		local cmd = (force and "bdelete!" or "bdelete")
+		if buf == 0 then
+			-- buffer courant -> ne PAS ajouter " 0"
+			vim.cmd(cmd)
+		else
+			vim.cmd(cmd .. " " .. buf)
+		end
 	end
 end
 
+local function listed_buffers()
+	local infos = vim.fn.getbufinfo({ buflisted = 1 })
+	table.sort(infos, function(a, b)
+		return a.bufnr < b.bufnr
+	end)
+	return infos
+end
+
+local function close_others()
+	local cur = vim.api.nvim_get_current_buf()
+	for _, info in ipairs(listed_buffers()) do
+		if info.bufnr ~= cur then
+			buf_delete(info.bufnr, false)
+		end
+	end
+end
+
+local function close_left_right(side)
+	local cur = vim.api.nvim_get_current_buf()
+	local infos = listed_buffers()
+	local cur_idx
+	for i, info in ipairs(infos) do
+		if info.bufnr == cur then
+			cur_idx = i
+			break
+		end
+	end
+	if not cur_idx then
+		return
+	end
+	local range = (side == "left") and { 1, cur_idx - 1 } or { cur_idx + 1, #infos }
+	for i = range[1], range[2] do
+		local b = infos[i] and infos[i].bufnr
+		if b then
+			buf_delete(b, false)
+		end
+	end
+end
+
+local function goto_buffer_index(i)
+	local infos = listed_buffers()
+	local target = infos[i] and infos[i].bufnr
+	if target then
+		vim.cmd("buffer " .. target)
+	end
+end
+
+-- Alt/Meta + 1..9 → aller au buffer #i
+for i = 1, 9 do
+	for _, lhs in ipairs({ ("<M-%d>"):format(i), ("<A-%d>"):format(i) }) do
+		map("n", lhs, function()
+			goto_buffer_index(i)
+		end, { desc = ("Buffer #%d"):format(i) })
+	end
+end
+
+-- Alt/Meta + 0 → dernier buffer
+for _, lhs in ipairs({ "<M-0>", "<A-0>" }) do
+	map("n", lhs, function()
+		local infos = listed_buffers()
+		local last = infos[#infos] and infos[#infos].bufnr
+		if last then
+			vim.cmd("buffer " .. last)
+		end
+	end, { desc = "Buffer #last" })
+end
+
 -- =========================
--- GÉNÉRALES (pas de plugin)
+-- GÉNÉRALES
 -- =========================
 function M.apply_general()
 	-- Sauvegarde / quit
@@ -61,26 +114,54 @@ function M.apply_general()
 	-- Effacer le highlight de recherche
 	map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "No HL search" })
 
-	-- Fenêtres (normal + terminal)
+	-- Fenêtres → Alt-h/j/k/l (libère Ctrl-h/l pour les buffers)
 	for lhs, dir in pairs({
-		["<C-h>"] = "h",
-		["<C-j>"] = "j",
-		["<C-k>"] = "k",
-		["<C-l>"] = "l",
+		["<M-h>"] = "h",
+		["<M-j>"] = "j",
+		["<M-k>"] = "k",
+		["<M-l>"] = "l",
 	}) do
-		-- active en normal ET terminal
 		map({ "n", "t" }, lhs, function()
 			nav_win(dir)
 		end, { desc = "Window " .. dir })
 	end
 
-	-- Diagnostics (globaux)
-	map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
-	map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-	map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Diagnostics: line" })
-	map("n", "<leader>cD", vim.diagnostic.setloclist, { desc = "Diagnostics: to loclist" })
+	-- ===== Buffers (simple et compatible lualine tabline) =====
+	-- Rapides
+	map("n", "<C-p>", "<cmd>bprevious<CR>", { desc = "Buffer précédent" })
+	map("n", "<C-n>", "<cmd>bnext<CR>", { desc = "Buffer suivant" })
 
-	-- ===== Lazy (tout sous <leader>l)
+	-- Groupe <leader>b
+	map("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Buffer: suivant" })
+	map("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Buffer: précédent" })
+
+	map("n", "<leader>bd", function()
+		buf_delete(0, false)
+	end, { desc = "Buffer: fermer" })
+	map("n", "<leader>bD", function()
+		buf_delete(0, true)
+	end, { desc = "Buffer: fermer (force)" })
+
+	map("n", "<leader>bo", close_others, { desc = "Buffer: fermer autres" })
+	map("n", "<leader>bh", function()
+		close_left_right("left")
+	end, { desc = "Buffer: fermer à gauche" })
+	map("n", "<leader>bl", function()
+		close_left_right("right")
+	end, { desc = "Buffer: fermer à droite" })
+
+	-- Picker (utilise Telescope si dispo, sinon :ls -> :b)
+	map("n", "<leader>bb", function()
+		local ok = pcall(require, "telescope.builtin")
+		if ok then
+			require("telescope.builtin").buffers()
+		else
+			vim.cmd("ls")
+			vim.cmd("redraw | echo 'Tapez :b <num>'")
+		end
+	end, { desc = "Buffers: picker" })
+
+	-- ===== Lazy
 	map("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Lazy: home" })
 	map("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "Lazy: update" })
 	map("n", "<leader>ls", "<cmd>Lazy sync<CR>", { desc = "Lazy: sync" })
@@ -88,38 +169,57 @@ function M.apply_general()
 	map("n", "<leader>lC", "<cmd>Lazy clean<CR>", { desc = "Lazy: clean" })
 	map("n", "<leader>lp", "<cmd>Lazy profile<CR>", { desc = "Lazy: profile" })
 
-	-- ===== Dashboard (tout sous <leader>d)
+	-- ===== Dashboard (Alpha)
+	local function dashboard_open()
+		pcall(vim.cmd, "Alpha")
+	end
+	local function dashboard_only()
+		vim.cmd("silent! %bd!")
+		vim.schedule(function()
+			pcall(vim.cmd, "Alpha")
+			vim.cmd("only")
+		end)
+	end
+	local function dashboard_toggle()
+		if vim.bo.filetype == "alpha" then
+			vim.cmd("b#")
+		else
+			pcall(vim.cmd, "Alpha")
+			vim.cmd("only")
+		end
+	end
+
 	map("n", "<leader>dd", dashboard_open, { desc = "Dashboard: open" })
 	map("n", "<leader>dD", dashboard_only, { desc = "Dashboard: close all & open" })
 	map("n", "<leader>dt", dashboard_toggle, { desc = "󰕮 Dashboard: toggle" })
 	map("n", "<leader>dR", "<cmd>AlphaRedraw<CR>", { desc = "Dashboard: redraw" })
-	map("n", "<leader>dq", "<cmd>qa<CR>", { desc = "Quit all" }) -- (optionnel, pratique)
+	map("n", "<leader>dq", "<cmd>qa<CR>", { desc = "Quit all" })
 
-	-- ====== AI (Which-Key: tout sous <leader>a)
+	-- ===== AI (Which-Key: <leader>a)
 	local wk_ok, wk = pcall(require, "which-key")
 	if wk_ok then
 		wk.add({ { "<leader>a", group = "AI" } })
 	end
 
-	-- Toggle de la source Copilot dans cmp
-	vim.keymap.set("n", "<leader>aa", function()
+	-- Toggle source Copilot dans cmp
+	map("n", "<leader>aa", function()
 		require("config.ai_toggle").toggle()
 	end, { desc = "Copilot in cmp: toggle" })
-	vim.keymap.set("n", "<leader>ae", function()
+	map("n", "<leader>ae", function()
 		require("config.ai_toggle").enable()
 	end, { desc = "Copilot in cmp: enable" })
-	vim.keymap.set("n", "<leader>ad", function()
+	map("n", "<leader>ad", function()
 		require("config.ai_toggle").disable()
 	end, { desc = "Copilot in cmp: disable" })
 
-	-- Copilot Chat (fenêtre)
-	vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChatToggle<CR>", { desc = "Chat: toggle" })
-	vim.keymap.set("n", "<leader>ap", "<cmd>CopilotChatPrompts<CR>", { desc = "Chat: prompts" })
-	vim.keymap.set("n", "<leader>am", "<cmd>CopilotChatModels<CR>", { desc = "Chat: models" })
-	vim.keymap.set("n", "<leader>ar", "<cmd>CopilotChat Review<CR>", { desc = "Chat: review buffer" })
-	vim.keymap.set("v", "<leader>ax", ":CopilotChat Explain<CR>", { desc = "Chat: explain selection" })
-	vim.keymap.set("v", "<leader>af", ":CopilotChat Fix<CR>", { desc = "Chat: fix selection" })
-	vim.keymap.set("n", "<leader>aR", "<cmd>CopilotChatReset<CR>", { desc = "Chat: reset" })
+	-- Copilot Chat
+	map("n", "<leader>ac", "<cmd>CopilotChatToggle<CR>", { desc = "Chat: toggle" })
+	map("n", "<leader>ap", "<cmd>CopilotChatPrompts<CR>", { desc = "Chat: prompts" })
+	map("n", "<leader>am", "<cmd>CopilotChatModels<CR>", { desc = "Chat: models" })
+	map("n", "<leader>ar", "<cmd>CopilotChat Review<CR>", { desc = "Chat: review buffer" })
+	map("v", "<leader>ax", ":CopilotChat Explain<CR>", { desc = "Chat: explain selection" })
+	map("v", "<leader>af", ":CopilotChat Fix<CR>", { desc = "Chat: fix selection" })
+	map("n", "<leader>aR", "<cmd>CopilotChatReset<CR>", { desc = "Chat: reset" })
 end
 
 -- =========================
@@ -141,28 +241,9 @@ function M.lsp(bufnr)
 	end, vim.tbl_extend("keep", { desc = "Format buffer" }, b))
 end
 
--- TOC Markdown: <leader>ct = générer / <leader>cT = mettre à jour
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function(ev)
-		vim.keymap.set(
-			"n",
-			"<leader>ct",
-			":GenTocGFM<CR>",
-			{ buffer = ev.buf, silent = true, desc = "Markdown: Gen TOC (GFM)" }
-		)
-		vim.keymap.set(
-			"n",
-			"<leader>cT",
-			":UpdateToc<CR>",
-			{ buffer = ev.buf, silent = true, desc = "Markdown: Update TOC" }
-		)
-	end,
-})
-
 -- =========================
 -- Clés destinées aux specs lazy
--- (pour laisser lazy.nvim faire le lazy-load par touche)
+-- (lazy-load par touche)
 -- =========================
 M.keys = {
 	telescope = {
@@ -194,78 +275,17 @@ M.keys = {
 			end,
 			desc = "Telescope: help",
 		},
-		{
-			"<leader>fp",
-			"<cmd>Telescope workspaces<CR>",
-			desc = "Find: workspaces",
-		},
+		{ "<leader>fp", "<cmd>Telescope workspaces<CR>", desc = "Find: workspaces" },
 	},
-
-	-- Bufferline : TOUT sous <leader>b …
-	bufferline = {
-		-- suivant / précédent
-		{ "<leader>bl", "<cmd>BufferLineCycleNext<CR>", desc = "Buffer suivant" },
-		{ "<leader>bh", "<cmd>BufferLineCyclePrev<CR>", desc = "Buffer précédent" },
-
-		-- accès direct 1..9
-		{ "<leader>b1", "<cmd>BufferLineGoToBuffer 1<CR>", desc = "Aller buffer 1" },
-		{ "<leader>b2", "<cmd>BufferLineGoToBuffer 2<CR>", desc = "Aller buffer 2" },
-		{ "<leader>b3", "<cmd>BufferLineGoToBuffer 3<CR>", desc = "Aller buffer 3" },
-		{ "<leader>b4", "<cmd>BufferLineGoToBuffer 4<CR>", desc = "Aller buffer 4" },
-		{ "<leader>b5", "<cmd>BufferLineGoToBuffer 5<CR>", desc = "Aller buffer 5" },
-		{ "<leader>b6", "<cmd>BufferLineGoToBuffer 6<CR>", desc = "Aller buffer 6" },
-		{ "<leader>b7", "<cmd>BufferLineGoToBuffer 7<CR>", desc = "Aller buffer 7" },
-		{ "<leader>b8", "<cmd>BufferLineGoToBuffer 8<CR>", desc = "Aller buffer 8" },
-		{ "<leader>b9", "<cmd>BufferLineGoToBuffer 9<CR>", desc = "Aller buffer 9" },
-
-		-- utilitaires
-		{ "<leader>bp", "<cmd>BufferLinePick<CR>", desc = "Picker de buffer" },
-		{
-			"<leader>bc",
-			function()
-				require("mini.bufremove").delete(0, false)
-			end,
-			desc = "Fermer buffer",
-		},
-		{
-			"<leader>bC",
-			function()
-				require("mini.bufremove").delete(0, true)
-			end,
-			desc = "Fermer (force)",
-		},
-		{
-			"<leader>bd",
-			function()
-				require("mini.bufremove").delete(0, false)
-			end,
-			desc = "Buffer delete",
-		},
-
-		-- (optionnels mais pratiques, pas sous <leader>)
-		{ "<S-l>", "<cmd>BufferLineCycleNext<CR>", desc = "Buffer suivant" },
-		{ "<S-h>", "<cmd>BufferLineCyclePrev<CR>", desc = "Buffer précédent" },
-	},
-
 	explorer = {
 		{ "<leader>e", "<cmd>Neotree toggle<CR>", desc = "Explorer: toggle" },
 		{ "<leader>E", "<cmd>Neotree reveal<CR>", desc = "Explorer: reveal file" },
 	},
-
-	-- =========================
-	-- GIT (tout sous <leader>g)
-	-- =========================
-
 	git = {
-
-		-- LazyGit
 		lazygit = {
 			{ "<leader>gl", "<cmd>LazyGit<CR>", desc = "Git: LazyGit" },
 		},
-
-		-- Gitsigns (hunks, blame, diff…)
 		gitsigns = {
-			-- hunk actions
 			{
 				"<leader>gs",
 				function()
@@ -310,8 +330,6 @@ M.keys = {
 				end,
 				desc = "Git: preview hunk",
 			},
-
-			-- navigation hunk (pratique; tu peux les retirer si tu veux zéro hors <leader>)
 			{
 				"]h",
 				function()
@@ -326,8 +344,6 @@ M.keys = {
 				end,
 				desc = "Git: prev hunk",
 			},
-
-			-- blame / diff
 			{
 				"<leader>gb",
 				function()
@@ -364,8 +380,6 @@ M.keys = {
 				desc = "Git: toggle deleted",
 			},
 		},
-
-		-- Diffview (diffs & historiques propres)
 		diffview = {
 			{ "<leader>gdo", "<cmd>DiffviewOpen<CR>", desc = "Git: Diffview open" },
 			{ "<leader>gdc", "<cmd>DiffviewClose<CR>", desc = "Git: Diffview close" },
@@ -373,15 +387,9 @@ M.keys = {
 			{ "<leader>gdH", "<cmd>DiffviewFileHistory<CR>", desc = "Git: repo history" },
 		},
 	},
-	workspaces = {
-		{ "<leader>pa", "<cmd>WorkspacesAdd<CR>", desc = "Workspace: add cwd" },
-		{ "<leader>po", "<cmd>WorkspacesOpen<CR>", desc = "Workspace: open…" },
-		{ "<leader>pr", "<cmd>WorkspacesRemove<CR>", desc = "Workspace: remove" },
-		{ "<leader>pn", "<cmd>WorkspacesRename<CR>", desc = "Workspace: rename" },
-	},
 }
 
--- Enregistrement auto des maps générales + hints which-key
+-- Hints which-key
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",
 	callback = function()
@@ -396,12 +404,15 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>l", group = "Lazy" },
 				{ "<leader>d", group = "Dashboard" },
 				{ "<leader>p", group = "Projects / Workspaces" },
-				{ "<leader>bh", desc = "Précédent" },
-				{ "<leader>bl", desc = "Suivant" },
-				{ "<leader>bp", desc = "Picker" },
-				{ "<leader>bc", desc = "Fermer" },
-				{ "<leader>bC", desc = "Fermer (force)" },
-				{ "<leader>bd", desc = "Delete" },
+				-- Buffers
+				{ "<leader>bn", desc = "Suivant" },
+				{ "<leader>bp", desc = "Précédent" },
+				{ "<leader>bb", desc = "Picker" },
+				{ "<leader>bd", desc = "Fermer" },
+				{ "<leader>bD", desc = "Fermer (force)" },
+				{ "<leader>bo", desc = "Fermer autres" },
+				{ "<leader>bh", desc = "Fermer à gauche" },
+				{ "<leader>bl", desc = "Fermer à droite" },
 			})
 		end
 	end,

@@ -8,8 +8,6 @@ return {
 			-- IMPORTANT: on veut tout via cmp, donc on coupe le ghost-text & le panel
 			suggestion = { enabled = false },
 			panel = { enabled = false },
-			-- Node.js >= 20 (Arch: /usr/bin/node convient)
-			-- copilot_node_command = "/usr/bin/node",
 			filetypes = {
 				help = false,
 				gitcommit = false,
