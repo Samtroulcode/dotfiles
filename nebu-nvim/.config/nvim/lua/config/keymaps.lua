@@ -464,7 +464,7 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>g", group = "Git" },
 				{ "<leader>b", group = "Buffers" },
 				{ "<leader>l", group = "Lazy" },
-				{ "<leader>d", group = "Dashboard", icon = { icon = "󰕮 ", color = "purple" } },
+				{ "<leader>d", group = "Dashboard", icon = { icon = " ", color = "purple" } },
 				{ "<leader>p", group = "Projects / Workspaces" },
 				{ "<leader>z", group = "Zettelkasten (zk)", icon = { icon = " ", color = "yellow" } },
 				{ "<leader>t", group = "Learn / Training", icon = { icon = "", color = "green" } }, -- icône which-key
