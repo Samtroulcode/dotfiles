@@ -10,22 +10,10 @@ return {
 		local alpha = require("alpha")
 		local dash = require("alpha.themes.dashboard")
 		local tb = require("telescope.builtin")
+		local zk = require("config.zk")
 
 		-- Header custom
 		dash.section.header.val = {
-			"⠀⠀⠀⠀⠀⠀  ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-			"                      ⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠳⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-			"                  ⠀⠀⠀⠀⠀⠀⣀⡴⢧⣀⠀⠀⣀⣠⠤⠤⠤⠤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-			"                  ⠀⠀⠀⠀⠀⠀⠀⠘⠏⢀⡴⠊⠁⠀⠀⠀⠀⠀⠀⠈⠙⠦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
-			"                     ⠀⠀⠀⠀⠀⣰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢶⣶⣒⣶⠦⣤⣀⠀⠀",
-			"                     ⠀⠀⠀⢀⣰⠃⠀⠀⠀       ⠀⠀⠀⠀⠈⣟⠲⡌⠙⢦⠈⢧⠀",
-			"                  ⠀⠀⠀⣠⢴⡾⢟⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡴⢃⡠⠋⣠⠋⠀",
-			"                  ⠐⠀⠞⣱⠋⢰⠁⢿⠀⠀⠀⠀       ⣀⣠⠤⢖⣋⡥⢖⣫⠔⠋⠀⠀⠀",
-			"                  ⠈⠠⡀⠹⢤⣈⣙⠚⠶⠤⠤⠤⠴⠶⣒⣒⣚⣩⠭⢵⣒⣻⠭⢖⠏⠁⢀⣀⠀⠀⠀⠀",
-			"                  ⠠⠀⠈⠓⠒⠦⠭⠭⠭⣭⠭⠭⠭⠭⠿⠓⠒⠛⠉⠉⠀⠀⣠⠏⠀⠀⠘⠞⠀⠀⠀⠀",
-			"  ⠀          ⠀⠀      ⠀⠀⠀⠀⠀⠀⠈⠓⢤⣀⠀⠀⠀⠀⠀⠀⣀⡤⠞⠁⠀⣰⣆⠀⠀⠀⠀⠀⠀",
-			"                   ⠀⠀⠀⠀⠘⠿⠀⠀⠀⠀⠀⠈⠉⠙⠒⠒⠛⠉⠁⠀⠀⠀⠉⢳⡞⠉⠀⠀⠀⠀⠀",
-			" ",
 			"                                 nebulix⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
 			"                                              ",
 			"       ████ ██████           █████      ██",
@@ -37,13 +25,20 @@ return {
 			" ██████  █████████████████████ ████ █████ █████ ████ ██████",
 			" ",
 		}
-		-- Boutons du haut
+
+		-- Boutons organisés par sections avec titres
 		dash.section.buttons.val = {
+			{ type = "text", val = "  Explorer", opts = { hl = "Title", position = "center" } },
 			dash.button("f", "  Files", ":Telescope find_files<CR>"),
 			dash.button("g", "  Grep", ":Telescope live_grep<CR>"),
 			dash.button("p", "  Projects", ":Telescope workspaces<CR>"),
-			dash.button("l", "󰒲  Lazy", ":Lazy<CR>"),
 			dash.button("s", "  Store", ":Store<CR>"),
+			dash.button("j", "󰃰  Journal du jour", zk.new_daily),
+			dash.button("n", "  Nouvelle note", zk.new_note),
+			dash.button("s", "󰍉  Parcourir notes", zk.browse),
+			{ type = "text", val = "  Config", opts = { hl = "Title", position = "center" } },
+			dash.button("l", "󰒲  Lazy", ":Lazy<CR>"),
+			dash.button("h", "  Health", ":checkhealth<CR>"),
 			dash.button(
 				"d",
 				"  Dotfiles",
@@ -55,6 +50,7 @@ return {
 				[[<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })<CR>]]
 			),
 			dash.button("q", "󰗼  Quit", ":qa<CR>"),
+			{ type = "text", val = " Recent files", opts = { hl = "Title", position = "center" } },
 		}
 
 		-- MRU maison (pas de dashboard.file_button)
@@ -95,7 +91,6 @@ return {
 			return {
 				type = "group",
 				val = vim.tbl_extend("force", {
-					{ type = "padding", val = 1 },
 					{ type = "text", val = opts.title, opts = { hl = "SpecialComment", position = "center" } },
 					{ type = "padding", val = 1 },
 				}, buttons),
@@ -108,19 +103,24 @@ return {
 			local ver = string.format(" v%d.%d.%d", v.major, v.minor, v.patch)
 
 			local plugins, ms = 0, 0
-			local ok, lazy = pcall(require, "lazy")
-			if ok then
-				local s = lazy.stats()
+			local ok_lazy, lazy = pcall(require, "lazy")
+			if ok_lazy then
+				local s = lazy.stats() or {}
 				plugins = s.count or 0
-				ms = s.startuptime or 0
+				-- Certaines versions retournent un float, d'autres 0 si pas prêt :
+				local st = s.startuptime
+				if type(st) == "number" and st > 0 then
+					ms = math.floor(st + 0.5)
+				end
 			end
 
-			local when = os.date("%a %d %b %H:%M") -- ex: mar 04 sep 11:42
-			return string.format("%s  •  %s  •  %d plugins in %dms", ver, when, plugins, math.floor(ms))
+			local when = os.date("%a %d %b %H:%M")
+			return string.format("%s  •  %s  •  %d plugins in %dms", ver, when, plugins, ms)
 		end
 
 		dash.section.footer.val = make_footer()
 		dash.section.footer.opts = { position = "center", hl = "Comment" }
+
 		-- ============================================================
 
 		dash.config.layout = {
@@ -129,11 +129,25 @@ return {
 			{ type = "padding", val = 1 },
 			dash.section.buttons,
 			{ type = "padding", val = 1 },
-			mru_section({ max = 8 }), -- ta section MRU maison
+			mru_section({ max = 8 }),
 			{ type = "padding", val = 1 },
-			dash.section.footer, -- <<< ajoute le footer dans le layout
+			dash.section.footer,
 		}
 
 		alpha.setup(dash.config)
-	end,
+
+		-- --- Fix: rafraîchir le footer quand Lazy a fini + fallback ---
+		local function refresh_footer()
+			dash.section.footer.val = make_footer()
+			pcall(vim.cmd.AlphaRedraw)
+		end
+
+		-- Quand Lazy termine son init (ou VeryLazy / LazyVimStarted)
+		vim.api.nvim_create_autocmd("User", { pattern = "LazyDone", callback = refresh_footer })
+		vim.api.nvim_create_autocmd("User", { pattern = "VeryLazy", callback = refresh_footer })
+		vim.api.nvim_create_autocmd("User", { pattern = "LazyVimStarted", callback = refresh_footer })
+
+		-- Fallback au cas où aucun évènement ne se déclenche dans ta stack
+		vim.defer_fn(refresh_footer, 200)
+	end, --  ←←← fermeture de la fonction config (manquante)
 }
