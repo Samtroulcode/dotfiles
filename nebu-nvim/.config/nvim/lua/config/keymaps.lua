@@ -74,34 +74,6 @@ local function close_left_right(side)
 	end
 end
 
-local function goto_buffer_index(i)
-	local infos = listed_buffers()
-	local target = infos[i] and infos[i].bufnr
-	if target then
-		vim.cmd("buffer " .. target)
-	end
-end
-
--- Alt/Meta + 1..9 → aller au buffer #i
-for i = 1, 9 do
-	for _, lhs in ipairs({ ("<M-%d>"):format(i), ("<A-%d>"):format(i) }) do
-		map("n", lhs, function()
-			goto_buffer_index(i)
-		end, { desc = ("Buffer #%d"):format(i) })
-	end
-end
-
--- Alt/Meta + 0 → dernier buffer
-for _, lhs in ipairs({ "<M-0>", "<A-0>" }) do
-	map("n", lhs, function()
-		local infos = listed_buffers()
-		local last = infos[#infos] and infos[#infos].bufnr
-		if last then
-			vim.cmd("buffer " .. last)
-		end
-	end, { desc = "Buffer #last" })
-end
-
 -- Scroll des fenêtres LSP de noice (hover/signature) avec fallback natif
 vim.keymap.set({ "n", "i", "s" }, "<C-f>", function()
 	if not require("noice.lsp").scroll(4) then
@@ -119,11 +91,6 @@ end, { silent = true, expr = true, desc = "Noice LSP scroll backward" })
 -- GÉNÉRALES
 -- =========================
 function M.apply_general()
-	-- Sauvegarde / quit
-	map("n", "<leader>w", "<cmd>write<CR>", { desc = "Write" })
-	map("n", "<leader>q", "<cmd>quit<CR>", { desc = "Quit" })
-	map("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Quit all (force)" })
-
 	-- Effacer le highlight de recherche
 	map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "No HL search" })
 
@@ -246,6 +213,38 @@ function M.apply_general()
 	map("n", "<leader>zg", zk.grep, { desc = "ZK: recherche plein-texte" })
 	map("n", "<leader>zi", zk.insert_link_cursor, { desc = "ZK: insérer lien" })
 	map("v", "<leader>zi", zk.insert_link_visual, { desc = "ZK: lien depuis sélection" })
+
+	-- ===== Learn / Training =====
+	local learn = {} -- helpers inline si besoin plus tard
+
+	-- Cheatsheet (via Telescope)
+	map("n", "<leader>?", "<cmd>Cheatsheet<CR>", { desc = "Cheatsheet: open" })
+
+	-- VimBeGood (jeu)
+	map("n", "<leader>tv", "<cmd>VimBeGood<CR>", { desc = "VimBeGood (train)" })
+
+	-- Hardtime (coach)
+	map("n", "<leader>th", "<cmd>HardtimeToggle<CR>", { desc = "Hardtime toggle" })
+
+	-- Treesitter Playground
+	map("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>", { desc = "TS Playground" })
+	map("n", "<leader>tH", "<cmd>TSHighlightCapturesUnderCursor<CR>", { desc = "Highlight captures" })
+
+	-- Undo tree (Telescope)
+	map("n", "<leader>tu", "<cmd>Telescope undo<CR>", { desc = "Undo tree" })
+
+	-- Marks (liste rapide)
+	map("n", "<leader>tm", "<cmd>MarksListBuf<CR>", { desc = "Marks (buffer)" })
+	map("n", "<leader>tM", "<cmd>MarksListAll<CR>", { desc = "Marks (all)" })
+
+	-- Hydra Fenêtres (ouverture guidée)
+	map("n", "<leader>tW", function()
+		require("config.hydras").windows()
+	end, { desc = "Windows Hydra" })
+	-- (alias direct si tu veux garder l’habitude)
+	map("n", "<leader>W", function()
+		require("config.hydras").windows()
+	end, { desc = "Windows Hydra" })
 end
 
 -- =========================
@@ -459,13 +458,16 @@ vim.api.nvim_create_autocmd("User", {
 		local ok, wk = pcall(require, "which-key")
 		if ok then
 			wk.add({
+				{ "<leader>?", desc = "Cheatsheet: open", icon = { icon = " ", color = "red" } },
 				{ "<leader>c", group = "Code / LSP" },
 				{ "<leader>f", group = "Find (Telescope)" },
 				{ "<leader>g", group = "Git" },
 				{ "<leader>b", group = "Buffers" },
 				{ "<leader>l", group = "Lazy" },
-				{ "<leader>d", group = "Dashboard" },
+				{ "<leader>d", group = "Dashboard", icon = { icon = "󰕮 ", color = "purple" } },
 				{ "<leader>p", group = "Projects / Workspaces" },
+				{ "<leader>z", group = "Zettelkasten (zk)", icon = { icon = " ", color = "yellow" } },
+				{ "<leader>t", group = "Learn / Training", icon = { icon = "", color = "green" } }, -- icône which-key
 				-- Buffers
 				{ "<leader>bn", desc = "Suivant" },
 				{ "<leader>bp", desc = "Précédent" },
@@ -476,7 +478,6 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>bh", desc = "Fermer à gauche" },
 				{ "<leader>bl", desc = "Fermer à droite" },
 				-- Zk
-				{ "<leader>z", group = "Zettelkasten (zk)" },
 				{ "<leader>zn", desc = "Nouvelle note (titre…)" },
 				{ "<leader>zd", desc = "Journal du jour" },
 				{ "<leader>zs", desc = "Parcourir (Telescope)" },
