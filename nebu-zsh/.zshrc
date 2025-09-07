@@ -63,13 +63,7 @@ export MANPAGER='nvim +Man!'
 
 # Affichage fastfetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
-  if [[ -n "$TMUX" ]]; then
-    # Dans tmux : PAS de kitty graphics
-    fastfetch --logo linux
-  else
-    # Hors tmux, dans Ghostty : OK pour kitty-direct
-    fastfetch --logo ~/.config/fastfetch/logo/arch-logo.png
-  fi
+    fastfetch --kitty-icat ~/.config/fastfetch/logo/arch-logo.png
 fi
 
 # Initialiser Starship prompt
