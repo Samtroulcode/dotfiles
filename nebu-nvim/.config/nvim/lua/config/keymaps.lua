@@ -233,6 +233,19 @@ function M.apply_general()
 	map("v", "<leader>ax", ":CopilotChat Explain<CR>", { desc = "Chat: explain selection" })
 	map("v", "<leader>af", ":CopilotChat Fix<CR>", { desc = "Chat: fix selection" })
 	map("n", "<leader>aR", "<cmd>CopilotChatReset<CR>", { desc = "Chat: reset" })
+
+	-- ===== Zettelkasten (zk) =====
+	local zk = require("config.zk")
+	map("n", "<leader>zn", zk.new_note, { desc = "ZK: nouvelle note (titre…)" })
+	map("n", "<leader>zd", zk.new_daily, { desc = "ZK: journal du jour" })
+	map("n", "<leader>zs", zk.browse, { desc = "ZK: parcourir (Telescope)" })
+	map("n", "<leader>zr", zk.recents, { desc = "ZK: récents (2 semaines)" })
+	map("n", "<leader>zt", zk.tags, { desc = "ZK: tags" })
+	map("n", "<leader>zb", zk.backlinks, { desc = "ZK: backlinks (buffer)" })
+	map("n", "<leader>zl", zk.links, { desc = "ZK: liens sortants (buffer)" })
+	map("n", "<leader>zg", zk.grep, { desc = "ZK: recherche plein-texte" })
+	map("n", "<leader>zi", zk.insert_link_cursor, { desc = "ZK: insérer lien" })
+	map("v", "<leader>zi", zk.insert_link_visual, { desc = "ZK: lien depuis sélection" })
 end
 
 -- =========================
@@ -462,6 +475,17 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>bo", desc = "Fermer autres" },
 				{ "<leader>bh", desc = "Fermer à gauche" },
 				{ "<leader>bl", desc = "Fermer à droite" },
+				-- Zk
+				{ "<leader>z", group = "Zettelkasten (zk)" },
+				{ "<leader>zn", desc = "Nouvelle note (titre…)" },
+				{ "<leader>zd", desc = "Journal du jour" },
+				{ "<leader>zs", desc = "Parcourir (Telescope)" },
+				{ "<leader>zr", desc = "Récents (2 semaines)" },
+				{ "<leader>zt", desc = "Tags" },
+				{ "<leader>zb", desc = "Backlinks (buffer)" },
+				{ "<leader>zl", desc = "Liens sortants (buffer)" },
+				{ "<leader>zg", desc = "Recherche plein-texte" },
+				{ "<leader>zi", desc = "Insérer lien" },
 			})
 		end
 	end,
