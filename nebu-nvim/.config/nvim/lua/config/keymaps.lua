@@ -224,7 +224,7 @@ function M.apply_general()
 	map("n", "<leader>tv", "<cmd>VimBeGood<CR>", { desc = "VimBeGood (train)" })
 
 	-- Hardtime (coach)
-	map("n", "<leader>th", "<cmd>HardtimeToggle<CR>", { desc = "Hardtime toggle" })
+	map("n", "<leader>th", "<cmd>Hardtime toggle<CR>", { desc = "Hardtime toggle" })
 
 	-- Treesitter Playground
 	map("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>", { desc = "TS Playground" })
@@ -488,6 +488,33 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>zg", desc = "Recherche plein-texte" },
 				{ "<leader>zi", desc = "Insérer lien" },
 			})
+			-- --- Which-Key: nvim-surround ------------------------------------------------
+			-- n’affiche les hints que si which-key ET nvim-surround sont chargés
+			do
+				local ok_wk, wk = pcall(require, "which-key")
+				if ok_wk and package.loaded["nvim-surround"] then
+					-- NORMAL mode: préfixes y / d / c
+					wk.add({
+						{ "y", group = "Yank / Surround" },
+						{ "ys", desc = "Surround: add (motion)" },
+						{ "yS", desc = "Surround: add (line)" },
+						{ "yss", desc = "Surround: add to line" },
+						{ "ySS", desc = "Surround: add to line (cur)" },
+
+						{ "d", group = "Delete / Surround" },
+						{ "ds", desc = "Surround: delete" },
+
+						{ "c", group = "Change / Surround" },
+						{ "cs", desc = "Surround: change" },
+					}, { mode = "n", nowait = true })
+
+					-- VISUAL mode: selon ta conf (S ou gS)
+					wk.add({
+						{ "S", desc = "Surround: add (visual)" },
+						{ "gS", desc = "Surround: add (visual alt)" }, -- garde si tu utilises gS
+					}, { mode = "x", nowait = true })
+				end
+			end
 		end
 	end,
 })
