@@ -4,7 +4,7 @@ local zk_cmd = require("zk.commands")
 -- ==== Actions génériques ====
 function M.new_note()
 	local title = vim.fn.input("Titre: ")
-	if title == nil then
+	if not title or title == "" then
 		return
 	end
 	zk_cmd.get("ZkNew")({ title = title })
@@ -16,13 +16,17 @@ function M.new_daily()
 end
 
 function M.browse()
-	zk_cmd.get("ZkNotes")({ sort = { "modified", "desc" } })
+	zk_cmd.get("ZkNotes")({
+		sort = { "modified" }, -- champ de tri
+		reverse = true, -- ordre décroissant (nouveau → ancien)
+	})
 end
 
 function M.recents()
 	zk_cmd.get("ZkNotes")({
 		createdAfter = "last two weeks",
-		sort = { "created", "desc" },
+		sort = { "created" },
+		reverse = true, -- on veut les plus récentes d’abord
 		select = { "title", "path", "modified" },
 	})
 end
@@ -42,7 +46,11 @@ end
 function M.grep()
 	local q = vim.fn.input("Rechercher (notes): ")
 	if q and q ~= "" then
-		zk_cmd.get("ZkNotes")({ match = q, sort = { "modified", "desc" } })
+		zk_cmd.get("ZkNotes")({
+			match = q,
+			sort = { "modified" },
+			reverse = true,
+		})
 	end
 end
 
