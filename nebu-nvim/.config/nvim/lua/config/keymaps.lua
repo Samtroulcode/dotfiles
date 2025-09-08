@@ -1,9 +1,28 @@
 -- lua/config/keymaps.lua
+-- Refactor lisible/robuste, mêmes fonctionnalités
+
 local M = {}
 local map = vim.keymap.set
 
--- ---- helper: navigation fenêtre qui gère terminal + tmux ----
+-- ---------- Utils ----------
+local function has(mod)
+	return package.loaded[mod] or pcall(require, mod)
+end
+
+local function try(require_path)
+	local ok, mod = pcall(require, require_path)
+	return ok and mod or nil
+end
+
+local function mapx(mode, lhs, rhs, opts)
+	opts = opts or {}
+	opts.silent = opts.silent ~= false
+	map(mode, lhs, rhs, opts)
+end
+
+-- ---------- Navigation de fenêtres (Nvim -> Tmux fallback) ----------
 local function nav_win(dir)
+	-- sort d'un terminal si nécessaire
 	if vim.bo.buftype == "terminal" then
 		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
 	end
@@ -11,7 +30,13 @@ local function nav_win(dir)
 	vim.cmd("wincmd " .. dir)
 	local after = vim.api.nvim_get_current_win()
 	if before == after then
-		local bydir = { h = "TmuxNavigateLeft", j = "TmuxNavigateDown", k = "TmuxNavigateUp", l = "TmuxNavigateRight" }
+		-- fallback tmux si présent (via tmux-navigator, smart-splits, etc.)
+		local bydir = {
+			h = "TmuxNavigateLeft",
+			j = "TmuxNavigateDown",
+			k = "TmuxNavigateUp",
+			l = "TmuxNavigateRight",
+		}
 		local tm = bydir[dir]
 		if tm and vim.fn.exists(":" .. tm) == 2 then
 			vim.cmd(tm)
@@ -19,19 +44,13 @@ local function nav_win(dir)
 	end
 end
 
--- ---- helpers buffers ----
+-- ---------- Buffers helpers ----------
 local function buf_delete(buf, force)
 	buf = buf or 0
-	if pcall(require, "mini.bufremove") then
+	if has("mini.bufremove") then
 		require("mini.bufremove").delete(buf == 0 and vim.api.nvim_get_current_buf() or buf, force or false)
 	else
-		local cmd = (force and "bdelete!" or "bdelete")
-		if buf == 0 then
-			-- buffer courant -> ne PAS ajouter " 0"
-			vim.cmd(cmd)
-		else
-			vim.cmd(cmd .. " " .. buf)
-		end
+		vim.api.nvim_buf_delete(buf == 0 and vim.api.nvim_get_current_buf() or buf, { force = force or false })
 	end
 end
 
@@ -54,8 +73,7 @@ end
 
 local function close_left_right(side)
 	local cur = vim.api.nvim_get_current_buf()
-	local infos = listed_buffers()
-	local cur_idx
+	local infos, cur_idx = listed_buffers(), nil
 	for i, info in ipairs(infos) do
 		if info.bufnr == cur then
 			cur_idx = i
@@ -74,82 +92,83 @@ local function close_left_right(side)
 	end
 end
 
--- Scroll des fenêtres LSP de noice (hover/signature) avec fallback natif
-vim.keymap.set({ "n", "i", "s" }, "<C-f>", function()
-	if not require("noice.lsp").scroll(4) then
-		return "<C-f>" -- page down normal si pas de popup noice scrollable
-	end
-end, { silent = true, expr = true, desc = "Noice LSP scroll forward" })
+-- ---------- Noice LSP scroll (protégé si noice absent) ----------
+do
+	local noice_lsp = try("noice.lsp")
+	mapx({ "n", "i", "s" }, "<C-f>", function()
+		if noice_lsp and noice_lsp.scroll(4) then
+			return ""
+		end
+		return "<C-f>"
+	end, { expr = true, desc = "Noice LSP scroll forward" })
 
-vim.keymap.set({ "n", "i", "s" }, "<C-b>", function()
-	if not require("noice.lsp").scroll(-4) then
-		return "<C-b>" -- page up normal si pas de popup noice scrollable
-	end
-end, { silent = true, expr = true, desc = "Noice LSP scroll backward" })
+	mapx({ "n", "i", "s" }, "<C-b>", function()
+		if noice_lsp and noice_lsp.scroll(-4) then
+			return ""
+		end
+		return "<C-b>"
+	end, { expr = true, desc = "Noice LSP scroll backward" })
+end
 
--- =========================
--- GÉNÉRALES
--- =========================
+-- ===================================================================
+-- GÉNÉRAL
+-- ===================================================================
 function M.apply_general()
-	-- Effacer le highlight de recherche
-	map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "No HL search" })
+	-- Clear search highlight
+	mapx("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "No HL search" })
 
-	-- Fenêtres → Alt-h/j/k/l (libère Ctrl-h/l pour les buffers)
+	-- Navigation de fenêtres : Alt-h/j/k/l
 	for lhs, dir in pairs({
 		["<M-h>"] = "h",
 		["<M-j>"] = "j",
 		["<M-k>"] = "k",
 		["<M-l>"] = "l",
 	}) do
-		map({ "n", "t" }, lhs, function()
+		mapx({ "n", "t" }, lhs, function()
 			nav_win(dir)
 		end, { desc = "Window " .. dir })
 	end
 
-	-- ===== Buffers (simple et compatible lualine tabline) =====
-	-- Rapides
-	map("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Buffer précédent" })
-	map("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Buffer suivant" })
+	-- Buffers (Tab / S-Tab rapides)
+	mapx("n", "<Tab>", "<cmd>bnext<CR>", { desc = "Buffer suivant" })
+	mapx("n", "<S-Tab>", "<cmd>bprevious<CR>", { desc = "Buffer précédent" })
 
 	-- Groupe <leader>b
-	map("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Buffer: suivant" })
-	map("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Buffer: précédent" })
-
-	map("n", "<leader>bd", function()
+	mapx("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Buffer: suivant" })
+	mapx("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Buffer: précédent" })
+	mapx("n", "<leader>bd", function()
 		buf_delete(0, false)
 	end, { desc = "Buffer: fermer" })
-	map("n", "<leader>bD", function()
+	mapx("n", "<leader>bD", function()
 		buf_delete(0, true)
 	end, { desc = "Buffer: fermer (force)" })
-
-	map("n", "<leader>bo", close_others, { desc = "Buffer: fermer autres" })
-	map("n", "<leader>bh", function()
+	mapx("n", "<leader>bo", close_others, { desc = "Buffer: fermer autres" })
+	mapx("n", "<leader>bh", function()
 		close_left_right("left")
 	end, { desc = "Buffer: fermer à gauche" })
-	map("n", "<leader>bl", function()
+	mapx("n", "<leader>bl", function()
 		close_left_right("right")
 	end, { desc = "Buffer: fermer à droite" })
 
-	-- Picker (utilise Telescope si dispo, sinon :ls -> :b)
-	map("n", "<leader>bb", function()
-		local ok = pcall(require, "telescope.builtin")
-		if ok then
-			require("telescope.builtin").buffers()
+	-- Buffer picker (Telescope si dispo, sinon ls)
+	mapx("n", "<leader>bb", function()
+		local tb = try("telescope.builtin")
+		if tb then
+			tb.buffers()
 		else
-			vim.cmd("ls")
-			vim.cmd("redraw | echo 'Tapez :b <num>'")
+			vim.cmd("ls | redraw | echo 'Tapez :b <num>'")
 		end
 	end, { desc = "Buffers: picker" })
 
-	-- ===== Lazy
-	map("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Lazy: home" })
-	map("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "Lazy: update" })
-	map("n", "<leader>ls", "<cmd>Lazy sync<CR>", { desc = "Lazy: sync" })
-	map("n", "<leader>lc", "<cmd>Lazy check<CR>", { desc = "Lazy: check" })
-	map("n", "<leader>lC", "<cmd>Lazy clean<CR>", { desc = "Lazy: clean" })
-	map("n", "<leader>lp", "<cmd>Lazy profile<CR>", { desc = "Lazy: profile" })
+	-- Lazy
+	mapx("n", "<leader>ll", "<cmd>Lazy<CR>", { desc = "Lazy: home" })
+	mapx("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "Lazy: update" })
+	mapx("n", "<leader>ls", "<cmd>Lazy sync<CR>", { desc = "Lazy: sync" })
+	mapx("n", "<leader>lc", "<cmd>Lazy check<CR>", { desc = "Lazy: check" })
+	mapx("n", "<leader>lC", "<cmd>Lazy clean<CR>", { desc = "Lazy: clean" })
+	mapx("n", "<leader>lp", "<cmd>Lazy profile<CR>", { desc = "Lazy: profile" })
 
-	-- ===== Dashboard (Alpha)
+	-- Dashboard (Alpha)
 	local function dashboard_open()
 		pcall(vim.cmd, "Alpha")
 	end
@@ -168,123 +187,121 @@ function M.apply_general()
 			vim.cmd("only")
 		end
 	end
+	mapx("n", "<leader>dd", dashboard_open, { desc = "Dashboard: open" })
+	mapx("n", "<leader>dD", dashboard_only, { desc = "Dashboard: close all & open" })
+	mapx("n", "<leader>dt", dashboard_toggle, { desc = "󰕮 Dashboard: toggle" })
+	mapx("n", "<leader>dR", "<cmd>AlphaRedraw<CR>", { desc = "Dashboard: redraw" })
+	mapx("n", "<leader>dq", "<cmd>qa<CR>", { desc = "Quit all" })
 
-	map("n", "<leader>dd", dashboard_open, { desc = "Dashboard: open" })
-	map("n", "<leader>dD", dashboard_only, { desc = "Dashboard: close all & open" })
-	map("n", "<leader>dt", dashboard_toggle, { desc = "󰕮 Dashboard: toggle" })
-	map("n", "<leader>dR", "<cmd>AlphaRedraw<CR>", { desc = "Dashboard: redraw" })
-	map("n", "<leader>dq", "<cmd>qa<CR>", { desc = "Quit all" })
-
-	-- ===== AI (Which-Key: <leader>a)
-	local wk_ok, wk = pcall(require, "which-key")
-	if wk_ok then
-		wk.add({ { "<leader>a", group = "AI" } })
+	-- Which-key groups (création légère, safe si which-key absent)
+	do
+		local wk = try("which-key")
+		if wk and wk.add then
+			wk.add({
+				{ "<leader>a", group = "Copilot", icon = { icon = " ", color = "cyan" } },
+				{ "<leader>c", group = "Code / LSP" },
+				{ "<leader>f", group = "Find (Telescope)" },
+				{ "<leader>g", group = "Git" },
+				{ "<leader>b", group = "Buffers", icon = { icon = " ", color = "magenta" } },
+				{ "<leader>l", group = "Lazy" },
+				{ "<leader>d", group = "Dashboard", icon = { icon = " ", color = "purple" } },
+				{ "<leader>p", group = "Projects / Workspaces", icon = { icon = " ", color = "blue" } },
+				{ "<leader>z", group = "Zettelkasten (zk)", icon = { icon = " ", color = "yellow" } },
+				{ "<leader>t", group = "Learn / Training", icon = { icon = " ", color = "green" } },
+				{ "<leader>?", desc = "Cheatsheet: open", icon = { icon = " ", color = "red" } },
+			})
+		end
 	end
 
-	-- Toggle source Copilot dans cmp
-	map("n", "<leader>aa", function()
+	-- AI (toggle de ta source Copilot dans cmp)
+	mapx("n", "<leader>aa", function()
 		require("config.ai_toggle").toggle()
 	end, { desc = "Copilot in cmp: toggle" })
-	map("n", "<leader>ae", function()
+	mapx("n", "<leader>ae", function()
 		require("config.ai_toggle").enable()
 	end, { desc = "Copilot in cmp: enable" })
-	map("n", "<leader>ad", function()
+	mapx("n", "<leader>ad", function()
 		require("config.ai_toggle").disable()
 	end, { desc = "Copilot in cmp: disable" })
 
 	-- Copilot Chat
-	map("n", "<leader>ac", "<cmd>CopilotChatToggle<CR>", { desc = "Chat: toggle" })
-	map("n", "<leader>ap", "<cmd>CopilotChatPrompts<CR>", { desc = "Chat: prompts" })
-	map("n", "<leader>am", "<cmd>CopilotChatModels<CR>", { desc = "Chat: models" })
-	map("n", "<leader>ar", "<cmd>CopilotChat Review<CR>", { desc = "Chat: review buffer" })
-	map("v", "<leader>ax", ":CopilotChat Explain<CR>", { desc = "Chat: explain selection" })
-	map("v", "<leader>af", ":CopilotChat Fix<CR>", { desc = "Chat: fix selection" })
-	map("n", "<leader>aR", "<cmd>CopilotChatReset<CR>", { desc = "Chat: reset" })
+	mapx("n", "<leader>ac", "<cmd>CopilotChatToggle<CR>", { desc = "Chat: toggle" })
+	mapx("n", "<leader>ap", "<cmd>CopilotChatPrompts<CR>", { desc = "Chat: prompts" })
+	mapx("n", "<leader>am", "<cmd>CopilotChatModels<CR>", { desc = "Chat: models" })
+	mapx("n", "<leader>ar", "<cmd>CopilotChat Review<CR>", { desc = "Chat: review buffer" })
+	mapx("v", "<leader>ax", ":CopilotChat Explain<CR>", { desc = "Chat: explain selection" })
+	mapx("v", "<leader>af", ":CopilotChat Fix<CR>", { desc = "Chat: fix selection" })
+	mapx("n", "<leader>aR", "<cmd>CopilotChatReset<CR>", { desc = "Chat: reset" })
 
-	-- ===== Zettelkasten (zk) =====
-	local zk = require("config.zk")
-	map("n", "<leader>zn", zk.new_note, { desc = "ZK: nouvelle note (titre…)" })
-	map("n", "<leader>zd", zk.new_daily, { desc = "ZK: journal du jour" })
-	map("n", "<leader>zs", zk.browse, { desc = "ZK: parcourir (Telescope)" })
-	map("n", "<leader>zr", zk.recents, { desc = "ZK: récents (2 semaines)" })
-	map("n", "<leader>zt", zk.tags, { desc = "ZK: tags" })
-	map("n", "<leader>zb", zk.backlinks, { desc = "ZK: backlinks (buffer)" })
-	map("n", "<leader>zl", zk.links, { desc = "ZK: liens sortants (buffer)" })
-	map("n", "<leader>zg", zk.grep, { desc = "ZK: recherche plein-texte" })
-	map("n", "<leader>zi", zk.insert_link_cursor, { desc = "ZK: insérer lien" })
-	map("v", "<leader>zi", zk.insert_link_visual, { desc = "ZK: lien depuis sélection" })
+	-- Zettelkasten (zk)
+	do
+		local zk = require("config.zk")
+		mapx("n", "<leader>zn", zk.new_note, { desc = "ZK: nouvelle note (titre…)" })
+		mapx("n", "<leader>zd", zk.new_daily, { desc = "ZK: journal du jour" })
+		mapx("n", "<leader>zs", zk.browse, { desc = "ZK: parcourir (Telescope)" })
+		mapx("n", "<leader>zr", zk.recents, { desc = "ZK: récents (2 semaines)" })
+		mapx("n", "<leader>zt", zk.tags, { desc = "ZK: tags" })
+		mapx("n", "<leader>zb", zk.backlinks, { desc = "ZK: backlinks (buffer)" })
+		mapx("n", "<leader>zl", zk.links, { desc = "ZK: liens sortants (buffer)" })
+		mapx("n", "<leader>zg", zk.grep, { desc = "ZK: recherche plein-texte" })
+		mapx("n", "<leader>zi", zk.insert_link_cursor, { desc = "ZK: insérer lien" })
+		mapx("v", "<leader>zi", zk.insert_link_visual, { desc = "ZK: lien depuis sélection" })
+	end
 
-	-- ===== Learn / Training =====
-	local learn = {} -- helpers inline si besoin plus tard
+	-- Learn / Training
+	mapx("n", "<leader>?", "<cmd>Cheatsheet<CR>", { desc = "Cheatsheet: open" })
+	mapx("n", "<leader>tv", "<cmd>VimBeGood<CR>", { desc = "VimBeGood (train)" })
+	mapx("n", "<leader>th", "<cmd>Hardtime toggle<CR>", { desc = "Hardtime toggle" })
+	mapx("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>", { desc = "TS Playground" })
+	mapx("n", "<leader>tH", "<cmd>TSHighlightCapturesUnderCursor<CR>", { desc = "Highlight captures" })
+	mapx("n", "<leader>tu", "<cmd>Telescope undo<CR>", { desc = "Undo tree" })
+	mapx("n", "<leader>tm", "<cmd>MarksListBuf<CR>", { desc = "Marks (buffer)" })
+	mapx("n", "<leader>tM", "<cmd>MarksListAll<CR>", { desc = "Marks (all)" })
 
-	-- Cheatsheet (via Telescope)
-	map("n", "<leader>?", "<cmd>Cheatsheet<CR>", { desc = "Cheatsheet: open" })
-
-	-- VimBeGood (jeu)
-	map("n", "<leader>tv", "<cmd>VimBeGood<CR>", { desc = "VimBeGood (train)" })
-
-	-- Hardtime (coach)
-	map("n", "<leader>th", "<cmd>Hardtime toggle<CR>", { desc = "Hardtime toggle" })
-
-	-- Treesitter Playground
-	map("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>", { desc = "TS Playground" })
-	map("n", "<leader>tH", "<cmd>TSHighlightCapturesUnderCursor<CR>", { desc = "Highlight captures" })
-
-	-- Undo tree (Telescope)
-	map("n", "<leader>tu", "<cmd>Telescope undo<CR>", { desc = "Undo tree" })
-
-	-- Marks (liste rapide)
-	map("n", "<leader>tm", "<cmd>MarksListBuf<CR>", { desc = "Marks (buffer)" })
-	map("n", "<leader>tM", "<cmd>MarksListAll<CR>", { desc = "Marks (all)" })
-
-	-- Hydra Fenêtres (ouverture guidée)
-	map("n", "<leader>tW", function()
+	-- Hydra Fenêtres
+	mapx("n", "<leader>tW", function()
 		require("config.hydras").windows()
 	end, { desc = "Windows Hydra" })
-	-- (alias direct si tu veux garder l’habitude)
-	map("n", "<leader>W", function()
+	mapx("n", "<leader>W", function()
 		require("config.hydras").windows()
 	end, { desc = "Windows Hydra" })
 end
 
--- =========================
+-- ===================================================================
 -- LSP (buffer-local)
--- =========================
+-- ===================================================================
 function M.lsp(bufnr)
 	local b = { buffer = bufnr, silent = true }
 	local function mapb(mode, lhs, rhs, desc)
-		vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("keep", { desc = desc }, b))
+		map(mode, lhs, rhs, vim.tbl_extend("keep", { desc = desc }, b))
 	end
 
-	-- LSP de base
 	mapb("n", "gd", vim.lsp.buf.definition, "LSP: definition")
 	mapb("n", "gr", vim.lsp.buf.references, "LSP: references")
 	mapb("n", "K", vim.lsp.buf.hover, "LSP: hover")
 	mapb("n", "<leader>cr", vim.lsp.buf.rename, "LSP: rename")
 	mapb({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "LSP: code action")
+
 	mapb("n", "<leader>cf", function()
-		if pcall(require, "conform") then
-			require("conform").format({ lsp_fallback = true })
+		local conform = try("conform")
+		if conform then
+			conform.format({ lsp_fallback = true })
 		else
 			vim.lsp.buf.format({ async = true })
 		end
 	end, "Format buffer")
 
-	-- === Diagnostics (flottant + liste) ===
-
-	-- Ouvrir un DIAGNOSTIC FLOTTANT pour la position courante
-	-- (Noice stylise le contenu si lsp.override est activé)
+	-- Diagnostics (float + next/prev + liste)
 	mapb("n", "<leader>cd", function()
 		vim.diagnostic.open_float(nil, {
-			focus = false, -- ne vole pas le focus
-			scope = "cursor", -- "cursor" = diag sous le curseur (ou "line")
+			focus = false,
+			scope = "cursor",
 			border = "rounded",
 			source = "if_many",
 			severity_sort = true,
 		})
 	end, "Diag: flottant (courant)")
 
-	-- Suivant / précédent (inchangé)
 	mapb("n", "]d", function()
 		vim.diagnostic.goto_next({ float = false })
 	end, "Diag: suivant")
@@ -292,20 +309,19 @@ function M.lsp(bufnr)
 		vim.diagnostic.goto_prev({ float = false })
 	end, "Diag: précédent")
 
-	-- Liste diagnostics (Trouble si présent, sinon loclist)
 	mapb("n", "<leader>cD", function()
-		local ok, trouble = pcall(require, "trouble")
-		if ok then
+		local trouble = try("trouble")
+		if trouble and trouble.open then
 			trouble.open("diagnostics")
 		else
 			vim.diagnostic.setloclist({ open = true })
 		end
 	end, "Diag: liste (Trouble/QF)")
 end
--- =========================
--- Clés destinées aux specs lazy
--- (lazy-load par touche)
--- =========================
+
+-- ===================================================================
+-- Clés destinées aux specs lazy (pour lazy-load par touche)
+-- ===================================================================
 M.keys = {
 	telescope = {
 		{
@@ -450,25 +466,15 @@ M.keys = {
 	},
 }
 
--- Hints which-key
+-- Which-key hints au démarrage “VeryLazy”
 vim.api.nvim_create_autocmd("User", {
 	pattern = "VeryLazy",
 	callback = function()
 		M.apply_general()
-		local ok, wk = pcall(require, "which-key")
-		if ok then
+		local wk = try("which-key")
+		if wk and wk.add then
 			wk.add({
-				{ "<leader>?", desc = "Cheatsheet: open", icon = { icon = " ", color = "red" } },
-				{ "<leader>c", group = "Code / LSP" },
-				{ "<leader>f", group = "Find (Telescope)" },
-				{ "<leader>g", group = "Git" },
-				{ "<leader>b", group = "Buffers" },
-				{ "<leader>l", group = "Lazy" },
-				{ "<leader>d", group = "Dashboard", icon = { icon = " ", color = "purple" } },
-				{ "<leader>p", group = "Projects / Workspaces" },
-				{ "<leader>z", group = "Zettelkasten (zk)", icon = { icon = " ", color = "yellow" } },
-				{ "<leader>t", group = "Learn / Training", icon = { icon = "", color = "green" } }, -- icône which-key
-				-- Buffers
+				-- on évite les icônes which-key non standard qui cassent parfois la palette
 				{ "<leader>bn", desc = "Suivant" },
 				{ "<leader>bp", desc = "Précédent" },
 				{ "<leader>bb", desc = "Picker" },
@@ -477,7 +483,7 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>bo", desc = "Fermer autres" },
 				{ "<leader>bh", desc = "Fermer à gauche" },
 				{ "<leader>bl", desc = "Fermer à droite" },
-				-- Zk
+				-- ZK
 				{ "<leader>zn", desc = "Nouvelle note (titre…)" },
 				{ "<leader>zd", desc = "Journal du jour" },
 				{ "<leader>zs", desc = "Parcourir (Telescope)" },
@@ -488,32 +494,23 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>zg", desc = "Recherche plein-texte" },
 				{ "<leader>zi", desc = "Insérer lien" },
 			})
-			-- --- Which-Key: nvim-surround ------------------------------------------------
-			-- n’affiche les hints que si which-key ET nvim-surround sont chargés
-			do
-				local ok_wk, wk = pcall(require, "which-key")
-				if ok_wk and package.loaded["nvim-surround"] then
-					-- NORMAL mode: préfixes y / d / c
-					wk.add({
-						{ "y", group = "Yank / Surround" },
-						{ "ys", desc = "Surround: add (motion)" },
-						{ "yS", desc = "Surround: add (line)" },
-						{ "yss", desc = "Surround: add to line" },
-						{ "ySS", desc = "Surround: add to line (cur)" },
-
-						{ "d", group = "Delete / Surround" },
-						{ "ds", desc = "Surround: delete" },
-
-						{ "c", group = "Change / Surround" },
-						{ "cs", desc = "Surround: change" },
-					}, { mode = "n", nowait = true })
-
-					-- VISUAL mode: selon ta conf (S ou gS)
-					wk.add({
-						{ "S", desc = "Surround: add (visual)" },
-						{ "gS", desc = "Surround: add (visual alt)" }, -- garde si tu utilises gS
-					}, { mode = "x", nowait = true })
-				end
+			-- Hints nvim-surround (si chargé)
+			if package.loaded["nvim-surround"] then
+				wk.add({
+					{ "y", group = "Yank / Surround" },
+					{ "ys", desc = "Surround: add (motion)" },
+					{ "yS", desc = "Surround: add (line)" },
+					{ "yss", desc = "Surround: add to line" },
+					{ "ySS", desc = "Surround: add to line (cur)" },
+					{ "d", group = "Delete / Surround" },
+					{ "ds", desc = "Surround: delete" },
+					{ "c", group = "Change / Surround" },
+					{ "cs", desc = "Surround: change" },
+				}, { mode = "n", nowait = true })
+				wk.add({
+					{ "S", desc = "Surround: add (visual)" },
+					{ "gS", desc = "Surround: add (visual alt)" },
+				}, { mode = "x", nowait = true })
 			end
 		end
 	end,
