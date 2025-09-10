@@ -1,5 +1,5 @@
-# fzfm — picker SFTP multi-racines, multi-sélection, sans errexit/pipefail
-fzfm() {
+# fzf-movie — picker SFTP multi-racines, multi-sélection, sans errexit/pipefail
+fzf-movie() {
   emulate -L zsh        # remet un environnement zsh propre
   setopt localoptions   # confine les options à la fonction
   # surtout PAS de: set -e / set -u / pipefail
