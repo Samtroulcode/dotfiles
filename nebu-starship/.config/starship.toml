@@ -1,0 +1,65 @@
+# ~/.config/starship.toml
+
+# Prompt principal
+format = """
+[╭─](bold bright)$os$username$directory$git_branch$git_status$package
+[╰─](bold bright)$character"""
+
+# Symboles de confirmation
+[character]
+success_symbol = "[❯❯](bold green)"
+error_symbol = "[❯❯](bold red)"
+vimcmd_symbol = "[❯❯](bold yellow) "
+
+# Dossier actuel
+[directory]
+style = "bold blue"
+read_only = " "
+format = "[$path]($style)[$read_only]($style)"
+home_symbol = " "
+
+# Branche Git
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "[$symbol$branch]($style) "
+
+# Statut Git (modifications, commits, etc.)
+[git_status]
+style = "yellow"
+format = "[$all_status]($style) "
+
+# Infos sur le package.json, pyproject.toml, etc.
+[package]
+symbol = " "
+style = "bold cyan"
+format = "[$symbol$version]($style) "
+
+# Heure (si tu veux l'afficher)
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "bold white"
+format = "[🕒 $time]($style) "
+
+# OS (Arch, baby)
+[os]
+disabled = false
+format = "[󰣇 ](blue)"
+style = "blue"
+
+# Configuration rapide pour shell clean
+[cmd_duration]
+min_time = 500
+format = "[⏱ $duration]($style) "
+style = "bold yellow"
+
+# Réduire les symboles inutiles
+[hostname]
+disabled = false
+
+[username]
+show_always = true
+
+[env_var.SSH_CONNECTION]
+disabled = true
