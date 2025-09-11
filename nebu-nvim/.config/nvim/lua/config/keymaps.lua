@@ -20,6 +20,61 @@ local function mapx(mode, lhs, rhs, opts)
 	map(mode, lhs, rhs, opts)
 end
 
+-- -- -- Workspace root detection (LSP > project_nvim > git > cwd)
+local function get_project_root()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	for _, c in ipairs(clients) do
+		local ws = c.config.workspace_folders
+		local root = (ws and ws[1] and ws[1].name) or c.config.root_dir
+		if root and root ~= "" then
+			return root
+		end
+	end
+	local ok_proj, project = pcall(require, "project_nvim.project")
+	if ok_proj and project.get_project_root then
+		local r = project.get_project_root()
+		if r and r ~= "" then
+			return r
+		end
+	end
+	local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+	if git_root and git_root ~= "" then
+		return git_root
+	end
+	return vim.loop.cwd()
+end
+
+local function telescope_files_workspace()
+	local root = get_project_root()
+	require("telescope.builtin").find_files({
+		cwd = root,
+		hidden = true,
+		follow = true,
+	})
+end
+
+local function telescope_grep_workspace()
+	local root = get_project_root()
+	require("telescope.builtin").live_grep({
+		cwd = root,
+		additional_args = function(_)
+			return {
+				"--hidden",
+				"--glob",
+				"!.git/**",
+				"--glob",
+				"!node_modules/**",
+				"--glob",
+				"!dist/**",
+				"--glob",
+				"!build/**",
+				"--glob",
+				"!target/**",
+			}
+		end,
+	})
+end
+
 -- ---------- Navigation de fenêtres (Nvim -> Tmux fallback) ----------
 local function nav_win(dir)
 	-- sort d'un terminal si nécessaire
@@ -213,6 +268,76 @@ function M.apply_general()
 		end
 	end
 
+	-- Global (respecte .gitignore + hidden)
+	mapx("n", "<leader>ff", function()
+		local tb = try("telescope.builtin")
+		if not tb then
+			return
+		end
+		tb.find_files({ hidden = true, follow = true })
+	end, { desc = "Telescope: files (global)" })
+
+	mapx("n", "<leader>fg", function()
+		local tb = try("telescope.builtin")
+		if not tb then
+			return
+		end
+		tb.live_grep() -- exclusions passées via additional_args si besoin
+	end, { desc = "Telescope: live grep (global)" })
+
+	-- Workspace courant (projet)
+	mapx("n", "<leader>fF", telescope_files_workspace, { desc = "Telescope: files (workspace)" })
+	mapx("n", "<leader>fG", telescope_grep_workspace, { desc = "Telescope: grep (workspace)" })
+
+	-- Pickers utiles
+	mapx("n", "<leader>fr", function()
+		require("telescope.builtin").resume()
+	end, { desc = "Telescope: resume" })
+	mapx("n", "<leader>fs", function()
+		require("telescope.builtin").grep_string()
+	end, { desc = "Telescope: grep <cword>" })
+	mapx("v", "<leader>fs", function()
+		require("telescope.builtin").grep_string({ use_regex = false, search = vim.fn.getreg("v") })
+	end, { desc = "Telescope: grep selection" })
+	mapx("n", "<leader>f.", function()
+		require("telescope.builtin").oldfiles()
+	end, { desc = "Telescope: recent files" })
+	mapx("n", "<leader>f/", function()
+		require("telescope.builtin").search_history()
+	end, { desc = "Telescope: search history" })
+	mapx("n", "<leader>fk", function()
+		require("telescope.builtin").keymaps()
+	end, { desc = "Telescope: keymaps" })
+	mapx("n", "<leader>f:", function()
+		require("telescope.builtin").command_history()
+	end, { desc = "Telescope: cmd history" })
+	mapx("n", "<leader>fd", function()
+		require("telescope.builtin").diagnostics({ bufnr = 0 })
+	end, { desc = "Telescope: diagnostics (buffer)" })
+	mapx("n", "<leader>fD", function()
+		require("telescope.builtin").diagnostics()
+	end, { desc = "Telescope: diagnostics (workspace)" })
+	mapx("n", "<leader>fS", function()
+		require("telescope.builtin").lsp_document_symbols()
+	end, { desc = "Telescope: symbols (doc)" })
+	mapx("n", "<leader>fW", function()
+		require("telescope.builtin").lsp_workspace_symbols()
+	end, { desc = "Telescope: symbols (ws)" })
+
+	-- Git (fallback auto si hors repo)
+	mapx("n", "<leader>fgf", function()
+		local tb = try("telescope.builtin")
+		if not tb then
+			return
+		end
+		local ok = (vim.fn.systemlist("git rev-parse --is-inside-work-tree")[1] == "true")
+		if ok then
+			tb.git_files({ show_untracked = true })
+		else
+			tb.find_files({ hidden = true, follow = true })
+		end
+	end, { desc = "Telescope: git_files or files" })
+
 	-- AI (toggle de ta source Copilot dans cmp)
 	mapx("n", "<leader>aa", function()
 		require("config.ai_toggle").toggle()
@@ -265,6 +390,67 @@ function M.apply_general()
 	mapx("n", "<leader>W", function()
 		require("config.hydras").windows()
 	end, { desc = "Windows Hydra" })
+
+	-- Sauter en gardant le curseur centré
+	mapx("n", "n", "nzzzv", { desc = "Search next (center)" })
+	mapx("n", "N", "Nzzzv", { desc = "Search prev (center)" })
+	mapx("n", "J", "mzJ`z", { desc = "Join line (keep cursor)" })
+
+	-- Déplacement de lignes/selection (Alt + j/k)
+	mapx("n", "<M-j>", ":m .+1<CR>==", { desc = "Move line down" })
+	mapx("n", "<M-k>", ":m .-1<CR>==", { desc = "Move line up" })
+	mapx("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+	mapx("v", "<M-k>", ":m '<-1<CR>gv=gv", { desc = "Move selection up" })
+
+	-- Resize fenêtres rapide
+	mapx("n", "<M-=>", "<cmd>resize +3<CR>", { desc = "Win taller" })
+	mapx("n", "<M-->", "<cmd>resize -3<CR>", { desc = "Win shorter" })
+	mapx("n", "<M-,>", "<cmd>vertical resize -6<CR>", { desc = "Win narrower" })
+	mapx("n", "<M-.>", "<cmd>vertical resize +6<CR>", { desc = "Win wider" })
+
+	-- Alternate file / dernier buffer visité
+	mapx("n", "<leader><Tab>", "<C-^>", { desc = "Alternate file" })
+
+	local function toggle(opt, on, off, name)
+		local v = vim.opt_local[opt]:get()
+		if (type(v) == "boolean" and v) or (type(v) ~= "boolean" and v ~= 0 and v ~= nil) then
+			vim.opt_local[opt] = off or false
+			vim.notify("Toggle " .. name .. ": OFF")
+		else
+			vim.opt_local[opt] = on or true
+			vim.notify("Toggle " .. name .. ": ON")
+		end
+	end
+
+	mapx("n", "<leader>tw", function()
+		toggle("wrap", true, false, "wrap")
+	end, { desc = "Toggle wrap" })
+	mapx("n", "<leader>tr", function()
+		toggle("relativenumber", true, false, "relativenumber")
+	end, { desc = "Toggle relativenumber" })
+	mapx("n", "<leader>tl", function()
+		toggle("list", true, false, "listchars")
+	end, { desc = "Toggle listchars" })
+	mapx("n", "<leader>tc", function()
+		toggle("colorcolumn", { "80" }, {}, "colorcolumn")
+	end, { desc = "Toggle colorcolumn=80" })
+
+	-- Spell FR/EN simple
+	mapx("n", "<leader>ts", function()
+		if vim.opt_local.spell:get() and vim.opt_local.spelllang:get() == "fr" then
+			vim.opt_local.spelllang = "en"
+		else
+			vim.opt_local.spell = true
+			vim.opt_local.spelllang = "fr"
+		end
+		vim.notify("Spell: " .. table.concat(vim.opt_local.spelllang:get(), ","))
+	end, { desc = "Toggle spell fr<->en" })
+
+	-- Quickfix navigation
+	mapx("n", "<leader>qo", "<cmd>copen<CR>", { desc = "Quickfix: open" })
+	mapx("n", "<leader>qc", "<cmd>cclose<CR>", { desc = "Quickfix: close" })
+	mapx("n", "]q", "<cmd>cnext<CR>zz", { desc = "Quickfix: next" })
+	mapx("n", "[q", "<cmd>cprev<CR>zz", { desc = "Quickfix: prev" })
 end
 
 -- ===================================================================
@@ -275,6 +461,53 @@ function M.lsp(bufnr)
 	local function mapb(mode, lhs, rhs, desc)
 		map(mode, lhs, rhs, vim.tbl_extend("keep", { desc = desc }, b))
 	end
+
+	-- Peek definition si lspsaga dispo, sinon fallback hover/definition
+	mapb("n", "gp", function()
+		local saga = try("lspsaga.peek")
+		if saga and saga.definition then
+			saga.definition(1)
+		else
+			vim.lsp.buf.definition()
+		end
+	end, "LSP: peek/definition")
+
+	-- Toggle inlay hints (Neovim 0.10+)
+	mapb("n", "<leader>ci", function()
+		if vim.lsp.inlay_hint then
+			local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+			vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+		end
+	end, "LSP: toggle inlay hints")
+
+	-- Format-on-save toggle (buffer local)
+	mapb("n", "<leader>cF", function()
+		local grp = "FormatOnSave_" .. bufnr
+		local exists = false
+		for _, a in ipairs(vim.api.nvim_get_autocmds({ group = grp })) do
+			exists = true
+			break
+		end
+		if exists then
+			pcall(vim.api.nvim_del_augroup_by_name, grp)
+			vim.notify("Format on save: OFF")
+		else
+			local id = vim.api.nvim_create_augroup(grp, { clear = true })
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				group = id,
+				buffer = bufnr,
+				callback = function()
+					local conform = try("conform")
+					if conform then
+						conform.format({ lsp_fallback = true })
+					else
+						vim.lsp.buf.format({ async = false })
+					end
+				end,
+			})
+			vim.notify("Format on save: ON")
+		end
+	end, "LSP: toggle format on save")
 
 	mapb("n", "gd", vim.lsp.buf.definition, "LSP: definition")
 	mapb("n", "gr", vim.lsp.buf.references, "LSP: references")
@@ -493,6 +726,25 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>zl", desc = "Liens sortants (buffer)" },
 				{ "<leader>zg", desc = "Recherche plein-texte" },
 				{ "<leader>zi", desc = "Insérer lien" },
+				-- QOL
+				{ "<leader>t", group = "Toggles" },
+				{ "<leader>q", group = "Quickfix" },
+				{ "<leader>f", group = "Find (Telescope)" },
+				{ "<leader>tt", desc = "Terminal: toggle" },
+				{ "<leader>fF", desc = "Files (workspace)" },
+				{ "<leader>fG", desc = "Grep (workspace)" },
+				-- Telescope
+				{ "<leader>fS", desc = "Symbols (doc)" },
+				{ "<leader>fW", desc = "Symbols (ws)" },
+				{ "<leader>fd", desc = "Diagnostics (buf)" },
+				{ "<leader>fD", desc = "Diagnostics (ws)" },
+				{ "<leader>fr", desc = "Resume" },
+				{ "<leader>fs", desc = "Grep word/selection" },
+				{ "<leader>f.", desc = "Recent files" },
+				{ "<leader>f/", desc = "Search history" },
+				{ "<leader>fk", desc = "Keymaps" },
+				{ "<leader>f:", desc = "Cmd history" },
+				{ "<leader>fgf", desc = "Git files / Files" },
 			})
 			-- Hints nvim-surround (si chargé)
 			if package.loaded["nvim-surround"] then
