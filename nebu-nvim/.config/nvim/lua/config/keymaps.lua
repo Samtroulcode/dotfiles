@@ -174,8 +174,8 @@ function M.apply_general()
 
 	-- Navigation de fenêtres : Alt-h/j/k/l
 	for lhs, dir in pairs({
-		["<M-h>"] = "h",
-		["<M-j>"] = "j",
+		["<M-Up>"] = "h",
+		["<M-Down>"] = "j",
 		["<M-k>"] = "k",
 		["<M-l>"] = "l",
 	}) do
