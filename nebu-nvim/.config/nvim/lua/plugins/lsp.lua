@@ -27,5 +27,11 @@ return {
 
 		-- Markdown LSP (basique mais utile)
 		lsp.marksman.setup({ capabilities = capabilities, on_attach = on_attach })
+
+		-- Svelte
+		lsp.svelte.setup({ capabilities = capabilities, on_attach = on_attach })
+
+		-- Tailwind CSS LSP
+		lsp.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
 	end,
 }

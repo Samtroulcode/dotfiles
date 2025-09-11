@@ -16,6 +16,8 @@ return {
 			python = { "ruff_format" },
 			rust = { "rustfmt" },
 			go = { "gofumpt", "goimports" },
+			svelte = { "prettierd", "prettier" },
+			tailwindcss = { "prettierd", "prettier" },
 		},
 	},
 }
