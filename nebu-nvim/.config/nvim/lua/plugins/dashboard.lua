@@ -32,7 +32,7 @@ return {
 			dash.button("f", "  Files", ":Telescope find_files<CR>"),
 			dash.button("g", "  Grep", ":Telescope live_grep<CR>"),
 			dash.button("p", "  Projects", ":Telescope workspaces<CR>"),
-			dash.button("s", "  Store", ":Store<CR>"),
+			dash.button("S", "  Store", ":Store<CR>"),
 			dash.button("j", "󰃰  Journal du jour", zk.new_daily),
 			dash.button("n", "  Nouvelle note", zk.new_note),
 			dash.button("s", "󰍉  Parcourir notes", zk.browse),
