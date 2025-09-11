@@ -9,6 +9,8 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"windwp/nvim-autopairs", -- pour l’intégration confirm_done
+		"David-Kunz/cmp-npm",
+		"roobert/tailwindcss-colorizer-cmp.nvim",
 	},
 	config = function()
 		vim.opt.completeopt = { "menu", "menuone", "noselect" }
@@ -48,8 +50,9 @@ return {
 				{ name = "copilot" },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "path" },
 				{ name = "buffer" },
+				{ name = "npm" },
+				{ name = "path" },
 			}),
 			sorting = {
 				priority_weight = 2,
@@ -67,11 +70,16 @@ return {
 				},
 			},
 		})
+		-- activer la colorisation Tailwind
+		require("tailwindcss-colorizer-cmp").setup({})
 
 		-- autopairs <-> cmp
 		local ok, cmp_ap = pcall(require, "nvim-autopairs.completion.cmp")
 		if ok then
 			cmp.event:on("confirm_done", cmp_ap.on_confirm_done())
 		end
+		pcall(function()
+			require("cmp-npm").setup({})
+		end)
 	end,
 }

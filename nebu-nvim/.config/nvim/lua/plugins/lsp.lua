@@ -33,5 +33,46 @@ return {
 
 		-- Tailwind CSS LSP
 		lsp.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
+
+		-- HTML / CSS
+		lsp.html.setup({ capabilities = capabilities, on_attach = on_attach })
+		lsp.cssls.setup({ capabilities = capabilities, on_attach = on_attach })
+
+		-- JSON avec schemastore
+		local ok_schema, schemastore = pcall(require, "schemastore")
+		lsp.jsonls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+				json = {
+					schemas = ok_schema and schemastore.json.schemas() or nil,
+					validate = { enable = true },
+				},
+			},
+		})
+
+		-- YAML (clé: désactiver l’ordonnancement strict)
+		lsp.yamlls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = { yaml = { keyOrdering = false } },
+		})
+
+		-- Emmet (HTML/CSS/JSX/TSX/Svelte)
+		lsp.emmet_language_server.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "html", "css", "scss", "sass", "javascriptreact", "typescriptreact", "svelte" },
+		})
+
+		-- ESLint (diagnostics/actions; formatting désactivé pour laisser Conform)
+		lsp.eslint.setup({
+			capabilities = capabilities,
+			on_attach = function(client, bufnr)
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentRangeFormattingProvider = false
+				on_attach(client, bufnr)
+			end,
+		})
 	end,
 }

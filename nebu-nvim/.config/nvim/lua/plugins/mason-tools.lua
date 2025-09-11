@@ -3,19 +3,32 @@ return {
 	dependencies = { "williamboman/mason.nvim" },
 	opts = {
 		ensure_installed = {
-			-- Formatters
+			-- Formatters/Linters
+			"prettierd",
+			"eslint_d",
+			"jq",
 			"shfmt",
 			"stylua",
-			"prettierd",
-			"prettier",
 			"taplo",
-			"jq",
 			"black",
 			"isort",
-			"ruff", -- (ruff_format via ruff >=0.0.290)
+			"ruff",
 			"gofumpt",
 			"goimports",
-			-- (Rustfmt n’est pas géré par Mason : utilise rustup)
+
+			-- LSP Web
+			"typescript-language-server",
+			"eslint-lsp",
+			"html-lsp",
+			"css-lsp",
+			"json-lsp",
+			"yaml-language-server",
+			"emmet-language-server",
+			"tailwindcss-language-server",
+			"svelte-language-server",
+
+			-- (facultatif) debug JS
+			"js-debug-adapter",
 		},
 		auto_update = false,
 		run_on_start = true,

@@ -5,8 +5,8 @@ return {
 		formatters_by_ft = {
 			sh = { "shfmt" },
 			lua = { "stylua" },
-			javascript = { "prettierd", "prettier" },
-			typescript = { "prettierd", "prettier" },
+			javascript = { "eslint_d", "prettierd" },
+			typescript = { "eslint_d", "prettierd" },
 			css = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },
 			markdown = { "prettierd", "prettier" },
@@ -16,8 +16,8 @@ return {
 			python = { "ruff_format" },
 			rust = { "rustfmt" },
 			go = { "gofumpt", "goimports" },
-			svelte = { "prettierd", "prettier" },
-			tailwindcss = { "prettierd", "prettier" },
+			svelte = { "prettierd" },
+			tailwindcss = { "prettierd" },
 		},
 	},
 }

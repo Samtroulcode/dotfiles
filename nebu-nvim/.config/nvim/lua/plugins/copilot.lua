@@ -6,7 +6,7 @@ return {
 		event = "InsertEnter",
 		opts = {
 			-- IMPORTANT: on veut tout via cmp, donc on coupe le ghost-text & le panel
-			suggestion = { enabled = false },
+			suggestion = { enabled = true },
 			panel = { enabled = false },
 			filetypes = {
 				help = false,

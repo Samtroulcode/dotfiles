@@ -375,18 +375,40 @@ function M.apply_general()
 
 	-- Learn / Training
 	mapx("n", "<leader>?", "<cmd>Cheatsheet<CR>", { desc = "Cheatsheet: open" })
-	mapx("n", "<leader>tv", "<cmd>VimBeGood<CR>", { desc = "VimBeGood (train)" })
-	mapx("n", "<leader>th", "<cmd>Hardtime toggle<CR>", { desc = "Hardtime toggle" })
-	mapx("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>", { desc = "TS Playground" })
-	mapx("n", "<leader>tH", "<cmd>TSHighlightCapturesUnderCursor<CR>", { desc = "Highlight captures" })
-	mapx("n", "<leader>tu", "<cmd>Telescope undo<CR>", { desc = "Undo tree" })
-	mapx("n", "<leader>tm", "<cmd>MarksListBuf<CR>", { desc = "Marks (buffer)" })
-	mapx("n", "<leader>tM", "<cmd>MarksListAll<CR>", { desc = "Marks (all)" })
+	mapx("n", "<leader>Tv", "<cmd>VimBeGood<CR>", { desc = "VimBeGood (train)" })
+	mapx("n", "<leader>Th", "<cmd>Hardtime toggle<CR>", { desc = "Hardtime toggle" })
+	mapx("n", "<leader>Tp", "<cmd>TSPlaygroundToggle<CR>", { desc = "TS Playground" })
+	mapx("n", "<leader>TH", "<cmd>TSHighlightCapturesUnderCursor<CR>", { desc = "Highlight captures" })
+	mapx("n", "<leader>Tu", "<cmd>Telescope undo<CR>", { desc = "Undo tree" })
+	mapx("n", "<leader>Tm", "<cmd>MarksListBuf<CR>", { desc = "Marks (buffer)" })
+	mapx("n", "<leader>TM", "<cmd>MarksListAll<CR>", { desc = "Marks (all)" })
+
+	-- Neotest (Jest)
+	local ok_nt, neotest = pcall(require, "neotest")
+	if ok_nt then
+		map("n", "<leader>tn", function()
+			neotest.run.run()
+		end, { desc = "Test: nearest" })
+		map("n", "<leader>tf", function()
+			neotest.run.run(vim.fn.expand("%"))
+		end, { desc = "Test: file" })
+		map("n", "<leader>ts", neotest.summary.toggle, { desc = "Test: summary" })
+		map("n", "<leader>to", neotest.output.open, { desc = "Test: output" })
+		map("n", "<leader>tO", function()
+			neotest.output.open({ enter = true, short = false })
+		end, { desc = "Test: output (float)" })
+	end
+
+	map("n", "<leader>ng", function()
+		local ok, neogen = pcall(require, "neogen")
+		if ok then
+			neogen.generate()
+		else
+			vim.notify("neogen non chargé", vim.log.levels.WARN)
+		end
+	end, { desc = "Neogen: Generate JSDoc" })
 
 	-- Hydra Fenêtres
-	mapx("n", "<leader>tW", function()
-		require("config.hydras").windows()
-	end, { desc = "Windows Hydra" })
 	mapx("n", "<leader>W", function()
 		require("config.hydras").windows()
 	end, { desc = "Windows Hydra" })
@@ -422,21 +444,21 @@ function M.apply_general()
 		end
 	end
 
-	mapx("n", "<leader>tw", function()
+	mapx("n", "<leader>Tw", function()
 		toggle("wrap", true, false, "wrap")
 	end, { desc = "Toggle wrap" })
-	mapx("n", "<leader>tr", function()
+	mapx("n", "<leader>Tr", function()
 		toggle("relativenumber", true, false, "relativenumber")
 	end, { desc = "Toggle relativenumber" })
-	mapx("n", "<leader>tl", function()
+	mapx("n", "<leader>Tl", function()
 		toggle("list", true, false, "listchars")
 	end, { desc = "Toggle listchars" })
-	mapx("n", "<leader>tc", function()
+	mapx("n", "<leader>Tc", function()
 		toggle("colorcolumn", { "80" }, {}, "colorcolumn")
 	end, { desc = "Toggle colorcolumn=80" })
 
 	-- Spell FR/EN simple
-	mapx("n", "<leader>ts", function()
+	mapx("n", "<leader>Ts", function()
 		if vim.opt_local.spell:get() and vim.opt_local.spelllang:get() == "fr" then
 			vim.opt_local.spelllang = "en"
 		else
@@ -727,8 +749,9 @@ vim.api.nvim_create_autocmd("User", {
 				{ "<leader>zg", desc = "Recherche plein-texte" },
 				{ "<leader>zi", desc = "Insérer lien" },
 				-- QOL
-				{ "<leader>t", group = "Toggles" },
+				{ "<leader>T", group = "Toggles" },
 				{ "<leader>q", group = "Quickfix" },
+				{ "<leader>t", group = "Tests" },
 				{ "<leader>f", group = "Find (Telescope)" },
 				{ "<leader>tt", desc = "Terminal: toggle" },
 				{ "<leader>fF", desc = "Files (workspace)" },
