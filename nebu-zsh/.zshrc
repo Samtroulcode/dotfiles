@@ -114,3 +114,6 @@ compdef _nrip_complete nrip
 # }
 # zle -N zle-keymap-select
 # zle -N zle-line-init
+
+# opencode
+export PATH=/home/sam/.opencode/bin:$PATH
