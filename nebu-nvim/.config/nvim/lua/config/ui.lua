@@ -18,7 +18,3 @@ vim.diagnostic.config({
 --    (affecte TOUS les floats : hover, signature, diagnostics, etc.)
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "TelescopeNormal" })
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "TelescopeBorder" })
-
--- 4) (optionnel) Légère transparence des menus/flottants
-vim.opt.winblend = 8 -- floats
-vim.opt.pumblend = 8 -- completion menu
