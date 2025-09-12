@@ -19,6 +19,7 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
+			performance = { max_view_entries = 5 }, -- cap global de la liste (doc officielle)
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -47,10 +48,18 @@ return {
 				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
-				{ name = "copilot" },
-				{ name = "nvim_lsp" },
+				{ name = "copilot" }, -- en tête quand activé
+				{
+					name = "nvim_lsp",
+					entry_filter = function(entry, _)
+						-- vire le bruit "Text" renvoyé par certains LSP (ex. TS/JS)
+						local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
+						return kind ~= "Text"
+					end,
+				},
 				{ name = "luasnip" },
-				{ name = "buffer" },
+			}, {
+				{ name = "buffer", keyword_length = 3, group_index = 2 },
 				{ name = "npm" },
 				{ name = "path" },
 			}),

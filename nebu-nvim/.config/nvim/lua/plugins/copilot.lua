@@ -5,8 +5,7 @@ return {
 		cmd = "Copilot",
 		event = "InsertEnter",
 		opts = {
-			-- IMPORTANT: on veut tout via cmp, donc on coupe le ghost-text & le panel
-			suggestion = { enabled = true },
+			suggestion = { enabled = true, auto_trigger = false },
 			panel = { enabled = false },
 			filetypes = {
 				help = false,
