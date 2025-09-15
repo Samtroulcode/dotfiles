@@ -11,6 +11,9 @@ source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # Autosuggestions
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Syntax highlighting
 
+# opencode
+export PATH=/home/sam/.opencode/bin:$PATH
+
 # Setup des keybinds pour fzf
 source <(fzf --zsh)
 
@@ -115,5 +118,3 @@ compdef _nrip_complete nrip
 # zle -N zle-keymap-select
 # zle -N zle-line-init
 
-# opencode
-export PATH=/home/sam/.opencode/bin:$PATH
