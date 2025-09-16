@@ -376,12 +376,7 @@ function M.apply_general()
 	-- Learn / Training
 	mapx("n", "<leader>?", "<cmd>Cheatsheet<CR>", { desc = "Cheatsheet: open" })
 	mapx("n", "<leader>Tv", "<cmd>VimBeGood<CR>", { desc = "VimBeGood (train)" })
-	mapx("n", "<leader>Th", "<cmd>Hardtime toggle<CR>", { desc = "Hardtime toggle" })
-	mapx("n", "<leader>Tp", "<cmd>TSPlaygroundToggle<CR>", { desc = "TS Playground" })
-	mapx("n", "<leader>TH", "<cmd>TSHighlightCapturesUnderCursor<CR>", { desc = "Highlight captures" })
 	mapx("n", "<leader>Tu", "<cmd>Telescope undo<CR>", { desc = "Undo tree" })
-	mapx("n", "<leader>Tm", "<cmd>MarksListBuf<CR>", { desc = "Marks (buffer)" })
-	mapx("n", "<leader>TM", "<cmd>MarksListAll<CR>", { desc = "Marks (all)" })
 
 	-- Neotest (Jest)
 	local ok_nt, neotest = pcall(require, "neotest")
@@ -398,20 +393,6 @@ function M.apply_general()
 			neotest.output.open({ enter = true, short = false })
 		end, { desc = "Test: output (float)" })
 	end
-
-	map("n", "<leader>ng", function()
-		local ok, neogen = pcall(require, "neogen")
-		if ok then
-			neogen.generate()
-		else
-			vim.notify("neogen non chargé", vim.log.levels.WARN)
-		end
-	end, { desc = "Neogen: Generate JSDoc" })
-
-	-- Hydra Fenêtres
-	mapx("n", "<leader>W", function()
-		require("config.hydras").windows()
-	end, { desc = "Windows Hydra" })
 
 	-- Sauter en gardant le curseur centré
 	mapx("n", "n", "nzzzv", { desc = "Search next (center)" })
