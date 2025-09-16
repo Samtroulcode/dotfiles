@@ -553,6 +553,20 @@ function M.lsp(bufnr)
 			vim.diagnostic.setloclist({ open = true })
 		end
 	end, "Diag: liste (Trouble/QF)")
+
+	-- Toggle diagnostics inline (virtual_text)
+	mapb("n", "<leader>cv", function()
+		local cfg = vim.diagnostic.config()
+		local vt = cfg.virtual_text
+		local currently_on = (vt == true) or (type(vt) == "table")
+		if currently_on then
+			vim.diagnostic.config({ virtual_text = false })
+			vim.notify("Diagnostics inline: OFF")
+		else
+			vim.diagnostic.config({ virtual_text = { prefix = "●", spacing = 2, source = "if_many" } })
+			vim.notify("Diagnostics inline: ON")
+		end
+	end, "Diag: inline (toggle)")
 end
 
 -- ===================================================================
