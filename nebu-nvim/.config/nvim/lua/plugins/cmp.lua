@@ -19,7 +19,7 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
-			performance = { max_view_entries = 5 }, -- cap global de la liste (doc officielle)
+			performance = { max_view_entries = 10 }, -- cap global de la liste (doc officielle)
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
