@@ -1,8 +1,18 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		{ "williamboman/mason.nvim" },
+		-- Améliorations TS/JS
+		{ "yioneko/nvim-vtsls" }, -- commandes : VtsExec, VtsRename, etc.
+		{ "b0o/schemastore.nvim" }, -- JSON schemas
+		{ "windwp/nvim-ts-autotag", opts = {} }, -- auto close/rename tags
+		{ "luckasRanarison/tailwind-tools.nvim", opts = {} }, -- bonus Tailwind (optionnel mais utile)
+		-- (Optionnel) switch colorizer vers le fork maintenu :
+		-- { "NvChad/nvim-colorizer.lua", opts = { user_default_options = { names = false } } },
+	},
 	config = function()
-		-- Icônes & signs par sévérité (sobre / Catppuccin-friendly)
+		-- === Diagnostics look & feel ===
 		local diag_icons = {
 			[vim.diagnostic.severity.ERROR] = "",
 			[vim.diagnostic.severity.WARN] = "",
@@ -18,12 +28,9 @@ return {
 					[vim.diagnostic.severity.HINT] = "󰌶 ",
 				},
 			},
-		})
-		-- Diagnostics: inline stylé + espacé
-		vim.diagnostic.config({
 			virtual_text = {
-				spacing = 8, -- plus éloigné de ton code
-				source = false, -- on l’intègre au message si besoin
+				spacing = 8,
+				source = false,
 				prefix = function(d)
 					return (diag_icons[d.severity] or "●") .. " "
 				end,
@@ -40,8 +47,7 @@ return {
 			update_in_insert = false,
 			float = { border = "rounded", source = "always", focusable = false },
 		})
-
-		-- VirtualText sans fond (reste clean avec Catppuccin)
+		-- VirtualText sans fond
 		local function vt_bg_none()
 			for _, n in ipairs({ "Error", "Warn", "Info", "Hint" }) do
 				local grp = "DiagnosticVirtualText" .. n
@@ -52,7 +58,7 @@ return {
 		vt_bg_none()
 		vim.api.nvim_create_autocmd("ColorScheme", { callback = vt_bg_none })
 
-		-- lsp_lines prêt mais OFF par défaut (toggle depuis les mappings)
+		-- lsp_lines prêt mais OFF
 		pcall(require, "lsp_lines")
 		vim.diagnostic.config({ virtual_lines = false })
 
@@ -61,31 +67,15 @@ return {
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		local on_attach = function(client, bufnr)
-			require("config.keymaps").lsp(bufnr)
-			-- UN SEUL PRODUCTEUR JS/TS : vtsls
-			-- -> désactive explicitement les diagnostics d’ESLint en js/ts/svelte (on laisse html).
-			if client.name == "eslint" then
-				local ft = vim.bo[bufnr].filetype
-				if
-					ft == "javascript"
-					or ft == "javascriptreact"
-					or ft == "typescript"
-					or ft == "typescriptreact"
-					or ft == "svelte"
-				then
-					local ns = vim.lsp.diagnostic.get_namespace(client.id)
-					-- 1) désactive pour ce buffer/namespace (empêche les publications futures)
-					vim.diagnostic.disable(bufnr, ns)
-					-- 2) nettoie ce qui a déjà été publié
-					vim.schedule(function()
-						vim.diagnostic.reset(ns, bufnr)
-					end)
-				end
+			-- tes keymaps
+			pcall(require, "config.keymaps")
+			if package.loaded["config.keymaps"] then
+				require("config.keymaps").lsp(bufnr)
 			end
 		end
-		-- Rust: ignoré si rustaceanvim est installé (il gère lui-même RA)
-		local has_rustacean = vim.g.rustaceanvim ~= nil
-		if not has_rustacean then
+
+		-- Rust: laisse rustaceanvim gérer si présent
+		if not vim.g.rustaceanvim then
 			lsp.rust_analyzer.setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
@@ -100,65 +90,116 @@ return {
 			settings = { Lua = { diagnostics = { globals = { "vim" } } } },
 		})
 
-		-- Markdown LSP (basique mais utile)
+		-- Markdown
 		lsp.marksman.setup({ capabilities = capabilities, on_attach = on_attach })
 
-		-- Svelte
-		lsp.svelte.setup({ capabilities = capabilities, on_attach = on_attach })
-
-		-- Tailwind CSS LSP
-		lsp.tailwindcss.setup({ capabilities = capabilities, on_attach = on_attach })
-
-		-- TypeScript / JavaScript → vtsls = producteur unique des diagnostics
-		lsp.vtsls.setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
-			-- Quelques options vtsls/ts utiles (facultatif, garde ton style par défaut)
-			settings = {
-				vtsls = { enableMoveToFileCodeAction = true },
-				typescript = {
-					preferences = { includeCompletionsForModuleExports = true },
-					inlayHints = { includeInlayParameterNameHints = "all", includeInlayVariableTypeHints = true },
-				},
-				javascript = {
-					inlayHints = { includeInlayParameterNameHints = "all", includeInlayVariableTypeHints = true },
-				},
-			},
-		})
-
-		-- HTML / CSS
-		lsp.html.setup({ capabilities = capabilities, on_attach = on_attach })
-		lsp.cssls.setup({ capabilities = capabilities, on_attach = on_attach })
-
-		-- JSON avec schemastore
+		-- JSON (schemastore)
 		local ok_schema, schemastore = pcall(require, "schemastore")
 		lsp.jsonls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = {
-				json = {
-					schemas = ok_schema and schemastore.json.schemas() or nil,
-					validate = { enable = true },
-				},
+				json = { schemas = ok_schema and schemastore.json.schemas() or nil, validate = { enable = true } },
 			},
 		})
 
-		-- YAML (clé: désactiver l’ordonnancement strict)
+		-- YAML
 		lsp.yamlls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = { yaml = { keyOrdering = false } },
 		})
 
-		-- Emmet (HTML/CSS/JSX/TSX/Svelte)
+		-- HTML / CSS
+		lsp.html.setup({ capabilities = capabilities, on_attach = on_attach })
+		lsp.cssls.setup({ capabilities = capabilities, on_attach = on_attach })
+
+		-- Svelte
+		lsp.svelte.setup({ capabilities = capabilities, on_attach = on_attach })
+
+		-- Tailwind CSS
+		lsp.tailwindcss.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			-- (facultatif) root_dir = util.root_pattern("tailwind.config.*", "package.json", ".git"),
+		})
+
+		-- Emmet
 		lsp.emmet_language_server.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
 			filetypes = { "html", "css", "scss", "sass", "javascriptreact", "typescriptreact", "svelte" },
 		})
 
-		-- ESLint (diagnostics/actions; formatting désactivé pour laisser Conform)
+		-- NOTE: nécessite `svelte-language-server` installé (Mason ✔) pour la location du plugin.
+		local function svelte_ts_plugin_location()
+			local ok_mason, registry = pcall(require, "mason-registry")
+			if ok_mason then
+				local ok_pkg, pkg = pcall(registry.get_package, "svelte-language-server")
+				if ok_pkg and pkg and pkg.is_installed and pkg:is_installed() and pkg.get_install_path then
+					local base = pkg:get_install_path() .. "/node_modules/typescript-svelte-plugin"
+					if vim.fn.isdirectory(base) == 1 then
+						return base
+					end
+				end
+			end
+			-- fallbacks courants (si installé globalement via npm/pnpm/yarn)
+			local candidates = {
+				vim.fn.expand(
+					"~/.local/share/nvim/mason/packages/svelte-language-server/node_modules/typescript-svelte-plugin"
+				),
+				"/usr/local/lib/node_modules/typescript-svelte-plugin",
+				"/usr/lib/node_modules/typescript-svelte-plugin",
+			}
+			for _, p in ipairs(candidates) do
+				if vim.fn.isdirectory(p) == 1 then
+					return p
+				end
+			end
+			return nil
+		end
+
+		local svelte_plugin_path = svelte_ts_plugin_location()
+
+		local vtsls_settings = {
+			vtsls = { enableMoveToFileCodeAction = true },
+			tsserver = {
+				globalPlugins = {
+					(function()
+						local plugin = {
+							name = "typescript-svelte-plugin",
+							enableForWorkspaceTypeScriptVersions = true,
+						}
+						-- n’ajoute "location" que si on a trouvé un chemin fiable
+						if svelte_plugin_path then
+							plugin.location = svelte_plugin_path
+						end
+						return plugin
+					end)(),
+				},
+			},
+			typescript = {
+				preferences = { includeCompletionsForModuleExports = true },
+				inlayHints = {
+					includeInlayParameterNameHints = "all",
+					includeInlayVariableTypeHints = true,
+				},
+			},
+			javascript = {
+				inlayHints = {
+					includeInlayParameterNameHints = "all",
+					includeInlayVariableTypeHints = true,
+				},
+			},
+		}
+		lsp.vtsls.setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			root_dir = util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git"),
+			settings = vtsls_settings,
+		})
+
+		-- ESLint: code actions / fixAll, PAS de diagnostics (on laisse vtsls)
 		lsp.eslint.setup({
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
@@ -166,6 +207,16 @@ return {
 				client.server_capabilities.documentRangeFormattingProvider = false
 				on_attach(client, bufnr)
 			end,
+			settings = {
+				run = "onType",
+				validate = "on",
+				codeAction = { disableRuleComment = { enable = true, location = "separateLine" } },
+				workingDirectory = { mode = "auto" },
+			},
+			-- coupe la publication de diagnostics côté ESLint (mais garde les actions)
+			handlers = {
+				["textDocument/publishDiagnostics"] = function() end,
+			},
 		})
 	end,
 }
