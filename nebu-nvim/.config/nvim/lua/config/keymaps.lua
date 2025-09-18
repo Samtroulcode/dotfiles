@@ -3,6 +3,7 @@
 
 local M = {}
 local map = vim.keymap.set
+local current_transparent = true
 
 -- ---------- Utils ----------
 local function has(mod)
@@ -18,6 +19,16 @@ local function mapx(mode, lhs, rhs, opts)
 	opts = opts or {}
 	opts.silent = opts.silent ~= false
 	map(mode, lhs, rhs, opts)
+end
+
+-- Permet de toggle l'opacité ou non
+function ToggleTransparency()
+	current_transparent = not current_transparent
+	require("catppuccin").setup({
+		transparent_background = current_transparent,
+	})
+	vim.cmd.colorscheme("catppuccin")
+	print("Transparency: " .. tostring(current_transparent))
 end
 
 -- -- -- Workspace root detection (LSP > project_nvim > git > cwd)
@@ -75,29 +86,24 @@ local function telescope_grep_workspace()
 	})
 end
 
--- ---------- Navigation de fenêtres (Nvim -> Tmux fallback) ----------
-local function nav_win(dir)
-	-- sort d'un terminal si nécessaire
-	if vim.bo.buftype == "terminal" then
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
-	end
-	local before = vim.api.nvim_get_current_win()
-	vim.cmd("wincmd " .. dir)
-	local after = vim.api.nvim_get_current_win()
-	if before == after then
-		-- fallback tmux si présent (via tmux-navigator, smart-splits, etc.)
-		local bydir = {
-			h = "TmuxNavigateLeft",
-			j = "TmuxNavigateDown",
-			k = "TmuxNavigateUp",
-			l = "TmuxNavigateRight",
-		}
-		local tm = bydir[dir]
-		if tm and vim.fn.exists(":" .. tm) == 2 then
-			vim.cmd(tm)
-		end
-	end
-end
+-- Normal mode (nav)
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
+-- Terminal mode (exit + nav)
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]])
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]])
+vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]])
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]])
+
+-- Redimensionner plus vite
+vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { silent = true })
+vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { silent = true })
 
 -- ---------- Buffers helpers ----------
 local function buf_delete(buf, force)
@@ -437,6 +443,8 @@ function M.apply_general()
 	mapx("n", "<leader>Tc", function()
 		toggle("colorcolumn", { "80" }, {}, "colorcolumn")
 	end, { desc = "Toggle colorcolumn=80" })
+
+	mapx("n", "<leader>Tt", ToggleTransparency, { desc = "Toggle transparency" })
 
 	-- Spell FR/EN simple
 	mapx("n", "<leader>Ts", function()
