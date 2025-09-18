@@ -38,6 +38,7 @@ return {
 			dash.button("s", "󰍉  Parcourir notes", zk.browse),
 			{ type = "text", val = "  Config", opts = { hl = "Title", position = "center" } },
 			dash.button("l", "󰒲  Lazy", ":Lazy<CR>"),
+			dash.button("l", "󱁤  Mason", ":Mason<CR>"),
 			dash.button("h", "  Health", ":checkhealth<CR>"),
 			dash.button(
 				"d",
