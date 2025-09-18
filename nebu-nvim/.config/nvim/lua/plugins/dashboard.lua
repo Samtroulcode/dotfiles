@@ -44,11 +44,14 @@ return {
 				"  Dotfiles",
 				[[<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.expand('~/dotfiles') })<CR>]]
 			),
-			dash.button(
-				"c",
-				"  Config",
-				[[<cmd>lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })<CR>]]
-			),
+			dash.button("c", "  Config", function()
+				require("telescope.builtin").find_files({
+					cwd = vim.fn.stdpath("config"),
+					no_ignore = true, -- ← ignore pas les fichiers cachés
+					hidden = true, -- ← montre aussi .fichiers
+					use_git_root = false, -- ← empêche Telescope de remonter au repo git
+				})
+			end),
 			dash.button("q", "󰗼  Quit", ":qa<CR>"),
 			{ type = "text", val = " Recent files", opts = { hl = "Title", position = "center" } },
 		}

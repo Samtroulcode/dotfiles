@@ -7,6 +7,7 @@ return {
 		{ "yioneko/nvim-vtsls" }, -- commandes : VtsExec, VtsRename, etc.
 		{ "b0o/schemastore.nvim" }, -- JSON schemas
 		{ "windwp/nvim-ts-autotag", opts = {} }, -- auto close/rename tags
+		{ "folke/neodev.nvim", opts = { library = { enabled = true, runtime = true, types = true } } },
 		{ "luckasRanarison/tailwind-tools.nvim", opts = {} }, -- bonus Tailwind (optionnel mais utile)
 		-- (Optionnel) switch colorizer vers le fork maintenu :
 		-- { "NvChad/nvim-colorizer.lua", opts = { user_default_options = { names = false } } },
@@ -83,11 +84,24 @@ return {
 			})
 		end
 
-		-- Lua
+		-- lua_ls
 		lsp.lua_ls.setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
-			settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+			settings = {
+				Lua = {
+					runtime = { version = "LuaJIT" }, -- Neovim + LÖVE = LuaJIT
+					diagnostics = { globals = { "vim", "love" } },
+					workspace = {
+						checkThirdParty = false, -- évite les prompts lents
+						library = vim.api.nvim_get_runtime_file("", true),
+						ignoreDir = { "types/nightly" },
+					},
+					telemetry = { enable = false },
+					format = { enable = false }, -- on laisse stylua formater
+					hint = { enable = true }, -- inlay hints (optionnel)
+				},
+			},
 		})
 
 		-- Markdown

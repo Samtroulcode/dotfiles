@@ -19,5 +19,10 @@ return {
 			svelte = { "prettierd" },
 			tailwindcss = { "prettierd" },
 		},
+		formatters = {
+			eslint_d = { require_cwd = true }, -- ne tourne que s’il y a une config
+		},
+		-- stop au premier formatter qui marche
+		notify_on_error = true,
 	},
 }
