@@ -1,6 +1,5 @@
 alias v="nvim"
 alias v-lazy="NVIM_APPNAME=LazyVim nvim"
-alias v-kick="NVIM_APPNAME=kickstart nvim"
 alias v-chad="NVIM_APPNAME=NvChad nvim"
 alias v-astro="NVIM_APPNAME=AstroNvim nvim"
 alias v-nebu="NVIM_APPNAME=nebuvim nvim"
