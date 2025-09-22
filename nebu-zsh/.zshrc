@@ -17,6 +17,9 @@ export PATH=/home/sam/.opencode/bin:$PATH
 # Setup des keybinds pour fzf
 source <(fzf --zsh)
 
+# NVIM
+export NVIM="$HOME/.config/nvim"
+
 # Completion cache
 : "${XDG_CACHE_HOME:=$HOME/.cache}"
 zstyle ':completion:*' use-cache on
@@ -41,7 +44,7 @@ export VISUAL=nvim
 # Nvim en tant que man pager
 export MANPAGER='nvim +Man!'
 
-# Aliases modernes 
+# Aliases modernes
 [[ -f ~/.zsh/modern-commands.zsh ]] && source ~/.zsh/modern-commands.zsh
 
 # Aliases généraux
