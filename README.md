@@ -26,12 +26,12 @@ I use this repo to sync and backup my dotfiles.
 
 I use stow to manage my dotfiles, so each folder starting with "nebu-" is a package that you can stow in your home directory.
 
->[WARNING]
+>[!WARNING]
 >I moved my nvim configuration to his own git repository, you can found it here : [NebuNvim](https://github.com/Samtroulcode/NebuVIM)
 
 ## Installation
 
-> [!WARNING]
+>[!NOTE]
 > You need to have `stow` installed on your system to manage these dotfiles. `stow` will create symlinks from your dotfiles repository to your `$HOME`, so you don’t overwrite files directly.
 > You can install it with your package manager. For example, on Arch Linux, you can use:
 
