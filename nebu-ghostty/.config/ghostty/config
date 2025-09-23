@@ -45,30 +45,93 @@
 # font configuration
 font-family = "Maple Mono NF"
 
+font-size = 13.0
+
 # no more notifications
 app-notifications = false
 
-# Couleurs
-palette = 0=#181825
-palette = 1=#9d5c5c
-palette = 2=#137547
-palette = 3=#ffbe76
-palette = 4=#304774
-palette = 5=#9d7dc1
-palette = 6=#6ba3b3
-palette = 7=#efe6d0
-palette = 8=#39415C
-palette = 9=#ecb6c5
-palette = 10=#7fd4a7
-palette = 11=#ffe7a0
-palette = 12=#4f81c7
-palette = 13=#b985c1
-palette = 14=#6ba3b3
-palette = 15=#f5f6fa
+# ==============================
+# ======= NEBULIX THEME ========
+# ==============================
 
-cursor-color=#efe6d0
-background=#181825
-foreground=#efe6d0
+# palette = 0=#181825
+# palette = 1=#9d5c5c
+# palette = 2=#137547
+# palette = 3=#ffbe76
+# palette = 4=#304774
+# palette = 5=#9d7dc1
+# palette = 6=#6ba3b3
+# palette = 7=#efe6d0
+# palette = 8=#39415C
+# palette = 9=#ecb6c5
+# palette = 10=#7fd4a7
+# palette = 11=#ffe7a0
+# palette = 12=#4f81c7
+# palette = 13=#b985c1
+# palette = 14=#6ba3b3
+# palette = 15=#f5f6fa
+#
+# cursor-color=#efe6d0
+# background=#181825
+# foreground=#efe6d0
 
-font-size = 13.0
+# =============================
+# ===== CATPPUCCIN THEME ======
+# =============================
+
+# palette = 0=#45475a
+# palette = 1=#f38ba8
+# palette = 2=#a6e3a1
+# palette = 3=#f9e2af
+# palette = 4=#89b4fa
+# palette = 5=#f5c2e7
+# palette = 6=#94e2d5
+# palette = 7=#a6adc8
+# palette = 8=#585b70
+# palette = 9=#f38ba8
+# palette = 10=#a6e3a1
+# palette = 11=#f9e2af
+# palette = 12=#89b4fa
+# palette = 13=#f5c2e7
+# palette = 14=#94e2d5
+# palette = 15=#bac2de
+#
+# background = 1e1e2e
+# foreground = cdd6f4
+#
+# cursor-color = f5e0dc
+# cursor-text = 11111b
+#
+# selection-background = 353749
+# selection-foreground = cdd6f4
+
+# ==============================
+# ======= KANAGAWA THEME =======
+# ==============================
+
+palette = 0=#16161d
+palette = 1=#c34043
+palette = 2=#76946a
+palette = 3=#c0a36e
+palette = 4=#7e9cd8
+palette = 5=#957fb8
+palette = 6=#6a9589
+palette = 7=#c8c093
+palette = 8=#727169
+palette = 9=#e82424
+palette = 10=#98bb6c
+palette = 11=#e6c384
+palette = 12=#7fb4ca
+palette = 13=#938aa9
+palette = 14=#7aa89f
+palette = 15=#dcd7ba
+
+background = 1f1f28
+foreground = dcd7ba
+cursor-color = c8c093
+selection-background = 2d4f67
+
+# ===============================
+# ==== RESERVED FOR OPACITY =====
+# ===============================
 background-opacity = 0.90
