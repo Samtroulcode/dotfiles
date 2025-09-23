@@ -50,6 +50,19 @@ font-size = 13.0
 # no more notifications
 app-notifications = false
 
+# animate shader
+# custom-shader = ~/.config/ghostty/shaders/manga_slash.glsl
+# custom-shader = ~/.config/ghostty/shaders/cursor_blaze.glsl
+# custom-shader = ~/.config/ghostty/shaders/cursor_blaze_no_trail.glsl
+# custom-shader = ~/.config/ghostty/shaders/cursor_blaze_tapered.glsl
+# custom-shader = ~/.config/ghostty/shaders/cursor_frozen.glsl
+custom-shader = ~/.config/ghostty/shaders/cursor_smear.glsl
+# custom-shader = ~/.config/ghostty/shaders/cursor_smear_fade.glsl
+# custom-shader = ~/.config/ghostty/shaders/debug_cursor_animated.glsl
+# custom-shader = ~/.config/ghostty/shaders/debug_cursor_static.glsl
+# custom-shader = ~/.config/ghostty/shaders/WIP.glsl
+custom-shader-animation = always
+
 # ==============================
 # ======= NEBULIX THEME ========
 # ==============================
