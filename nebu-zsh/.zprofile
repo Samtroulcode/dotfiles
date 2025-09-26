@@ -1,7 +1,7 @@
 # Priorité aux scripts et binaires locaux
 export PATH="$HOME/scripts:$HOME/.local/bin:$PATH"
 
-[[ "$(tty)" == "/dev/tty1" ]] && exec uwsm start Hyprland
+[[ "$(tty)" == "/dev/tty1" ]] && exec uwsm start default
 
 export GTK_THEME=Adwaita-dark
 export GTK_APPLICATION_PREFER_DARK_THEME=1
