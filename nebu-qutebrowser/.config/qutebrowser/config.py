@@ -87,16 +87,18 @@ config.bind(",tn", "set tabs.show never")
 config.bind(",ta", "set tabs.show always")
 
 # binds gopass
-config.bind(",gp", "spawn --detach ghostty --title=gopass -e gopass show -c {url:host}")
+config.bind(
+    ",gp", "spawn --detach ghostty --class=nebu.gopass -e gopass show -c {url:host}"
+)
 config.bind(
     ",gs",
-    "spawn --detach ghostty --title=gopass --wait-after-command=true -e gopass show {url:host}",
+    "spawn --detach ghostty --class=nebu.gopass --wait-after-command=true -e gopass show {url:host}",
 )
 config.bind(
     ",gn",
-    "spawn --detach ghostty --title=gopass --wait-after-command=true -e gopass new {url:host}",
+    "spawn --detach ghostty --class=nebu.gopass --wait-after-command=true -e gopass new {url:host}",
 )
-config.bind(",gP", "spawn --detach ghostty --title=gopass -e gopass")
+config.bind(",gP", "spawn --detach ghostty --class=nebu.gopass -e gopass")
 
 # Historique / downloads / messages
 config.bind(",ch", "history-clear --force")  # historique global
