@@ -1,9 +1,7 @@
 {
   "group/media": {
     "orientation": "horizontal",
-    "modules": [
-      "mpd"
-    ]
+    "modules": ["mpd"]
   },
   "mpd": {
     "format": "{stateIcon}",
@@ -17,6 +15,6 @@
     "tooltip-format": "{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
     "tooltip-format-disconnected": "MPD (disconnected)",
     "on-click-right": "playerctl play-pause",
-    "on-click": "ghostty --title=music -e rmpc"
+    "on-click": "ghostty --class=nebu.music -e rmpc"
   }
 }

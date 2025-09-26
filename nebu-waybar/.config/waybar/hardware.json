@@ -1,17 +1,17 @@
 {
   "cpu": {
     "format": " {usage}%",
-    "on-click": "ghostty --title=system -e btop"
+    "on-click": "ghostty --class=nebu.system -e btop"
   },
   "memory": {
     "format": " {}%",
-    "on-click": "ghostty --title=system -e btop"
+    "on-click": "ghostty --class=nebu.system -e btop"
   },
   "disk": {
     "interval": 30,
     "format": " {percentage_used}%",
     "path": "/",
-    "on-click": "ghostty --title=system -e btop"
+    "on-click": "ghostty --class=nebu.system -e btop"
   },
   "temperature": {
     "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
@@ -21,11 +21,7 @@
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     "format": "{icon} {temperatureC}°C",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", ""]
   },
   "group/hardware": {
     "orientation": "horizontal",
@@ -34,11 +30,6 @@
     // "children-class": "not-memory",
     // "transition-left-to-right": false
     //},
-    "modules": [
-      "cpu",
-      "memory",
-      "disk",
-      "temperature"
-    ]
+    "modules": ["cpu", "memory", "disk", "temperature"]
   }
 }
