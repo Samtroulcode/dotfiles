@@ -11,8 +11,7 @@ alias reload='clear && source ~/.zshrc'
 alias record='wf-recorder --audio=alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -f'
 alias icat='kitten icat'
 alias fv='nvim $(fzf -m --preview="bat --color=always {}")'
-alias fvc='nvim $(fd -H -t f . ~/.config | fzf -m --preview="bat --color=always {}")'
-alias fcd='nvim $(fd -H -t f . ~/dotfiles | fzf -m --preview="bat --color=always {}")'
+alias aliases='nvim ~/.zsh/aliases.zsh'
 alias cwatch='cargo watch -q -c -x "run"'
 
 # Aliases de maintenance
@@ -81,7 +80,7 @@ alias mount_backup='sudo mount /dev/sdd1 /mnt/external_backup && echo "Disque ex
 alias umount_backup='sudo umount /mnt/external_backup && echo "Disque externe démonté."'
 alias backup_home='sudo ~/scripts/backup_home_external.sh'
 
-# Aliases de montage: 
+# Aliases de montage:
 alias media-mount='sshfs sam@10.100.0.1:/home/sam/storage/media ~/Videos/Sam-media -o IdentityFile=~/.ssh/id_ed25519,StrictHostKeyChecking=no'
 alias media-umount='fusermount3 -u ~/Videos/Sam-media'
 
