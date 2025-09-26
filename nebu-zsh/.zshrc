@@ -10,6 +10,7 @@ plugins=(git sudo common-aliases colored-man-pages)
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # Autosuggestions
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Syntax highlighting
+source /usr/share/wikiman/widgets/widget.zsh # Ctrl+F pour chercher dans le wikiman
 
 # opencode
 export PATH=/home/sam/.opencode/bin:$PATH
@@ -61,8 +62,11 @@ export MANPAGER='nvim +Man!'
 [[ -f ~/.zsh/custom/cleantmp.zsh ]] && source ~/.zsh/custom/cleantmp.zsh # petit clean de logs, tmp et bak
 [[ -f ~/.zsh/custom/detach.zsh ]] && source ~/.zsh/custom/detach.zsh # pour détacher complétement un process du shell
 [[ -f ~/.zsh/custom/tmux.zsh ]] && source ~/.zsh/custom/tmux.zsh # Aliases et fonctions tmux
+
+# Commandes fzf
 [[ -f ~/.zsh/fzf/fzf-movie.zsh ]] && source ~/.zsh/fzf/fzf-movie.zsh # picker fzf pour les films du servarr
 [[ -f ~/.zsh/fzf/fzf-aliases.zsh ]] && source ~/.zsh/fzf/fzf-aliases.zsh # picker fzf pour les aliases
+[[ -f ~/.zsh/fzf/fzf-files.zsh ]] && source ~/.zsh/fzf/fzf-files.zsh # picker fzf pour les fichiers
 
 # Theme d'autocomplétion zsh
 [[ -f ~/.zsh/themes/drac.zsh ]] && source ~/.zsh/themes/drac.zsh
