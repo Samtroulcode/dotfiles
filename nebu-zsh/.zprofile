@@ -3,7 +3,7 @@ export PATH="$HOME/scripts:$HOME/.local/bin:$PATH"
 
 [[ "$(tty)" == "/dev/tty1" ]] && exec uwsm start default
 
-export GTK_THEME=Adwaita-dark
+export GTK_THEME=Kanagawa-Yellow-Dark
 export GTK_APPLICATION_PREFER_DARK_THEME=1
 export GDK_BACKEND=wayland
 
