@@ -44,8 +44,9 @@
 
 # font configuration
 font-family = "Maple Mono NF"
+# font-family = "JetBrainsMono Nerd Font"
 
-font-size = 13.0
+font-size = 11.0
 
 # no more notifications
 app-notifications = false
@@ -147,4 +148,5 @@ selection-background = 2d4f67
 # ===============================
 # ==== RESERVED FOR OPACITY =====
 # ===============================
+keybind = shift+enter=text:\x1b\r
 background-opacity = 0.90
