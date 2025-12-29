@@ -41,15 +41,12 @@
 # # which is explained in the docs for that config option.
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
-#
-# Mouse reporting
-# mouse-reporting = off
 
 # font configuration
 font-family = "Maple Mono NF"
 # font-family = "JetBrainsMono Nerd Font"
 
-font-size = 11.0
+font-size = 13.0
 
 # no more notifications
 app-notifications = false
@@ -151,5 +148,3 @@ selection-background = 2d4f67
 # ===============================
 # ==== RESERVED FOR OPACITY =====
 # ===============================
-keybind = shift+enter=text:\x1b\r
-background-opacity = 0.90

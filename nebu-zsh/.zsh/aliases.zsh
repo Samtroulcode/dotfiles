@@ -90,5 +90,8 @@ alias server-umount='fusermount3 -u ~/Documents/Sam'
 # Regen du grub
 alias grubgen : 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
-# Nvim en mode serveur pour Godot
+# Nvim
 alias v-godot='mkdir -p $XDG_RUNTIME_DIR/nvim && nvim --listen $XDG_RUNTIME_DIR/nvim/godot.sock'
+
+# PPSSPP
+alias ppsspp='QT_QPA_PLATFORM=xcb PPSSPPQt'

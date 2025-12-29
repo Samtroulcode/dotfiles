@@ -130,7 +130,7 @@ c.colors.webpage.darkmode.policy.images = "never"
 config.set("content.webgl", False, "*")
 config.set("content.canvas_reading", False)
 config.set("content.geolocation", False)
-config.set("content.javascript.enabled", False)
+config.set("content.javascript.enabled", True)
 config.set("content.cookies.store", True)
 config.set("content.cookies.accept", "no-3rdparty")
 config.set("content.headers.accept_language", "en-US,en;q=0.5")
