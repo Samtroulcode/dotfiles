@@ -152,4 +152,3 @@ selection-background = 2d4f67
 # ==== RESERVED FOR OPACITY =====
 # ===============================
 keybind = shift+enter=text:\x1b\r
-background-opacity = 0.90
