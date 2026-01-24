@@ -95,3 +95,4 @@ alias v-godot='mkdir -p $XDG_RUNTIME_DIR/nvim && nvim --listen $XDG_RUNTIME_DIR/
 
 # PPSSPP
 alias ppsspp='QT_QPA_PLATFORM=xcb PPSSPPQt'
+alias hunstervpn='sudo openvpn --config ~/Storage/HunsterVerse/Samtroulfion-1768167191__HVMAIN.ovpn'
