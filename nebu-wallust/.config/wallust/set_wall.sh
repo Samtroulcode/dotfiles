@@ -69,7 +69,7 @@ esac
 pkill mpvpaper 2>/dev/null || true
 
 if $IS_ANIMATED; then
-  mpvpaper -o "--loop --no-audio --hwdec=auto-safe" '*' "$WALL" &
+  mpvpaper -o "--no-config --loop --no-audio --hwdec=auto-safe --really-quiet" '*' "$WALL" &
   POSTER="$(ensure_poster "$WALL")"
   wallust run -s "$POSTER"
 else
