@@ -70,6 +70,7 @@ alias ipv6-off='~/scripts/toggle-ipv6.sh off'
 alias ipv6-on='~/scripts/toggle-ipv6.sh on'
 alias audit-net='~/scripts/audit-network.sh'
 alias change-wall='~/.config/wallust/set_wall.sh'
+alias wall-cache='~/.config/wallust/wallpaper-cache.sh'
 
 # Aliases de sauvegarde de mes dot files
 alias lg='/usr/bin/lazygit'
