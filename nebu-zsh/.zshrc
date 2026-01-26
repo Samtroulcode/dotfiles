@@ -73,7 +73,7 @@ export MANPAGER='nvim +Man!'
 
 # Affichage fastfetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
-    fastfetch --kitty-icat ~/.config/fastfetch/logo/ghostty.png
+    fastfetch --kitty-icat ~/.config/fastfetch/logo/arch-linux.png
 fi
 
 # Initialiser Starship prompt
