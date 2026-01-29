@@ -14,7 +14,8 @@
     "~/.config/waybar/quicklinks.json",
     "~/.config/waybar/hardware.json",
     "~/.config/waybar/media.json",
-    "~/.config/waybar/sound.json"
+    "~/.config/waybar/sound.json",
+    "~/.config/waybar/audio-switch.json"
   ],
   "modules-left": [
     "custom/appmenu",
@@ -26,6 +27,7 @@
     "group/media"
   ],
   "modules-right": [
+    "custom/audio-switch",
     "group/sound",
     "group/hardware",
     "custom/vpn",
@@ -34,4 +36,3 @@
     "custom/exit"
   ]
 }
-

@@ -58,6 +58,7 @@ window#waybar.empty #window {
 }
 
 #media,
+#custom-audio-switch,
 #custom-vpn {
   background-color: @surface;
   padding: 0 8px;
@@ -68,6 +69,7 @@ window#waybar.empty #window {
 }
 
 #custom-appmenu,
+#custom-audio-switch,
 #quicklinks,
 #sound,
 #hardware,
@@ -168,6 +170,7 @@ label:focus {
 }
 
 #custom-vpn:hover,
+#custom-audio-switch:hover,
 #custom-notification:hover,
 #sound:hover,
 #hardware:hover,

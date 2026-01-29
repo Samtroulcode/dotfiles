@@ -115,14 +115,22 @@
     "on-click": "blueman-manager",
     "format-no-controller": ""
   },
-  // VPN 
+  // VPN
   "custom/vpn": {
     "format": "{}",
     "exec": "~/.config/waybar/scripts/vpn-status.sh",
     "on-click": "~/.config/waybar/scripts/vpn-toggle.sh",
     "interval": 3,
     "return-type": "json",
-    "tooltip": false
+    "tooltip": true
+  },
+  "custom/audio-switch": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/audio-output-icon.sh",
+    "interval": 3,
+    "return-type": "json",
+    "on-click": "~/scripts/switch-audio.sh",
+    "tooltip": true
   },
   // Other
   "user": {
