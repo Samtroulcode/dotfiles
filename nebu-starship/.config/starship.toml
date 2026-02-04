@@ -2,8 +2,88 @@
 
 # Prompt principal
 format = """
-[╭─](bold bright)$os$username$directory$git_branch$git_status$package
+[╭─](bold bright)\
+$os\
+$username\
+$directory \
+$localip\
+$shlvl\
+$singularity\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$package\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$fortran\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$mise\
+$crystal\
+$custom\
+$sudo\
+$time
 [╰─](bold bright)$character"""
+
+scan_timeout = 10
 
 # Symboles de confirmation
 [character]
@@ -40,7 +120,7 @@ format = "[$symbol$version]($style) "
 disabled = false
 time_format = "%H:%M"
 style = "bold white"
-format = "[🕒 $time]($style) "
+format = "[ $time]($style) "
 
 # OS (Arch, baby)
 [os]
@@ -48,7 +128,6 @@ disabled = false
 format = "[󰣇 ](blue)"
 style = "blue"
 
-# Configuration rapide pour shell clean
 [cmd_duration]
 min_time = 500
 format = "[⏱ $duration]($style) "
