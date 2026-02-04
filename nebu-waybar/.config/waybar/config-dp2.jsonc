@@ -1,14 +1,16 @@
 {
-  "layer": "top", // Waybar at top layer
-  "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 2, // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
-  "spacing": 8, // Gaps between modules (4px)
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 8,
   "margin-top": 4,
   "margin-left": 4,
   "margin-right": 4,
   "mode": "dock",
   "reload_style_on_change": true,
+  "output": [
+    "DP-2"
+  ],
   "include": [
     "~/.config/waybar/modules.json",
     "~/.config/waybar/quicklinks.json",
@@ -23,7 +25,7 @@
     "tray"
   ],
   "modules-center": [
-    "hyprland/workspaces",
+    "hyprland/workspaces#dp2",
     "group/media"
   ],
   "modules-right": [

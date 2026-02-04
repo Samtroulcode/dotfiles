@@ -1,14 +1,27 @@
 {
   // Workspaces
-  "hyprland/workspaces": {
+    "hyprland/workspaces#dp1": {
+    "output": "DP-1",
     "on-click": "activate",
+    "all-outputs": false,
     "active-only": false,
-    "all-outputs": true,
-    "format": "{}",
+    "format": "{icon}",
     "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
+      "active": "",
+      "default": "",
+      "empty": ""
+    }
+  },
+  "hyprland/workspaces#dp2": {
+    "output": "DP-2",
+    "on-click": "activate",
+    "all-outputs": false,
+    "active-only": false,
+    "format": "{icon}",
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "empty": ""
     }
   },
   // Rofi Application Launcher

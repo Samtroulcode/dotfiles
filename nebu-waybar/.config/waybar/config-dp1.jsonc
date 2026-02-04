@@ -1,0 +1,40 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 32,
+  "spacing": 8,
+  "margin-top": 4,
+  "margin-left": 4,
+  "margin-right": 4,
+  "mode": "dock",
+  "reload_style_on_change": true,
+  "output": [
+    "DP-1"
+  ],
+  "include": [
+    "~/.config/waybar/modules.json",
+    "~/.config/waybar/quicklinks.json",
+    "~/.config/waybar/hardware.json",
+    "~/.config/waybar/media.json",
+    "~/.config/waybar/sound.json",
+    "~/.config/waybar/audio-switch.json"
+  ],
+  "modules-left": [
+    "custom/appmenu",
+    "group/quicklinks",
+    "tray"
+  ],
+  "modules-center": [
+    "hyprland/workspaces#dp1",
+    "group/media"
+  ],
+  "modules-right": [
+    "custom/audio-switch",
+    "group/sound",
+    "group/hardware",
+    "custom/vpn",
+    "clock",
+    "custom/notification",
+    "custom/exit"
+  ]
+}
