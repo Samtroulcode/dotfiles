@@ -83,7 +83,7 @@ $sudo\
 $time
 [╰─](bold bright)$character"""
 
-scan_timeout = 10
+scan_timeout = 30
 
 # Symboles de confirmation
 [character]
