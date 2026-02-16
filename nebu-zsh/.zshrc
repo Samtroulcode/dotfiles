@@ -15,6 +15,10 @@ source /usr/share/wikiman/widgets/widget.zsh # Ctrl+F pour chercher dans le wiki
 # opencode
 export PATH=/home/sam/.opencode/bin:$PATH
 
+# backlog
+fpath=(/home/sam/.zsh/completions $fpath)
+autoload -Uz compinit && compinit
+
 # Setup des keybinds pour fzf
 source <(fzf --zsh)
 
