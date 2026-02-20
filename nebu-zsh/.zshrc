@@ -76,9 +76,9 @@ export MANPAGER='nvim +Man!'
 [[ -f ~/.zsh/themes/drac.zsh ]] && source ~/.zsh/themes/drac.zsh
 
 # Affichage fastfetch uniquement si terminal interactif
-if [[ $- == *i* ]] && [[ -t 1 ]]; then
-    fastfetch --kitty-icat ~/.config/fastfetch/logo/arch-linux.png
-fi
+# if [[ $- == *i* ]] && [[ -t 1 ]]; then
+#     fastfetch --kitty-icat ~/.config/fastfetch/logo/arch-linux.png
+# fi
 
 # Initialiser Starship prompt
 eval "$(starship init zsh)"
