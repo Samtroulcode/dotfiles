@@ -6,15 +6,18 @@ if [[ $- == *i* ]]; then
 
   # eza (ls moderne)
   if command -v eza &>/dev/null; then
-    alias lls='eza --color=automatic --group-directories-first -h --icons'
+    alias ls='eza --color=automatic --group-directories-first -h --icons'
+    alias la='eza -a --color=automatic --group-directories-first -h --icons'
+    alias ll='eza -l --color=automatic --group-directories-first -h --icons'
     alias lla='eza -la --color=automatic --group-directories-first -h --icons'
-    alias tree='eza --tree --level=2 --color=auto --icons'
-    alias treee='eza --tree --level=3 --color=auto --icons'
+    alias tree='eza --tree --color=auto --icons'
+    alias tree2='eza --tree --level=2 --color=auto --icons'
+    alias tree3='eza --tree --level=3 --color=auto --icons'
   fi
 
   # bat (cat moderne)
   if command -v bat &>/dev/null; then
-    alias catt='bat --paging=never --style=plain --color=auto'
+    alias cat='bat --paging=never --style=plain --color=auto'
   fi
 
   # rg (grep moderne)
