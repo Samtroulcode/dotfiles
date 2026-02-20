@@ -11,7 +11,7 @@
   },
   "custom/quicklink3": {
     "format": "󰇮 ",
-    "on-click": "qutebrowser 'https://mail.proton.me'",
+    "on-click": "thunderbird",
     "tooltip-format": "Thunderbird"
   },
   "custom/quicklink4": {
