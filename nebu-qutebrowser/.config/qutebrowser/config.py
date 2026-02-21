@@ -41,7 +41,7 @@ c.content.dns_prefetch = False
 c.content.headers.accept_language = "en-US,en;q=0.5"
 
 # url de start page
-c.url.start_pages = ["http://sam-searxng:8080"]
+c.url.start_pages = ["http://sam-searxng:8080/"]
 
 # url de recherches
 c.url.searchengines = {

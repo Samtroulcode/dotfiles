@@ -1,15 +1,15 @@
 # Thème Nebulix pour qutebrowser
 
-bg      = "#181825"
-fg      = "#efe6d0"
-fg_dim  = "#bfbba0"
+bg = "#181825"
+fg = "#efe6d0"
+fg_dim = "#bfbba0"
 accent1 = "#ffbe76"
 accent2 = "#9d7dc1"
 accent3 = "#6ba3b3"
-error   = "#9d5c5c"
-ok      = "#137547"
-warn    = "#ffe7a0"
-hintbg  = "#39415C"
+error = "#9d5c5c"
+ok = "#137547"
+warn = "#ffe7a0"
+hintbg = "#39415C"
 
 # Tabs
 c.colors.tabs.bar.bg = "#00000000"
@@ -17,7 +17,7 @@ c.colors.tabs.even.bg = "#00000000"
 c.colors.tabs.odd.bg = "#00000000"
 c.colors.tabs.selected.even.bg = "#304774CC"
 c.colors.tabs.selected.odd.bg = "#304774CC"
-c.tabs.indicator.width = 0
+c.tabs.indicator.width = 10
 
 # Status bar
 c.colors.statusbar.normal.bg = bg
@@ -65,4 +65,3 @@ c.colors.hints.match.fg = accent1
 
 # Webpage
 c.colors.webpage.bg = bg
-

@@ -1,11 +1,10 @@
 body {
   background-color: rgba(24, 24, 37, 0.8);
   color: #efe6d0;
-  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-family: "Maple Mono NF", monospace;
   font-size: 14px;
 }
 
 a {
   color: #6ba3b3 !important;
 }
-
