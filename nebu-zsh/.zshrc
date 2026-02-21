@@ -4,6 +4,8 @@ path=("$HOME/scripts" "$HOME/.local/bin" "$HOME/bin" "/usr/local/bin" "$HOME/bin
 
 export LANG=fr_FR.UTF-8
 
+setopt complete_aliases
+
 # omz
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(git sudo common-aliases colored-man-pages)
@@ -17,7 +19,9 @@ export PATH=/home/sam/.opencode/bin:$PATH
 
 # backlog
 fpath=(/home/sam/.zsh/completions $fpath)
-autoload -Uz compinit && compinit
+
+# autocompletion eza
+compdef _eza ls
 
 # Setup des keybinds pour fzf
 source <(fzf --zsh)
@@ -76,9 +80,9 @@ export MANPAGER='nvim +Man!'
 [[ -f ~/.zsh/themes/drac.zsh ]] && source ~/.zsh/themes/drac.zsh
 
 # Affichage fastfetch uniquement si terminal interactif
-# if [[ $- == *i* ]] && [[ -t 1 ]]; then
-#     fastfetch --kitty-icat ~/.config/fastfetch/logo/arch-linux.png
-# fi
+if [[ $- == *i* ]] && [[ -t 1 ]]; then
+    fastfetch --kitty-icat ~/.config/fastfetch/logo/arch-linux.png
+fi
 
 # Initialiser Starship prompt
 eval "$(starship init zsh)"
