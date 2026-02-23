@@ -2,6 +2,9 @@
 export PATH="$HOME/scripts:$HOME/.local/bin:$PATH"
 
 [[ "$(tty)" == "/dev/tty1" ]] && exec uwsm start default
+# if [[ "$(tty)" == "/dev/tty1" ]] && uwsm check may-start && uwsm select; then
+#   exec uwsm start default
+# fi
 
 export GTK_THEME=Kanagawa-Yellow-Dark
 export GTK_APPLICATION_PREFER_DARK_THEME=1
