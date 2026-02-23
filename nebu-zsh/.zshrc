@@ -8,7 +8,7 @@ setopt complete_aliases
 
 # omz
 export ZSH="$HOME/.oh-my-zsh"
-plugins=(git sudo common-aliases colored-man-pages)
+plugins=(git sudo common-aliases colored-man-pages fzf nix-shell)
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh # Autosuggestions
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Syntax highlighting
