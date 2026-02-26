@@ -12,9 +12,9 @@ warn = "#ffe7a0"
 hintbg = "#39415C"
 
 # Tabs
-c.colors.tabs.bar.bg = "#00000009"
-c.colors.tabs.even.bg = "#00000009"
-c.colors.tabs.odd.bg = "#00000009"
+c.colors.tabs.bar.bg = "#304774CC"
+c.colors.tabs.even.bg = "#304774CC"
+c.colors.tabs.odd.bg = "#304774CC"
 c.colors.tabs.selected.even.bg = "#304774CC"
 c.colors.tabs.selected.odd.bg = "#304774CC"
 c.tabs.indicator.width = 10
