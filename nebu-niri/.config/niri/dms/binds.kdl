@@ -14,7 +14,7 @@ binds {
     Super+M hotkey-overlay-title="Dashboard: Media" { spawn "dms" "ipc" "call" "dash" "open" "media"; }
     Super+S hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "focusOrToggle"; }
     Super+X hotkey-overlay-title="Power Menu: Toggle" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-    Super+Y repeat=false hotkey-overlay-title="Wallpaper Browser" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
+    Super+Z repeat=false hotkey-overlay-title="Wallpaper Browser" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "3"; }
     XF86AudioMicMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
     XF86AudioMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
