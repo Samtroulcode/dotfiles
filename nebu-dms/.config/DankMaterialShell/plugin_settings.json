@@ -1,0 +1,33 @@
+{
+  "niriScreenshot": {
+    "enabled": true
+  },
+  "githubHeatmap": {
+    "enabled": true,
+    "username": "Samtroulcode",
+    "refreshInterval": 300
+  },
+  "dankKDEConnect": {
+    "enabled": true
+  },
+  "dms-niri-screenshot": {
+    "saveToDisk": false,
+    "mode": "interactive"
+  },
+  "dmsPass": {
+    "enabled": true
+  },
+  "calculator": {
+    "enabled": true,
+    "trigger": "="
+  },
+  "sshMonitor": {
+    "enabled": true
+  },
+  "dankGifSearch": {
+    "enabled": true
+  },
+  "dankRssWidget": {
+    "enabled": true
+  }
+}

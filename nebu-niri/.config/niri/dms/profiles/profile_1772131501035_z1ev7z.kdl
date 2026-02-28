@@ -4,6 +4,9 @@ output "DP-1" {
     mode "2560x1440@144.000"
     scale 1
     position x=0 y=680
+    layout {
+        default-column-width { proportion 0.5; }
+    }
 }
 
 output "DP-2" {
@@ -12,7 +15,13 @@ output "DP-2" {
     position x=2560 y=654
     focus-at-startup
     layout {
-        default-column-width { proportion 0.33333; }
+        default-column-width { proportion 0.25; }
+        preset-column-widths {
+            proportion 0.25
+            proportion 0.33333
+            proportion 0.5
+            proportion 0.66667
+        }
         always-center-single-column
     }
 }
