@@ -29,6 +29,9 @@ source <(fzf --zsh)
 # NVIM
 export NVIM="$HOME/.config/nvim"
 
+# Tmuxp
+export DISABLE_AUTO_TITLE='true'
+
 # Completion cache
 : "${XDG_CACHE_HOME:=$HOME/.cache}"
 zstyle ':completion:*' use-cache on
@@ -77,11 +80,12 @@ export MANPAGER='nvim +Man!'
 [[ -f ~/.zsh/fzf/fzf-files.zsh ]] && source ~/.zsh/fzf/fzf-files.zsh # picker fzf pour les fichiers
 
 # Theme d'autocomplétion zsh
-[[ -f ~/.zsh/themes/drac.zsh ]] && source ~/.zsh/themes/drac.zsh
+# [[ -f ~/.zsh/themes/drac.zsh ]] && source ~/.zsh/themes/drac.zsh
+[[ -f ~/.zsh/themes/catpuccin.zsh ]] && source ~/.zsh/themes/catpuccin.zsh
 
 # Affichage fastfetch uniquement si terminal interactif
 if [[ $- == *i* ]] && [[ -t 1 ]]; then
-    fastfetch --kitty-icat ~/.config/fastfetch/logo/arch-linux.png
+    fastfetch --kitty-icat ~/.config/fastfetch/logo/arch-nebulix-catpuccin.png
 fi
 
 # Initialiser Starship prompt
