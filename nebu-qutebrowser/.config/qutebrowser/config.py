@@ -1,5 +1,6 @@
 # Appliquer le thème
-config.source("./themes/nebulix.py")
+# config.source("./themes/nebulix.py")
+
 # config.source("/home/sam/.cache/wal/wallust-colors.py")
 config.load_autoconfig(False)
 
@@ -170,3 +171,21 @@ for pat in [
     config.set("content.javascript.enabled", True, pat)
     config.set("content.canvas_reading", True, pat)
     config.set("content.webgl", True, pat)
+
+
+import os
+from urllib.request import urlopen
+
+# load your autoconfig, use this, if the rest of your config is empty!
+# config.load_autoconfig()
+
+if not os.path.exists(config.configdir / "theme.py"):
+    theme = "https://raw.githubusercontent.com/catppuccin/qutebrowser/main/setup.py"
+    with urlopen(theme) as themehtml:
+        with open(config.configdir / "theme.py", "a") as file:
+            file.writelines(themehtml.read().decode("utf-8"))
+
+if os.path.exists(config.configdir / "theme.py"):
+    import theme
+
+    theme.setup(c, "mocha", True)
