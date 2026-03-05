@@ -15,7 +15,7 @@ output "DP-2" {
     position x=2560 y=654
     focus-at-startup
     layout {
-        default-column-width { proportion 0.25; }
+        default-column-width { proportion 0.33333; }
         preset-column-widths {
             proportion 0.25
             proportion 0.33333
