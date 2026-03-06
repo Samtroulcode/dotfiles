@@ -90,7 +90,7 @@ alias server-mount='sshfs sam@10.100.0.1:/home/sam ~/Documents/Sam -o IdentityFi
 alias server-umount='fusermount3 -u ~/Documents/Sam'
 
 # Regen du grub
-alias grubgen : 'sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias grubgen='sudo grub-mkconfig -o /boot/grub/grub.cfg'
 
 # Nvim
 alias v-godot='mkdir -p $XDG_RUNTIME_DIR/nvim && nvim --listen $XDG_RUNTIME_DIR/nvim/godot.sock'
@@ -98,3 +98,6 @@ alias v-godot='mkdir -p $XDG_RUNTIME_DIR/nvim && nvim --listen $XDG_RUNTIME_DIR/
 # PPSSPP
 alias ppsspp='QT_QPA_PLATFORM=xcb PPSSPPQt'
 alias hunstervpn='sudo openvpn --config ~/Storage/HunsterVerse/Samtroulfion-1768167191__HVMAIN.ovpn'
+
+# fastfetch
+alias fetch='fastfetch --kitty-icat "$HOME/.config/fastfetch/logo/arch-nebulix-catpuccin.png"'
