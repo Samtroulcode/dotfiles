@@ -204,13 +204,13 @@ window-rule {
 // Fenêtre focusée : quasi opaque.
 window-rule {
   match is-focused=true
-  opacity 0.97
+  opacity 0.98
 }
 
 // Fenêtres non focusées : légèrement plus transparentes.
 window-rule {
   match is-focused=false
-  opacity 0.96
+  opacity 0.97
 }
 
 debug {
