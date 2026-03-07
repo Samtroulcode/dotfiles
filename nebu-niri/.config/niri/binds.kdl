@@ -8,6 +8,7 @@ binds {
     Mod+Return hotkey-overlay-title="Power Menu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
     Mod+X hotkey-overlay-title="Systeme monitor" { spawn-sh "qs -c noctalia-shell ipc call systemMonitor toggle"; }
     Mod+Z hotkey-overlay-title="Wallpaper selector" { spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
+    Mod+M hotkey-overlay-title="Music Panel" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "media" "toggle"; }
 
     // Audio & Brightness
     XF86AudioRaiseVolume { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
@@ -17,8 +18,9 @@ binds {
     XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
     // System controls
-    // Mod+E hotkey-overlay-title=" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "togglePanel"; }
-    Mod+M hotkey-overlay-title="Music Panel" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "media" "toggle"; }
+    Mod+E hotkey-overlay-title="File Explorer" { spawn "nautilus"; }
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    Super+B hotkey-overlay-title="Open Browser" { spawn "qutebrowser"; }
 
     // Custom and plugin binds
     Mod+F1 hotkey-overlay-title="Translate" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:assistant-panel" "toggle"; }
@@ -125,8 +127,6 @@ binds {
     F12 { screenshot; }
     XF86Launch1 { screenshot; }
     Mod+Shift+E { quit; }
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
-    Super+B hotkey-overlay-title="Open Browser" { spawn "qutebrowser"; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Tab repeat=false { toggle-overview; }
