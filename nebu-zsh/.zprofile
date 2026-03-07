@@ -1,6 +1,3 @@
-# Priorité aux scripts et binaires locaux
-export PATH="$HOME/scripts:$HOME/.local/bin:$PATH"
-
 [[ "$(tty)" == "/dev/tty1" ]] && exec uwsm start default
 # if [[ "$(tty)" == "/dev/tty1" ]] && uwsm check may-start && uwsm select; then
 #   exec uwsm start default

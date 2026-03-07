@@ -9,6 +9,7 @@ export LANG=fr_FR.UTF-8
 typeset -U path PATH
 path=(
   "$HOME/scripts"
+  "$HOME/.config/emacs/bin"
   "$HOME/.local/bin"
   "$HOME/bin"
   "/usr/local/bin"
