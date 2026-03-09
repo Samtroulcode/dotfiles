@@ -2,6 +2,9 @@
 font-size = 13
 font-family = "Maple Mono NF"
 
+# Lance ghostty directement dans tmux
+command = direct:tmux new-session -A -s home
+
 # Window Configuration
 window-decoration = false
 window-padding-x = 12
