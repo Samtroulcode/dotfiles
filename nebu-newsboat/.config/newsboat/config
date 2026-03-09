@@ -1,0 +1,61 @@
+urls-source "freshrss"
+freshrss-url "http://192.168.1.61/api/greader.php"
+freshrss-login "Samda"
+freshrss-password "DrouDrou!!!0077"
+
+freshrss-min-items 100
+
+include ~/.newsboat/dark
+
+browser "~/bin/newsboat-dispatch %u"
+
+macro q set browser "qutebrowser %u >/dev/null 2>&1 &"
+macro w set browser "~/bin/newsboat-dispatch %u"
+
+# -- feeds ---------------------------------------------------------------------
+
+auto-reload yes
+reload-time 10
+reload-threads 4
+download-retries 4
+download-timeout 10
+prepopulate-query-feeds yes
+
+notify-always yes
+notify-format "%d %n %f"
+notify-program "~/.tmux/plugins/tmux-newsboat/bin/tmux-newsboat"
+
+# -- display -------------------------------------------------------------------
+
+show-read-feeds no
+feed-sort-order unreadarticlecount-asc
+
+text-width 80
+
+
+# -- navigation ----------------------------------------------------------------
+
+goto-next-feed no
+
+bind-key j down feedlist
+bind-key k up feedlist
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key j down article
+bind-key k up article
+
+
+# -- bookmarks -----------------------------------------------------------------
+
+bookmark-cmd ~/.newsbeuter/bookmark.sh
+bookmark-interactive yes
+bookmark-autopilot yes
+
+
+# -- misc ----------------------------------------------------------------------
+
+unbind-key C feedlist
+confirm-exit no
+cleanup-on-quit no
