@@ -1,0 +1,19 @@
+session_name: Dev
+windows:
+- focus: 'true'
+  layout: 7abb,251x60,0,0[251x51,0,0{171x51,0,0,1,79x51,172,0,6},251x8,0,52,5]
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim ~/Documents/dev/rust_projects/riptide/src/main.rs
+  - shell_command: cargo watch -q -c -x "run"
+  - shell_command: clear
+  start_directory: /home/sam/Documents/dev/rust_projects/riptide
+  window_name: Nvim
+- layout: b064,251x60,0,0,7
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /home/sam
+  window_name: Shell

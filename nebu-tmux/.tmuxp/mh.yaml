@@ -1,0 +1,24 @@
+session_name: mhlt
+windows:
+  - window_name: Dev
+    start_directory: /home/sam/Storage/SDA/dev/Godot/mhlt/
+    focus: true
+    layout: a6d6,335x57,0,0[335x46,0,0{204x46,0,0,0,130x46,205,0,4},335x10,0,47,3]
+    panes:
+      - sleep_before: 0.5
+        shell_command:
+          - nvim
+      - sleep_before: 0.5
+        shell_command:
+          - opencode
+      - sleep_before: 0.5
+  - window_name: Org
+    start_directory: /home/sam/Storage/SDA/dev/Godot/mhlt/
+    layout: f0cf,335x57,0,0{167x57,0,0,0,167x57,168,0,1}
+    panes:
+      - sleep_before: 0.5
+        shell_command:
+          - lazygit
+      - sleep_before: 0.5
+        shell_command:
+          - backlog board

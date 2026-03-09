@@ -1,0 +1,16 @@
+session_name: dev
+windows:
+  - window_name: Home
+    start_directory: /home/sam
+    focus: true
+    layout: a6d6,335x57,0,0[335x46,0,0{204x46,0,0,0,130x46,205,0,4},335x10,0,47,3]
+    panes:
+      - sleep_before: 0.5
+        shell_command:
+          - nvim
+      - sleep_before: 0.5
+        shell_command:
+          - opencode
+      - sleep_before: 0.5
+        shell_command:
+          - clear

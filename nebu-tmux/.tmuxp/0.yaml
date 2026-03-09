@@ -1,0 +1,10 @@
+session_name: '0'
+windows:
+- focus: 'true'
+  layout: f0cf,335x57,0,0{167x57,0,0,0,167x57,168,0,1}
+  options: {}
+  panes:
+  - zsh
+  - pane
+  start_directory: /home/sam
+  window_name: zsh

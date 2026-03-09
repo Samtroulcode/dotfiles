@@ -1,0 +1,18 @@
+session_name: board
+windows:
+  - window_name: board
+    start_directory: /home/sam
+    focus: "true"
+    layout: 5adf,247x57,0,0{123x57,0,0,4,123x57,124,0[123x28,124,0,5,123x28,124,29,6]}
+    options:
+      automatic-rename: false
+    panes:
+      - sleep_before: 0.5
+        shell_command:
+          - btop --preset 2
+      - sleep_before: 0.5
+        shell_command:
+          - btop --preset 1
+      - sleep_before: 0.5
+        shell_command:
+          - rmpc

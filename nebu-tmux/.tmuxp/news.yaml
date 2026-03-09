@@ -1,0 +1,19 @@
+session_name: news
+windows:
+  - focus: "true"
+    layout: cbfd,335x57,0,0,0
+    options:
+      automatic-rename: false
+    panes:
+      - focus: "true"
+        sleep_before: 0.5
+        shell_command: newsboat
+    start_directory: /home/sam
+    window_name: news
+  - layout: cbfe,335x57,0,0,1
+    options:
+      automatic-rename: false
+    panes:
+      - focus: "true"
+    start_directory: /home/sam
+    window_name: mail
