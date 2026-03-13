@@ -1,0 +1,5 @@
+inbox=tag:inbox and path:proton/**
+unread=tag:unread and path:proton/**
+sent=tag:sent and path:proton/**
+drafts=tag:draft and path:proton/**
+archive=not tag:inbox and not tag:trash and path:proton/**

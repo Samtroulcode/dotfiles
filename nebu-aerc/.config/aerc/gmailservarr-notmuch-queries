@@ -1,0 +1,5 @@
+inbox=tag:inbox and path:gmailservarr/**
+unread=tag:unread and tag:inbox and path:gmailservarr/**
+sent=tag:sent and path:gmailservarr/**
+drafts=tag:draft and path:gmailservarr/**
+all=path:gmailservarr/**
