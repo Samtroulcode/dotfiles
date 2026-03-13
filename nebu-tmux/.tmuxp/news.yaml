@@ -15,5 +15,7 @@ windows:
       automatic-rename: false
     panes:
       - focus: "true"
+        sleep_before: 0.5
+        shell_command: aerc
     start_directory: /home/sam
     window_name: mail
