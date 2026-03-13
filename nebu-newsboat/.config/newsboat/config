@@ -5,7 +5,7 @@ freshrss-password "DrouDrou!!!0077"
 
 freshrss-min-items 100
 
-include ~/.newsboat/dark
+include ~/.config/newsboat/dark
 
 browser "~/bin/newsboat-dispatch %u"
 
