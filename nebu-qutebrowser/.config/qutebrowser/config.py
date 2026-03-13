@@ -122,6 +122,12 @@ config.bind(
 )
 config.bind(",gl", "config-cycle -p -u *://{url:host}/* content.webgl ;; reload")
 
+# Bind pour ajout rss
+config.bind(
+    ",rs",
+    "hint links userscript add-freshrss",
+)
+
 # dark mode
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = "lightness-cielab"
