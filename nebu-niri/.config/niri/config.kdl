@@ -75,7 +75,7 @@ input {
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 18
+    gaps 12
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -195,7 +195,7 @@ animations {
 // by setting an empty default-column-width.
 window-rule {
   // Rounded corners for a modern look.
-  geometry-corner-radius 10
+  geometry-corner-radius 8
 
   // Clips window contents to the rounded corner boundaries.
   clip-to-geometry true
@@ -206,13 +206,21 @@ window-rule {
 // Fenêtre focusée : quasi opaque.
 window-rule {
   match is-focused=true
-  opacity 0.98
+  opacity 0.97
 }
 
 // Fenêtres non focusées : légèrement plus transparentes.
 window-rule {
   match is-focused=false
-  opacity 0.97
+  opacity 0.96
+}
+
+window-rule {
+  match app-id="mpv"
+  match app-id="godot"
+  match app-id="blender"
+  match app-id="qutebrowser"
+  opacity 1.0
 }
 
 debug {
