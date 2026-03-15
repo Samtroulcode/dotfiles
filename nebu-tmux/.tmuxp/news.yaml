@@ -19,3 +19,12 @@ windows:
         shell_command: aerc
     start_directory: /home/sam
     window_name: mail
+  - layout: cbfe,335x57,0,0,1
+    options:
+      automatic-rename: false
+    panes:
+      - focus: "true"
+        sleep_before: 0.5
+        shell_command: weechat
+    start_directory: /home/sam
+    window_name: irc
