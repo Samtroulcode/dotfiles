@@ -157,7 +157,6 @@ layout {
 
 spawn-at-startup "env" "QT_QPA_PLATFORMTHEME=gtk3" "qs" "-c" "noctalia-shell"
 spawn-at-startup "load-tmux"
-spawn-at-startup "tmux new -s home -d"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -217,9 +216,10 @@ window-rule {
 
 window-rule {
   match app-id="mpv"
-  match app-id="godot"
+  match app-id="godot-engine"
   match app-id="blender"
   match app-id="qutebrowser"
+  match app-id="firefox"
   opacity 1.0
 }
 
