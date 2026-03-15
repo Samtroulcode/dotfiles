@@ -7,10 +7,10 @@ freshrss-min-items 100
 
 include ~/.config/newsboat/dark
 
-browser "~/bin/newsboat-dispatch %u"
+browser "~/.local/bin/newsboat-dispatch %u"
 
 macro q set browser "qutebrowser %u >/dev/null 2>&1 &"
-macro w set browser "~/bin/newsboat-dispatch %u"
+macro w set browser "~/.local/bin/newsboat-dispatch %u"
 
 # -- feeds ---------------------------------------------------------------------
 
