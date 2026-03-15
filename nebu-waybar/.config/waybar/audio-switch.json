@@ -2,6 +2,6 @@
   "custom/audio-switch": {
     "format": "󰓃",
     "tooltip": "Switch HP / Casque",
-    "on-click": "~/scripts/switch-audio.sh"
+    "on-click": "~/.local/bin/switch-audio"
   }
 }

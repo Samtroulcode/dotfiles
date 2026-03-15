@@ -142,7 +142,7 @@
     "exec": "~/.config/waybar/scripts/audio-output-icon.sh",
     "interval": 3,
     "return-type": "json",
-    "on-click": "~/scripts/switch-audio.sh",
+    "on-click": "~/.local/bin/switch-audio",
     "tooltip": true
   },
   // Other
