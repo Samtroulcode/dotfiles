@@ -40,7 +40,8 @@ alias ipinfo='ip -c a'
 alias pingg='ping -c 3 1.1.1.1'
 alias pingdns='ping -c 3 archlinux.org'
 
-alias m='mosh servarr -- tmux attach'
+# alias m='mosh servarr -- tmux attach'
+alias m='micro'
 
 alias archnews="qutebrowser 'https://archlinux.org/news/'"
 alias protonmail="qutebrowser 'https://mail.proton.me'"
