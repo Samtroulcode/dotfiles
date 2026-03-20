@@ -24,8 +24,8 @@ binds {
     Super+B hotkey-overlay-title="Open Browser" { spawn "qutebrowser"; }
 
     // Screen-casting niri
-    Mod+Shift+P { set-dynamic-cast-window; }
-    Mod+Ctrl+P { set-dynamic-cast-monitor; }
+    Mod+Ctrl+P { set-dynamic-cast-window; }
+    Mod+P { set-dynamic-cast-monitor; }
     Mod+Alt+P { clear-dynamic-cast-target; }
 
     // Custom and plugin binds
