@@ -219,7 +219,9 @@ window-rule {
   match app-id="godot-engine"
   match app-id="blender"
   match app-id="qutebrowser"
-  match app-id="firefox"
+  match app-id="zen"
+  match app-id="zathura"
+  match app-id="ghostty"
   opacity 1.0
 }
 
