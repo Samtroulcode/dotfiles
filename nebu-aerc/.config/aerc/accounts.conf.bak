@@ -1,6 +1,0 @@
-[Protonmail]
-source        = imap://samtroulfion%40proton.me:ps_fMoNmYNfeqZq6O59Rvw@127.0.0.1:1143
-outgoing      = smtp://samtroulfion%40proton.me:ps_fMoNmYNfeqZq6O59Rvw@127.0.0.1:1025
-default       = INBOX
-from          = Adrien Duarte <samtroulfion@proton.me>
-cache-headers = true
