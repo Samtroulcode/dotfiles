@@ -78,6 +78,8 @@ alias wall-cache='~/.config/wallust/wallpaper-cache.sh'
 alias lg='/usr/bin/lazygit'
 alias lgd='/usr/bin/lazygit --path ~/dotfiles'
 
+alias lj='/usr/bin/lazyjj'
+
 # Aliases de sync
 alias mount_backup='sudo mount /dev/sdd1 /mnt/external_backup && echo "Disque externe monté !"'
 alias umount_backup='sudo umount /mnt/external_backup && echo "Disque externe démonté."'

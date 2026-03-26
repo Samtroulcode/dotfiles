@@ -1,0 +1,22 @@
+session_name: torrent
+windows:
+  - focus: "true"
+    layout: 1bfc,224x60,0,0{112x60,0,0,7,111x60,113,0,10}
+    options:
+      automatic-rename: false
+    panes:
+      - sleep_before: 0.5
+        shell_command:
+          - nvim workflow_creation_torrents_local.md
+      - sleep_before: 0.5
+    start_directory: /home/sam/torrent-work
+    window_name: Torrent
+  - layout: b126,224x60,0,0,9
+    options:
+      automatic-rename: false
+    panes:
+      - sleep_before: 0.5
+        shell_command:
+          - sshs
+    start_directory: /home/sam
+    window_name: SSH

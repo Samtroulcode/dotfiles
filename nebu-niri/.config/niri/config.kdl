@@ -222,6 +222,10 @@ window-rule {
   match app-id="zen"
   match app-id="zathura"
   match app-id="ghostty"
+  match app-id="chrome-openfront.io__-Default"
+  match app-id="org.inkscape.Inkscape"
+  match app-id="chromium"
+
   opacity 1.0
 }
 

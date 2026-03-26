@@ -22,3 +22,6 @@ export VISUAL=nvim
 
 # Use nvim as man pager
 export MANPAGER='nvim +Man!'
+
+# Gpg agent pinentry
+export GPG_TTY=$(tty)

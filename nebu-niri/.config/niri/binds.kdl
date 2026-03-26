@@ -29,7 +29,8 @@ binds {
     Mod+Alt+P { clear-dynamic-cast-target; }
 
     // Custom and plugin binds
-    Mod+F1 hotkey-overlay-title="Translate" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:assistant-panel" "toggle"; }
+    Mod+F1 hotkey-overlay-title="Cheatsheet" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"; }
+    Mod+F2 hotkey-overlay-title="Screen Toolkit" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:screen-toolkit" "toggle"; }
     Mod+D hotkey-overlay-title="Date and Time" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "dateTimePanel" "toggle"; }
 
     Mod+1 hotkey-overlay-title="Focus screen 1" { focus-monitor "DP-1"; }
