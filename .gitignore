@@ -13,6 +13,7 @@ nebu-chat/.config/weechat/sec.conf
 nebu-chat/.config/weechat/irc.conf
 nebu-chat/.config/weechat/relay.conf
 nebu-tmux/.tmux/newsboat/*
+nebu-aerc/*
 zsh/
 old-nvim
 nebu-nvim
