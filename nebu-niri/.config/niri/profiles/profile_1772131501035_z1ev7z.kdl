@@ -23,7 +23,7 @@ output "DP-2" {
             proportion 0.5
             proportion 0.66667
         }
-        always-center-single-column
+        default-column-display "normal"
     }
 }
 

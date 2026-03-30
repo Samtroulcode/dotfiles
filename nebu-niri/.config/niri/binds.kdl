@@ -31,7 +31,9 @@ binds {
     // Custom and plugin binds
     Mod+F1 hotkey-overlay-title="Cheatsheet" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"; }
     Mod+F2 hotkey-overlay-title="Screen Toolkit" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:screen-toolkit" "toggle"; }
-    Mod+D hotkey-overlay-title="Date and Time" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "dateTimePanel" "toggle"; }
+    Mod+D hotkey-overlay-title="Date and Time" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "calendar" "toggle"; }
+    Mod+F3 hotkey-overlay-title="Note Scratchpad" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
+    Mod+W hotkey-overlay-title="pass panel" { spawn "ghostty" "-e" "gopass"; }
 
     Mod+1 hotkey-overlay-title="Focus screen 1" { focus-monitor "DP-1"; }
     Mod+2 hotkey-overlay-title="Focus screen 2" { focus-monitor "DP-2"; }
@@ -125,7 +127,6 @@ binds {
     Mod+Shift+WheelScrollDown { focus-column-right; }
     Mod+Shift+WheelScrollUp { focus-column-left; }
     Mod+Up { focus-window-up; }
-    Mod+W { toggle-column-tabbed-display; }
     Mod+WheelScrollLeft { focus-column-left; }
     Mod+WheelScrollRight { focus-column-right; }
     Ctrl+F12 { screenshot-screen; }
