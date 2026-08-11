@@ -76,11 +76,11 @@ config.bind(
 )
 config.bind(
     ",md",
-    'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Tracks/%(title)s.%(ext)s" {hint-url}',
+    'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/SDA/Music/Tracks/%(title)s.%(ext)s" {hint-url}',
 )
 config.bind(
     ",mpl",
-    'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s" {hint-url}',
+    'hint links spawn yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/SDA/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s" {hint-url}',
 )
 
 # Cache/affiche les onglets

@@ -33,7 +33,7 @@ binds {
     Mod+F2 hotkey-overlay-title="Screen Toolkit" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:screen-toolkit" "toggle"; }
     Mod+D hotkey-overlay-title="Date and Time" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "calendar" "toggle"; }
     Mod+F3 hotkey-overlay-title="Note Scratchpad" { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
-    Mod+W hotkey-overlay-title="pass panel" { spawn "ghostty" "-e" "gopass"; }
+    Mod+W hotkey-overlay-title="pass panel" { spawn "ghostty" "-e" "gp-tui"; }
 
     Mod+1 hotkey-overlay-title="Focus screen 1" { focus-monitor "DP-1"; }
     Mod+2 hotkey-overlay-title="Focus screen 2" { focus-monitor "DP-2"; }

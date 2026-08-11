@@ -1,4 +1,5 @@
-[[ "$(tty)" == "/dev/tty1" ]] && exec uwsm start default
+# [[ "$(tty)" == "/dev/tty1" ]] && exec uwsm start default
+
 # if [[ "$(tty)" == "/dev/tty1" ]] && uwsm check may-start && uwsm select; then
 #   exec uwsm start default
 # fi

@@ -6,13 +6,13 @@ if [[ $- == *i* ]]; then
 
   # eza (ls moderne)
   if command -v eza &>/dev/null; then
-    alias ls='eza --color=automatic --group-directories-first -h --icons'
-    alias la='eza -a --color=automatic --group-directories-first -h --icons'
-    alias ll='eza -l --color=automatic --group-directories-first -h --icons'
-    alias lla='eza -la --color=automatic --group-directories-first -h --icons'
-    alias tree='eza --tree --color=auto --icons'
-    alias tree2='eza --tree --level=2 --color=auto --icons'
-    alias tree3='eza --tree --level=3 --color=auto --icons'
+    alias ls='eza --color=always --group-directories-first -h --icons always'
+    alias la='eza -a --color=always --group-directories-first -h --icons always'
+    alias ll='eza -l --color=always --group-directories-first -h --icons always'
+    alias lla='eza -la --color=always --group-directories-first -h --icons always'
+    alias tree='eza --tree --color=auto --icons always'
+    alias tree2='eza --tree --level=2 --color=auto --icons always'
+    alias tree3='eza --tree --level=3 --color=auto --icons always'
   fi
 
   # bat (cat moderne)

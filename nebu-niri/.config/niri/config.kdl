@@ -206,20 +206,20 @@ window-rule {
 // Fenêtre focusée : quasi opaque.
 window-rule {
   match is-focused=true
-  opacity 0.97
+  opacity 0.98
 }
 
 // Fenêtres non focusées : légèrement plus transparentes.
 window-rule {
   match is-focused=false
-  opacity 0.96
+  opacity 0.97
 }
 
 window-rule {
   match app-id="mpv"
-  match app-id="godot-engine"
+  match app-id="Godot"
   match app-id="blender"
-  match app-id="qutebrowser"
+  // match app-id="qutebrowser"
   match app-id="zen"
   match app-id="zathura"
   match app-id="ghostty"
@@ -254,11 +254,11 @@ window-rule {
 }
 
 window-rule {
-  match title="^gopass$"
+  match title="^gp-tui$"
   open-floating true
-  max-width 700
-  max-height 500
-  default-floating-position x=300 y=450 relative-to="top"
+  max-width 1200
+  max-height 1000
+  default-floating-position x=80 y=250 relative-to="top"
 }
 
 // Indicate screencasted windows with red colors.

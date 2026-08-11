@@ -39,6 +39,8 @@ alias ports='ss -tulwn'
 alias ipinfo='ip -c a'
 alias pingg='ping -c 3 1.1.1.1'
 alias pingdns='ping -c 3 archlinux.org'
+alias vpnon='sudo wg-quick up wg-vpn'
+alias vpnoff='sudo wg-quick down wg-vpn'
 
 # alias m='mosh servarr -- tmux attach'
 alias m='micro'
@@ -54,11 +56,15 @@ alias editdns='unlockdns && sudo nvim /etc/resolv.conf && lockdns'
 alias up0x0='f() { curl -s -F "file=@$1" -F "expires=43200" https://0x0.st; }; f'
 
 # Télécharger une playlist YouTube entière en MP3 avec covers
-alias ytmp3pl='yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"'
+alias ytmp3pl='yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/SDA/Music/Albums/%(playlist_title)s/%(playlist_index)s - %(title)s.%(ext)s"'
 # Télécharger une vidéo YouTube unique en MP3
-alias ytmp3='yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/Music/Tracks/%(title)s.%(ext)s"'
+alias ytmp3='yt-dlp -x --audio-format mp3 --embed-thumbnail --add-metadata -o "~/Storage/SDA/Music/Tracks/%(title)s.%(ext)s"'
 # Mettre à jour yt-dlp
 alias ytdlp-update='yt-dlp -U'
+# Télécharger une vidéo youtube
+alias ytd='yt-dlp --embed-thumbnail --add-metadata -o "~/Videos/%(uploader)s/%(title)s.%(ext)s"'
+# Télécharger une playlist YouTube entière
+alias ytpl='yt-dlp --embed-thumbnail --add-metadata -o "~/Videos/%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s"'
 
 alias ncmpcpp='ncmpcpp -b ~/.config/ncmpcpp/bindings'
 
